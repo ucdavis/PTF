@@ -105,6 +105,25 @@
                 <td class="InfoFieldValue">
                     <asp:Literal ID="litShippingPermit" runat="server"></asp:Literal></td>            
             </tr>
+           <asp:Panel ID="pnlUcdBua" runat="server">
+           <tr>
+                <td class="InfoFieldName">Bua Number:</td>
+                <td class="InfoFieldValue">
+                    <asp:Literal ID="litBua" runat="server"></asp:Literal></td>
+                <td class="InfoFieldName">Bua Expiration:</td>
+                <td class="InfoFieldValue">
+                    <asp:Literal ID="litBuaExpiration" runat="server"></asp:Literal></td>            
+            </tr>
+            </asp:Panel>
+           <asp:Panel ID="pnlNonUcdBua" runat="server">
+                <tr>
+                    <td class="InfoFieldName">Has Bua:</td>
+                    <td class="InfoFieldValue">
+                        <asp:Literal ID="litHasBua" runat="server"></asp:Literal></td>
+                    <td class="InfoFieldName"></td>
+                    <td class="InfoFieldValue"></td>            
+                </tr>
+           </asp:Panel>
             <tr>
                 <td class="InfoFieldName"></td>
                 <td class="InfoFieldValue"></td>
@@ -249,6 +268,8 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate> 
     <asp:Button ID="btnNewConstruct" runat="server" Text="" />
+    <asp:Button ID="btnAddSuborder" runat="server" Text="Add Suborder" 
+        onclick="btnAddSuborder_Click" />
     <asp:ListView ID="lvSuborders" runat="server" 
         onitemdatabound="lvSuborders_ItemDataBound">
         <LayoutTemplate>

@@ -54,7 +54,11 @@
 		<property name="Location" column="Location" />
 
 		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
-		
+
+    <property name="BUA" column="BUA" />
+    <property name="BUAExpiration" column="BUAExpiration" />
+    <property name="HasBua" column="HasBua" />
+    
 		<bag name="Constructs" table="Constructs">
 			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>

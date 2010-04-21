@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.BLL;
 using System.Collections.Generic;
@@ -88,6 +80,19 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
             // populate profile information as necessary
             PopulateProfile();
+
+            var user = Membership.GetUser().UserName;
+
+            if (user.EndsWith(CampusList.STR_Davis))
+            {
+                pnlUcdBua.Visible = true;
+                pnlNonUcdBua.Visible = false;
+            }
+            else
+            {
+                pnlUcdBua.Visible = false;
+                pnlNonUcdBua.Visible = true;
+            }
         }
         
         // need to recreate the controls every time

@@ -70,8 +70,8 @@ public partial class admin_Order : System.Web.UI.Page
 
     protected void PopulateInfoFields()
     {
-        try
-        {
+        //try
+        //{
             var order = OrderBLL.GetByID(OrderID);
 
             litOrderID.Text = order.ID.ToString();
@@ -112,6 +112,32 @@ public partial class admin_Order : System.Web.UI.Page
                 litShippingPermit.Text = CommonStrings.STR_NotAvailable;
             }
 
+            // deal with the BUA number stuff
+            var user = Membership.GetUser(order.UserID).UserName;
+
+            if (user.EndsWith(CampusList.STR_Davis))
+            {
+                pnlUcdBua.Visible = true;
+                pnlNonUcdBua.Visible = false;
+
+                litBua.Text = order.BUA ?? "n/a";
+                litBuaExpiration.Text = order.BUAExpiration ?? "n/a";
+            }
+            else
+            {
+                pnlUcdBua.Visible = false;
+                pnlNonUcdBua.Visible = true;
+
+                if (order.HasBua.HasValue)
+                {
+                    litHasBua.Text = order.HasBua.Value ? "Yes" : "No";
+                }
+                else
+                {
+                    litHasBua.Text = "n/a";
+                }
+            }
+
             // order information
             litPICode.Text = order.PICode;
             litConstructName.Text = order.PIConstructName;
@@ -150,11 +176,11 @@ public partial class admin_Order : System.Web.UI.Page
 
             lvSubOrder.DataSource = order.SubOrders;
             lvSubOrder.DataBind();
-        }
-        catch 
-        {
-            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
-        }
+        //}
+        //catch (Exception ex)
+        //{
+        //    Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
+        //}
     }
 
     private string GenerateAddress(string address1, string address2, string city, State state, string internationalState, string zip, Country country)
@@ -313,5 +339,9 @@ public partial class admin_Order : System.Web.UI.Page
         // update the list view with all sub orders
         lvSuborders.DataSource = suborder.Order.SubOrders;
         lvSuborders.DataBind();
+    }
+    protected void btnAddSuborder_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AddSubOrder.aspx?oid=" + OrderID);
     }
 }

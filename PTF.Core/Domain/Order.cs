@@ -122,6 +122,17 @@ namespace CAESDO.PTF.Core.Domain
 
         public virtual Status Status { get; set; }
 
+        [StringLengthValidator(0, 7)]
+        [IgnoreNulls]
+        public virtual string BUA { get; set; }
+        [StringLengthValidator(0, 7)]
+        [IgnoreNulls]
+        public virtual string BUAExpiration { get; set; }
+
+        public virtual bool? HasBua { get; set; }
+
+
+
         public virtual IList<Construct> Constructs { get; set; }
         public virtual IList<SubOrder> SubOrders { get; set; }
 

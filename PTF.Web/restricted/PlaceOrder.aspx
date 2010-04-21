@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PlaceOrder.aspx.cs" Inherits="restricted_PlaceOrder" Title="PTF | Place Order" EnableEventValidation="false" %>
+<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PlaceOrder.aspx.cs" Inherits="restricted_PlaceOrder" Title="PTF | Place Order" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -442,6 +442,50 @@
                     ControlToValidate="tbSelectableMarkerGene" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
+            <asp:Panel ID="pnlNonUcdBua" runat="server">
+                <tr>
+                <td class="style3"></td>
+                <td>Please contact your campus Biosafety Office with questions concerning BUA.</td>
+                </tr>
+                <tr>
+                <td class="style3">
+                    <strong>Do you have a BUA number?</strong>
+                </td>
+                <td>
+                    <asp:RadioButtonList ID="rblBuaNumber" runat="server">
+                        <asp:ListItem Text="Yes" Value="true"></asp:ListItem>
+                        <asp:ListItem Text="No" Value="false"></asp:ListItem>
+                    </asp:RadioButtonList>
+                    <asp:RequiredFieldValidator ID="rfvBuaNumber" runat="server" ErrorMessage="Bua Answer is required." ControlToValidate="rblBuaNumber" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
+                </td>
+                </tr>
+            </asp:Panel>
+            <asp:Panel ID="pnlUcdBua" runat="server">
+                <tr>
+                <td class="style3"></td>
+                <td>If you do not have a BUA number please contact the UC Davis Biosafety Office at 752-1493.</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    You are required to enter your BUA number and expiration date.
+                    </td>
+                </tr>
+                <tr>
+                 <td class="style3">
+                    <strong>BUA Number:</strong>
+                </td>
+                <td>
+                    <asp:TextBox ID="tbBua" runat="server" MaxLength="7"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvBua" runat="server" ErrorMessage="Bua is required." ControlToValidate="tbBua" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
+                    
+                    <strong>Exp: </strong>
+                    <asp:TextBox ID="tbBuaExp" runat="server"></asp:TextBox>
+                    <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbBuaExpWatermark" runat="server" TargetControlID="tbBuaExp" WatermarkText="MM/YYYY"></AjaxControlToolkit:TextBoxWatermarkExtender>
+                    <asp:RequiredFieldValidator ID="rfvBuaExp" runat="server" ErrorMessage="Bua expiration is required." ControlToValidate="tbBuaExp" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revBuaExp" ValidationExpression="^(01|02|03|04|05|06|07|08|09|10|11|12)\/20[0123456789]{2}$" runat="server" ErrorMessage="Bua Expiration must match the following format MM/YYYY" ControlToValidate="tbBuaExp" ValidationGroup="NewOrder"></asp:RegularExpressionValidator>
+                </td>
+                </tr>
+            </asp:Panel>
         <tr>
             <td class="style3">
                 &nbsp;</td>
