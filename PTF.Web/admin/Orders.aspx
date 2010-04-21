@@ -90,7 +90,7 @@
             </tr>
             <tr id="row" class="item hidden">
                 <td class="first"></td>
-                <td colspan="8">
+                <td colspan="9">
                     <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
                         <LayoutTemplate>
                             <table cellpadding="0" cellspacing="0" id="suborders">

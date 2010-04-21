@@ -134,9 +134,9 @@ input.disabled {background: transparent; border: none;}
 
 
 /* --- default tables --- */
-table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 1040px; padding-bottom: 40px;}
+table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 1140px; padding-bottom: 40px;}
 tbody {background: url(../Images/table_mid.png) repeat-y 1px top;}
-tr {background: url(../Images/table_row.png) repeat-y top center; width: 64px}
+tr {background: url(../Images/table_row.png) no-repeat top bottom; height: 64px}
 tr.head {background: url(../Images/table_top.png) no-repeat top center;
   color: #fff; font-size: .8em;
   vertical-align: bottom;
