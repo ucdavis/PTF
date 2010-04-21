@@ -10,40 +10,42 @@ public partial class admin_Users : System.Web.UI.Page
 
     }
 
-    #region Clients
-    protected void lbReset_Command(object sender, CommandEventArgs e)
-    {
-        Guid key = new Guid(e.CommandArgument.ToString());
+    //#region Clients
+    //protected void lbReset_Command(object sender, CommandEventArgs e)
+    //{
+    //    Guid key = new Guid(e.CommandArgument.ToString());
 
-        var u = Membership.GetUser(key);
+    //    var u = Membership.GetUser(key);
         
-        // generate the new password
-        string guidResult = System.Guid.NewGuid().ToString();
-        guidResult = guidResult.Replace("-", string.Empty);
+    //    // generate the new password
+    //    string guidResult = System.Guid.NewGuid().ToString();
+    //    guidResult = guidResult.Replace("-", string.Empty);
 
-        var user = Membership.Providers["AspNetSqlMembershipProviderOther"].GetUser(u.UserName, false);
-        //user.ChangePassword(user.ResetPassword(), )
+    //    var user = Membership.Providers["AspNetSqlMembershipProviderOther"].GetUser(u.UserName, false);
+    //    //user.ChangePassword(user.ResetPassword(), )
 
-        var password = user.ResetPassword();
+    //    var password = user.ResetPassword();
 
 
-        ////var newPassword = user.ResetPassword(
+    //    ////var newPassword = user.ResetPassword(
        
-        //var newPassword = user.ResetPassword();
-        //user.
+    //    //var newPassword = user.ResetPassword();
+    //    //user.
 
-        EmailBLL.ResetPasswordEmail(key, password);
-    }
-    protected void lbUnlock_Command(object sender, CommandEventArgs e)
-    {
-        Guid key = new Guid(e.CommandArgument.ToString());
+    //    EmailBLL.ResetPasswordEmail(key, password);
 
-        var user = Membership.GetUser(key);
-        user.UnlockUser();
+    //    Response.Write("Password for " + user.UserName + " has been reset.");
+    //}
+    //protected void lbUnlock_Command(object sender, CommandEventArgs e)
+    //{
+    //    Guid key = new Guid(e.CommandArgument.ToString());
 
-        gvClients.DataBind();
-    }
-    #endregion
+    //    var user = Membership.GetUser(key);
+    //    user.UnlockUser();
+
+    //    gvClients.DataBind();
+    //}
+    //#endregion
 
     //#region Staff
     //protected void lvStaffUsers_SelectedIndexChanged(object sender, EventArgs e)
