@@ -69,5 +69,12 @@
     <li><a href=Billing.aspx><img src="../Images/menu_billing.png" title="Billing" /></a></li>
     <li><a href=Labels.aspx><img src="../Images/menu_labels.png" title="Labels" /></a></li>
     </ul>
+    
+    <asp:Panel ID="pnlEmulation" runat="server" Visible="false">
+        <asp:TextBox ID="tbUserToEmulate" runat="server"></asp:TextBox>
+        <asp:Button ID="btnEmulate" runat="server" Text="Emulate User" onclick="btnEmulate_Click" />
+        <asp:Literal ID="litCurrentEmulation" runat="server" Visible="false"></asp:Literal>
+        <asp:Button ID="btnExitEmulation" runat="server" Text="Exit Emulation" onclick="btnExitEmulation_Click" Visible="false" />
+    </asp:Panel>
 </asp:Content>
 

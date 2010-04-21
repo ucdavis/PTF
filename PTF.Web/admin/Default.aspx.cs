@@ -15,9 +15,45 @@ using CAESDO.PTF.BLL;
 
 public partial class admin_Default : System.Web.UI.Page
 {
+    private bool IsEmulating
+    {
+        get { return Session["Emulating"] == null ? false : (bool)Session["Emulating"]; }
+        set { Session["Emulating"] = value; }
+    }
+       
     protected void Page_Load(object sender, EventArgs e)
     {
+#if DEBUG
+            if (User.IsInRole("Admin"))
+            {
+                // make the panel visible
+                pnlEmulation.Visible = true;
 
+                // check if they are already emulating
+                if (IsEmulating)
+                {
+                    // hide the emulate buttons
+                    tbUserToEmulate.Visible = false;
+                    btnEmulate.Visible = false;
+
+                    // show the already emulating controls
+                    litCurrentEmulation.Visible = true;
+                    litCurrentEmulation.Text = "You are currently emulating " + User.Identity.Name;
+                    btnExitEmulation.Visible = true;
+                }
+                else
+                {
+                    // hide the emulate buttons
+                    tbUserToEmulate.Visible = true;
+                    btnEmulate.Visible = true;
+
+                    // show the already emulating controls
+                    litCurrentEmulation.Visible = false;
+                    litCurrentEmulation.Text = string.Empty;
+                    btnExitEmulation.Visible = false;
+                }
+            }
+#endif
     }
 
     [WebMethod]
@@ -48,5 +84,37 @@ public partial class admin_Default : System.Web.UI.Page
         {
             return -1;
         }
+    }
+
+    protected void btnEmulate_Click(object sender, EventArgs e)
+    {
+        FormsAuthentication.SignOut();
+
+        FormsAuthentication.Initialize();
+
+        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+            tbUserToEmulate.Text,
+            DateTime.Now,
+            DateTime.Now.AddMinutes(15),
+            false,
+            String.Empty,
+            FormsAuthentication.FormsCookiePath);
+
+        string hash = FormsAuthentication.Encrypt(ticket);
+        HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);
+
+        Response.Cookies.Add(cookie);
+
+        // Mark the session as emulating
+        IsEmulating = true;
+
+        Response.Redirect(FormsAuthentication.DefaultUrl);
+    }
+    protected void btnExitEmulation_Click(object sender, EventArgs e)
+    {
+        FormsAuthentication.SignOut();
+        IsEmulating = false;
+        
+        Response.Redirect("Default.aspx", true);
     }
 }

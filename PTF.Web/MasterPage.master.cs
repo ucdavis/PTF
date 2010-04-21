@@ -13,6 +13,12 @@ using System.Xml.Linq;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    private bool IsEmulating
+    {
+        get { return Session["Emulating"] == null ? false : (bool)Session["Emulating"]; }
+        set { Session["Emulating"] = value; }
+    }
+
     protected string STR_RedirectAddress
     {
         get 
@@ -30,7 +36,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void LoginStatus1_LoggingOut(object sender, LoginCancelEventArgs e)
     {
         var user = Membership.GetUser();
+#if DEBUG
+        if (IsEmulating)
+        {
+            FormsAuthentication.SignOut();
 
+            IsEmulating = false;
+        }
+#endif
         if (user == null) // cas login, redirect to the cas logout page
         {
             FormsAuthentication.SignOut();
