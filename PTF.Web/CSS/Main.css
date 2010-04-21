@@ -148,3 +148,15 @@ body {
 	color: #000000;
 	background-color: #FF0000;
 }
+
+/*----- Existing Data -----*/
+.ExistingDataTable
+{
+}
+.ExistingDataRow
+{
+}
+.ExistingDataAltRow
+{
+	background-color:#F5F5F5;
+}

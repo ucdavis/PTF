@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="PTF" Class="ExistingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=boxy;Initial Catalog=PTF;Integrated Security=True" SettingsObjectName="PTF.Data.Properties.Settings" SettingsPropertyName="PTFConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ExistingConstructInventory" Member="ExistingConstructInventories">
+    <Type Name="ExistingConstructInventory">
+      <Column Name="[Construct Code]" Member="Construct_Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="[# of Plants Requested]" Member="__of_Plants_Requested" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[# Plants Delivered]" Member="__Plants_Delivered" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Transformation Initiated]" Member="Transformation_Initiated" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[PI Construct name]" Member="PI_Construct_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Agro Strains]" Member="Agro_Strains" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[PI Code]" Member="PI_Code" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Bacterial Selection]" Member="Bacterial_Selection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Plasmid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Trait" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="[Gene of interest]" Member="Gene_of_interest" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="[Plant Selection]" Member="Plant_Selection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Client" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Archived Box]" Member="Archived_Box" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Working Box]" Member="Working_Box" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Target Crop]" Member="Target_Crop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cultivar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Available for UC researchers]" Member="Available_for_UC_researchers" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Recharge Number]" Member="Recharge_Number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Recharge Amount]" Member="Recharge_Amount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Contract Executed]" Member="Contract_Executed" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Invoice sent]" Member="Invoice_sent" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Date Received]" Member="Date_Received" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExistingPlantInventory" Member="ExistingPlantInventories">
+    <Type Name="ExistingPlantInventory">
+      <Column Name="Pedigree" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="[Transformation Code]" Member="Transformation_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Crop" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Date Initiated]" Member="Date_Initiated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[Date entered]" Member="Date_entered" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Genotype" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PI" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Client" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[# Plants Requested]" Member="__Plants_Requested" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Agro Strains]" Member="Agro_Strains" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Construct code]" Member="Construct_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[PI Construct Code]" Member="PI_Construct_Code" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Gene of Interest]" Member="Gene_of_Interest" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Selection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Plasmid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Trait" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Re-callusing Assay]" Member="Re_callusing_Assay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rooting" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Date delivered]" Member="Date_delivered" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExistingExperimentInventory" Member="ExistingExperimentInventories">
+    <Type Name="ExistingExperimentInventory">
+      <Column Name="Experiment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PI" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Client" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Operator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Crop species]" Member="Crop_species" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cultivar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Seed Lot Number]" Member="Seed_Lot_Number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Agro Strain]" Member="Agro_Strain" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Agro Code]" Member="Agro_Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[PI Construct Code]" Member="PI_Construct_Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Plasmid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Agro Selection]" Member="Agro_Selection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Plant Selection]" Member="Plant_Selection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Explant" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Precondition" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="[Co-Culture]" Member="Co_Culture" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="Induction" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Induction II]" Member="Induction_II" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Induction III]" Member="Induction_III" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Elongation/Germination]" Member="Elongation_Germination" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Recallusing" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Rooting" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Trait" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="[Invoice Sent]" Member="Invoice_Sent" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[Targeted # of Plants]" Member="Targeted___of_Plants" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Optical Density]" Member="Optical_Density" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

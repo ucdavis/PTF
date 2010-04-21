@@ -41,6 +41,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -60,6 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmailText.resx</DependentUpon>
     </Compile>
+    <Compile Include="ExistingBLL.cs" />
     <Compile Include="ExperimentBLL.cs" />
     <Compile Include="GenericBLL.cs" />
     <Compile Include="LookupsBLL.cs" />
