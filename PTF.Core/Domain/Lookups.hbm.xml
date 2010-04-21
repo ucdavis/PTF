@@ -6,43 +6,55 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="" />
+		<property Name="Name" Column="NoteType" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" table="Crops">
 		<id name="id" access="field" column="CropID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
+
+		<property Name="Name" Column="Crop" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains">
 		<id name="id" access="field" column="NoteTypeID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
+
+		<property Name="Name" Column="AgroStrain" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" table="Status">
 		<id name="id" access="field" column="StatusID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
+
+		<property Name="Name" Column="Status" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" table="SelectableMarkers">
 		<id name="id" access="field" column="SelectableMarkerID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
+
+		<property Name="Name" Column="SelectableMarker" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" table="GenoTypes">
 		<id name="id" access="field" column="GenoTypeID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
+
+		<property Name="Name" Column="GenoType" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" table="TransGenes">
 		<id name="id" access="field" column="TransGeneID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
+
+		<property Name="Name" Column="TransGene" />
 	</class>
 	
 </hibernate-mapping>
