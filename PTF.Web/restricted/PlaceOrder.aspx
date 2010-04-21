@@ -21,8 +21,13 @@
         }
     </style>
     
-    <script type="text/javascript" src="../JS/PlaceOrder.js" ></script>
     <script type="text/javascript">
+          
+        var str_address1 = "address1";
+        var str_city = "city";
+        var str_zip = "zip";
+        var str_country = "country";
+        var str_state = "state";
           
         function onCountryChange(ddl)
         {      
@@ -113,49 +118,153 @@
         
         function ValidateStates()
         {       
-            debugger;
-           
-            // validate the page?
+            var warningString = "";               
         
-            var mailingFlag = false;
-            var shippingFlag = false;
+            Page_ClientValidate();  // validate the other controls
+            
+            if (!ValidateMailing())
+            {
+                warningString += "<li>Mailing City is required.</li>";
+                $get("MailingStateWarning").style.display = "inline";
+            }
+            else
+            {
+                $get("MailingStateWarning").style.display = "none";
+            }
+            
+            var shippingFields = ValidateShipping();
+            
+            $get("ShippingAddressWarning").style.display = "none";
+            $get("ShippingCityWarning").style.display = "none";
+            $get("ShippingStateWarning").style.display = "none";
+            $get("ShippingZipWarning").style.display = "none";
+            $get("ShippingCountryWarning").style.display = "none";
+            
+            if (shippingFields.length > 0)
+            {
+                for (i=0; i < shippingFields.length; i++)
+                {
+                    switch(shippingFields[i])
+                    {
+                        case str_address1:  warningString += "<li>Shipping Address 1 is required.</li>";
+                                            $get("ShippingAddressWarning").style.display = "inline";
+                                            break;
+                        case str_city:      warningString += "<li>Shipping City is required.</li>";
+                                            $get("ShippingCityWarning").style.display = "inline";
+                                            break;
+                        case str_state:     warningString += "<li>Shipping State is required.</li>";
+                                            $get("ShippingStateWarning").style.display = "inline";
+                                            break;
+                        case str_zip:       warningString += "<li>Shipping ZIP is required.</li>";
+                                            $get("ShippingZipWarning").style.display = "inline";
+                                            break;
+                        case str_country:   warningString += "<li>Shipping country is required.</li>";
+                                            $get("ShippingCountryWarning").style.display = "inline";
+                                            break;
+                        default:            break;
+                    }
+                }
+            }
         
+            if (warningString != "")
+            {
+                var warningsBox = $get("ValidationWarnings");
+                warningsBox.innerHTML = "<ul>" + warningString + "</ul>";
+                warningsBox.style.display = "inline";
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        
+        function ValidateMailing()
+        {
             var mailingStateDDL = $get("<%= ddlMailingState.ClientID %>");
             var mailingStateTB = $get("<%= tbMailingState.ClientID %>");
-            var mailingCountryDDL = $get("<%= ddlMailingCountry.ClientID %>");
+            var mailingCountryDDL = $get("<%= ddlMailingCountry.ClientID %>");        
             
-            // first check to see if the mailing country is still at -1
-            if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == "-1")
-            {
-                // no way a state can be selected
-            }
-            else if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == "USA")
+            // usa is selected
+            if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == "USA")
             {
                 // drop down state needs to have something selected
                 if (mailingStateDDL.options[mailingStateDDL.selectedIndex].value != "-1")
                 {
                     // we are good on the mailing address
-                    mailingFlag = true;
+                    return true;
                 }
             }
-            else
-            {
+            else // inernational is selected
+            {               
                 // international state is necessary
                 if (mailingStateTB.value != "")
                 {
-                    mailingFlag = true;
+                    return true;
                 }
             }
-        
-            // check the shipping info
             
+            // failed validation
+            return false;
+        }
+        
+        function ValidateShipping()
+        {
             var shippingStateDDL = $get("<%= ddlShippingState.ClientID %>");
             var shippingStateTB = $get("<%= tbShippingState.ClientID %>");
             var shippingCountryDDL = $get("<%= ddlShippingCountry.ClientID %>");
+            var sameCB = $get("<%= cbShippingSame.ClientID %>");
             
-            alert("HI");
-        
-            return false;
+            var fields = new Array();
+            
+            if (sameCB.checked)
+            {
+                // no need to validate the shipping address must be valid
+                return fields;
+            }
+            else
+            {
+                // validate the other parts of the address
+                if ($get("<%= tbShipping1.ClientID %>").value == "Street Address, P.O. Box, Comapny Name")
+                {
+                    fields.push(str_address1);
+                }
+                if ($get("<%= tbShippingCity.ClientID %>").value == "")
+                {
+                    fields.push(str_city);
+                }
+                if ($get("<%= tbShippingZip.ClientID %>").value == "")
+                {
+                    fields.push(str_zip);
+                }
+                              
+                if (shippingCountryDDL.options[shippingCountryDDL.selectedIndex].value != "-1")
+                {
+                    if (shippingCountryDDL.options[shippingCountryDDL.selectedIndex].value == "USA")
+                    {
+                        if (shippingStateDDL.options[shippingStateDDL.selectedIndex].value == "-1")
+                        {
+                            fields.push(str_state);
+                        }
+                    }
+                    else // international, validate the txt box
+                    {
+                        if (shippingStateTB.value == "")
+                        {
+                            fields.push(str_state);
+                        }
+                    }
+                }
+                else
+                {
+                    //country not selected
+                    fields.push(str_country);
+                    fields.push(str_state);
+                }
+            }
+            
+            return fields;
         }
     </script>
 </asp:Content>
@@ -211,7 +320,7 @@
                     <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
                         <asp:ListItem Text="--Select a State--" Value="-1" />
                     </asp:DropDownList>
-                    <div id="MailingStateWarning" style="color:Red; display:none;">*</div>
+                    <span id="MailingStateWarning" style="color:Red; display:none;">*</div>
                 </div>
                 <div class="addressFields">
                 Zip/Postal Code<br />
@@ -252,6 +361,7 @@
                 <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping1_TextBoxWatermarkExtender" 
                     runat="server" Enabled="True" TargetControlID="tbShipping1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
                 </AjaxControlToolkit:TextBoxWatermarkExtender>
+                <span id="ShippingAddressWarning" style="color:Red; display:none;">*</span>
             </td>
         </tr>
         <tr>
@@ -272,6 +382,7 @@
                 <div class="addressFields">
                     City<br />
                     <asp:TextBox ID="tbShippingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
+                    <span id="ShippingCityWarning" style="color:Red; display:none;">*</span>
                 </div>
                 <div class="addressFields">
                 State/Province/Region<br />
@@ -280,10 +391,12 @@
                             DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True" Enabled=false>
                             <asp:ListItem Text="--Select a State--" Value="-1" />
                          </asp:DropDownList>
+                         <span id="ShippingStateWarning" style="color:Red; display:none;">*</span>
                 </div>
                 <div class="addressFields">
                     Zip/Postal Code<br />
                     <asp:TextBox ID="tbShippingZip" runat="server" Width="160px" MaxLength="12"></asp:TextBox>
+                    <span id="ShippingZipWarning" style="color:Red; display:none;">*</span>
                 </div>
             </td>
         </tr>
@@ -297,6 +410,7 @@
                     onChange="onCountryChange(this);" AppendDataBoundItems=true >
                     <asp:ListItem Text="--Select a Country--" Value="-1" />
                 </asp:DropDownList>
+                <span id="ShippingCountryWarning" style="color:Red; display:none;">*</span>
             </td>
         </tr>
         <tr>
@@ -608,6 +722,7 @@
             <td>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
                     ValidationGroup="NewOrder" />
+                <div id="ValidationWarnings" style="display:none; color:Red;"></div>
             </td>
         </tr>
         <tr>
