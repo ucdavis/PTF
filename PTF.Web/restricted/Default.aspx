@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="restricted_Default" Title="PTF | Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
+<script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -10,8 +13,10 @@
 
     <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" DataKeyNames="ID" onselectedindexchanged="lvOrders_SelectedIndexChanged">
         <LayoutTemplate>
-            <table>
-                <tr>
+            <div class="grid">
+            <table id="orders" cellpadding="10" cellspacing="0">
+                <tr class="head">
+                    <th class="first"></th>
                     <th># of Plants</th>
                     <th>Crop</th>
                     <th>Plant Selection</th>
@@ -19,9 +24,13 @@
                 </tr>
                 <tr runat='server' id="ItemPlaceHolder"></tr>
             </table>
+            </div>
         </LayoutTemplate>
         <ItemTemplate>
-            <tr>
+            <tr class="group">
+                <td class="first">
+                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>');" /> 
+                </td>
                 <td colspan="4">
                     <div style="float:left;">
                         Order ID: <%# Eval("ID") %>
@@ -36,7 +45,8 @@
                     <tr runat="server" id="itemPlaceholder"></tr>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <tr id="row" runat="server">
+                    <tr id="row" runat="server" class="item hidden">
+                        <td class="first"></td>
                         <td><%# Eval("NumberOfPlants") %></td>
                         <td><%# Eval("Crop.Name") %></td>
                         <td><%# Eval("PlantSelection.Name") %></td>
