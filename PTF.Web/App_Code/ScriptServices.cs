@@ -78,6 +78,8 @@ public class ScriptServices : System.Web.Services.WebService
         {
             case "Comment": construct.Comments = value;
                 break;
+            case "Recharge": construct.RechargeAmount = decimal.Parse(value);
+                break;
         };
 
         ConstructBLL.Update(construct);

@@ -2,24 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript" src="../JS/Order.js"></script>
-    <script type="text/javascript" language="javascript">
-        function ChangeRechargeAmount()
-        {      
-            var constructID = '<%= Request.QueryString["cid"] %>';
-            var rechargeAmount = $get('<%= tbChangeRechargeAmount.ClientID %>').value;
-                
-            PageMethods.ChangeRecharge(constructID, rechargeAmount, ChangeRechargeAmountOnComplete);
-        }
-        
-        function ChangeRechargeAmountOnComplete(result)
-        {
-            var rechargeSpan = $get("RechargeAmount");
-            rechargeSpan.innerHTML = result;
-                    
-            $get('<%= tbChangeRechargeAmount.ClientID %>').value = "";
-        }
-    </script>
-
     <span class="ContractWarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
@@ -81,10 +63,10 @@
         <tr>
             <td class="InfoFieldName">Recharge Amount:&nbsp;</td>
             <td class="InfoFieldValue">
-                <span id="RechargeAmount">
-                    <asp:Literal ID="litRecharge" runat="server"></asp:Literal>
-                </span>    
-                <asp:LinkButton ID="lbChangeRechargeAmount" runat="server"><img src="../Images/pencil.png" /></asp:LinkButton>
+                $<asp:TextBox ID="tbRecharge" runat="server" Width="50px"></asp:TextBox>               
+                <a id="A1" onclick='if (Page_ClientValidate("Recharge")) { SaveProperty("<%= Request.QueryString["cid"] %>", "Recharge", "<%= tbRecharge.ClientID %>", "Recharge"); }'><img src="../Images/save.png" width="15px" alt="save" />
+                <span id="Recharge"></span><br />
+                <asp:RegularExpressionValidator ID="revRecharge" ControlToValidate="tbRecharge" ValidationGroup="Recharge" ValidationExpression="^([1-9]{1}[\d]{0,2}(\,[\d]{3})*(\.[\d]{0,2})?|[1-9]{1}[\d]{0,}(\.[\d]{0,2})?|0(\.[\d]{0,2})?|(\.[\d]{1,2})?)$" runat="server" ErrorMessage="Not valid dollar amount."></asp:RegularExpressionValidator>
             </td>
             <td class="InfoFieldName">Status:&nbsp;</td>
             <td class="InfoFieldValue">
@@ -194,20 +176,5 @@
          
 </ContentTemplate>
 </asp:UpdatePanel>
-
-    <asp:Panel ID="pnlChangeRechargeAmount" runat="server" Width="250px" style="border:solid 1px black; display:none; background-color:oldlace;">
-        <div style="float:right;">
-            <asp:Button ID="btnCancelChangeRechargeAmount" runat="server" Text="X" />
-        </div>
-        
-        <br />
-        Recharge Amount:&nbsp;$<asp:TextBox ID="tbChangeRechargeAmount" runat="server" Width="50px"></asp:TextBox><br />
-        <asp:Button ID="btnSaveChangeRechargeAmount" runat="server" Text="Save" />
-    </asp:Panel>
-    <AjaxControlToolkit:ModalPopupExtender ID="mpeChangeRechargeAmount" runat="server" 
-        TargetControlID="lbChangeRechargeAmount" PopupControlID="pnlChangeRechargeAmount" 
-        CancelControlID="btnCancelChangeRechargeAmount" OkControlID="btnSaveChangeRechargeAmount" OnOkScript="ChangeRechargeAmount()">
-    </AjaxControlToolkit:ModalPopupExtender>
-
 </asp:Content>
 

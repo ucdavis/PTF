@@ -52,7 +52,6 @@ public partial class admin_Construct : System.Web.UI.Page
             if (User.IsInRole("Reader"))
             {
                 btnNewExperiment.Visible = false;
-                lbChangeRechargeAmount.Visible = false;
             }
         }
     }
@@ -74,7 +73,7 @@ public partial class admin_Construct : System.Web.UI.Page
             litPlasmid.Text = construct.Order.Plasmid;
             litPICode.Text = construct.Order.PICode;
             litInvoiceDate.Text = construct.InvoiceDate != null ? ((DateTime)construct.InvoiceDate).ToString("d") : string.Empty;
-            litRecharge.Text = construct.RechargeAmount.ToString("c");
+            tbRecharge.Text = construct.RechargeAmount.ToString();
             litStatus.Text = construct.Status.Name;
 
             tbComments.Text = construct.Comments;
@@ -123,13 +122,4 @@ public partial class admin_Construct : System.Web.UI.Page
     {
         Response.Redirect("Order.aspx?oid=" + ConstructBLL.GetByID(ConstructID).Order.ID.ToString(), true);
     }
-
-    [WebMethod]
-    public static string ChangeRecharge(int ConstructID, decimal RechargeAmount)
-    {
-        ConstructBLL.ChangeRechargeAmount(ConstructID, RechargeAmount);
-
-        return RechargeAmount.ToString("c");
-    }
-
 }
