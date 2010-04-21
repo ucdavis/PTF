@@ -35,7 +35,7 @@
                 </td>
                 <td colspan="4">
                     <div style="float:left;">
-                        Order ID: <%# Eval("ID") %>
+                        Order ID: <a href='<%# "Order.aspx?oid=" + Eval("ID").ToString() %>'><%# Eval("ID") %></a>
                     </div>
                     <div style="float:right;">
                         <%# Eval("DateRequested", "{0:d}") %>

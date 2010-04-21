@@ -97,6 +97,9 @@ namespace CAESDO.PTF.BLL
             }
 
             ConstructBLL.Update(construct);
+
+            // update the order status
+            OrderBLL.UpdateStatus(construct.Order);
         }
     }
 }

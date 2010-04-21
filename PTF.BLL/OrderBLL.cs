@@ -49,5 +49,77 @@ namespace CAESDO.PTF.BLL
 
             return (order.UserID == userID);
         }
+
+        public static void Update(Order order)
+        {
+            using (var ts = new TransactionScope())
+            {
+                EnsurePersistent(ref order);
+
+                ts.CommittTransaction();
+            }
+        }
+
+        public static void UpdateStatus(Order order)
+        {
+            // first check for pending
+            bool pending = true;
+
+            foreach (SubOrder so in order.SubOrders)
+            {
+                // check if any constructs have been added yet
+                // if it has been added then we are definietly not in a pending state
+                if (so.Constructs.Count != 0)
+                {
+                    pending = false;
+                    break;
+                }
+            }
+
+            // we are pending, set the status
+            if (pending)
+            {
+                order.Status = StatusBLL.GetByName(StatusText.STR_Pending);
+
+                OrderBLL.Update(order);
+            }
+            // not in a pending state, find out if we are complete
+            else
+            {
+                bool complete = true;
+
+                foreach (SubOrder so in order.SubOrders)
+                {
+                    // if any of the sub orders do not have constructs we can't be done
+                    // so it's initiated since there is at least one started construct
+                    if (so.Constructs.Count == 0)
+                    {
+                        complete = false;
+                        break;
+                    }
+
+                    // go through all the constructs to check if they are done
+                    // if one isn't done the whole order can't be done
+                    foreach (Construct c in so.Constructs)
+                    {
+                        // if the construct isn't complete we can't be done.
+                        if (!c.Status.IsComplete)
+                        {
+                            complete = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (complete)
+                {
+                    order.Status = StatusBLL.GetByName(StatusText.STR_Complete);
+                }
+                else
+                {
+                    order.Status = StatusBLL.GetByName(StatusText.STR_Initiated);
+                }
+            }
+        }
     }
 }

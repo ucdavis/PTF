@@ -119,6 +119,8 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(10)]
         public virtual string Location { get; set; }
 
+        public virtual Status Status { get; set; }
+
         public virtual IList<Construct> Constructs { get; set; }
         public virtual IList<SubOrder> SubOrders { get; set; }
 

@@ -73,6 +73,35 @@ public partial class restricted_Order : System.Web.UI.Page
 
     protected void PopulateInfoFields()
     {
+        try
+        {
+            var order = OrderBLL.GetByID(OrderID);
 
+            litOrderID.Text = order.ID.ToString();
+            litStatus.Text = order.Status.Name;
+            litComments.Text = order.Comments;
+
+            if (order.RequiresShippingPermit)
+            {
+                litShippingPermitPrompt.Visible = true;
+
+                if (string.IsNullOrEmpty(order.ShippingPermit))
+                {
+                    tbShippingPermit.Visible = true;
+                }
+                else
+                {
+                    litShippingPermit.Visible = true;
+                    litShippingPermit.Text = order.ShippingPermit;
+                }
+            }
+
+            lvSuborders.DataSource = order.SubOrders;
+            lvSuborders.DataBind();
+        }
+        catch (NHibernate.ObjectNotFoundException)
+        {
+            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
+        }
     }
 }

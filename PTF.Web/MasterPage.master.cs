@@ -13,6 +13,16 @@ using System.Xml.Linq;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    protected string STR_RedirectAddress
+    {
+        get 
+        { 
+            var request = HttpContext.Current.Request;
+
+            return request.Url.GetLeftPart(UriPartial.Authority) + request.Url.Segments[0] + request.Url.Segments[1];
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -24,7 +34,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (user == null) // cas login, redirect to the cas logout page
         {
             FormsAuthentication.SignOut();
-            Response.Redirect("https://cas.ucdavis.edu/cas/logout", true);
+            
+            Response.Redirect("https://cas.ucdavis.edu/cas/logout?service=" + STR_RedirectAddress, true);
+        }
+        else
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/Default.aspx", true);
         }
     }
 }

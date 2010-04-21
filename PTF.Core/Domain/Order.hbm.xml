@@ -52,7 +52,9 @@
 		<property name="Position" column="Position" />
 		<property name="WorkingBox" column="WorkingBox" />
 		<property name="Location" column="Location" />
-				
+
+		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
+		
 		<bag name="Constructs" table="Constructs">
 			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>

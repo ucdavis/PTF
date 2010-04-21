@@ -68,7 +68,7 @@ body {
 }
 .grid H2
  {
- 	background:#8988a5 url(_assets/img/title-bg.gif);
+ 	background:#8988a5 url(~/Images/title-bg.gif);
  	border-bottom:solid 1px #57566f;
  	height:28px;
  	line-height:28px;
@@ -84,7 +84,7 @@ body {
  /* grid headers */
  .grid #orders .head TH
  {
- 	background:#e9e9eb url(_assets/img/header-bg.gif);
+ 	background:#e9e9eb url(~/Images/header-bg.gif);
  	height:24px;
  	line-height:24px;
  	padding-left:6px;
@@ -94,7 +94,7 @@ body {
  .grid #orders .head TH.first
  {
  	/* get rid of the first slash */
- 	background:#e9e9eb url(_assets/img/header-bg.gif) -3px;
+ 	background:#e9e9eb url(~/Images/header-bg.gif) -3px;
  	width:20px;
  } 
  
