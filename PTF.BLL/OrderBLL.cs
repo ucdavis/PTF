@@ -122,8 +122,6 @@ namespace CAESDO.PTF.BLL
             if (pending)
             {
                 order.Status = StatusBLL.GetByName(StatusText.STR_Pending);
-
-                OrderBLL.Update(order);
             }
             // not in a pending state, find out if we are complete
             else
@@ -163,6 +161,9 @@ namespace CAESDO.PTF.BLL
                     order.Status = StatusBLL.GetByName(StatusText.STR_Initiated);
                 }
             }
+
+            // save the order
+            OrderBLL.Update(order);
         }
         #endregion
     }

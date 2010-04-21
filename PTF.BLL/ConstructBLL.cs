@@ -111,7 +111,7 @@ namespace CAESDO.PTF.BLL
                 construct.Status = StatusBLL.GetByName(StatusText.STR_Pending);
             }
             // experiments exist
-            else if (construct.Status.Name == StatusText.STR_Complete && construct.InvoiceDate != null)
+            else if (construct.IsLocked)
             {
                 // do nothing, the status should not be allowed to be changed once it has been billed
             }
