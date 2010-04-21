@@ -35,7 +35,7 @@
     <div id="all">
     <div id="header">
         <div id="logo">
-        <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx"><asp:Image ID="Logo" ImageUrl="~/Images/logo.jpg" runat="server" alt="Plant Transformation Facility" /></asp:HyperLink>
+        <asp:HyperLink runat="server" NavigateUrl="Default.aspx"><asp:Image ID="Logo" ImageUrl="~/Images/logo.jpg" runat="server" alt="Plant Transformation Facility" /></asp:HyperLink>
         </div>
         <div id="login">
             <a href="Default.aspx">Home</a> &nbsp;|&nbsp; 

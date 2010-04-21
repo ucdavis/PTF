@@ -26,9 +26,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">
-        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click">[Back to Order]</asp:LinkButton>
+        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../Images/back.png" alt="" /> [Back to Order]</asp:LinkButton>
     </div>
      <table class="InfoTable">
+        <tr class="head">
+            <td colspan="4">Construct Information</td>
+        </tr>
         <tr>
             <td class="InfoFieldName col1">Construct Code:&nbsp;</td>
             <td class="InfoFieldValue col2">
@@ -93,7 +96,7 @@
             </td>
         </tr>  
         <tr>
-            <td colspan="4">
+            <td colspan="4" class="InfoFieldName">
                 <strong>Comments:</strong>
                 <br />
                 <asp:Literal ID="litComments" runat="server"></asp:Literal>
