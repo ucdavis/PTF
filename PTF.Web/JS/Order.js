@@ -66,7 +66,5 @@ function SavePropertyOnFail(result, context)
             
     divTag.appendChild(confirm);
 
-    debugger;
-
     alert(result._message);
 }    

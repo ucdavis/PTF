@@ -86,6 +86,12 @@ public partial class admin_Construct : System.Web.UI.Page
             {
                 litContractNotExecuted.Text = CommonStrings.STR_ContractNotExecutedWarning;
             }
+
+            // disable the create experiment
+            if (construct.IsBilled)
+            {
+                btnNewExperiment.Enabled = false;
+            }
         }
         catch 
         {

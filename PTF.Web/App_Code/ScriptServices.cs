@@ -104,11 +104,6 @@ public class ScriptServices : System.Web.Services.WebService
 
     protected void SaveProperty(Construct construct, string property, string value)
     {
-        if (construct.IsBilled)
-        {
-            throw new Exception("Order has been billed and cannot be changed.");
-        }
-
         switch (property)
         {
             case "Comment": construct.Comments = value;
@@ -121,12 +116,7 @@ public class ScriptServices : System.Web.Services.WebService
     }
 
     protected void SaveProperty(Experiment experiment, string property, string value)
-    {
-        if (experiment.Construct.IsBilled)
-        {
-            throw new Exception("Order has been billed and cannot be changed.");
-        }
-        
+    {       
         switch (property)
         {
             case "Comment": experiment.Comments = value;
@@ -138,11 +128,6 @@ public class ScriptServices : System.Web.Services.WebService
 
     protected void SaveProperty(Plant plant, string property, string value)
     {
-        if (plant.Experiment.Construct.IsBilled)
-        {
-            throw new Exception("Order has been billed and cannot be changed.");
-        }
-
         switch (property)
         {
             case "PlantComment": plant.Comments = value;
@@ -194,19 +179,16 @@ public class ScriptServices : System.Web.Services.WebService
         if (StatusBLL.GetByID(statusID).Name == StatusText.STR_Shipped)
         {
             return new ChangeStatusReturn { IsComplete = true, ReturnText = DateTime.Now.ToString("d") };
-            //return DateTime.Now.ToString("d");
         }
         // any completed status
         else if (StatusBLL.GetByID(statusID).IsComplete)
         {
             return new ChangeStatusReturn { IsComplete = true, ReturnText = string.Empty };
-            //return "complete";
         }
         // any not complete status
         else
         {
             return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
-            //return string.Empty;
         }
     }
 

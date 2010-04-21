@@ -70,6 +70,11 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Construct construct)
         {
+            if (construct.IsBilled)
+            {
+                throw new Exception("Construct (" + construct.ConstructCode + ") has been billed and cannot be changed.");
+            }
+
             using (var ts = new TransactionScope())
             {
                 EnsurePersistent(ref construct);

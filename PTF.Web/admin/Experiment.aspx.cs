@@ -103,6 +103,13 @@ public partial class admin_Experiment : System.Web.UI.Page
                 // disable the add plant option
                 btnAddPlant.Enabled = false;
             }
+
+            // disable changes if construct has been billed
+            if (experiment.Construct.IsBilled)
+            {
+                btnAddPlant.Enabled = false;
+                btnMakeNote.Enabled = false;
+            }
         }
         catch 
         {
