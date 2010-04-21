@@ -28,7 +28,7 @@ body
 
 ul.menu {padding: 0px; margin: 0px; list-style: none;}
 ul.menu li {padding: 8px 0px;}
-div.lookups {float: right; width: 500px; margin-top: 20px;}
+div.lookups {float: right; width: 500px; /* margin-top: 20px; */}
 
 #footer {margin: 100px auto; padding-bottom: 2em; font-size: 0.9em; background: url(../Images/roots.png) no-repeat 0px 38px; width: 519px; height: 100px;}
 

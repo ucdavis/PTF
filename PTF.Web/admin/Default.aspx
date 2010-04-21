@@ -44,12 +44,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div class="lookups">
-<%--    <ul class="menu">
+    <ul class="menu">
+    <li><a href=Reports.aspx><img src="../Images/menu_reports.png" title="Reports" /></a></li>
     <li><a href=Billing.aspx><img src="../Images/menu_billing.png" title="Billing" /></a></li>
     <li><a href=Labels.aspx><img src="../Images/menu_labels.png" title="Labels" /></a></li>
     <li><a href=ExistingData/Default.aspx><img src="../Images/menu_archive.png" title="Archived Data" /></a></li>
     </ul>
-    <br /><br />--%>
+    <br /><br />
     Construct Lookup:
     <asp:TextBox ID="tbConstructLookup" runat="server"></asp:TextBox>
     <asp:LinkButton ID="lbConstructLookup" runat="server" OnClientClick="ValidateConstruct(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
@@ -63,13 +64,13 @@
     <li><a href=Orders.aspx><img src="../Images/menu_orders.png" title="Orders" /></a></li>
     <li><a href=Lookups.aspx><img src="../Images/menu_lookups.png" title="Lookups" /></a></li>
     <li><a href=Operators.aspx><img src="../Images/menu_operators.png" title="Operators" /></a></li>
-    <li><a href=Users.aspx><img src="../Images/menu_users.png" title="Users" /></a></li>
+    <li><a href=Users.aspx><img src="../Images/menu_users.png" title="Users" /></a></li><%--
     <li><a href=Reports.aspx><img src="../Images/menu_reports.png" title="Reports" /></a></li>
     <li><a href=ExistingData/Default.aspx><img src="../Images/menu_archive.png" title="Archived Data" /></a></li>
     <li><a href=Billing.aspx><img src="../Images/menu_billing.png" title="Billing" /></a></li>
-    <li><a href=Labels.aspx><img src="../Images/menu_labels.png" title="Labels" /></a></li>
+    <li><a href=Labels.aspx><img src="../Images/menu_labels.png" title="Labels" /></a></li>--%>
     </ul>
-    
+    <br /><br />
     <asp:Panel ID="pnlEmulation" runat="server" Visible="false">
         <asp:TextBox ID="tbUserToEmulate" runat="server"></asp:TextBox>
         <asp:Button ID="btnEmulate" runat="server" Text="Emulate User" onclick="btnEmulate_Click" />
