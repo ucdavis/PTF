@@ -16,8 +16,7 @@
         <asp:LinkButton ID="lbPageSize50" runat="server" onclick="lbPageSize50_Click">50</asp:LinkButton>
         &nbsp;|&nbsp;
         <asp:LinkButton ID="lbPageSize100" runat="server" onclick="lbPageSize100_Click">100</asp:LinkButton></div><div class="clear">&nbsp;</div>
-    <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" 
-            ondatabound="lvOrders_DataBound" >
+    <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" >
         <LayoutTemplate>
             <div class="grid">
                 <table id="orders" cellpadding="15" cellspacing="0">

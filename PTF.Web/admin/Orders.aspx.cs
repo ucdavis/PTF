@@ -83,18 +83,4 @@ public partial class Orders : System.Web.UI.Page
 
         lvOrders.DataBind();
     }
-    protected void lvOrders_DataBound(object sender, EventArgs e)
-    {
-        var lv = (ListView)sender;
-        var pager = (DataPager)lv.FindControl("pager");
-
-        if (lv.Items.Count <= pager.PageSize)
-        {
-            pager.Visible = false;
-        }
-        else
-        {
-            pager.Visible = true;
-        }
-    }
 }
