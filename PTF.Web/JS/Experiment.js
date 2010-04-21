@@ -97,8 +97,6 @@ function OnFail(result, context)
     context.FailImg.style.display = STR_Inline;
     context.LoadImg.style.display = STR_None;
     
-    debugger;
-    
     if (result._message != "")
     {
         alert(result._message);
@@ -109,6 +107,7 @@ function EditPlantComments(plantID, plantIDBox, modal, commentTextBox, comments)
 {
     $get(plantIDBox).value = plantID;
     $find(modal).show();
-    $get(commentTextBox).value = $get(plantID + 'CommentText').innerHTML;
+    //$get(commentTextBox).value = $get(plantID + 'CommentText').innerHTML;
+    $get(commentTextBox).value = comments;
 }
 
