@@ -609,17 +609,35 @@ insert into genotypes (genotype, isactive) values ('PX-1', 1)
 	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
 
 -- == Agrostrains == --
-insert into agrostrains (agrostrain, isactive) value ('ABI', 1)
-insert into agrostrains (agrostrain, isactive) value ('AGL0', 1)
-insert into agrostrains (agrostrain, isactive) value ('AGL1', 1)
-insert into agrostrains (agrostrain, isactive) value ('ASE', 1)
-insert into agrostrains (agrostrain, isactive) value ('C58', 1)
-insert into agrostrains (agrostrain, isactive) value ('C58C1', 1)
-insert into agrostrains (agrostrain, isactive) value ('EHA101', 1)
-insert into agrostrains (agrostrain, isactive) value ('EHA105', 1)
-insert into agrostrains (agrostrain, isactive) value ('EHA105pch32', 1)
-insert into agrostrains (agrostrain, isactive) value ('GV3019', 1)
-insert into agrostrains (agrostrain, isactive) value ('GV3101', 1)
-insert into agrostrains (agrostrain, isactive) value ('GV3101pMP90RK', 1)
-insert into agrostrains (agrostrain, isactive) value ('GV2260', 1)
-insert into agrostrains (agrostrain, isactive) value ('LBA4404', 1)
+insert into agrostrains (agrostrain, isactive) values ('ABI', 1)
+insert into agrostrains (agrostrain, isactive) values ('AGL0', 1)
+insert into agrostrains (agrostrain, isactive) values ('AGL1', 1)
+insert into agrostrains (agrostrain, isactive) values ('ASE', 1)
+insert into agrostrains (agrostrain, isactive) values ('C58', 1)
+insert into agrostrains (agrostrain, isactive) values ('C58C1', 1)
+insert into agrostrains (agrostrain, isactive) values ('EHA101', 1)
+insert into agrostrains (agrostrain, isactive) values ('EHA105', 1)
+insert into agrostrains (agrostrain, isactive) values ('EHA105pch32', 1)
+insert into agrostrains (agrostrain, isactive) values ('GV3019', 1)
+insert into agrostrains (agrostrain, isactive) values ('GV3101', 1)
+insert into agrostrains (agrostrain, isactive) values ('GV3101pMP90RK', 1)
+insert into agrostrains (agrostrain, isactive) values ('GV2260', 1)
+insert into agrostrains (agrostrain, isactive) values ('LBA4404', 1)
+
+-- == Membership == --
+insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('common', '1', 1)
+insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('health monitoring', '1', 1)
+insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('membership', '1', 1)
+insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('personalization', '1', 1)
+insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('profile', '1', 1)
+insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('role manager', '1', 1)
+
+DECLARE @RC int
+DECLARE @ApplicationName nvarchar(256)
+DECLARE @ApplicationId uniqueidentifier
+
+set @ApplicationName = 'PTF'
+
+EXECUTE @RC = [PTF].[dbo].[aspnet_Applications_CreateApplication] 
+   @ApplicationName
+  ,@ApplicationId OUTPUT
