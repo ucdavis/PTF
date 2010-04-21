@@ -11,27 +11,9 @@ public partial class UserDefinedFunctions
     {
         string constructCode = "AT";
 
-        if (yearCode < 10)
-        {
-            constructCode += "0" + yearCode.ToString();
-        }
-        else
-        {
-            constructCode += yearCode.ToString();
-        }
+        constructCode += yearCode.ToString("d2");
 
-        if (sequenceNumber < 10)
-        {
-            constructCode += "00" + sequenceNumber.ToString();
-        }
-        else if (sequenceNumber >= 10 && sequenceNumber < 100)
-        {
-            constructCode += "0" + sequenceNumber.ToString();
-        }
-        else
-        {
-            constructCode += sequenceNumber.ToString();
-        }
+        constructCode += sequenceNumber.ToString("d3");
 
         if (subSequenceNumber > 0)
         {
