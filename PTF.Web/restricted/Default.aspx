@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="restricted_Default" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="restricted_Default" Title="PTF | Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -8,30 +8,42 @@
     <a href="PlaceOrder.aspx">Place New Order</a>
     <br /><br />
 
-    <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" 
-        DataKeyNames="ID" onselectedindexchanged="lvOrders_SelectedIndexChanged">
+    <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" DataKeyNames="ID" onselectedindexchanged="lvOrders_SelectedIndexChanged">
         <LayoutTemplate>
             <table>
                 <tr>
-                    <td></td> <!-- Select Button Column !-->
-                    <th>Order ID</th>
+                    <th># of Plants</th>
                     <th>Crop</th>
-                    <th>Number of Plants</th>
-                    <th>PI Name</th>
-                    <th>DateRequested</th>
+                    <th>Plant Selection</th>
+                    <th>Genotype</th>
                 </tr>
-                <tr id="ItemPlaceHolder" runat="server"></tr>
+                <tr runat='server' id="ItemPlaceHolder"></tr>
             </table>
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><asp:LinkButton ID="lbSelect" CommandName="Select" runat="server">Select</asp:LinkButton></td>
-                <td><%# Eval("ID") %></td>
-                <td><%# Eval("Crop.Name") %></td>
-                <td><%# Eval("NumberOfPlants") %></td>
-                <td><%# Eval("PI") %></td>
-                <td><%# Eval("DateRequested") %></td>
+                <td colspan="4">
+                    <div style="float:left;">
+                        Order ID: <%# Eval("ID") %>
+                    </div>
+                    <div style="float:right;">
+                        <%# Eval("DateRequested", "{0:d}") %>
+                    </div>
+                </td>
             </tr>
+            <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
+                <LayoutTemplate>
+                    <tr runat="server" id="itemPlaceholder"></tr>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr id="row" runat="server">
+                        <td><%# Eval("NumberOfPlants") %></td>
+                        <td><%# Eval("Crop.Name") %></td>
+                        <td><%# Eval("PlantSelection.Name") %></td>
+                        <td><%# Eval("GenoType.Name") %></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:ListView>
         </ItemTemplate>
     </asp:ListView>
     <asp:ObjectDataSource ID="odsOrders" runat="server" 
