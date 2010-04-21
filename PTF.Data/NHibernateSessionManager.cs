@@ -157,6 +157,14 @@ namespace CAESDO.PTF.Data
                 GetSession().Refresh(o);
         }
 
+        public void EvictObject(object o)
+        {
+            if (GetSession().Contains(o) == true)  // check to see if the object is in the session?
+            {
+                GetSession().Evict(o);
+            }
+        }
+
         /// <summary>
         /// If within a web context, this uses <see cref="HttpContext" /> instead of the WinForms 
         /// specific <see cref="CallContext" />.  Discussion concerning this found at 

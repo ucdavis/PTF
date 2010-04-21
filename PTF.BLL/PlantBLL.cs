@@ -33,6 +33,9 @@ namespace CAESDO.PTF.BLL
 
                 ts.CommittTransaction(); //commit the transaction
             }
+
+            NHibernateSessionManager.Instance.EvictObject(newPlant.Experiment);
+            NHibernateSessionManager.Instance.EvictObject(newPlant);
         }
     }
 }

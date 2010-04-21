@@ -134,7 +134,7 @@
                 <td>
                     <asp:TextBox ID="tbOpticalDensity" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvOpticalDensity" runat="server" ErrorMessage="*" ControlToValidate="tbOpticalDensity" ValidationGroup="NewExperiment"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revOpticalDensity" runat="server" ErrorMessage="*" ControlToValidate="tbOpticalDensity" ValidationGroup="NewExperiment"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="revOpticalDensity" runat="server" ErrorMessage="*" ControlToValidate="tbOpticalDensity" ValidationGroup="NewExperiment" ValidationExpression="^[-+]?\d+(\.\d+)?$"></asp:RegularExpressionValidator>
                 </td>
             </tr>
         </table>

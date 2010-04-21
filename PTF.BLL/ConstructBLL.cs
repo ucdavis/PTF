@@ -21,6 +21,8 @@ namespace CAESDO.PTF.BLL
 
                 ts.CommittTransaction(); //commit the transaction
             }
+
+            NHibernateSessionManager.Instance.EvictObject(obj);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
