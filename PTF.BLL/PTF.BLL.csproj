@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="GenericBLL.cs" />
     <Compile Include="LookupsBLL.cs" />
+    <Compile Include="OrderBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Lookups.aspx.cs" Inherits="Lookups" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Lookups.aspx.cs" Inherits="Lookups" Title="PTF | Lookups" %>
 
-<%@ Register TagPrefix="CAESDO" TagName="Lookups" Src="~/LookupsView.ascx" %>
+<%@ Register TagPrefix="CAESDO" TagName="Lookups" Src="~/UserControls/LookupsView.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="CSS/Main.css" rel="stylesheet" type="text/css" />
+    <link href="../CSS/Main.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 

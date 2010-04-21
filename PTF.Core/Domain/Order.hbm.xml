@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.Order, CAESDO.PTF.Core" table="Orders" >
+		<id name="id" access="field" column="OrderID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<property name="DateRequested" column="DateRequested" />
+		<property name="PI" column="PI" />
+		<property name="Contact" column="Contact" />
+		<property name="ContactPhone" column="ContactPhone" />
+		<property name="ContactEmail" column="ContactEmail" />
+		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
+		<property name="NumberOfPlants" column="NumberOfPlants" />
+		<property name="Plasmid" column="Plasmid" />
+		<property name="BacterialSelection" column="BacterialSelection" />
+		<property name="AgroBacteriumStrain" column="AgroBacteriumStrain" />
+		<property name="PlantSelection" column="PlantSelection" />
+		<property name="Construct" column="Construct" />
+		<property name="NameOfYourConstruct" column="NameOfYourConstruct" />
+		<many-to-one name="TransGene" class="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" column="TransGeneID" cascade="none" />
+		<property name="GeneOfInterestPromoter" column="GeneOfInterestPromoter" />
+		<property name="GeneOfInterestGene" column="GeneOfInterestGene" />
+		<property name="GeneOfInterestTerminator" column="GeneOfInterestTerminator" />
+		<property name="SelectableMarkerPromoter" column="SelectableMarkerPromoter" />
+		<property name="SelectableMarkerGene" column="SelectableMarkerGene" />
+		<property name="SelectableMarkerTerminator" column="SelectableMarkerTerminator" />
+		<property name="ScorableMarkerPromoter" column="ScorableMarkerPromoter" />
+		<property name="ScorableMarkerGene" column="ScorableMarkerGene" />
+		<property name="ScorableMarkerTerminator" column="ScorableMarkerTerminator" />
+		<property name="AdditionalInformation" column="AdditionalInformation" />
+		<property name="UserID" column="UserID" />
+		<property name="RechargeNumber" column="RechargeNumber" />
+		<property name="ContractNumber" column="ContractNumber" />
+		<property name="ShippingPermit" column="ShippingPermit" />
+
+	</class>
+</hibernate-mapping>
