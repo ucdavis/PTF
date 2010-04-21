@@ -318,7 +318,7 @@
         </div>
     <h2>New Construct</h2>
                
-        <asp:ListView ID="lvSubOrder" runat="server" DataKeyNames="id" >
+        <asp:ListView ID="lvSubOrder" runat="server" DataKeyNames="id" OnItemDataBound="lvSuborder_ItemDataBound" >
             <LayoutTemplate>
             <div class="grid">
                 <table cellpadding="15" cellspacing="0" class="InfoTable">

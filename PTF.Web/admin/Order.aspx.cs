@@ -282,6 +282,19 @@ public partial class admin_Order : System.Web.UI.Page
             }
         }
     }
+    protected void lvSuborder_ItemDataBound(object sender, ListViewItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListViewItemType.DataItem)
+        {
+            var suborder = (SubOrder)((ListViewDataItem)e.Item).DataItem;
+
+            // if there is more than one construct, disable the select button
+            if (suborder.Constructs.Count > 0)
+            {
+                ((LinkButton)e.Item.FindControl("lbSelect")).Visible = false;
+            }
+        }
+    }
     protected void lbSelectOnCommand(object sender, CommandEventArgs e)
     {
         int id = Convert.ToInt32(e.CommandArgument);
