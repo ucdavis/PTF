@@ -24,7 +24,7 @@
     <OutputPath>.\Debug</OutputPath>
     <EnableUpdateable>true</EnableUpdateable>
     <UseMerge>true</UseMerge>
-    <SingleAssemblyName>PTF.Deployt</SingleAssemblyName>
+    <SingleAssemblyName>PTF.Deploy</SingleAssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -38,7 +38,7 @@
     <EnableUpdateable>true</EnableUpdateable>
     <UseMerge>true</UseMerge>
     <UseWebConfigReplacement>true</UseWebConfigReplacement>
-    <SingleAssemblyName>PTF.Deployt</SingleAssemblyName>
+    <SingleAssemblyName>PTF.Deploy</SingleAssemblyName>
     <OutputPath>.\Test</OutputPath>
   </PropertyGroup>
   <ItemGroup>
