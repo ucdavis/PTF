@@ -69,7 +69,7 @@
                 <td><%# Eval("PICode") %></td>
                 <td><%# Eval("DateRequested", "{0:MM/dd/yyyy}") %></td>
                 <td><%# Eval("Constructs.Count") %></td>
-                <td></td>
+                <td><%# Eval("Status.Name") %></td>
             </tr>
                 <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
                     <LayoutTemplate>

@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using CAESDO.PTF.BLL;
+using System.Web.Services;
 
 public partial class restricted_Order : System.Web.UI.Page
 {
@@ -88,6 +89,7 @@ public partial class restricted_Order : System.Web.UI.Page
                 if (string.IsNullOrEmpty(order.ShippingPermit))
                 {
                     tbShippingPermit.Visible = true;
+                    lbSaveShippingPermit.Visible = true;
                 }
                 else
                 {
@@ -103,5 +105,15 @@ public partial class restricted_Order : System.Web.UI.Page
         {
             Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
         }
+    }
+
+    [WebMethod]
+    public static void SaveShippingPermit(int orderID, string shippingPermit)
+    {
+        var order = OrderBLL.GetByID(orderID);
+
+        order.ShippingPermit = shippingPermit;
+
+        OrderBLL.Update(order);
     }
 }

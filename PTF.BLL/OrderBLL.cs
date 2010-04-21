@@ -20,6 +20,8 @@ namespace CAESDO.PTF.BLL
                 newOrder.ContractExecuted = false;
             }
 
+            newOrder.Status = StatusBLL.GetByName(StatusText.STR_Pending);
+
             using (var ts = new TransactionScope())
             {
                 EnsurePersistent(ref newOrder);

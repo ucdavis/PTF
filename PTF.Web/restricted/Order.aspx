@@ -6,10 +6,17 @@
 <script type="text/javascript">
     function SaveShippingPermit()
     {
+        var shippingPermit = $get('<%= tbShippingPermit.ClientID %>').value;
+    
+        PageMethods.SaveShippingPermit('<%= Request.QueryString["oid"] %>', shippingPermit, SaveShippingPermitOnComplete, null, shippingPermit);
     }
     
-    function SaveShippingPermitOnComplete()
+    function SaveShippingPermitOnComplete(result, context)
     {
+        $get("ShippingPermit").innerHTML = context;
+        
+        $get('<%= tbShippingPermit.ClientID %>').style.display = "none";
+        $get('<%= lbSaveShippingPermit.ClientID %>').style.display = "none";
     }
 </script>
 
@@ -24,9 +31,11 @@
         <td class="InfoFieldName">
             <asp:Literal ID="litShippingPermitPrompt" runat="server" Visible="false">Shipping Permit:&nbsp;</asp:Literal></td>
         <td class="InfoFieldValue">
-            <asp:Literal ID="litShippingPermit" runat="server" Visible="false"></asp:Literal>
+            <div id="ShippingPermit">
+                <asp:Literal ID="litShippingPermit" runat="server" Visible="false"></asp:Literal>
+            </div>
             <asp:TextBox ID="tbShippingPermit" runat="server" Visible="false"></asp:TextBox>
-            <asp:LinkButton ID="lbSaveShippingPermit" runat="server" OnClientClick="SaveShippingPermit(); return false;">[Save]</asp:LinkButton>
+            <asp:LinkButton ID="lbSaveShippingPermit" runat="server" OnClientClick="SaveShippingPermit(); return false;" Visible="false">[Save]</asp:LinkButton>
         </td>
     </tr>
     <tr>
@@ -64,7 +73,7 @@
         <ItemTemplate>
             <tr class="group">
                 <td class="first">
-                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("Plants.Count") %>', 'orders');" /> 
+                    <img src="../images/minus.png" onclick="toggleGroup(this, '<%# Eval("Plants.Count") %>', 'orders');" /> 
                 </td>
                 <td colspan="2">Crop:&nbsp;<%# Eval("Crop.Name") %></td>
                 <td colspan="2">Plant Selection:&nbsp;<%# Eval("PlantSelection.Name") %></td>
@@ -75,7 +84,7 @@
                     <tr runat="server" id="ItemPlaceHolder"></tr>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <tr id="row" class="item hidden">
+                    <tr id="row" class="item">
                         <td class="first"></td>
                         <td><%# Eval("Pedigree") %></td>
                         <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>

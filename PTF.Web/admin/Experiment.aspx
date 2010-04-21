@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript" src="../JS/Experiment.js" ></script>
 
-    <span class="contractwarning">
+    <span class="ContractWarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
 </asp:Content>
