@@ -29,10 +29,13 @@
                         <th>
                             <asp:LinkButton ID="lbSortContructName" CommandName="Sort" CommandArgument="PIConstructName"  runat="server">Construct Name</asp:LinkButton></th>
                         <th>
-                            <asp:LinkButton ID="lbSortPICode" CommandName="Sort" CommandArgument="PICode"  runat="server">PI Code</asp:LinkButton></th>
+                            <%--<asp:LinkButton ID="lbSortPICode" CommandName="Sort" CommandArgument="PICode"  runat="server">PI Code</asp:LinkButton>--%>
+                            Construct Codes
+                        </th>
                         <th>
                             <asp:LinkButton ID="lbSortDateRequested" CommandName="Sort" CommandArgument="DateRequested"  runat="server">Date Requested</asp:LinkButton></th>
                         <th># Constructs</th>
+                        <th># Experiments</th>
                         <th>
                             <asp:LinkButton ID="lbSortStatus" CommandName="Sort" CommandArgument="Status" runat="server">Status</asp:LinkButton></th>
                     </tr>
@@ -74,14 +77,15 @@
                 <td class="first">
                     <img src="../images/plus.png" onclick="toggleGroup(this, 1, 'orders');" />
                 </td>
-                <td><a href='<%# "Order.aspx?oid=" + Eval("ID") %>'><%# Eval("ID") %></a></td>
+                <td><a href='<%# "Order.aspx?oid=" + Eval("ID") %>' target="_blank"><%# Eval("ID") %></a></td>
                 <td><%# Eval("PI") %></td>
                 <td><%# Eval("Contact") %></td>
                 <td><%# Eval("ContactEmail") %></td>
                 <td><%# Eval("PIConstructName") %></td>
-                <td><%# Eval("PICode") %></td>
+                <td><%--<%# Eval("PICode") %>--%><%# Eval("ConstructCodes") %></td>
                 <td><%# Eval("DateRequested", "{0:MM/dd/yyyy}") %></td>
                 <td><%# Eval("Constructs.Count") %></td>
+                <td><%# Eval("NumExperiments") %></td>
                 <td><%# Eval("Status.Name") %></td>
             </tr>
             <tr id="row" class="item hidden">

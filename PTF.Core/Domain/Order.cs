@@ -161,5 +161,41 @@ namespace CAESDO.PTF.Core.Domain
                 }
             }
         }
+
+        public virtual string ConstructCodes
+        {
+            get {
+                StringBuilder codes = new StringBuilder();
+
+                foreach (Construct c in this.Constructs)
+                {
+                    if (codes.Length == 0)
+                    {
+                        codes.Append(c.ConstructCode);
+                    }
+                    else
+                    {
+                        codes.Append(", " + c.ConstructCode);
+                    }
+                }
+
+                return codes.ToString();
+            }
+        }
+
+        public virtual int NumExperiments
+        {
+            get
+            {
+                int count = 0;
+
+                foreach (Construct c in this.Constructs)
+                {
+                    count += c.Experiments.Count;
+                }
+
+                return count;
+            }
+        }
     }
 }
