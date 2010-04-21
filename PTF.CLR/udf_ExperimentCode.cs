@@ -11,7 +11,7 @@ public partial class UserDefinedFunctions
     {
         string experimentCode;
 
-        experimentCode = yearCode.ToString();
+        experimentCode = yearCode.ToString("d2");
         experimentCode += operatorCode.ToString();
         if (operatorExperimentNum < 10)
         {
