@@ -6,9 +6,9 @@
     <span class="boxTitle"><img src="../Images/profile_sm.gif" style="vertical-align:middle;" alt="" /><h2>Create Account</h2></span>
        
        <AjaxControlToolkit:NoBot ID="noBotNewUser" runat="server" />
-       
-    <asp:Wizard ID="wizCreateUser" runat="server" ActiveStepIndex="0" BackColor="#EFEFEF" BorderColor="#7f7f7f"
-        BorderStyle="dotted" BorderWidth="1px" DisplaySideBar="False" OnFinishButtonClick="wizCreateUser_FinishButtonClick" CssClass="noStyle">
+    
+    <asp:Wizard ID="wizCreateUser" runat="server" ActiveStepIndex="0" 
+        BorderStyle="none" DisplaySideBar="False" OnFinishButtonClick="wizCreateUser_FinishButtonClick" CssClass="registerWizard">
         <StepStyle BorderWidth="0px" />
         <StartNavigationTemplate>
             <asp:Button ID="StartNextButton" runat="server" CommandName="MoveNext" Text="Next" ValidationGroup="CreateAccount" />
@@ -17,12 +17,12 @@
             BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
             
         <WizardSteps>
-            <asp:WizardStep ID="WizardStep1" runat="server" StepType="finish" Title="Create Account">
-              <table border="0" cellpadding="5" style="width: 320px; font-weight:bold;" class="noStyle">
-                        <tr>
-                            <td align="center" colspan="2">
-                            <br />
-                            </td>
+            <asp:WizardStep ID="WizardStep1" runat="server" StepType="finish" Title="">
+              <table border="0" cellpadding="5" style="font-weight:bold;" class="noStyle">
+                        <tr class="head">
+                            <td rowspan="8" style="width: 30px">&nbsp;</td>
+                            <td colspan="2">&nbsp;</td>
+                            <td rowspan="8" style="width: 10px">&nbsp;</td>
                         </tr>
                         <tr>
                             <td align="right">
@@ -89,7 +89,7 @@
         </WizardSteps>
         <SideBarStyle BackColor="#5D7B9D" BorderWidth="0px" Font-Size="0.9em" VerticalAlign="Top" />
         <SideBarButtonStyle BorderWidth="0px" Font-Names="Verdana" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" BorderStyle="Solid" Font-Bold="True" Font-Size="0.9em"
+        <HeaderStyle BackColor="#5D7B9D" BorderStyle="Solid" Font-Bold="True" Font-Size="0.05em"
             ForeColor="White" HorizontalAlign="Left" />
         <FinishNavigationTemplate>
             <asp:Button ID="FinishPreviousButton" runat="server" CausesValidation="False" CommandName="MovePrevious"
@@ -98,6 +98,7 @@
             <br /><br />
         </FinishNavigationTemplate>
     </asp:Wizard>
+    
 
 </asp:Content>
 

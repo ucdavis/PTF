@@ -4,15 +4,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    &nbsp;You have requested a secure UC Davis Web page.&nbsp;
-    <br />
-    <br />
-    <asp:Panel ID="pnlKerberosLogin" runat="server">
+    <h3 class="secure"><img src="Images/lock.png" alt="lock" style="float: left; width: 64px; height: 64px;" /><br />You have requested<br />a secure UC Davis Web page.</h3>
     
-    <asp:LinkButton ID="lbtnKerberosLogin" runat="server" OnClick="lbtnKerberosLogin_Click">If you have a Kerberos ID, click here to login.</asp:LinkButton><br />
-    <br />
-    OR<br />
-    <br />
+    <asp:Panel ID="pnlKerberosLogin" runat="server">
+    <h2><asp:LinkButton ID="lbtnKerberosLogin" CssClass="kerberos" runat="server" OnClick="lbtnKerberosLogin_Click">Have a Kerberos ID? Log in here.&nbsp;&nbsp;<img src="Images/arrow_right.png" alt="right" /></asp:LinkButton></h2>
+    
     </asp:Panel>
     <asp:Login ID="Login1" runat="server" CssClass="noStyle">
         <LayoutTemplate>
@@ -20,11 +16,12 @@
                 style="border-collapse:collapse;" class="noStyle">
                 <tr>
                     <td>
-                        <table border="0" cellpadding="0" class="noStyle field">
+                        <table border="0" cellpadding="0" class="noStyle login">
                             <tr class="head">
                                 <td>&nbsp;</td>
-                                <td>
-                                    <h2>Log In</h2></td>
+                                <td>&nbsp;</td>
+                                <td rowspan="6" class="register">
+                                <a href="Register.aspx" title="Register">[Register]</a></td>
                             </tr>
                             <tr>
                                 <td align="right">
@@ -65,7 +62,6 @@
                                     <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" ImageUrl="Images/btn_login.png" Text="Log In" 
                                         ValidationGroup="Login1" />
     <a href="ResetPassword.aspx" title="Forgot your password?"><img src="Images/btn_forgotpassword.png" /></a>
-    <a href="Register.aspx" title="Register">[Register]</a>
                                 </td>
                             </tr>
                         </table>
