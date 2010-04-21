@@ -24,5 +24,20 @@ namespace CAESDO.PTF.Core.Domain
         public virtual Status Status { get; set; }
 
         public virtual IList<Experiment> Experiments { get; set; }
+
+        public virtual bool IsBilled
+        {
+            get
+            {
+                if (InvoiceDate != null && Status.Name == StatusText.STR_Complete)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

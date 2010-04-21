@@ -33,21 +33,24 @@ function SaveProperty(queryString, property, txtBox, objType)
 
 function SavePropertyOnComplete(result, context)
 {   
-    // remove the only child
-    var divTag = $get(context);
-    divTag.removeChild(divTag.lastChild);
-    
-    // play an animation
-    var confirm = document.createElement('img');
-    confirm.setAttribute("id", "confirmIMG");
-    confirm.setAttribute("src", "../Images/confirm.png");
-    confirm.setAttribute("style", "width:16px; height:16px;");
-            
-    divTag.appendChild(confirm);
-    
-    // animate the check mark confirmation out
-    var animation = new AjaxControlToolkit.Animation.FadeOutAnimation(confirm, 2, 25, 0, 1, true);
-    animation.play();
+    if (result == "")
+    {
+        // remove the only child
+        var divTag = $get(context);
+        divTag.removeChild(divTag.lastChild);
+        
+        // play an animation
+        var confirm = document.createElement('img');
+        confirm.setAttribute("id", "confirmIMG");
+        confirm.setAttribute("src", "../Images/confirm.png");
+        confirm.setAttribute("style", "width:16px; height:16px;");
+                
+        divTag.appendChild(confirm);
+        
+        // animate the check mark confirmation out
+        var animation = new AjaxControlToolkit.Animation.FadeOutAnimation(confirm, 2, 25, 0, 1, true);
+        animation.play();
+    }
 }
 function SavePropertyOnFail(result, context)
 {
@@ -62,4 +65,8 @@ function SavePropertyOnFail(result, context)
     confirm.setAttribute("style", "width:16px; height:16px;");
             
     divTag.appendChild(confirm);
+
+    debugger;
+
+    alert(result._message);
 }    

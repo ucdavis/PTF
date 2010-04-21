@@ -1,56 +1,122 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Constructs.aspx.cs" Inherits="admin_Constructs" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Constructs.aspx.cs" Inherits="admin_ArchivedData_Constructs" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
-<script type="text/javascript" src="../../JS/ExistingData.js"></script>
-<script type="text/javascript" src="../../JS/jquery-1.2.6.min.js"></script>
-<script type="text/javascript" src="../../JS/flexigrid.js"></script>
-<script type="text/javascript" src="../../JS/flexigrid.pack.js"></script>
+<%--    <link rel="Stylesheet" type="text/css" href="../../CSS/ingrid.css" media="screen" />
+    <script type="text/javascript" src="../../JS/jquery-1.2.js"></script>
+    <script type="text/javascript" src="../../JS/jquery.ingrid-0.9.2.js"></script>--%>
 
-<script type="text/javascript">
-    $(document).ready()
-    {
-        $('.constructs').flexigrid({height:'auto',striped:true});
-    };
-</script>
+    <script type="text/javascript" src="../../JS/ExistingData.js"></script>
+
+    <style type="text/css">
+
+    div.ListViewContainer {
+	    width: 100%; /* Table width will be 99% of this */
+	    height: 500px; /* Must be greater than tbody */
+	    overflow: auto;
+	    }
+
+    table {
+	    width: 99%; /* 100% of container produces horizontal scroll in Mozilla */
+	    border: none;
+	    }
+    	
+    table>tbody	{ /* Child selector syntax which IE6 and older do not support */
+	    overflow: auto; 
+	    height: 350px;
+	    overflow-x: hidden;
+	    }
+    	
+    thead tr {
+	    position:relative; 
+	    top: expression(offsetParent.scrollTop); /* For IE5+ only */
+	    }
+    	
+    thead td {
+	    background-color: #CCCCCC;
+	    font-weight: bold;
+	    }	
+    	
+    td {
+        color: #000000;
+        text-align: left;
+        }
+    	
+    table tfoot tr {
+          position: relative; 
+          overflow-x: hidden;
+          top: expression(parentNode.parentNode.offsetHeight >= offsetParent.offsetHeight ? 0 - parentNode.parentNode.offsetHeight + offsetParent.offsetHeight + offsetParent.scrollTop : 0);
+          }
+
+    tfoot td {
+        background-color: #CCCCCC;
+        }
+
+    td:last-child { /* Prevent Mozilla scrollbar from hiding cell content */
+        padding-right: 20px;
+        }
+
+    </style>    
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
+<%--    <script type="text/javascript">
+    $(document).ready(
+	    function() {
+		    $("#constructs").ingrid({ 
+			    url: 'remote.html',
+			    height: 350
+		    });
+	    }
+    ); 
+    </script>--%>
+
+<div class="ListViewContainer">
+
     <asp:ListView ID="lvConstructs" runat="server" DataSourceID="odsConstructs">
         <LayoutTemplate>
-            <table id="constructs">
+            <table id="constructs" border=1 cellpadding=1 cellspacing=1>
+                <thead>
                     <tr>
-                        <th scope="col">Construct_Code</th>
-                        <th scope="col">__of_Plants_Requested</th>
-                        <th scope="col">__Plants_Delivered</th>
-                        <th scope="col">Transformation_Initiated</th>
-                        <th scope="col">PI_Construct_name</th>
-                        <th scope="col">Agro_Strains</th>
-                        <th scope="col">PI_Code</th>
-                        <th scope="col">Bacterial_Selection</th>
-                        <th scope="col">Plasmid</th>
-                        <th scope="col">Trait</th>
-                        <th scope="col">Gene_of_interest</th>
-                        <th scope="col">Plant_Selection</th>
-                        <th scope="col">PI</th>
-                        <th scope="col">Client</th>
-                        <th scope="col">Archived_Box</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Working_Box</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Target_Crop</th>
-                        <th scope="col">Cultivar</th>
-                        <th scope="col">Available_for_UC_researchers</th>
-                        <th scope="col">Comment</th>
-                        <th scope="col">Recharge_Number</th>
-                        <th scope="col">Recharge_Amount</th>
-                        <th scope="col">Contract_Executed</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Invoice_sent</th>
-                        <th scope="col">Date_Received</th>
+                        <td>Construct_Code</td>
+                        <td>__of_Plants_Requested</td>
+                        <td>__Plants_Delivered</td>
+                        <td>Transformation_Initiated</td>
+                        <td>PI_Construct_name</td>
+                        <td>Agro_Strains</td>
+                        <td>PI_Code</td>
+                        <td>Bacterial_Selection</td>
+                        <td>Plasmid</td>
+                        <td>Trait</td>
+                        <td>Gene_of_interest</td>
+                        <td>Plant_Selection</td>
+                        <td>PI</td>
+                        <td>Client</td>
+                        <td>Archived_Box</td>
+                        <td>Position</td>
+                        <td>Working_Box</td>
+                        <td>Location</td>
+                        <td>Target_Crop</td>
+                        <td>Cultivar</td>
+                        <td>Available_for_UC_researchers</td>
+                        <td>Comment</td>
+                        <td>Recharge_Number</td>
+                        <td>Recharge_Amount</td>
+                        <td>Contract_Executed</td>
+                        <td>Status</td>
+                        <td>Invoice_sent</td>
+                        <td>Date_Received</td>
                     </tr>
+                </thead>
+                <tbody>
                     <tr runat="server" id="ItemPlaceHolder"></tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="28">This is the footer row.</td>
+                    </tr>
+                </tfoot>
             </table>
         </LayoutTemplate>
         <ItemTemplate>
@@ -118,7 +184,7 @@
             </tr>
         </AlternatingItemTemplate>
     </asp:ListView>
-
+</div>
     <asp:ObjectDataSource ID="odsConstructs" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetAllConstructs" 
         SortParameterName="sortExp"

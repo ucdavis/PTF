@@ -10,11 +10,15 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using CAESDO.PTF.Core;
 
-public partial class admin_Constructs : System.Web.UI.Page
+public partial class admin_ArchivedData_Constructs : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+        {
+            //CAESDO.PTF.Core.Domain.Construct
+        }
     }
 }

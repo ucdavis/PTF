@@ -33,21 +33,30 @@ public class ScriptServices : System.Web.Services.WebService
     #region Generic Methods
 
     [WebMethod]
-    public void SaveProperty(int objID, string property, string value, string objType)
+    public string SaveProperty(int objID, string property, string value, string objType)
     {
-        switch (objType)
+        try
         {
-            case "Order": SaveProperty(OrderBLL.GetByID(objID), property, value);
-                break;
-            case "Construct": SaveProperty(ConstructBLL.GetByID(objID), property, value);
-                break;
-            case "Experiment": SaveProperty(ExperimentBLL.GetByID(objID), property, value);
-                break;
-            case "Plant": SaveProperty(PlantBLL.GetByID(objID), property, value);
-                break;
-            case "Suborder": SaveProperty(SubOrderBLL.GetByID(objID), property, value);
-                break;
-        }      
+            switch (objType)
+            {
+                case "Order": SaveProperty(OrderBLL.GetByID(objID), property, value);
+                    break;
+                case "Construct": SaveProperty(ConstructBLL.GetByID(objID), property, value);
+                    break;
+                case "Experiment": SaveProperty(ExperimentBLL.GetByID(objID), property, value);
+                    break;
+                case "Plant": SaveProperty(PlantBLL.GetByID(objID), property, value);
+                    break;
+                case "Suborder": SaveProperty(SubOrderBLL.GetByID(objID), property, value);
+                    break;
+            }
+
+            return string.Empty;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 
     protected void SaveProperty(Order order, string property, string value)
@@ -95,6 +104,11 @@ public class ScriptServices : System.Web.Services.WebService
 
     protected void SaveProperty(Construct construct, string property, string value)
     {
+        if (construct.IsBilled)
+        {
+            throw new Exception("Order has been billed and cannot be changed.");
+        }
+
         switch (property)
         {
             case "Comment": construct.Comments = value;
@@ -108,6 +122,11 @@ public class ScriptServices : System.Web.Services.WebService
 
     protected void SaveProperty(Experiment experiment, string property, string value)
     {
+        if (experiment.Construct.IsBilled)
+        {
+            throw new Exception("Order has been billed and cannot be changed.");
+        }
+        
         switch (property)
         {
             case "Comment": experiment.Comments = value;
@@ -119,6 +138,11 @@ public class ScriptServices : System.Web.Services.WebService
 
     protected void SaveProperty(Plant plant, string property, string value)
     {
+        if (plant.Experiment.Construct.IsBilled)
+        {
+            throw new Exception("Order has been billed and cannot be changed.");
+        }
+
         switch (property)
         {
             case "PlantComment": plant.Comments = value;
