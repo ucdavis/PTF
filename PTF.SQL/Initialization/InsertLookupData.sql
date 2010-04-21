@@ -177,48 +177,6 @@ values ('Tomato')
 insert into Crops (Crop)
 values ('Walnut')
 
-
--- Cultivars
-
-insert into Cultivars (Cultivar)
-values ('Moneymaker')
-
-insert into Cultivars (Cultivar)
-values ('T5')
-
-insert into Cultivars (Cultivar)
-values ('UC82B')
-
-insert into Cultivars (Cultivar)
-values ('MicroTom')
-
-insert into Cultivars (Cultivar)
-values ('benthi')
-
-insert into Cultivars (Cultivar)
-values ('Eureka')
-
-insert into Cultivars (Cultivar)
-values ('Kitaake')
-
-insert into Cultivars (Cultivar)
-values ('2525-14')
-
-insert into Cultivars (Cultivar)
-values ('Diana')
-
-insert into Cultivars (Cultivar)
-values ('Marisaka')
-
-insert into Cultivars (Cultivar)
-values ('Xanthi')
-
-insert into Cultivars (Cultivar)
-values ('SR-1')
-
-insert into Cultivars (Cultivar)
-values ('Carrizo')
-
 -- Genotypes
 
 insert into Genotypes (Genotype)
