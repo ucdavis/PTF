@@ -204,12 +204,14 @@
             <tr><td colspan="4"></td></tr>
             <tr>
                 <td class="InfoFieldName">Comments&nbsp;(Public Viewable):&nbsp;</td>
-                <td class="InfoFieldValue" colspan="3">
+                <td class="InfoFieldValue">
                     <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
-                        Width="338px"></asp:TextBox>
+                        Width="80%"></asp:TextBox>
                     <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Comment", "<%= tbComments.ClientID %>", "Order");'><img src="../Images/save.png" width="20px" alt="save" /></a>
                     <span id="Comment"></span>
                 </td>
+                <td class="InfoFieldName">&nbsp;</td>
+                <td class="InfoFieldValue">&nbsp;</td>
             </tr>       
         </table>
     </asp:Panel>

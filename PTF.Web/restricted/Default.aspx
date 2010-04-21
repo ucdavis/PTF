@@ -8,10 +8,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <br />
-    <a href="PlaceOrder.aspx">Place New Order</a>
-    <br />
-    <a href="Account.aspx">Profile</a>
-    <br /><br />
+    <span class="left" style="width: 155px;"><a href="PlaceOrder.aspx"><img src="../Images/btn_placeneworder.png" title="Place New Order" alt="Place New Order" /></a>
+    </span>
+    <span class="right" style="width: 134px;"><a href="Account.aspx"><img src="../Images/btn_clientprofile.png" title="Client Profile" alt="Profile" /></a>
+    </span><br /><br />
 
     <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" DataKeyNames="ID" onselectedindexchanged="lvOrders_SelectedIndexChanged">
         <LayoutTemplate>

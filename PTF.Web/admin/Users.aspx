@@ -137,7 +137,7 @@
             <asp:Button ID="btnDummyUpdateUserInfo" runat="server" Text="Button" style="display:none;" />
             <AjaxControlToolkit:ModalPopupExtender ID="mpeUpdateUserInfo" runat="server" TargetControlID="btnDummyUpdateUserInfo" PopupControlID="pnlUpdateUserInfo" CancelControlID="lbCloseUserInfo">
             </AjaxControlToolkit:ModalPopupExtender>
-            <asp:Panel ID="pnlUpdateUserInfo" runat="server" style="border:solid 1px black; background-color:oldlace; display:none;">
+            <asp:Panel ID="pnlUpdateUserInfo" runat="server" CssClass="popup" style="display:none;">
                 <span class="ModalTitle">User Information for <asp:Label ID="lblUserInfoName" runat="server" Text=""></asp:Label> </span>
                 
                 <br />
@@ -161,7 +161,7 @@
                             <td><%# Eval("FullName") %></td>
                             <td><%# Eval("FISCode") %></td>
                             <td>
-                                <asp:LinkButton ID="lbDeleteUserRole" CommandName="Delete" runat="server">[Delete]</asp:LinkButton>
+                                <asp:LinkButton ID="lbDeleteUserRole" CommandName="Delete" runat="server"><img src="../Images/delete-x.png" alt="Delete" /></asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -188,7 +188,7 @@
                         <tr>
                             <td><%# Eval("Role") %></td>
                             <td>
-                                <asp:LinkButton ID="lbDeleteUserUnit" CommandName="Delete" runat="server">[Delete]</asp:LinkButton>
+                                <asp:LinkButton ID="lbDeleteUserUnit" CommandName="Delete" runat="server"><img src="../Images/delete-x.png" alt="Delete" /></asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -199,7 +199,7 @@
                 <asp:Button ID="btnAddUserRole" runat="server" OnClick="btnAddUserRole_Click" Text="Add Role" />
                 
                 <br /><br />
-                <asp:LinkButton ID="lbSaveUserInfo" runat="server">[Save]</asp:LinkButton>
+                <asp:LinkButton ID="lbSaveUserInfo" runat="server"><img src="../Images/save.png" alt="Save" /></asp:LinkButton>
                 <asp:LinkButton ID="lbCloseUserInfo" runat="server">[Close]</asp:LinkButton>
             </asp:Panel>
             

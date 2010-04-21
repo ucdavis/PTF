@@ -20,8 +20,8 @@
                 style="border-collapse:collapse;" class="noStyle">
                 <tr>
                     <td>
-                        <table border="0" cellpadding="0" class="noStyle">
-                            <tr>
+                        <table border="0" cellpadding="0" class="noStyle field">
+                            <tr class="head">
                                 <td>&nbsp;</td>
                                 <td>
                                     <h2>Log In</h2></td>

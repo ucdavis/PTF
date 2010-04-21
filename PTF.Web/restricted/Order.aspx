@@ -47,7 +47,7 @@
         <LayoutTemplate>
             <div class="grid">
             <table id="orders" cellpadding="10" cellspacing="0">
-                <tr class="Head">
+                <tr class="head">
                     <th class="first"></th>
                     <th>Pedigree</th>
                     <th>Date Initiated</th>

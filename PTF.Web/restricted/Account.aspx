@@ -57,15 +57,96 @@ function SaveProfileOnComplete ()
 </script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" class="noStyle">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div id="ChangePassword" class="noStyle">
-        <asp:ChangePassword ID="ChangePassword1" runat="server" class="noStyle">
+        <asp:ChangePassword ID="ChangePassword1" runat="server" CssClass="noStyle">
+            <ChangePasswordTemplate>
+                <table border="0" cellpadding="1" cellspacing="0" 
+                    style="border-collapse:collapse;" class="noStyle">
+                    <tr>
+                        <td>
+                            <table border="0" cellpadding="0" class="noStyle">
+                                <tr>
+                                    <th colspan="2">
+                                        <h2>Change Your Password</h2></td>
+                                </tr>
+                                <tr>
+                                    <td class="InfoFieldName">
+                                        <asp:Label ID="CurrentPasswordLabel" runat="server" 
+                                            AssociatedControlID="CurrentPassword">Password:</asp:Label>
+                                    </td>
+                                    <td class="InfoFieldValue">
+                                        <asp:TextBox ID="CurrentPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="CurrentPasswordRequired" runat="server" 
+                                            ControlToValidate="CurrentPassword" ErrorMessage="Password is required." 
+                                            ToolTip="Password is required." ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="InfoFieldName">
+                                        <asp:Label ID="NewPasswordLabel" runat="server" 
+                                            AssociatedControlID="NewPassword">New Password:</asp:Label>
+                                    </td>
+                                    <td class="InfoFieldValue">
+                                        <asp:TextBox ID="NewPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" 
+                                            ControlToValidate="NewPassword" ErrorMessage="New Password is required." 
+                                            ToolTip="New Password is required." ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="InfoFieldName">
+                                        <asp:Label ID="ConfirmNewPasswordLabel" runat="server" 
+                                            AssociatedControlID="ConfirmNewPassword">Confirm New Password:</asp:Label>
+                                    </td>
+                                    <td class="InfoFieldValue">
+                                        <asp:TextBox ID="ConfirmNewPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="ConfirmNewPasswordRequired" runat="server" 
+                                            ControlToValidate="ConfirmNewPassword" 
+                                            ErrorMessage="Confirm New Password is required." 
+                                            ToolTip="Confirm New Password is required." ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2">
+                                        <asp:CompareValidator ID="NewPasswordCompare" runat="server" 
+                                            ControlToCompare="NewPassword" ControlToValidate="ConfirmNewPassword" 
+                                            Display="Dynamic" 
+                                            ErrorMessage="The Confirm New Password must match the New Password entry." 
+                                            ValidationGroup="ChangePassword1"></asp:CompareValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" colspan="2" style="color:Red;">
+                                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">
+                                        <asp:ImageButton ID="ChangePasswordPushButton" runat="server" 
+                                            CommandName="ChangePassword" ImageUrl="~/Images/btn_changepassword.png" Text="Change Password" 
+                                            ValidationGroup="ChangePassword1" />
+                                    </td>
+                                    <td>
+                                        <asp:ImageButton ID="CancelPushButton" runat="server" CausesValidation="False" 
+                                            CommandName="Cancel" Text="Cancel" ImageUrl="~/Images/btn_cancel.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </ChangePasswordTemplate>
         </asp:ChangePassword>
     </div>
 <br /><br />
     <div id="Profile">
         <table class="noStyle">
+                                <tr>
+                                    <th colspan="2">
+                                        <h2>Update Your Information</h2></td>
+                                </tr>
             <tr>
                 <td class="InfoFieldName">Address Line 1:&nbsp;</td>
                 <td class="InfoFieldValue">
@@ -115,10 +196,9 @@ function SaveProfileOnComplete ()
                 </td>
             </tr>
             <tr>
-                <td class="InfoFieldName"></td>
-                <td class="InfoFieldValue">
+                <td colspan="2">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="ProfileSave" />                   
-                    <asp:ImageButton ID="btnSaveAddress" runat="server" Text="Save" ImageUrl="~/Images/save.png" Width="20px" ValidationGroup="ProfileSave" OnClientClick="SaveProfile(); return false" />
+                    <asp:ImageButton ID="btnSaveAddress" runat="server" Text="Update Profile" ImageUrl="~/Images/btn_updateprofile.png" ValidationGroup="ProfileSave" OnClientClick="SaveProfile(); return false" />
                     <div id="ValidationWarnings" style="display:none; color:Red;"></div>
                 </td>
             </tr>

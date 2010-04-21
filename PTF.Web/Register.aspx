@@ -8,7 +8,7 @@
        <AjaxControlToolkit:NoBot ID="noBotNewUser" runat="server" />
        
     <asp:Wizard ID="wizCreateUser" runat="server" ActiveStepIndex="0" BackColor="#EFEFEF" BorderColor="#7f7f7f"
-        BorderStyle="dotted" BorderWidth="1px" DisplaySideBar="False" OnFinishButtonClick="wizCreateUser_FinishButtonClick">
+        BorderStyle="dotted" BorderWidth="1px" DisplaySideBar="False" OnFinishButtonClick="wizCreateUser_FinishButtonClick" CssClass="noStyle">
         <StepStyle BorderWidth="0px" />
         <StartNavigationTemplate>
             <asp:Button ID="StartNextButton" runat="server" CommandName="MoveNext" Text="Next" ValidationGroup="CreateAccount" />
@@ -18,7 +18,7 @@
             
         <WizardSteps>
             <asp:WizardStep ID="WizardStep1" runat="server" StepType="finish" Title="Create Account">
-              <table border="0" cellpadding="5" style="width: 320px; font-weight:bold;">
+              <table border="0" cellpadding="5" style="width: 320px; font-weight:bold;" class="noStyle">
                         <tr>
                             <td align="center" colspan="2">
                             <br />

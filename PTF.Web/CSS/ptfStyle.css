@@ -14,7 +14,8 @@ body
 #all {height: 147px; text-align: center; background: url(../Images/bg_header.jpg) repeat-x;}
 #header {width: 1160px; margin: 0px auto; text-align: left;}
 #logo {text-align: left; width: 430px;}
-#login {float: right; width: 300px;}
+#loginx {float: right; width: 300px;}
+#login {width: 1040px; margin: 2px auto 0px;}
 #content {width: 1040px; margin: 6em auto; padding-bottom: 3em; text-align: left;}
 
 .clear {clear: both;}
@@ -22,13 +23,14 @@ body
 
 #updateImage {position: absolute; margin: auto auto; left: 50%; top: 50%;}
 
-#pages {text-align: right; width: 900px; font-weight: bold;}
+#pages {text-align: right; width: 1040px; font-weight: bold;}
 .clear {clear: both;}
 
 ul.menu {padding: 0px; margin: 0px;}
+ul.menu li {padding: 5px 0px;}
 div.lookups {float: right; width: 500px; margin-top: 20px;}
 
-#footer {margin: 100px auto; padding-bottom: 2em; font-size: 0.9em; }
+#footer {margin: 100px auto; padding-bottom: 2em; font-size: 0.9em; background: url(../Images/roots.png) no-repeat 0px 38px; width: 519px; height: 100px;}
 
 
 
@@ -49,7 +51,7 @@ div.lookups {float: right; width: 500px; margin-top: 20px;}
 #login a:hover, .BackButton a:hover {color: white; border-bottom: 1px;}
 
 .BackButton {
-    float : left; margin-top: -82px;
+    float : left; margin-top: -113px;
     line-height: 3em; 
     text-transform: uppercase; 
     font-size: .7em; 
@@ -103,6 +105,9 @@ cite {
  font-style: normal;
  line-height: 1em;
  padding: 1em 0 0;}
+ 
+span.left {float: left;}
+span.right {float: right;}
 
 
 
@@ -114,7 +119,7 @@ cite {
 
 
 /* --- default tables --- */
-table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 910px; padding-bottom: 40px;}
+table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 1040px; padding-bottom: 40px;}
 tbody {background: url(../Images/table_mid.png) repeat-y 1px top;}
 tr {background: url(../Images/table_row.png) repeat-y top center; width: 64px}
 tr.head {background: url(../Images/table_top.png) no-repeat top center;
@@ -168,8 +173,9 @@ table.InfoTable tr.head {height: auto; color: #000; font-size: 1.2em; letter-spa
 table.InfoTable tr.head td {font-size: 1.1em; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 0px;}
 td.InfoFieldName {text-align: left; color: #000; font-size: 0.9em; /*padding-top: 6px;*/}
 td.InfoFieldValue {}
-td.col1, td.col3 {width: 28%;}
-td.col2, td.col4 {width: 22%;}
+td.col1, td.col3 {width: 20%;}
+td.col2 {width: 35%;}
+td.col4 {width: 25%;}
 
 td.c3.col1, td.c3.col3, td.c3.col5 {width: 15%}
 td.c3.col2, td.c3.col4, td.c3.col6 {width: 18%}
@@ -178,6 +184,30 @@ div.CollapsiblePanelHeader div {}
 div.CollapsiblePanelHeader div span {color: #d67129; font-size: 0.9em; cursor: pointer;}
 
 td.InfoFieldValue input[type="text"] {width: 75%;} /* to make space for the save btns */
+
+/*----- Collapsible Panel -----*/
+.CollapsiblePanelHeader {
+	width: 1040px; 
+	font-weight:bold;
+	font-size: 1.2em; color: #4f2056
+}
+.CollapsiblePanelBody {
+	width: 1040px;
+}
+
+/*----- Top Information Tables -----*/
+.InfoTable {
+	width: 1040px;
+}
+.InfoFieldName {
+    text-align: right;
+    xwidth: 375px;
+    font-weight: bold;
+}
+.InfoFieldValue {
+    text-align: left;
+    xwidth: 375px;
+}
 
 
 /* --- notes tables --- */
@@ -224,6 +254,11 @@ div.popup {
 li.newItem {display: block; float: none;}
 
 table.noStyle, table.noStyle tbody, table.noStyle tr, table.noStyle th, table.noStyle td {background: none transparent; width: auto;}
+
+table.field trx {background: url(../Images/field_mid.png);}
+table.field tr.head {background: url(../Images/field_top.png) top center no-repeat; padding-top: 20px;}
+table.field {background: url(../Images/field_btm.png) bottom center no-repeat; margin: 20px; width: 428px;}
+
 
 
 
