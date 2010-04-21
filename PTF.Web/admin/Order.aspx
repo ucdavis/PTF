@@ -14,6 +14,11 @@
         
         ScriptServices.SaveProperty(orderID, "AgroStrain", value, "Order", SaveSuborderPropertyOnComplete, SaveSuborderPropertyOnFail, $get(dropDown));
     }
+    function SaveContractNumber() {       
+        SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");
+
+        return false;
+    }
     </script>
 
 </asp:Content>
@@ -87,8 +92,9 @@
                     <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
                 <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbContractNumber" runat="server" Width="75px" class="disabled"></asp:TextBox>&nbsp;
-                    <a id="ContractNumberButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");' class="hidden"><img src="../Images/save.png" width="20px" alt="save" /></a>
+                    <asp:TextBox ID="tbContractNumber" runat="server" Width="75px"></asp:TextBox>&nbsp;
+                    <%--<a id="ContractNumberButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");' class="hidden"><img src="../Images/save.png" width="20px" alt="save" /></a>--%>
+                    <asp:ImageButton ID="ibtnContractNumber" OnClientClick='return SaveContractNumber()' ImageUrl="~/Images/save.png"  Width="20px" AlternateText="save" runat="server" Visible="false" />
                     <span id="ContractNumber"></span>
                 </td>            
             </tr>

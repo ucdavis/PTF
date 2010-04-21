@@ -96,6 +96,7 @@ public partial class admin_Order : System.Web.UI.Page
             {
                 // contract is required
                 tbContractNumber.Visible = true;
+                ibtnContractNumber.Visible = true;
                 tbContractNumber.Text = order.ContractNumber;
 
                 litRechargeNumber.Text = CommonStrings.STR_NotAvailable;
