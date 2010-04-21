@@ -8,12 +8,13 @@
 
 		<property name="Pedigree" column="Pedigree" update="false" insert="false" />
 		<property name="SequenceNumber" column="SequenceNumber" />
-		<many-to-one name="Experiment" class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core" column="EID" cascade="none" />
 		<property name="DateEntered" column="DateEntered" />
 		<property name="ReCallusingAssay" column="ReCallusingAssay" />
 		<property name="Rooting" column="Rooting" />
 		<property name="Comment" column="Comment" />
 		<property name="DateDelivered" column="DateDelivered" />
-		
+
+		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
+		<many-to-one name="Experiment" class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core" column="EID" cascade="none" />
 	</class>
 </hibernate-mapping>

@@ -62,6 +62,7 @@
     <Compile Include="Domain\Operator.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\Plant.cs" />
+    <Compile Include="Domain\SubOrder.cs" />
     <Compile Include="Domain\ValidateBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DesignByContract.cs" />
@@ -86,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Domain\Plant.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\SubOrder.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

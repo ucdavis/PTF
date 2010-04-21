@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core" table="SubOrders" >
+		<id name="id" access="field" column="SubOrderID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<many-to-one name="Order" class="CAESDO.PTF.Core.Domain.Order, CAESDO.PTF.Core" column="OrderID" cascade="none" />
+		<property name="NumberOfPlants" column="NumberOfPlants" />
+		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
+		<many-to-one name="PlantSelection" class="CAESDO.PTF.Core.Domain.PlantSelection, CAESDO.PTF.Core" column="PlantSelectionID" cascade="none" />
+		<many-to-one name="GenoType" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" column="GenoTypeID" cascade="none" />
+
+		<bag name="Constructs" table="Constructs">
+			<key column="SubOrderID" />
+			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

@@ -9,14 +9,13 @@
 		<property name="ConstructCode" column="ConstructCode" update="false" insert="false" />
 		<property name="DateCreated" column="DateCreated" />
 		<many-to-one name="Order" class="CAESDO.PTF.Core.Domain.Order, CAESDO.PTF.Core" column="OrderID" cascade="none" />
+		<many-to-one name="SubOrder" class="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core" column="SubOrderID" cascade="none" />
+		
 		<property name="PlantsDelivered" column="PlantsDelivered" />
 		<property name="TransformationInitiated" column="TransformationInitiated" />
 		<many-to-one name="AgroStrain" class="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" column="AgroStrainID" cascade="none" />
 
-		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
-		<many-to-one name="Genotype" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" column="GenotypeID" cascade="none" />
 		<property name="Comments" column="Comment" />
-
 		<property name="InvoiceDate" column="InvoiceDate" />
 		<property name="RechargeAmount" column="RechargeAmount" />
 

@@ -12,16 +12,14 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         public virtual DateTime DateCreated { get; set; }
         public virtual Order Order { get; set; }
+        public virtual SubOrder SubOrder { get; set; }
 
         public virtual int PlantsDelivered { get; set; }
         public virtual DateTime? TransformationInitiated { get; set; }
 
-        public virtual Crop Crop { get; set; }
-        public virtual GenoType Genotype { get; set; }
         public virtual string Comments { get; set; }
         public virtual DateTime? InvoiceDate { get; set; }
         public virtual decimal RechargeAmount { get; set; }
-
 
         public virtual IList<Experiment> Experiments { get; set; }
     }

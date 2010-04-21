@@ -9,7 +9,6 @@
 		<property name="ExperimentCode" column="ExperimentCode" update="false" insert="false" />
 		<property name="DateStarted" column="DateStarted" />
 		<property name="SeedLotNumber" column="SeedLotNumber" />
-		<property name="AgroSelection" column="AgroSelection" />
 		<property name="Explant" column="Explant" />
 		<property name="Trait" column="Trait" />
 		<property name="Comments" column="Comments" />

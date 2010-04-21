@@ -14,7 +14,6 @@ namespace CAESDO.PTF.Core.Domain
         [IgnoreNulls]
         [StringLengthValidator(15)]
         public virtual string SequenceNumber { get; set; }
-        public virtual Experiment Experiment { get; set; }
         [NotNullValidator]
         public virtual DateTime DateEntered { get; set; }
         [NotNullValidator]
@@ -25,5 +24,9 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string Comment { get; set; }
         [IgnoreNulls]
         public virtual DateTime? DateDelivered { get; set; }
+
+        public virtual Status Status { get; set; }
+
+        public virtual Experiment Experiment { get; set; }
     }
 }
