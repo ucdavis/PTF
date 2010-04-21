@@ -328,9 +328,9 @@
 
     <script type="text/javascript">
     
-        var isReader = '<%= User.IsInRole("Reader") %>';
-        
-        if (isReader)
+        var isReader = "<%= User.IsInRole("Reader") %>";
+                
+        if (isReader == "True")
         {
             $get("WorkingBoxButton").style.display = "none";
             $get("ArchivedBoxbutton").style.display = "none";

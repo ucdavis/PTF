@@ -5,6 +5,7 @@ using System.Text;
 using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.Data;
 using System.ComponentModel;
+using System.Security.Permissions;
 
 namespace CAESDO.PTF.BLL
 {
@@ -38,6 +39,7 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(T obj)
         {
@@ -51,6 +53,7 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(T obj)
         {
@@ -62,6 +65,7 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public static void Delete(T obj)
         {

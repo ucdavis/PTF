@@ -5,12 +5,41 @@ using System.Text;
 using CAESDO.PTF.Core.Domain;
 using System.ComponentModel;
 using CAESDO.PTF.Data;
+using System.Security.Permissions;
 
 namespace CAESDO.PTF.BLL
 {
     [DataObject]
     public class ExperimentBLL : GenericBLL<Experiment, int>
     {
+        #region Get Methods
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Experiment> GetByConstruct(int constructID)
+        {
+            return GetByConstruct(ConstructBLL.GetByID(constructID));
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Experiment> GetByConstruct(Construct construct)
+        {
+            return ExperimentBLL.daoFactory.GetExperimentDao().GetByConstruct(construct);
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Experiment> GetByCode(string experimentCode)
+        {
+            var exp = new Experiment()
+            {
+                ExperimentCode = experimentCode
+            };
+
+            return ExperimentBLL.GetByInclusionExample(exp, "ExperimentCode");
+        }
+        #endregion
+
+        #region Modify Methods
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Experiment obj)
         {
@@ -28,18 +57,8 @@ namespace CAESDO.PTF.BLL
             ConstructBLL.UpdateStatus(obj.Construct);
         }
 
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Experiment> GetByConstruct(int constructID)
-        {
-            return GetByConstruct(ConstructBLL.GetByID(constructID));
-        }
-
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Experiment> GetByConstruct(Construct construct)
-        {
-            return ExperimentBLL.daoFactory.GetExperimentDao().GetByConstruct(construct);
-        }
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Experiment experiment)
         {
@@ -50,15 +69,10 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction();
             }
         }
+        #endregion
 
-        public static List<Experiment> GetByCode(string experimentCode)
-        {
-            var exp = new Experiment()
-            {
-                ExperimentCode = experimentCode
-            };
 
-            return ExperimentBLL.GetByInclusionExample(exp, "ExperimentCode");
-        }
+
+
     }
 }

@@ -5,11 +5,40 @@ using System.Text;
 using CAESDO.PTF.Core.Domain;
 using System.ComponentModel;
 using CAESDO.PTF.Data;
+using System.Security.Permissions;
 
 namespace CAESDO.PTF.BLL
 {
     public class ConstructBLL : GenericBLL<Construct, int>
     {
+        #region Get Methods
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Construct> GetByOrder(int orderID)
+        {
+            return GetByOrder(OrderBLL.GetByID(orderID));
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Construct> GetByOrder(Order order)
+        {
+            return ConstructBLL.daoFactory.GetConstructDao().GetByOrder(order);
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Construct> GetByCode(string constructCode)
+        {
+            var construct = new Construct()
+            {
+                ConstructCode = constructCode
+            };
+
+            return ConstructBLL.GetByInclusionExample(construct, "ConstructCode");
+        }
+        #endregion
+
+        #region Modify Methods
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Construct obj)
         {
@@ -28,18 +57,8 @@ namespace CAESDO.PTF.BLL
             NHibernateSessionManager.Instance.EvictObject(obj);
         }
 
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Construct> GetByOrder(int orderID)
-        {
-            return GetByOrder(OrderBLL.GetByID(orderID));
-        }
-
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Construct> GetByOrder(Order order)
-        {
-            return ConstructBLL.daoFactory.GetConstructDao().GetByOrder(order);
-        }
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Construct construct)
         {
@@ -51,21 +70,13 @@ namespace CAESDO.PTF.BLL
             }
         }
 
-        public static List<Construct> GetByCode(string constructCode)
-        {
-            var construct = new Construct()
-                {
-                    ConstructCode = constructCode
-                };
-
-            return ConstructBLL.GetByInclusionExample(construct, "ConstructCode");
-        }
-
         /// <summary>
         /// Change the recharge amount.
         /// </summary>
         /// <param name="constructID"></param>
         /// <param name="rechargeAmount"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void ChangeRechargeAmount(int constructID, decimal rechargeAmount)
         {
             Construct construct = ConstructBLL.GetByID(constructID);
@@ -74,6 +85,8 @@ namespace CAESDO.PTF.BLL
             ConstructBLL.Update(construct);
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void UpdateStatus(Construct construct)
         {
             // no experiments exist
@@ -116,5 +129,8 @@ namespace CAESDO.PTF.BLL
             // update the order status
             OrderBLL.UpdateStatus(construct.Order);
         }
+        #endregion
+
+
     }
 }

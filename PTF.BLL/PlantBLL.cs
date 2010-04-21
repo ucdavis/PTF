@@ -12,7 +12,12 @@ namespace CAESDO.PTF.BLL
     [DataObject]
     public class PlantBLL : GenericBLL<Plant, int>
     {
+        #region Get Methods
+        #endregion
+
+        #region Modify Methods
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Plant newPlant)
         {
@@ -37,6 +42,8 @@ namespace CAESDO.PTF.BLL
             NHibernateSessionManager.Instance.EvictObject(newPlant);
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Plant plant)
         {
@@ -48,6 +55,8 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void ChangeStatus(Plant plant, Status status)
         {
             // if it's shipped we need to mark the ship date
@@ -68,6 +77,8 @@ namespace CAESDO.PTF.BLL
             ConstructBLL.UpdateStatus(plant.Experiment.Construct);
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void ChangeRecallusingAssay(Plant plant, bool recallusing)
         {
             plant.ReCallusingAssay = recallusing;
@@ -75,11 +86,17 @@ namespace CAESDO.PTF.BLL
             PlantBLL.Update(plant);
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void ChangeRooting(Plant plant, bool rooting)
         {
             plant.Rooting = rooting;
 
             PlantBLL.Update(plant);
         }
+        #endregion
+
+
+
     }
 }

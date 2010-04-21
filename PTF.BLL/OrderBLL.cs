@@ -7,12 +7,49 @@ using CAESDO.PTF.Data;
 using System.ComponentModel;
 
 using System.Linq.Dynamic;
+using System.Security.Permissions;
 
 namespace CAESDO.PTF.BLL
 {
     [DataObject]
     public class OrderBLL : GenericBLL<Order, int>
     {
+        #region Get Methods
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Order> GetByUser(Guid currentUser)
+        {
+            return OrderBLL.GetByInclusionExample(new Order() { UserID = currentUser }, "UserID");
+        }
+
+        /// <summary>
+        /// Check to see if the user provided is the proper owner of the order
+        /// </summary>
+        /// <param name="orderID"></param>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public static bool ValidateOwner(int orderID, Guid userID)
+        {
+            var order = OrderBLL.GetByID(orderID);
+
+            return (order.UserID == userID);
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Order> GetAllSorted(string propertyName)
+        {
+            if (string.IsNullOrEmpty(propertyName))
+            {
+                return OrderBLL.GetAll("id", false);
+            }
+            else
+            {
+                return OrderBLL.GetAll().AsQueryable().OrderBy(propertyName).ToList();
+            }
+        }
+        #endregion
+
+        #region Modify Methods
+        [PrincipalPermission(SecurityAction.Demand, Authenticated = true)]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Order newOrder)
         {
@@ -38,25 +75,7 @@ namespace CAESDO.PTF.BLL
             EmailBLL.OrderCreated(newOrder);
         }
 
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Order> GetByUser(Guid currentUser)
-        {
-            return OrderBLL.GetByInclusionExample(new Order() { UserID = currentUser }, "UserID");
-        }
-
-        /// <summary>
-        /// Check to see if the user provided is the proper owner of the order
-        /// </summary>
-        /// <param name="orderID"></param>
-        /// <param name="userID"></param>
-        /// <returns></returns>
-        public static bool ValidateOwner(int orderID, Guid userID)
-        {
-            var order = OrderBLL.GetByID(orderID);
-
-            return (order.UserID == userID);
-        }
-
+        [PrincipalPermission(SecurityAction.Demand, Authenticated = true)]
         public static void Update(Order order)
         {
             using (var ts = new TransactionScope())
@@ -67,6 +86,8 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void UpdateStatus(Order order)
         {
             // first check for pending
@@ -129,18 +150,6 @@ namespace CAESDO.PTF.BLL
                 }
             }
         }
-
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Order> GetAllSorted(string propertyName)
-        {
-            if (string.IsNullOrEmpty(propertyName))
-            {
-                return OrderBLL.GetAll("id", false);
-            }
-            else
-            {
-                return OrderBLL.GetAll().AsQueryable().OrderBy(propertyName).ToList();
-            }
-        }
+        #endregion
     }
 }

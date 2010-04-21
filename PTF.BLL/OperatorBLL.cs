@@ -5,12 +5,14 @@ using System.Text;
 using CAESDO.PTF.Core.Domain;
 using System.ComponentModel;
 using CAESDO.PTF.Data;
+using System.Security.Permissions;
 
 namespace CAESDO.PTF.BLL
 {
     [DataObject]
     public class OperatorBLL : GenericBLL<Operator, int>
     {
+        #region Get Methods
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<Operator> GetSelectable()
         {
@@ -19,6 +21,10 @@ namespace CAESDO.PTF.BLL
             return OperatorBLL.GetByInclusionExample(op, "OperatorName", true, "IsSelectable");
         }
 
+        #endregion
+
+        #region Modify Methods
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Operator obj)
         {
@@ -37,6 +43,7 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Operator obj)
         {
@@ -56,6 +63,7 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public static void Delete(Operator obj)
         {
@@ -71,5 +79,11 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction();
             }
         }
+        #endregion
+
+
+
+
+
     }
 }
