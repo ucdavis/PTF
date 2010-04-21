@@ -2,6 +2,8 @@
 
 <script runat="server">
 
+    private CAESOps.ErrorReporting errorReport = new CAESOps.ErrorReporting();
+    
     void Application_Start(object sender, EventArgs e) 
     {
         // Code that runs on application startup
@@ -15,8 +17,29 @@
     }
         
     void Application_Error(object sender, EventArgs e) 
-    { 
+    {
         // Code that runs when an unhandled error occurs
+
+        Exception ex = HttpContext.Current.Error;
+
+        if (ex.GetType() == typeof(HttpException))
+        {
+            HttpContext.Current.ClearError();
+            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.UNKNOWN), true);
+        }
+        else
+        {
+            if (ex.InnerException != null)
+            {
+                ex = ex.InnerException; //Grab the inner exception because the outerexception is a generic 'unhandled exception' message.
+            }
+
+            errorReport.ReportError(ex, string.Format("Page: {0}", HttpContext.Current.Request.Url.ToString()));
+
+            HttpContext.Current.ClearError();//Clear the error for redirect
+
+            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.UNKNOWN), true);
+        }
 
     }
 

@@ -33,6 +33,8 @@
     <EnableUpdateable>true</EnableUpdateable>
     <UseMerge>true</UseMerge>
     <SingleAssemblyName>PTF.Web_deploy</SingleAssemblyName>
+    <KeyFile>..\..\caesdo.snk</KeyFile>
+    <UseWebConfigReplacement>true</UseWebConfigReplacement>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
@@ -57,6 +59,17 @@
     <AssemblyAttributes Include="AssemblyVersion">
       <Value>1.11.4.2008</Value>
     </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>1.11.10.2008</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>1.11.10.2008</Value>
+    </AssemblyAttributes>
+    <WebConfigReplacementFiles Include="ConnectionStrings.config">
+      <Section>connectionStrings</Section>
+    </WebConfigReplacementFiles>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v9.0\Microsoft.WebDeployment.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
