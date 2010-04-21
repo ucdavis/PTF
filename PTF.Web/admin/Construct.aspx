@@ -12,12 +12,8 @@
     </div>
      <table class="InfoTable">
         <tr class="head">
-            <td colspan="4">Construct Information
-            
-                <span style="float:right;">
-                    <asp:LinkButton ID="lbGenerateInvoice" runat="server" 
-                    onclick="lbGenerateInvoice_Click">Invoice</asp:LinkButton>
-                </span>
+            <td colspan="3" style="vertical-align: bottom">Construct Information</td>
+            <td style="text-align: right;"><asp:ImageButton ID="lbGenerateInvoice" ImageUrl="../Images/btn_invoice.png" AlternateText="Invoice" runat="server" onclick="lbGenerateInvoice_Click" />
             </td>
         </tr>
         <tr>
@@ -130,7 +126,8 @@
         </EmptyDataTemplate>
     </asp:ListView>
     
-    <asp:Panel ID="pnlNewExperiment" runat="server" CssClass="popup" style="display:none;">
+    <asp:Panel ID="pnlNewExperiment" runat="server" style="display:none;">
+    <div class="popup">
         <div class="close">
             <asp:ImageButton ID="btnCancelNewExperiment" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
@@ -170,8 +167,10 @@
                 </td>
             </tr>
         </table>
-        <asp:ImageButton ID="btnCreate" ImageUrl="~/Images/btn_create.png" runat="server" Text="Create" 
-            onclick="btnCreate_Click" ValidationGroup="NewExperiment" />
+        <span class="button"><asp:ImageButton ID="btnCreate" ImageUrl="~/Images/btn_create.png" runat="server" Text="Create" 
+            onclick="btnCreate_Click" ValidationGroup="NewExperiment" /></span>
+    </div>
+    <p class="popup_bottom">&nbsp;</p>
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
     </AjaxControlToolkit:ModalPopupExtender>

@@ -61,7 +61,7 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
+                            <td class="first">
                                 <asp:LinkButton ID="lbSelectUser" CommandName="Select" runat="server"><img src="../Images/btn_select.png" title="select" /></asp:LinkButton></td>
                             <td><%# Eval("Login") %></td>
                             <td><%# Eval("LastName") %></td>

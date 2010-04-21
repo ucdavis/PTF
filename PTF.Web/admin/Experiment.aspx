@@ -125,7 +125,7 @@
             </tr>
         </ItemTemplate>
         <EmptyDataTemplate>
-            <span class="notes empty">No induction notes.</span>
+            <span class="notes empty">No Induction notes.</span>
         </EmptyDataTemplate>
     </asp:ListView>
     <asp:ListView ID="lvElongationGermination" runat="server">
@@ -182,7 +182,8 @@
     
     <AjaxControlToolkit:ModalPopupExtender ID="mpeMakeNote" runat="server" TargetControlID="btnMakeNote" PopupControlID="pnlMakeNote" CancelControlID="btnCancelMakeNote">
     </AjaxControlToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlMakeNote" CssClass="popup" runat="server" style="display:none;">
+    <asp:Panel ID="pnlMakeNote" runat="server" style="display:none;">
+    <div class="popup">
         <div class="close">
             <asp:ImageButton ID="btnCancelMakeNote" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
@@ -212,8 +213,8 @@
                         onclick="btnCreate_Click" /></td>
             </tr>
         </table>
-<%--    <span class="bottom">&nbsp;
-    </span>--%>
+    </div>
+    <p class="popup_bottom">&nbsp;</p>
     </asp:Panel>
     <br /><br /><div class="clear">&nbsp;</div>
     <asp:ImageButton ID="btnAddPlant" runat="server" Text="Add Plant" 
@@ -239,7 +240,7 @@
         <ItemTemplate>
             <tr id='<%# Eval("id") %>'>
                 <td>&nbsp;</td>
-                <td><%# Eval("Pedigree")%></td>
+                <td class="firstnum"><%# Eval("Pedigree")%></td>
                 <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
                 <td>
                     <asp:CheckBox ID="cbRecallusingAssay" runat="server" Checked='<%# Eval("ReCallusingAssay") %>' OnClick='ChangeCheckBox(this, "Recallusing")' />
@@ -277,7 +278,7 @@
                 <td>
                     <span id='<%# Eval("id") + "CommentText" %>' style="display:none;"><%# Eval("Comments")%></span>
                                                       
-                    <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'><img src="../Images/edit.png" alt="Edit" title="Click to Edit" /></a>
+                    <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'><img src="../Images/edit.png" alt="Edit" title="Click to Edit" style="width: 20px" /></a>
                 </td>
             </tr>
         </ItemTemplate>
@@ -286,17 +287,20 @@
     <asp:Button runat="server" ID="btnDummyPlantNote" Text="DUmmy" style="display:none;" />
     <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
     </AjaxControlToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlPlantNote" CssClass="popup" runat="server" style="display: none;">
-        <h2>Plant Comments</h2>
-        <asp:TextBox runat='server' ID="tbPlantID" style="display:none;" ></asp:TextBox>
-        
+    <asp:Panel ID="pnlPlantNote" runat="server" style="display: none;">
+    <div class="popup">
         <div class="close">
             <asp:ImageButton ID="lbCancelPlantNote" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
+        <h2>Plant Comments</h2>
+        <asp:TextBox runat='server' ID="tbPlantID" style="display:none;" ></asp:TextBox>
+        
         
         <asp:TextBox ID="tbPlantComment" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
         <a id="SavePlantComments" onclick='SavePlantComments("<%= tbPlantID.ClientID %>", "PlantComment", "<%= tbPlantComment.ClientID %>", "Plant");'><img src="../Images/save.png" width="20px" alt="save" /></a>
         <span id="PlantComment"></span>
+    </div>
+    <p class="popup_bottom">&nbsp;</p>
     </asp:Panel>
     
     <asp:ObjectDataSource ID="odsNoteTypes" runat="server" 

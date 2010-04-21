@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <AjaxControlToolkit:TabContainer ID="TabContainer1" runat="server" 
-        Height="500px" style="overflow: auto;" ActiveTabIndex="0">
+        Height="600px" style="" ActiveTabIndex="0">
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Note Types" ID="TabPanel1">
             <ContentTemplate>
                 <asp:UpdatePanel ID="upNoteTypes" runat="server">
@@ -42,7 +42,7 @@
                                 <asp:CheckBoxList ID="cblPlantSelections" runat="server" DataSourceID="odsPlantSelections" DataValueField="id" DataTextField="name" style="display:none;">
                                 </asp:CheckBoxList>
 
-                                <asp:LinkButton ID="lbSaveCropPlantSelection" runat="server" OnClick="lbSaveCropPlantSelection_OnClick" Visible="false" ><img src="../Images/save.png" width="20px" alt="Save" /></asp:LinkButton>
+                                <asp:LinkButton ID="lbSaveCropPlantSelection" runat="server" OnClick="lbSaveCropPlantSelection_OnClick" Visible="false" ><img src="../Images/save.png" alt="Save" /></asp:LinkButton>
                                 
                             </ContentTemplate>
                         </asp:UpdatePanel>
@@ -61,7 +61,7 @@
                                 <asp:CheckBoxList ID="cblGenoTypes" runat="server" DataSourceID="odsGenoTypes" DataValueField="id" DataTextField="name" style="display:none;">
                                 </asp:CheckBoxList>
                                 
-                                <asp:LinkButton ID="lbSaveCropGenoTypes" runat="server" OnClick="lbSaveCropGenoTypes_OnClick" Visible="false"><img src="../Images/save.png" width="20px" alt="Save" /></asp:LinkButton>
+                                <asp:LinkButton ID="lbSaveCropGenoTypes" runat="server" OnClick="lbSaveCropGenoTypes_OnClick" Visible="false"><img src="../Images/save.png" alt="Save" /></asp:LinkButton>
                             </ContentTemplate>
                         </asp:UpdatePanel>   
                     </ContentTemplate>
