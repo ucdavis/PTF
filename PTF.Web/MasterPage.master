@@ -17,11 +17,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <AjaxControlToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="true">
+    <asp:ScriptManager runat="server" id="scriptmanager1" EnablePageMethods="true">
         <Scripts>
             <asp:ScriptReference Assembly="AjaxControlToolkit" Name="AjaxControlToolkit.Animation.Animations.js" />
         </Scripts>
-    </AjaxControlToolkit:ToolkitScriptManager>
+    </asp:ScriptManager>
     <div>
         <div style="float:right">
             <a href="Default.aspx">Home</a> &nbsp;|&nbsp;
