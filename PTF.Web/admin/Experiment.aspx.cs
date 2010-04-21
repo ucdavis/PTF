@@ -143,4 +143,12 @@ public partial class admin_Experiment : System.Web.UI.Page
         lvPlants.DataSource = experiment.Plants;
         lvPlants.DataBind();
     }
+    protected void btnSaveChangeStatus_Click(object sender, EventArgs e)
+    {
+        PlantBLL.ChangeStatus(PlantBLL.GetByID(Convert.ToInt32(tbPlantID.Text)), StatusBLL.GetByID(Convert.ToInt32(ddlStatus.SelectedValue)));        
+
+        //rebind the grid
+        lvPlants.DataSource = ExperimentBLL.GetByID(ExperimentID).Plants;
+        lvPlants.DataBind();
+    }
 }

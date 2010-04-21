@@ -117,19 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="STR_Cancelled" xml:space="preserve">
-    <value>Cancelled</value>
-  </data>
-  <data name="STR_Complete" xml:space="preserve">
-    <value>Complete</value>
-  </data>
-  <data name="STR_HoldPendingContract" xml:space="preserve">
-    <value>Hold-Pending Contract</value>
+  <data name="STR_Dead" xml:space="preserve">
+    <value>Dead</value>
   </data>
   <data name="STR_Initiated" xml:space="preserve">
     <value>Initiated</value>
   </data>
-  <data name="STR_Pending" xml:space="preserve">
-    <value>Pending</value>
+  <data name="STR_Shipped" xml:space="preserve">
+    <value>Shipped</value>
   </data>
 </root>

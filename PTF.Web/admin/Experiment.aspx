@@ -1,8 +1,39 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Experiment.aspx.cs" Inherits="admin_Experiment" Title="PTF | Experiment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script type="text/javascript" language="javascript">
+        function ChangeStatus(plantID, statusID, statusName)
+        {    
+            // get the plant id we are working with
+            $get('<%= tbPlantID.ClientID %>').value = plantID;
+                        
+            if (statusName != '<%= CAESDO.PTF.BLL.StatusText.STR_Shipped %>')
+            {
+                // get the drop down for status
+                var status = $get('<%= ddlStatus.ClientID %>');
+                
+                // iterate through and find the current status and select that
+                for (i = 0; i < status.options.length; i++)
+                {           
+                    if (status.options[i].value == statusID)
+                    {
+                        status.selectedIndex = i;
+                        break;
+                    }
+                }
+                // show the modal
+                var modal = $find("mpeChangeStatus");
+                modal.show();
+            }
+            else
+            {
+                alert("Shipped plants cannot have their status changed.");
+            }
+        }
+    </script>
+
     <span class="contractwarning">
-    <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
+        <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -205,14 +236,41 @@
                 <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
                 <td><%# Eval("ReCallusingAssay") %></td>
                 <td><%# Eval("Rooting") %></td>
-                <td><%# Eval("DateDelivered") %></td>
-                <td><%# Eval("Status.Name") %></td>
+                <td><%# Eval("DateDelivered", "{0:MM/dd/yyyy}") %></td>
+                <td>
+                    <a href='javascript:ChangeStatus(<%# Eval("id") %>, <%# Eval("Status.id") %>, "<%# Eval("Status.Name") %>")'>
+                        <%# Eval("Status.Name") %>
+                    </a>
+                </td>
                 <td></td>
             </tr>
         </ItemTemplate>
     </asp:ListView>
+
+    <asp:Button ID="btnChangeStatusDummy" runat="server" Text="Dummy" style="display:none;" />
+    <asp:Panel ID="pnlChangeStatus" runat="server" style="border:solid 1px black; background-color:oldlace;" Width="200px">
+        <div style="float:right;">
+            <asp:Button ID="btnCancelChangeStatus" runat="server" Text="X" />
+        </div>
+        <br />
+        <asp:TextBox ID="tbPlantID" runat="server" style="display:none;"></asp:TextBox>
+        Status:&nbsp;<asp:DropDownList ID="ddlStatus" runat="server" 
+            DataSourceID="odsStatus" DataTextField="Name" DataValueField="ID" >
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="rfvChangeStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="-1"></asp:RequiredFieldValidator>
+        <br />
+        <asp:Button ID="btnSaveChangeStatus" runat="server" Text="Change" ValidationGroup="ChangeStatus" 
+            onclick="btnSaveChangeStatus_Click" />
+    </asp:Panel>
+    <AjaxControlToolkit:ModalPopupExtender ID="mpeChangeStatus" BehaviorID="mpeChangeStatus" runat="server" TargetControlID="btnChangeStatusDummy" 
+        PopupControlID="pnlChangeStatus" CancelControlID="btnCancelChangeStatus">
+    </AjaxControlToolkit:ModalPopupExtender>
+    
     <asp:ObjectDataSource ID="odsNoteTypes" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.NoteTypeBLL"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsStatus" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+        TypeName="CAESDO.PTF.BLL.StatusBLL"></asp:ObjectDataSource>    
 </asp:Content>
 

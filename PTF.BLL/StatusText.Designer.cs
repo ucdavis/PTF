@@ -61,29 +61,11 @@ namespace CAESDO.PTF.BLL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancelled.
+        ///   Looks up a localized string similar to Dead.
         /// </summary>
-        public static string STR_Cancelled {
+        public static string STR_Dead {
             get {
-                return ResourceManager.GetString("STR_Cancelled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Complete.
-        /// </summary>
-        public static string STR_Complete {
-            get {
-                return ResourceManager.GetString("STR_Complete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hold-Pending Contract.
-        /// </summary>
-        public static string STR_HoldPendingContract {
-            get {
-                return ResourceManager.GetString("STR_HoldPendingContract", resourceCulture);
+                return ResourceManager.GetString("STR_Dead", resourceCulture);
             }
         }
         
@@ -97,11 +79,11 @@ namespace CAESDO.PTF.BLL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pending.
+        ///   Looks up a localized string similar to Shipped.
         /// </summary>
-        public static string STR_Pending {
+        public static string STR_Shipped {
             get {
-                return ResourceManager.GetString("STR_Pending", resourceCulture);
+                return ResourceManager.GetString("STR_Shipped", resourceCulture);
             }
         }
     }

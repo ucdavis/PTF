@@ -22,10 +22,7 @@ namespace CAESDO.PTF.BLL
             newPlant.SequenceNumber = (newPlant.Experiment.Plants.Count + 1).ToString("000");
 
             // assign the default status
-            Status s = new Status();
-            s.Name = StatusText.STR_Initiated;
-
-            newPlant.Status = StatusBLL.GetByInclusionExample(s, "Name")[0];
+            newPlant.Status = StatusBLL.GetByName(StatusText.STR_Initiated);
 
             using (var ts = new TransactionScope())
             {
@@ -36,6 +33,30 @@ namespace CAESDO.PTF.BLL
 
             NHibernateSessionManager.Instance.EvictObject(newPlant.Experiment);
             NHibernateSessionManager.Instance.EvictObject(newPlant);
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public static void Update(Plant plant)
+        {
+            using (var ts = new TransactionScope())
+            {
+                EnsurePersistent(ref plant);
+
+                ts.CommittTransaction();
+            }
+        }
+
+        public static void ChangeStatus(Plant plant, Status status)
+        {
+            // if it's shipped we need to mark the ship date
+            if (status.Name == StatusText.STR_Shipped)
+            {
+                plant.DateDelivered = DateTime.Now;
+            }
+
+            plant.Status = status;
+
+            PlantBLL.Update(plant);
         }
     }
 }
