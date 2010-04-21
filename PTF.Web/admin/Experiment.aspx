@@ -99,7 +99,7 @@
     <asp:ListView ID="lvInduction" runat="server">
         <LayoutTemplate>
             <table cellpadding="0" class="notes left">
-                <tr><th colspan="2">Induction Notes</th></tr>
+                <tr class="head"><th colspan="2">Induction Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
         </LayoutTemplate>
@@ -116,7 +116,7 @@
     <asp:ListView ID="lvElongationGermination" runat="server">
         <LayoutTemplate>
             <table cellpadding="0" class="notes right">
-                <tr><th colspan="2">Elongation/Germination Notes</th></tr>
+                <tr class="head"><th colspan="2">Elongation/Germination Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
         </LayoutTemplate>
@@ -133,7 +133,7 @@
     <asp:ListView ID="lvRecallusing" runat="server">
         <LayoutTemplate>
             <table cellpadding="0" class="notes left">
-                <tr><th colspan="2">Recallusing Notes</th></tr>
+                <tr class="head"><th colspan="2">Recallusing Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
         </LayoutTemplate>
@@ -150,7 +150,7 @@
     <asp:ListView ID="lvRooting" runat="server">
         <LayoutTemplate>
             <table cellpadding="0" class="notes right">
-                <tr><th colspan="2">Rooting Notes</th></tr>
+                <tr class="head"><th colspan="2">Rooting Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
         </LayoutTemplate>
