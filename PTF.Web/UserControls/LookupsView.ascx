@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="LookupsView.ascx.cs" Inherits="LookupsView" %>
 
   
-    <asp:ListView ID="lvNoteTypes" runat="server" InsertItemPosition="LastItem" DataKeyNames="Identifier" DataSourceID="odsLookups">
+    <asp:ListView ID="lvNoteTypes" runat="server" InsertItemPosition="FirstItem" DataKeyNames="Identifier" DataSourceID="odsLookups">
         <EditItemTemplate>
             <li>
                 <asp:Panel runat="server" ID="pnlEdit" class="itemPanel">

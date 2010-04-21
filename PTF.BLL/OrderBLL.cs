@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.Data;
+using System.ComponentModel;
 
 namespace CAESDO.PTF.BLL
 {
+    [DataObject]
     public class OrderBLL : GenericBLL<Order, int>
     {
-        public void Insert(Order newOrder)
+        [DataObjectMethod(DataObjectMethodType.Insert)]
+        public static void Insert(Order newOrder)
         {         
             using (var ts = new TransactionScope())
             {
@@ -17,6 +20,12 @@ namespace CAESDO.PTF.BLL
 
                 ts.CommittTransaction(); //commit the transaction
             }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Order> GetByUser(Guid currentUser)
+        {
+            return OrderBLL.GetByInclusionExample(new Order() { UserID = currentUser }, "UserID");
         }
     }
 }

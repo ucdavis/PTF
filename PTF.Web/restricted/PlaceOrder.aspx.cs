@@ -52,7 +52,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
                 RechargeNumber = !string.IsNullOrEmpty(tbRecharge.Text) ? tbRecharge.Text : null,
                 Crop = ddlCrop.SelectedValue != STR_DDLUnselected ? CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)) : null,
                 Cultivar = !string.IsNullOrEmpty(tbCultivar.Text) ? tbCultivar.Text : null,
-                NumberOfPlants = Convert.ToInt32(tbNumberofPlants.Text),
+                NumberOfPlants = !string.IsNullOrEmpty(tbNumberofPlants.Text) ? (int?)Convert.ToInt32(tbNumberofPlants.Text) : null,
                 Plasmid = !string.IsNullOrEmpty(tbPlasmid.Text) ? tbPlasmid.Text : null,
                 BacterialSelection = !string.IsNullOrEmpty(tbBacterialSelection.Text) ? tbBacterialSelection.Text : null,
                 AgroBacteriumStrain = !string.IsNullOrEmpty(tbAgrobacteriumStrain.Text) ? tbAgrobacteriumStrain.Text : null,
@@ -70,7 +70,24 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
                 ScorableMarkerGene = !string.IsNullOrEmpty(tbScorableMarkerGene.Text) ? tbScorableMarkerGene.Text : null,
                 ScorableMarkerTerminator = !string.IsNullOrEmpty(tbScorableMarkerTerminator.Text) ? tbScorableMarkerTerminator.Text : null,
                 AdditionalInformation = !string.IsNullOrEmpty(tbAdditionalInfo.Text) ? tbAdditionalInfo.Text : null,
-                OtherUCResearch = Convert.ToBoolean(rblOtherUse.SelectedValue)
+                OtherUCResearch = Convert.ToBoolean(rblOtherUse.SelectedValue),
+                UserID = (Guid)Membership.GetUser().ProviderUserKey
             };
+
+        // If the check box is checked then save the mailing address as the shipping address too
+        if (cbShippingSame.Checked)
+        {
+            newOrder.ShippingAddress1 = !string.IsNullOrEmpty(tbMailing1.Text) ? tbMailing1.Text : null;
+            newOrder.ShippingAddress2 = !string.IsNullOrEmpty(tbMailing2.Text) ? tbMailing2.Text : null;
+            newOrder.ShippingCity = !string.IsNullOrEmpty(tbMailingCity.Text) ? tbMailingCity.Text : null;
+            newOrder.ShippingCountry = ddlShippingCountry.SelectedValue != STR_DDLUnselected ? CountryBLL.GetByID(ddlMailingCountry.SelectedValue) : null;
+            newOrder.ShippingState = ddlMailingState.Style[STR_StyleProperty] != STR_DDLUnselected && ddlMailingState.SelectedValue != STR_DDLUnselected ? StateBLL.GetByID(ddlMailingState.SelectedValue) : null;
+            newOrder.ShippingInternationalState = tbMailingState.Style[STR_StyleProperty] != STR_DDLUnselected && !string.IsNullOrEmpty(tbMailingState.Text) ? tbMailingState.Text : null;
+            newOrder.ShippingZip = tbMailingZip.Text;
+        }
+
+        OrderBLL.Insert(newOrder);
+
+        Response.Redirect("default.aspx");
     }
 }

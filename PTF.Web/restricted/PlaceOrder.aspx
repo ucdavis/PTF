@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../JS/PlaceOrder.js" ></script>
     <script type="text/javascript">
           
-        function test(ddl)
+        function onCountryChange(ddl)
         {      
             var index = ddl.selectedIndex;
             var value = ddl.options[index].value;
@@ -70,6 +70,50 @@
             {
                 stateDropDown.style.display = "none";
                 internationalStateBox.style.display = "inline";    
+            }
+        }
+        function onShippingAddressSame(checkBox)
+        {
+            if (checkBox.checked)
+            {
+                $get("<%= tbShipping1.ClientID %>").disabled = true;
+                $get("<%= tbShipping2.ClientID %>").disabled = true;
+                $get("<%= tbShippingCity.ClientID %>").disabled = true;
+                $get("<%= tbShippingState.ClientID %>").disabled = true;
+                $get("<%= ddlShippingState.ClientID %>").disabled = true;
+                $get("<%= tbShippingZip.ClientID %>").disabled = true;
+                $get("<%= ddlShippingCountry.ClientID %>").disabled = true;
+            }
+            else
+            {
+                $get("<%= tbShipping1.ClientID %>").disabled = false;
+                $get("<%= tbShipping2.ClientID %>").disabled = false;
+                $get("<%= tbShippingCity.ClientID %>").disabled = false;
+                $get("<%= tbShippingZip.ClientID %>").disabled = false;
+                $get("<%= ddlShippingCountry.ClientID %>").disabled = false;
+                
+                var ddl = $get("<%= ddlShippingCountry.ClientID %>");
+                var index = ddl.selectedIndex;
+                var value = ddl.options[index].value;
+                
+                if (value == "USA")
+                {
+                    $get("<%= ddlShippingState.ClientID %>").style.display = "inline";
+                    $get("<%= ddlShippingState.ClientID %>").disabled = false;
+                    $get("<%= tbShippingState.ClientID %>").style.display = "none";
+                }
+                else if (value == "-1")
+                {
+                    $get("<%= ddlShippingState.ClientID %>").style.display = "inline";
+                    $get("<%= ddlShippingState.ClientID %>").disabled = true;
+                    $get("<%= tbShippingState.ClientID %>").style.display = "none";      
+                }
+                else
+                {
+                    $get("<%= ddlShippingState.ClientID %>").style.display = "none";
+                    $get("<%= tbShippingState.ClientID %>").style.display = "inline";
+                    $get("<%= tbShippingState.ClientID %>").disabled = false;      
+                }
             }
         }
     </script>
@@ -117,16 +161,11 @@
                 <asp:TextBox ID="tbMailingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
                 </div>
                 <div class="addressFields">
-                    <%--<asp:UpdatePanel ID="upMailingState" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>--%>
-                            State/Province/Region<br />
-                            <asp:TextBox ID="tbMailingState" runat="server" style="display:none;" Width="160px" MaxLength="50" ></asp:TextBox>  
-                            <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
-                                <asp:ListItem Text="--Select a State--" Value="-1" />
-                            </asp:DropDownList>
-                        <%--</ContentTemplate>
-                    </asp:UpdatePanel>--%>
-
+                    State/Province/Region<br />
+                    <asp:TextBox ID="tbMailingState" runat="server" style="display:none;" Width="160px" MaxLength="50" ></asp:TextBox>  
+                    <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
+                        <asp:ListItem Text="--Select a State--" Value="-1" />
+                    </asp:DropDownList>
                 </div>
                 <div class="addressFields">
                 Zip/Postal Code<br />
@@ -138,22 +177,25 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>--%>
-                        Country: 
-                        <asp:DropDownList ID="ddlMailingCountry" runat="server" 
-                            DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID"  
-                            AppendDataBoundItems="True" onChange="javascript:test(this);"  >
-                            <asp:ListItem Text="--Select a Country--" Value="-1" />
-                        </asp:DropDownList>                    
-                    <%--</ContentTemplate>
-                </asp:UpdatePanel>--%>
-
+                Country: 
+                <asp:DropDownList ID="ddlMailingCountry" runat="server" 
+                    DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID"  
+                    AppendDataBoundItems="True" onChange="javascript:onCountryChange(this);"  >
+                    <asp:ListItem Text="--Select a Country--" Value="-1" />
+                </asp:DropDownList>                    
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Shipping Address:</td>
+            <td>
+                <asp:CheckBox ID="cbShippingSame" Text="Shipping Address is the same as mailing." runat="server" onClick="onShippingAddressSame(this)" />
+
+            </td>
+        </tr>
+        <tr>
+            <td class="style3">
+                &nbsp;</td>
             <td>
                 Address Line 1 <br />
                 <asp:TextBox ID="tbShipping1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>                
@@ -182,17 +224,12 @@
                     <asp:TextBox ID="tbShippingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
                 </div>
                 <div class="addressFields">
-                    State/Province/Region<br />
-                    <%--<asp:UpdatePanel ID="upShippingState" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>--%>
-                            <asp:TextBox ID="tbShippingState" runat="server" style="display:none;" Width="160px" MaxLength="50"></asp:TextBox>
-                            <asp:DropDownList ID="ddlShippingState" runat="server" DataSourceID="odsState" Width="160px" 
-                                DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True" Enabled=false>
-                                <asp:ListItem Text="--Select a State--" Value="-1" />
-                             </asp:DropDownList>
-                        <%--</ContentTemplate>
-                    </asp:UpdatePanel>--%>
-                    
+                State/Province/Region<br />
+                        <asp:TextBox ID="tbShippingState" runat="server" style="display:none;" Width="160px" MaxLength="50"></asp:TextBox>
+                        <asp:DropDownList ID="ddlShippingState" runat="server" DataSourceID="odsState" Width="160px" 
+                            DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True" Enabled=false>
+                            <asp:ListItem Text="--Select a State--" Value="-1" />
+                         </asp:DropDownList>
                 </div>
                 <div class="addressFields">
                     Zip/Postal Code<br />
@@ -204,17 +241,12 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>--%>
-                        Country: 
-                        <asp:DropDownList ID="ddlShippingCountry" runat="server" 
-                            DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" 
-                            onChange="test(this);" AppendDataBoundItems=true >
-                            <asp:ListItem Text="--Select a Country--" Value="-1" />
-                        </asp:DropDownList>
-                    <%--</ContentTemplate>
-                </asp:UpdatePanel>--%>
-
+                Country: 
+                <asp:DropDownList ID="ddlShippingCountry" runat="server" 
+                    DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" 
+                    onChange="onCountryChange(this);" AppendDataBoundItems=true >
+                    <asp:ListItem Text="--Select a Country--" Value="-1" />
+                </asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -310,6 +342,9 @@
                 Bacterial Selection:</td>
             <td>
                 <asp:TextBox ID="tbBacterialSelection" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvBacterialSelection" runat="server" ControlToValidate="tbBacterialSelection"
+                    ErrorMessage="Bacterial Selection is required." Text="*" ValidationGroup="NewOrder">
+                </asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -317,6 +352,8 @@
                 Agrobacterium Strain:</td>
             <td>
                 <asp:TextBox ID="tbAgrobacteriumStrain" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvAgrobacteriumStrain" runat="server" ControlToValidate="tbAgrobacteriumStrain"
+                    ErrorMessage="Agrobacterium Strain is required." Text="*" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -324,6 +361,8 @@
                 Plant Selection:</td>
             <td>
                 <asp:TextBox ID="tbPlantSelection" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvPlantSelection" runat="server" ControlToValidate="tbPlantSelection"
+                    ErrorMessage="Plant Selection is required." Text="*" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
