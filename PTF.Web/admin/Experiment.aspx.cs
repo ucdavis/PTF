@@ -64,6 +64,7 @@ public partial class admin_Experiment : System.Web.UI.Page
             var experiment = ExperimentBLL.GetByID(ExperimentID);
 
             litExperimentCode.Text = experiment.ExperimentCode;
+            litConstructCode.Text = experiment.Construct.ConstructCode;
             litOperator.Text = experiment.Operator.OperatorName;
             litDateStarted.Text = ((DateTime)experiment.DateStarted).ToString("d");
             litSeedLotNum.Text = experiment.SeedLotNumber;

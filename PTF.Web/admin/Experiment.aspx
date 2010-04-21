@@ -34,8 +34,9 @@
             <td class="InfoFieldValue c3 col4">
                 <asp:Literal ID="litDateStarted" runat="server"></asp:Literal>
             </td>
-            <td class="InfoFieldName c3 col5"></td>
-            <td class="InfoFieldValue c3 col6"></td>
+            <td class="InfoFieldName c3 col5">Construct Code:&nbsp;</td>
+            <td class="InfoFieldValue c3 col6">
+                <asp:Literal ID="litConstructCode" runat="server"></asp:Literal></td>
         </tr>
         <tr>
             <td class="InfoFieldName">Operator:&nbsp;</td>
