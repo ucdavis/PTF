@@ -325,6 +325,17 @@ insert into crops (crop, isactive) values ('Tomato', 1)
 insert into crops (crop, isactive) values ('Truncatula', 1)
 insert into crops (crop, isactive) values ('Walnut', 1)
 
+-- == TransGenes == --
+insert into TransGenes (TransGene, isactive) values ('Agronomic Properties', 1)
+insert into TransGenes (TransGene, isactive) values ('Fungus Resistant', 1)
+insert into TransGenes (TransGene, isactive) values ('Herbicide Tolerant', 1)
+insert into TransGenes (TransGene, isactive) values ('Insect Resistant', 1)
+insert into TransGenes (TransGene, isactive) values ('Marker Genes', 1)
+insert into TransGenes (TransGene, isactive) values ('Nematode Resistant', 1)
+insert into TransGenes (TransGene, isactive) values ('Product Quality', 1)
+insert into TransGenes (TransGene, isactive) values ('Virus Resistant', 1)
+insert into TransGenes (TransGene, isactive) values ('Other', 1)
+
 -- == Genotypes == --
 
 declare @Cropid int, @Genotypeid int
