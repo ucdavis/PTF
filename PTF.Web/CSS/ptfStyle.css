@@ -179,14 +179,22 @@ td.InfoFieldValue input[type="text"] {width: 75%;} /* to make space for the save
 
 
 /* --- notes tables --- */
-table.notes {background: url(../Images/notes_btm.png) no-repeat bottom center; width: 431px;}
+table.notes {background: url(../Images/notes_btm.png) no-repeat bottom center; width: 431px; margin-bottom: 30px;}
 table.notes tr {background: url(../Images/notes_mid.png) repeat-y top center;}
+table.notes tbody {background-image: none;}
 table.notes tr.head {background: url(../Images/notes_top.png) no-repeat top center;
   color: #fff; font-size: .9em;
   vertical-align: bottom;
   text-transform: uppercase;         
 }
+table.notes tr.head th {padding: 0 0 10px 20px;}
+table.notes td {padding-left: 20px;}
 span.notes.empty {display: block; margin-bottom: 0.5em;}
+
+table.notes.left {float: left; clear: both;}
+table.notes.right {float: left; margin-left: 50px;}
+table.notes td.date {width: 100px;}
+
 
 
 /* --- popup tables --- */
@@ -194,13 +202,13 @@ span.notes.empty {display: block; margin-bottom: 0.5em;}
 .popup table {width: inherit;}
 .popup table, .popup tbody, .popup tr, .popup td {background: transparent;}
 div.popup {
-    background: transparent url(../Images/popup_top.png) top center no-repeat; 
+    background: transparent url(../Images/popup_bg.png) top center no-repeat; 
     width: 380px; margin-top: 0px; 
-    padding: 58px 75px 20px;
+    padding: 28px 75px 20px;
 }
 .popup .bottom {
-    background: transparent url(../Images/popup_btm.png) bottom center no-repeat; 
-    /* margin-top: 0px; 
+    /* background: transparent url(../Images/popup_btm.png) bottom center no-repeat; 
+    margin-top: 0px; 
     padding: 0px 0px 0px; 
     display: block; */
 }

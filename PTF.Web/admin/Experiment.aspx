@@ -120,7 +120,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Eval("DateNote", "{0:MM/dd/yyyy}") %></td>
+                <td class="date"><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
                 <td><%# Eval("NoteText")%></td>
             </tr>
         </ItemTemplate>
@@ -137,7 +137,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
+                <td class="date"><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
                 <td><%# Eval("NoteText")%></td>
             </tr>
         </ItemTemplate>
@@ -154,7 +154,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
+                <td class="date"><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
                 <td><%# Eval("NoteText")%></td>
             </tr>
         </ItemTemplate>
@@ -171,8 +171,8 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
-                <td><%# Eval("NoteText") %></td>
+                <td class="date"><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
+                <td><%# Eval("NoteText")%></td>
             </tr>
         </ItemTemplate>  
         <EmptyDataTemplate>
@@ -215,7 +215,7 @@
 <%--    <span class="bottom">&nbsp;
     </span>--%>
     </asp:Panel>
-    <br /><br />
+    <br /><br /><div class="clear">&nbsp;</div>
     <asp:ImageButton ID="btnAddPlant" runat="server" Text="Add Plant" 
         onclick="btnAddPlant_Click" ImageUrl="~/Images/btn_addplant.png" />
     
@@ -239,7 +239,7 @@
         <ItemTemplate>
             <tr id='<%# Eval("id") %>'>
                 <td>&nbsp;</td>
-                <td><%# Eval("Pedigree") %></td>
+                <td><%# Eval("Pedigree")%></td>
                 <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
                 <td>
                     <asp:CheckBox ID="cbRecallusingAssay" runat="server" Checked='<%# Eval("ReCallusingAssay") %>' OnClick='ChangeCheckBox(this, "Recallusing")' />
@@ -257,7 +257,7 @@
                 </td>
                 <td>
                     <span id='<%# Eval("id").ToString() + "DateDelivered" %>'>
-                        <%# Eval("DateDelivered", "{0:MM/dd/yyyy}") %>
+                        <%# Eval("DateDelivered", "{0:MM/dd/yyyy}")%>
                     </span>
                 </td>
                 <td>
@@ -275,7 +275,7 @@
 
                 </td>
                 <td>
-                    <span id='<%# Eval("id") + "CommentText" %>' style="display:none;"><%# Eval("Comments") %></span>
+                    <span id='<%# Eval("id") + "CommentText" %>' style="display:none;"><%# Eval("Comments")%></span>
                                                       
                     <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'><img src="../Images/edit.png" alt="Edit" title="Click to Edit" /></a>
                 </td>
