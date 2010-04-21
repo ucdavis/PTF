@@ -74,7 +74,6 @@
                                             <tr>
                                                 <th>Crop</th>
                                                 <th>Increment Size</th>
-                                                <th>Price</th>
                                                 <th></th>
                                             </tr>
                                             <tr runat="server" id="ItemPlaceHolder"></tr>
@@ -85,9 +84,6 @@
                                             <td><%# Eval("Name") %></td>
                                             <td>
                                                 <asp:TextBox ID="tbIncrementSize" runat="server" Text='<%# Eval("IncrementSize") %>'></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                $<asp:TextBox ID="tbPrice" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
                                             </td>
                                             <td>
                                                 <asp:ImageButton ID="ibtnSaveIncrementPrice" runat="server" OnCommand="ibtnSaveIncrementPrice_OnCommand" CommandArgument='<%# Eval("id") %>' ImageUrl="~/Images/save.png" /></td>

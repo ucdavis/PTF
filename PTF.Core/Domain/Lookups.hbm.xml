@@ -18,7 +18,6 @@
 		<property name="Name" column="Crop" />
 		<property name="IsActive" column="IsActive" />
     <property name="IncrementSize" column="IncrementSize" />
-    <property name="Price" column="Price" />
     
 		<bag name="PlantSelections" table="CropXPlantSelection">
 			<key column="CropID" />

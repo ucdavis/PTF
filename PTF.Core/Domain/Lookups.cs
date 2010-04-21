@@ -29,7 +29,6 @@ namespace CAESDO.PTF.Core.Domain
         public virtual IList<PlantSelection> PlantSelections { get; set; }
         public virtual IList<GenoType> GenoTypes { get; set; }
         public virtual int IncrementSize { get; set; }
-        public virtual float Price { get; set; }
     }
     public class AgroStrain : LookupBase<AgroStrain, int> { }
     public class Status : LookupBase<Status, int> {

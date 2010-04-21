@@ -159,26 +159,21 @@ public partial class Lookups : System.Web.UI.Page
         var row = ((ImageButton)sender).Parent;
 
         var increment = (TextBox)row.FindControl("tbIncrementSize");
-        var price = (TextBox)row.FindControl("tbPrice");
 
         int cropID = Convert.ToInt32(e.CommandArgument.ToString());
 
         int incrementSize;
-        float priceValue;
 
         Crop crop = CropBLL.GetByID(cropID);
 
-        if (int.TryParse(increment.Text, out incrementSize) && float.TryParse(price.Text, out priceValue))
+        if (int.TryParse(increment.Text, out incrementSize))
         {
             crop.IncrementSize = incrementSize;
-            crop.Price = priceValue;
-
             CropBLL.Update(crop);
         }
         else
         {
             increment.Text = crop.IncrementSize.ToString();
-            price.Text = crop.Price.ToString();
         }
     }
 }

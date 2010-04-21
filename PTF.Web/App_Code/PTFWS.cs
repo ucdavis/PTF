@@ -88,5 +88,37 @@ public class PTFWS : System.Web.Services.WebService
 
         return values.ToArray();
     }
+    [WebMethod]
+    public CascadingDropDownNameValue[] GetCropIncrements(string knownCategoryValues, string category)
+    {
+        var values = new List<CascadingDropDownNameValue>();
+
+        StringDictionary kv = CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
+
+        int cropID;
+        if (!kv.ContainsKey("Crop") || !Int32.TryParse(kv["Crop"], out cropID))
+        {
+            return null;
+        }
+
+        // get the plant increment size
+        var crop = CropBLL.GetByID(cropID);
+
+        // loop for 10 iterations
+        for (int i = 1; i < 11; i++)
+        {
+            values.Add(new CascadingDropDownNameValue((i * crop.IncrementSize).ToString(), (i * crop.IncrementSize).ToString()));
+        }
+
+        //foreach (PlantSelection ps in CropBLL.GetByID(cropID).PlantSelections)
+        //{
+        //    if (ps.IsActive)
+        //    {
+        //        values.Add(new CascadingDropDownNameValue(ps.Name, ps.ID.ToString()));
+        //    }
+        //}
+
+        return values.ToArray();
+    }
 }
 

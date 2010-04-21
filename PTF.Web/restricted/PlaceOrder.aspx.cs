@@ -39,7 +39,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             Session[STR_PlantInformationControls] = value;
         }
     }
-    private enum ControlNames { ddlCrop = 0, ddlGenotype, ddlPlantSelection, tbNumPlants, ccdCrop, ccdPlantSelection, ccdGenoType, tbwNumPlants }
+    private enum ControlNames { ddlCrop = 0, ddlGenotype, ddlPlantSelection, ddlCropIncrement, ccdCrop, ccdPlantSelection, ccdGenoType, ccdCropIncrement }
 
     protected override void OnInit(EventArgs e)
     {
@@ -144,17 +144,20 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             DropDownList cropDDL = ((DropDownList)phPlantInformation.FindControl(PlantInformationControls[i][(int)ControlNames.ddlCrop]));
             DropDownList genotypeDDL = ((DropDownList)phPlantInformation.FindControl(PlantInformationControls[i][(int)ControlNames.ddlGenotype]));
             DropDownList plantselectionDDL = ((DropDownList)phPlantInformation.FindControl(PlantInformationControls[i][(int)ControlNames.ddlPlantSelection]));
-            TextBox numPlantsTB = ((TextBox)phPlantInformation.FindControl(PlantInformationControls[i][(int)ControlNames.tbNumPlants]));
+            //TextBox numPlantsTB = ((TextBox)phPlantInformation.FindControl(PlantInformationControls[i][(int)ControlNames.tbNumPlants]));
+            DropDownList cropIncrementDDL = ((DropDownList)phPlantInformation.FindControl(PlantInformationControls[i][(int)ControlNames.ddlCropIncrement]));
 
             // test to see if all of the fields were supplied
-            if (cropDDL.SelectedValue != STR_DDLUnselected && genotypeDDL.SelectedValue != STR_DDLUnselected && plantselectionDDL.SelectedValue != STR_DDLUnselected && !string.IsNullOrEmpty(numPlantsTB.Text))
+            //if (cropDDL.SelectedValue != STR_DDLUnselected && genotypeDDL.SelectedValue != STR_DDLUnselected && plantselectionDDL.SelectedValue != STR_DDLUnselected && !string.IsNullOrEmpty(numPlantsTB.Text))
+            if (cropDDL.SelectedValue != STR_DDLUnselected && genotypeDDL.SelectedValue != STR_DDLUnselected && plantselectionDDL.SelectedValue != STR_DDLUnselected && cropIncrementDDL.SelectedValue != STR_DDLUnselected)
             {
                 sOrder = new SubOrder()
                 {
                     Crop = CropBLL.GetByID(Convert.ToInt32(cropDDL.SelectedValue)),
                     GenoType = GenoTypeBLL.GetByID(Convert.ToInt32(genotypeDDL.SelectedValue)),
                     PlantSelection = PlantSelectionBLL.GetByID(Convert.ToInt32(plantselectionDDL.SelectedValue)),
-                    NumberOfPlants = Convert.ToInt32(numPlantsTB.Text),
+                    //NumberOfPlants = Convert.ToInt32(numPlantsTB.Text),
+                    NumberOfPlants = Convert.ToInt32(cropIncrementDDL.SelectedValue),
                     Order = newOrder
                 };
 
@@ -207,11 +210,15 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             DropDownList genotypeDDL = new DropDownList();
             genotypeDDL.ID = controlNames[(int)ControlNames.ddlGenotype];
             phPlantInformation.Controls.Add(genotypeDDL);
-            
-            TextBox tbNumPlants = new TextBox();
-            tbNumPlants.ID = controlNames[(int)ControlNames.tbNumPlants];
-            tbNumPlants.Text = string.Empty;
-            phPlantInformation.Controls.Add(tbNumPlants);
+
+            DropDownList incrementDLL = new DropDownList();
+            incrementDLL.ID = controlNames[(int)ControlNames.ddlCropIncrement];
+            phPlantInformation.Controls.Add(incrementDLL);
+
+            //TextBox tbNumPlants = new TextBox();
+            //tbNumPlants.ID = controlNames[(int)ControlNames.tbNumPlants];
+            //tbNumPlants.Text = string.Empty;
+            //phPlantInformation.Controls.Add(tbNumPlants);
 
             // add in the ajax extenders
             CascadingDropDown ccdCrop = new CascadingDropDown()
@@ -249,14 +256,26 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
                 };
             phPlantInformation.Controls.Add(ccdGenotype);
 
-            TextBoxWatermarkExtender tbwNumPlants = new TextBoxWatermarkExtender() 
+            CascadingDropDown ccdCropIncrement = new CascadingDropDown()
                 {
-                    ID = controlNames[(int)ControlNames.tbwNumPlants],
-                    TargetControlID = controlNames[(int)ControlNames.tbNumPlants],
-                    WatermarkText = "# of Plants",
-                    WatermarkCssClass = "watermark"
+                    ID = controlNames[(int)ControlNames.ccdCropIncrement],
+                    Category = "CropIncrement",
+                    TargetControlID = controlNames[(int)ControlNames.ddlCropIncrement],
+                    ParentControlID = controlNames[(int)ControlNames.ddlCrop],
+                    PromptText = "--Select Number of Plants--",
+                    ServicePath = "~/WS/PTFWS.asmx",
+                    ServiceMethod = "GetCropIncrements"
                 };
-            phPlantInformation.Controls.Add(tbwNumPlants);
+            phPlantInformation.Controls.Add(ccdCropIncrement);
+
+            //TextBoxWatermarkExtender tbwNumPlants = new TextBoxWatermarkExtender() 
+            //    {
+            //        ID = controlNames[(int)ControlNames.tbwNumPlants],
+            //        TargetControlID = controlNames[(int)ControlNames.tbNumPlants],
+            //        WatermarkText = "# of Plants",
+            //        WatermarkCssClass = "watermark"
+            //    };
+            //phPlantInformation.Controls.Add(tbwNumPlants);
         }
     }
 
@@ -264,22 +283,24 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
     {
         string cropDLLId = "ddlCrop" + ((int)PlantInformationControls.Count + 1).ToString();
         string genotypeDDLId = "ddlGenotype" + ((int)PlantInformationControls.Count + 1).ToString();
-        string numPlantsTBId = "tbNumPlants" + ((int)PlantInformationControls.Count + 1).ToString();
+        //string numPlantsTBId = "tbNumPlants" + ((int)PlantInformationControls.Count + 1).ToString();
+        string cropIncrementDDLId = "ddlCropIncrement" + ((int)PlantInformationControls.Count + 1).ToString();
         string plantSelectionDDLId = "ddlPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdCrop = "cddCrop" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdPlantSelection = "ccdPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdGenotype = "ccdGenotype" + ((int)PlantInformationControls.Count + 1).ToString();
-        string tbwNumPlants = "tbwNumPlants" + ((int)PlantInformationControls.Count + 1).ToString();
+        //string tbwNumPlants = "tbwNumPlants" + ((int)PlantInformationControls.Count + 1).ToString();
+        string ccdCropIncrement = "ccdCropIncrement" + ((int)PlantInformationControls.Count + 1).ToString();
 
         List<string> controlNames = new List<string>();
         controlNames.Add(cropDLLId);
         controlNames.Add(genotypeDDLId);
         controlNames.Add(plantSelectionDDLId);
-        controlNames.Add(numPlantsTBId);
+        controlNames.Add(cropIncrementDDLId);
         controlNames.Add(ccdCrop);
         controlNames.Add(ccdPlantSelection);
         controlNames.Add(ccdGenotype);
-        controlNames.Add(tbwNumPlants);
+        controlNames.Add(ccdCropIncrement);
 
         List<List<string>> masterList = PlantInformationControls;
         masterList.Add(controlNames);

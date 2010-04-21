@@ -210,6 +210,7 @@ CREATE TABLE [dbo].[Crops](
 	[CropID] [int] IDENTITY(1,1) NOT NULL,
 	[Crop] [varchar](50) NOT NULL,
 	[IsActive] [bit] NOT NULL,
+	[IncrementSize] [int] NULL
  CONSTRAINT [PK_Crops] PRIMARY KEY CLUSTERED 
 (
 	[CropID] ASC

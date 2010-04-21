@@ -119,7 +119,7 @@
                     }
                 }
             }
-        
+       
             // validate the suborders        
             if (!ValidateSubOrders()) // false means it failed validation
             {
@@ -219,7 +219,7 @@
             var valid = true;           // determines if there is a partially completed plant information section
             var atleastOne = false;     // checks to see that there is atleast one selected
             var counter = 0;
-                                   
+                                  
             // iterate through the list of children to find the controls.
             for (i = 0; i < placeholder2.childNodes.length; i++)
             {
@@ -227,28 +227,28 @@
                 
                 var plantSelectionDropDown = null;
                 var genotypeDropDown = null;
-                var numPlantsTxt = null;
-                
+                var cropIncrementDropDown = null;
+
                 // get the crop drop down and make sure it's the select object and not client state information (for cascading drop down)
-                if (obj.tagName == "SELECT" && obj.id.match("ddlCrop") != null)
-                {
+                if (obj.tagName == "SELECT" && obj.id.match("ddlCrop") != null && obj.id.match("ddlCropIncrement") == null) {
                     counter++; // increment the counter
-                    
+
                     plantSelectionDropDown = obj.nextSibling;
                     genotypeDropDown = plantSelectionDropDown.nextSibling;
-                    numPlantsTxt = genotypeDropDown.nextSibling;
-                                    
+                    //numPlantsTxt = genotypeDropDown.nextSibling;
+                    cropIncrementDropDown = genotypeDropDown.nextSibling;
+
                     // check the case that all information is populated
-                    if (obj.selectedIndex > 0 && plantSelectionDropDown.selectedIndex > 0 && genotypeDropDown.selectedIndex > 0 && !isNaN(parseInt(numPlantsTxt.value)))
+                    if (obj.selectedIndex > 0 && plantSelectionDropDown.selectedIndex > 0 && genotypeDropDown.selectedIndex > 0 && cropIncrementDropDown.selectedIndex > 0) //&& !isNaN(parseInt(numPlantsTxt.value)))
                     {
                         atleastOne = true;
                     }
-                    else if (obj.selectedIndex == 0 && numPlantsTxt.value == "# of Plants") // nothing was selected
+                    else if (obj.selectedIndex == 0) //&& numPlantsTxt.value == "# of Plants") // nothing was selected
                     {
                         // do nothing
                     }
                     else    // partially completed information
-                    {                      
+                    {
                         valid = false;
                     }
                 }
@@ -454,6 +454,8 @@
             <td colspan="2">  
                   
                <i>* If you select the "Other" option for genotype or plant selection someone from the PTF will be calling you to discuss your order.</i>
+               <br />
+               <i>** If you wish to request more than one crop/plant selection/genotype combination use the "plus" button for more rows.  Place one combination in each row.</i>
                 <asp:UpdatePanel ID="upPlantInformation" runat="server">
                     <ContentTemplate>
                         <asp:PlaceHolder ID="phPlantInformation" runat="server">
