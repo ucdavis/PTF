@@ -64,13 +64,13 @@
                         </asp:UpdatePanel>   
                     </ContentTemplate>
                 </AjaxControlToolkit:TabPanel>
-                <AjaxControlToolkit:TabPanel ID="tcIncrementPrice" runat="server" HeaderText="Increment Size / Price">
+                <AjaxControlToolkit:TabPanel ID="tcIncrementPrice" runat="server" HeaderText="Increment Size">
                     <ContentTemplate>
                         <asp:UpdatePanel ID="upCropIncrement" runat="server">
                             <ContentTemplate>
                                 <asp:ListView ID="lvCropIncrement" runat="server" DataSourceID="odsCrops">
                                     <LayoutTemplate>
-                                        <table>
+                                        <table class="noStyle">
                                             <tr>
                                                 <th>Crop</th>
                                                 <th>Increment Size</th>
