@@ -471,87 +471,111 @@
         <br />
         <table class="prices">
             <tr class="labels">
-                <td class="first">&nbsp;</td>
-                <td>Cultivar</td>
+                <td class="first">Crop</td>
+                <td>Genotype</td>
                 <td>Selection System</td>
-                <td>Cost *</td>
+                <td>Cost @ $50/hr *</td>
             </tr>
             <tr>
                 <td class="labels">Alfalfa - <em>Medicago sativa</em></td>
                 <td>Regen SY, Regen S</td>
-                <td>Kanamycin</td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td>Kanamycin<br />Glufosinate</td>
+                <td>10 hrs = $500<br />10 hrs = $500</td>
+            </tr>
+            <tr>
+                <td class="labels"><em>Medicago truncatula</em></td>
+                <td>A17</td>
+                <td>Glufosinate</td>
+                <td>40 hrs = $2000</td>
             </tr>
             <tr>
                 <td class="labels">Canola - <em>Brassica napus</em></td>
                 <td>Westar</td>
-                <td>Kanamycin</td>
-                <td>10 hrs @ $50/hr = $500</td>
-            </tr>
-            <tr>
-                <td class="labels">Citrus - <em>Poncirus trifoliata (L.)<br />Raf. x C. sinensis</em></td>
-                <td>Carizzo</td>
-                <td>Kanamycin</td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td>Kanamycin<br />Hygromycin</td>
+                <td>10 hrs = $500<br />10 hrs = $500</td>
             </tr>
             <tr>
                 <td class="labels">Carrot - <em>Daucus carota</em></td>
                 <td>Imperator</td>
                 <td>Kanamycin</td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td>10 hrs = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Citrus - <em>Poncirus trifoliata (L.)<br />Raf. x C. sinensis</em></td>
+                <td>Carizzo</td>
+                <td>Kanamycin</td>
+                <td>10 hrs = $500</td>
             </tr>
             <tr>
                 <td class="labels">Grape - <em>Vitis vinifera</em></td>
                 <td>Thompson Seedless</td>
-                <td>Kanamycin<br />Hygromycin<br /><br /></td>
-                <td>20 hrs @ $50/hr = $1,000</td>
+                <td>Kanamycin<br />Hygromycin</td>
+                <td>40 hrs = $2,000<br />30 hrs = $1,500</td>
             </tr>
             <tr>
                 <td class="labels">Lettuce - <em>Lactuca sativa</em></td>
                 <td>Most cultivars</td>
                 <td>Kanamycin</td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td>10 hrs = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Money Flower - <em>Mimulus</em></td>
+                <td>guttatus, nasutus</td>
+                <td>Kanamycin</td>
+                <td>10 hrs = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Petunia - <em>Petunia x hybrida</em></td>
+                <td>Michell diploid</td>
+                <td>Kanamycin</td>
+                <td>10 hrs = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Potato - <em>Solanum tuberosum</em></td>
+                <td>Kennebec</td>
+                <td>Kanamycin<br />Glufosinate</td>
+                <td>10 hrs = $500<br />10 hrs = $500</td>
             </tr>
             <tr>
                 <td class="labels">Rice - <em>Oryza sativa</em></td>
                 <td>Kitaake, Nipponbare</td>
                 <td>Hygromycin</td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td>10 hrs = $500</td>
             </tr>
             <tr>
                 <td class="labels">Tobacco - <em>Nicotiana benthamiana</em></td>
-                <td>&nbsp;</td>
-                <td>Kanamycin<br />Hygromycin<br />Glufosinate<br /><br /></td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td>benthamiana</td>
+                <td>Kanamycin<br />Hygromycin<br />Glufosinate</td>
+                <td>10 hrs = $500<br />10 hrs = $500<br />10 hrs = $500</td>
             </tr>
             <tr>
                 <td class="labels">Tobacco - <em>Nicotiana tabacum</em></td>
-                <td>Sansum NN, SR-1, Xanthi</td>
-                <td>Kanamycin<br />Hygromycin<br />Glufosinate<br /><br /></td>
-                <td>5 hrs @ $50/hr = $250</td>
+                <td>mutabilis, rastroensis, sansum NN, SR-1, TI1347, xanthi**</td>
+                <td>Kanamycin<br />Hygromycin<br />Glufosinate</td>
+                <td>5 hrs = $250<br />5 hrs = $250<br />5 hrs = $250</td>
             </tr>
             <tr>
-                <td class="labels">Tomato - <em>Lycopersicom esculentum</em></td>
-                <td>Moneymaker, T-5, UC-82B<br />VF36, MicroTom, etc**</td>
-                <td>Kanamycin<br />Hygromycin<br />Glufosinate<br /><br /></td>
-                <td>10 hrs @ $50/hr = $500</td>
+                <td class="labels"><em>Lycopersicom esculentum</em></td>
+                <td>Money maker, T-5, UC-82B<br />VF 36, MicroTom, etc**</td>
+                <td>Kanamycin<br />Hygromycin<br />Glufosinate</td>
+                <td>10 hrs = $500<br />10 hrs = $500<br />10 hrs = $500</td>
             </tr>
             <tr>
-                <td class="labels">Walnut - <em>Juglans regia</em></td>
+                <td class="labels"><em>Juglans regia</em></td>
                 <td>CR-1</td>
                 <td>Kanamycin</td>
-                <td>30 hrs @ $50/hr = $1,500</td>
+                <td>40 hrs = $2,000</td>
             </tr>
             <tr>
-                <td class="labels">Walnut - <em>Juglans hindsii x J. regia</em></td>
+                <td class="labels"><em>Juglans hindsii x J. regia</em></td>
                 <td>PX-1</td>
                 <td>Kanamycin</td>
-                <td>30 hrs @ $50/hr = $1,500</td>
+                <td>40 hrs = $2,000</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td colspan="3" class="fineprint">* Cost = Number of hours required to construct 10 independent transgenic events @ $50/hr.
-                <br />** Many other cultivars can be transformed, contact the Facility for details.<br /></td>
+                <td colspan="3" class="fineprint">* Cost = Number of hours required to construct ten independent transgenic events @ $50/hr, except for truncatula. For truncatula the cost = the number of hrs required to produce five independent trangenic events @ $50/hr. Clients outisde of the University of California will be charged an additional 27.7% non-University differential (NUD)
+                <br />** Most genotypes can be transformed, contact the Facility for more information.<br /></td>
             </tr>
         </table>
         <%--<asp:ImageButton ID="btnCancelPrices2" ToolTip="Close" ImageUrl="~/Images/btn_cancel.png" runat="server" Text="X" />--%>
