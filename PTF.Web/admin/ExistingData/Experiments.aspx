@@ -134,5 +134,9 @@
         TypeName="CAESDO.PTF.BLL.ExistingBLL" SortParameterName="sortExp">
     </asp:ObjectDataSource>
 
+    <script type="text/javascript">
+        FreezeGridViewHeader('Experiments','WrapperDiv');
+    </script>
+
 </asp:Content>
 

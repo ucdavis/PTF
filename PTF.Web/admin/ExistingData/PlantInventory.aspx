@@ -63,5 +63,9 @@
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetAllPlants" 
         TypeName="CAESDO.PTF.BLL.ExistingBLL" SortParameterName="sortExp">
     </asp:ObjectDataSource>
+    
+    <script type="text/javascript">
+        FreezeGridViewHeader('Plants','WrapperDiv');
+    </script>
 </asp:Content>
 
