@@ -9,6 +9,7 @@ using CAESDO.PTF.BLL;
 using CAESDO.PTF.Core.Domain;
 using System.Web.Script.Services;
 using System.Web.Security;
+using System.Collections.Generic;
 
 /// <summary>
 /// Summary description for ScriptServices
@@ -130,7 +131,7 @@ public class ScriptServices : System.Web.Services.WebService
 
     #region Admin/Orders.aspx
     [WebMethod]
-    public static void SaveContractNumber(int orderID, string contractNumber)
+    public void SaveContractNumber(int orderID, string contractNumber)
     {
         var order = OrderBLL.GetByID(orderID);
 
@@ -141,6 +142,21 @@ public class ScriptServices : System.Web.Services.WebService
     #endregion
 
     #region Admin/Constructs.aspx
+    #endregion
+
+    #region Admin/Labels.aspx
+    //[WebMethod]
+    //public void ExportLabels(List<int> plantIDs)
+    //{
+    //    List<Plant> plants = new List<Plant>();
+
+    //    for (int i = 0; i < plantIDs.Count; i++)
+    //    {
+    //        plants.Add(PlantBLL.GetByID(plantIDs[i]));
+    //    }
+
+    //    HttpContext.Current.Session["PrintLabels"] = plants;
+    //}
     #endregion
 
     #region Admin/Experiments.aspx

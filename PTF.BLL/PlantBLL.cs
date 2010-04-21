@@ -13,6 +13,28 @@ namespace CAESDO.PTF.BLL
     public class PlantBLL : GenericBLL<Plant, int>
     {
         #region Get Methods
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Plant> GetAllSorted(string propertyName)
+        {
+            // default sorting
+            if (string.IsNullOrEmpty(propertyName))
+            {
+                return PlantBLL.GetAll("id", false);
+            }
+            // has a space, so it has a DESC in it for descending sorting
+            else if (propertyName.Contains(' '))
+            {
+                // get the property name
+                string prop = propertyName.Substring(0, propertyName.IndexOf(' '));
+
+                return PlantBLL.GetAll(prop, false);
+            }
+            // just the property name it is for ascending
+            else
+            {
+                return PlantBLL.GetAll(propertyName, true);
+            }
+        }
         #endregion
 
         #region Modify Methods
@@ -95,8 +117,5 @@ namespace CAESDO.PTF.BLL
             PlantBLL.Update(plant);
         }
         #endregion
-
-
-
     }
 }
