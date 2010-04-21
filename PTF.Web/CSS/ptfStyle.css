@@ -16,7 +16,7 @@ body
 #logo {text-align: left; width: 430px;}
 #loginx {float: right; width: 300px;}
 #login {width: 1040px; margin: 2px auto 0px;}
-#content {width: 1040px; margin: 6em auto; padding-bottom: 3em; text-align: left;}
+#content {width: 1040px; margin: 4em auto; padding-bottom: 3em; text-align: left;}
 
 .clear {clear: both;}
 #portal-footer {margin-top: 0px; background: transparent; border: 0px;}
@@ -27,7 +27,7 @@ body
 .clear {clear: both;}
 
 ul.menu {padding: 0px; margin: 0px;}
-ul.menu li {padding: 5px 0px;}
+ul.menu li {padding: 8px 0px;}
 div.lookups {float: right; width: 500px; margin-top: 20px;}
 
 #footer {margin: 100px auto; padding-bottom: 2em; font-size: 0.9em; background: url(../Images/roots.png) no-repeat 0px 38px; width: 519px; height: 100px;}
@@ -189,7 +189,8 @@ td.InfoFieldValue input[type="text"] {width: 75%;} /* to make space for the save
 .CollapsiblePanelHeader {
 	width: 1040px; 
 	font-weight:bold;
-	font-size: 1.2em; color: #4f2056
+	font-size: 1.2em; color: #4f2056;
+	height: 13px;
 }
 .CollapsiblePanelBody {
 	width: 1040px;
