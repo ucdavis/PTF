@@ -21,21 +21,10 @@
         }
     </style>
     
+    <script type="text/javascript" src="../JS/AddressScripts.js"></script>
+    
     <script type="text/javascript">
-          
-        var str_address1 = "address1";
-        var str_city = "city";
-        var str_zip = "zip";
-        var str_country = "country";
-        var str_state = "state";
-          
-        var str_inline = "inline";
-        var str_none = "none";
-        var str_usa = "USA";
-          
-        var str_empty = "";
-        var str_unselected = "-1";
-          
+                  
         function onCountryChange(ddl)
         {      
             var index = ddl.selectedIndex;
@@ -58,26 +47,7 @@
                 // do nothing
             }
         }
-       function ChangeCountry (countryCode, stateDropDown, internationalStateBox)
-        {
-            if (countryCode == str_usa)
-            {
-                stateDropDown.style.display = str_inline;
-                stateDropDown.disabled = false;
-                internationalStateBox.style.display = str_none;
-            }
-            else if (countryCode == str_unselected)
-            {
-                stateDropDown.style.display = str_inline;
-                stateDropDown.disabled = true;
-                internationalStateBox.style.display = str_none;        
-            }
-            else
-            {
-                stateDropDown.style.display = str_none;
-                internationalStateBox.style.display = str_inline;    
-            }
-        }
+
         function onShippingAddressSame(checkBox)
         {
             var mailing1 = $get("<%= tbMailing1.ClientID %>");
@@ -96,83 +66,7 @@
             var shippingZip = $get("<%= tbShippingZip.ClientID %>");
             var shippingCountry = $get("<%= ddlShippingCountry.ClientID %>");
             
-            
-            // addresses are the same
-            if (checkBox.checked)
-            {
-                // move the addresses
-                shipping1.value = mailing1.value;
-                shipping2.value = mailing2.value;
-                shippingCity.value = mailingCity.value;
-                shippingZip.value = mailingZip.value;
-                shippingCountry.selectedIndex = mailingCountry.selectedIndex;
-                
-                // decide on the state control to show
-                if (mailingCountry.options[mailingCountry.selectedIndex].value == str_usa)
-                {
-                    shippingStateDDL.selectedIndex = mailingStateDDL.selectedIndex;
-                    
-                    shippingStateDDL.style.display = str_inline;
-                    shippingStateTB.style.display = str_none;
-                    
-                }
-                else
-                {
-                    shippingStateTB.value = mailingStateTB.value;
-                    
-                    shippingStateDDL.style.display = str_none;
-                    shippingStateTB.style.display = str_inline;
-                }
-            
-                // disable the boxes
-                shipping1.disabled = true;
-                shipping2.disabled = true;
-                shippingCity.disabled = true;
-                shippingStateTB.disabled = true;
-                shippingStateDDL.disabled = true;
-                shippingZip.disabled = true;
-                shippingCountry.disabled = true;
-            }
-            // user has decided addresses are not the same
-            else
-            {
-                shipping1.disabled = false;
-                shipping2.disabled = false;
-                shippingCity.disabled = false;
-                shippingZip.disabled = false;
-                shippingCountry.disabled = false;
-                
-                shippingStateDDL.disabled = false;
-                shippingStateTB.disabled = false;
-                
-                var value = shippingCountry.options[shippingCountry.selectedIndex].value;
-                
-                if (value == str_usa)
-                {
-                    shippingStateDDL.style.display = str_inline;
-                    shippingStateTB.style.display = str_none;
-                }
-                else if (value == str_unselected)
-                {
-                    shippingStateDDL.style.display = str_inline;
-                    shippingStateTB.style.display = str_none;
-                }
-                else
-                {
-                    shippingStateDDL.style.display = str_none;
-                    shippingStateTB.style.display = str_inline;
-                }
-            
-                // clear the values
-                shipping1.value = str_empty;
-                shipping2.value = str_empty;
-                shippingCity.value = str_empty;
-                shippingZip.value = str_empty;
-                shippingCountry.selectedIndex = 0;
-                shippingStateDDL.selectedIndex = 0;
-                shippingStateTB.value = str_empty;
-                shippingStateDDL.disabled = true;
-            }
+            ShippingAddressSame(checkBox, mailing1, mailing2, mailingCity, mailingStateDDL, mailingStateTB, mailingZip, mailingCountry, shipping1, shipping2, shippingCity, shippingStateTB, shippingStateDDL, shippingZip, shippingCountry);
         }
         
         function ValidateStates()
@@ -184,7 +78,7 @@
             // validate the mailing state to see if either the ddl or the tb was filled properly
             if (!ValidateMailing())
             {
-                warningString += "<li>Mailing City is required.</li>";
+                warningString += "<li>Mailing State is required.</li>";
                 $get("MailingStateWarning").style.display = str_inline;
             }
             else
@@ -246,27 +140,7 @@
             var mailingStateTB = $get("<%= tbMailingState.ClientID %>");
             var mailingCountryDDL = $get("<%= ddlMailingCountry.ClientID %>");        
             
-            // usa is selected
-            if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == str_usa)
-            {
-                // drop down state needs to have something selected
-                if (mailingStateDDL.options[mailingStateDDL.selectedIndex].value != str_unselected)
-                {
-                    // we are good on the mailing address
-                    return true;
-                }
-            }
-            else // inernational is selected
-            {               
-                // international state is necessary
-                if (mailingStateTB.value != str_empty)
-                {
-                    return true;
-                }
-            }
-            
-            // failed validation
-            return false;
+            return ValidateCountryState(mailingCountryDDL, mailingStateDDL, mailingStateTB);
         }
         
         function ValidateShipping()
@@ -346,9 +220,6 @@
             <td>
                 Address Line 1<br />
                 <asp:TextBox ID="tbMailing1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
-<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing1_TextBoxWatermarkExtender" 
-                    runat="server" Enabled="True" TargetControlID="tbMailing1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
                 <asp:RequiredFieldValidator ID="rfvMailing1" runat="server" Text="*" ControlToValidate="tbMailing1" ValidationGroup="NewOrder" 
                     ErrorMessage="Address Line 1 is required."></asp:RequiredFieldValidator>
             </td>
@@ -359,9 +230,6 @@
             <td>
                 Address Line 2<br />
                 <asp:TextBox ID="tbMailing2" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
-<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing2_TextBoxWatermarkExtender" 
-                    runat="server" Enabled="True" TargetControlID="tbMailing2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc." WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
             </td>
         </tr>
         <tr>
@@ -380,7 +248,7 @@
                     <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
                         <asp:ListItem Text="--Select a State--" Value="-1" />
                     </asp:DropDownList>
-                    <span id="MailingStateWarning" style="color:Red; display:none;">*</div>
+                    <span id="MailingStateWarning" style="color:Red; display:none;">*</span>
                 </div>
                 <div class="addressFields">
                 Zip/Postal Code<br />
@@ -418,9 +286,6 @@
             <td>
                 Address Line 1 <br />
                 <asp:TextBox ID="tbShipping1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>                
-<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping1_TextBoxWatermarkExtender" 
-                    runat="server" Enabled="True" TargetControlID="tbShipping1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
                 <span id="ShippingAddressWarning" style="color:Red; display:none;">*</span>
             </td>
         </tr>
@@ -430,9 +295,6 @@
             <td>
                 Address Line 2 <br />
                 <asp:TextBox ID="tbShipping2" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
-<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping2_TextBoxWatermarkExtender" 
-                    runat="server" Enabled="True" TargetControlID="tbShipping2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc." WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
             </td>
         </tr>
         <tr>

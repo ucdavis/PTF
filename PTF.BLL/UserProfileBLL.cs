@@ -24,6 +24,16 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        public static void Update(UserProfile profile)
+        {
+            using (var ts = new TransactionScope())
+            {
+                EnsurePersistent(ref profile);
+
+                ts.CommittTransaction();
+            }
+        }
+
         public static UserProfile GetByUserID(Guid userID)
         {
             var up = new UserProfile();

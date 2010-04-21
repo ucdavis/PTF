@@ -9,6 +9,8 @@
 
     <br />
     <a href="PlaceOrder.aspx">Place New Order</a>
+    <br />
+    <a href="Account.aspx">Profile</a>
     <br /><br />
 
     <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" DataKeyNames="ID" onselectedindexchanged="lvOrders_SelectedIndexChanged">

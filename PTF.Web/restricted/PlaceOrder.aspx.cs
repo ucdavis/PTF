@@ -48,6 +48,9 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             Session[STR_PlantInformationControls] = null;
             // add the first set of controls
             AddControls();
+
+            // populate profile information as necessary
+            PopulateProfile();
         }
         
         // need to recreate the controls every time
@@ -210,6 +213,42 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         List<List<string>> masterList = PlantInformationControls;
         masterList.Add(controlNames);
         PlantInformationControls = masterList;
+    }
+
+    protected void PopulateProfile()
+    {
+        var profile = UserProfileBLL.GetByUserID((Guid)Membership.GetUser().ProviderUserKey);
+
+        tbMailing1.Text = profile.Address1 ?? string.Empty;
+        tbMailing2.Text = profile.Address2 ?? string.Empty;
+        tbMailingCity.Text = profile.City ?? string.Empty;
+        tbMailingZip.Text = profile.Zip ?? string.Empty;
+        tbMailingState.Text = profile.InternationalState ?? string.Empty;
+
+        if (profile.State != null)
+        {
+            if (profile.State.IsActive)
+            {
+                ddlMailingState.SelectedValue = profile.State.ID;
+            }
+        }
+        if (profile.Country != null)
+        {
+            if (profile.Country.IsActive)
+            {
+                ddlMailingCountry.SelectedValue = profile.Country.ID;
+            }
+
+            if (profile.Country.ID != "USA")
+            {
+                tbMailingState.Style["display"] = "inline";
+                ddlMailingState.Style["display"] = "none";
+            }
+            else
+            {
+                ddlMailingState.Enabled = true;
+            }
+        }
     }
 
     protected void lbAddPlantInformationFields_Click(object sender, EventArgs e)
