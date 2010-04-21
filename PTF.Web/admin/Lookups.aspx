@@ -46,8 +46,6 @@
                                 
                             </ContentTemplate>
                         </asp:UpdatePanel>
-
-                        
                     </ContentTemplate>
                 </AjaxControlToolkit:TabPanel>
                 <AjaxControlToolkit:TabPanel ID="tcGenoTypeAssociation" runat="server" HeaderText="Genotype Association">
@@ -64,6 +62,41 @@
                                 <asp:LinkButton ID="lbSaveCropGenoTypes" runat="server" OnClick="lbSaveCropGenoTypes_OnClick" Visible="false"><img src="../Images/save.png" alt="Save" /></asp:LinkButton>
                             </ContentTemplate>
                         </asp:UpdatePanel>   
+                    </ContentTemplate>
+                </AjaxControlToolkit:TabPanel>
+                <AjaxControlToolkit:TabPanel ID="tcIncrementPrice" runat="server" HeaderText="Increment Size / Price">
+                    <ContentTemplate>
+                        <asp:UpdatePanel ID="upCropIncrement" runat="server">
+                            <ContentTemplate>
+                                <asp:ListView ID="lvCropIncrement" runat="server" DataSourceID="odsCrops">
+                                    <LayoutTemplate>
+                                        <table>
+                                            <tr>
+                                                <th>Crop</th>
+                                                <th>Increment Size</th>
+                                                <th>Price</th>
+                                                <th></th>
+                                            </tr>
+                                            <tr runat="server" id="ItemPlaceHolder"></tr>
+                                        </table>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td><%# Eval("Name") %></td>
+                                            <td>
+                                                <asp:TextBox ID="tbIncrementSize" runat="server" Text='<%# Eval("IncrementSize") %>'></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                $<asp:TextBox ID="tbPrice" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:ImageButton ID="ibtnSaveIncrementPrice" runat="server" OnCommand="ibtnSaveIncrementPrice_OnCommand" CommandArgument='<%# Eval("id") %>' ImageUrl="~/Images/save.png" /></td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:ListView>                    
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
                     </ContentTemplate>
                 </AjaxControlToolkit:TabPanel>
                 </AjaxControlToolkit:TabContainer>

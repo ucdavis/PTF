@@ -24,73 +24,12 @@ namespace CAESDO.PTF.Core.Domain
         }
     }
 
-    //public class NoteType : DomainObject<NoteType, int>
-    //{
-    //    public NoteType() { }
-
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
-    //public class Crop : DomainObject<Crop, int>
-    //{
-    //    public Crop() { }
-        
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
-    //public class AgroStrain : DomainObject<AgroStrain, int>
-    //{
-    //    public AgroStrain() { }
-
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
-    //public class Status : DomainObject<Status, int>
-    //{
-    //    public Status() { }
-
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
-    //public class SelectableMarker : DomainObject<SelectableMarker, int>
-    //{
-    //    public SelectableMarker() { }
-        
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
-    //public class GenoType : DomainObject<GenoType, int>
-    //{
-    //    public GenoType() { }
-
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
-    //public class TransGene : DomainObject<TransGene, int>
-    //{
-    //    public TransGene() { }
-
-    //    [NotNullValidator]
-    //    [StringLengthValidator(50)]
-    //    public virtual string Name { get; set; }
-    //}
-
     public class NoteType : LookupBase<NoteType, int> { }
     public class Crop : LookupBase<Crop, int> {
         public virtual IList<PlantSelection> PlantSelections { get; set; }
         public virtual IList<GenoType> GenoTypes { get; set; }
+        public virtual int IncrementSize { get; set; }
+        public virtual float Price { get; set; }
     }
     public class AgroStrain : LookupBase<AgroStrain, int> { }
     public class Status : LookupBase<Status, int> {
