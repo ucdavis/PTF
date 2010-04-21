@@ -73,25 +73,25 @@
             </tr>
             <tr id="row" class="item hidden">
                 <td class="first"></td>
-                <td colspan="8">
+                <td colspan="9">
                     <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
                         <LayoutTemplate>
-                            <table>
-                                <tr>
-                                    <th class="first"></th>
-                                    <th># Plants</th>
-                                    <th>Crop</th>
-                                    <th>Plant Selection</th>
-                                    <th>Genotype</th>
-                                    <th>Constructs</th>
+                            <table cellpadding="0" cellspacing="0">
+                                <tr class="head">
+                                    <%--<th class="first col1"></th>--%>
+                                    <th class="col2"># Plants</th>
+                                    <th class="col3">Crop</th>
+                                    <th class="col4">Plant Selection</th>
+                                    <th class="col5">Genotype</th>
+                                    <th class="col6">Constructs</th>
                                 </tr>
                                 <tr runat="server" id="itemplaceholder"></tr>
                             </table>
                         </LayoutTemplate>
                         <ItemTemplate>
                             <tr id="row2" runat="server">
-                                <td class="first">
-                                </td>
+                                <%--<td class="first">
+                                </td>--%>
                                 <td ><%# Eval("NumberOfPlants") %></td>
                                 <td ><%# Eval("Crop.Name") %></td>
                                 <td ><%# Eval("PlantSelection.Name") %></td>

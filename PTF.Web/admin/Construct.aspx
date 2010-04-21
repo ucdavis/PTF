@@ -108,7 +108,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>   
 
-    <asp:Button ID="btnNewExperiment" runat="server" Text="Create Experiment" /><br />
+    <asp:Button ID="btnNewExperiment" runat="server" Text="Create Experiment" CssClass="btnCreateexp" /><br />
     <asp:ListView ID="lvExperiments" runat="server">
         <LayoutTemplate>
             <div class="grid">

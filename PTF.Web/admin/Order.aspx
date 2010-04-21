@@ -149,8 +149,8 @@ function SavePropertyOnFail(result, context)
                 <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <div id="ContractExecuted"><asp:Literal ID="litContractExecuted" runat="server"></asp:Literal></div>
-                    <asp:TextBox ID="tbContractNumber" runat="server" Visible="false"></asp:TextBox>
-                    <asp:LinkButton ID="lbContractNumber" runat="server" OnClientClick="SaveContractNumber(); return false;" Visible="false">[Save]</asp:LinkButton>
+                    <asp:TextBox ID="tbContractNumber" runat="server" Visible="false"></asp:TextBox>&nbsp;
+                    <asp:LinkButton ID="lbContractNumber" runat="server" OnClientClick="SaveContractNumber(); return false;" Visible="false"><img src="../Images/save.png" width="15px" alt="save" /></asp:LinkButton>
                 </td>            
             </tr>
             <tr>
@@ -247,14 +247,14 @@ function SavePropertyOnFail(result, context)
                 <td class="InfoFieldValue">
                     <%--<asp:Literal ID="litWorkingBox" runat="server"></asp:Literal>--%>
                     <asp:TextBox ID="tbWorkingBox" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("WorkingBox", "<%= tbWorkingBox.ClientID %>");'>[Save]</a>
+                    <a onclick='SaveProperty("WorkingBox", "<%= tbWorkingBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <div id="WorkingBox"></div>
                 </td>
                 <td class="InfoFieldName">Archived Box:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <%--<asp:Literal ID="litArchivedBox" runat="server"></asp:Literal>--%>
                     <asp:TextBox ID="tbArchivedBox" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("ArchivedBox", "<%= tbArchivedBox.ClientID %>");'>[Save]</a>
+                    <a onclick='SaveProperty("ArchivedBox", "<%= tbArchivedBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <div id="ArchivedBox"></div>
                 </td>            
             </tr>                                                                        
@@ -263,14 +263,14 @@ function SavePropertyOnFail(result, context)
                 <td class="InfoFieldValue">
                     <%--<asp:Literal ID="litLocation" runat="server"></asp:Literal>--%>
                     <asp:TextBox ID="tbLocation" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("Location", "<%= tbLocation.ClientID %>");'>[Save]</a>
+                    <a onclick='SaveProperty("Location", "<%= tbLocation.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <div id="Location"></div>
                 </td>
                 <td class="InfoFieldName">Position:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <%--<asp:Literal ID="litPosition" runat="server"></asp:Literal>--%>
                     <asp:TextBox ID="tbPosition" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("Position", "<%= tbPosition.ClientID %>");'>[Save]</a>
+                    <a onclick='SaveProperty("Position", "<%= tbPosition.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <div id="Position"></div>
                 </td>            
             </tr>     
@@ -281,7 +281,7 @@ function SavePropertyOnFail(result, context)
                     <%--<asp:Literal ID="litComments" runat="server"></asp:Literal>--%>
                     <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
                         Width="338px"></asp:TextBox>
-                    <a onclick='SaveProperty("Comment", "<%= tbComments.ClientID %>");'>[Save]</a>
+                    <a onclick='SaveProperty("Comment", "<%= tbComments.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <div id="Comment"></div>
                 </td>
             </tr>       
@@ -302,7 +302,7 @@ function SavePropertyOnFail(result, context)
  
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>    
-    <asp:Button ID="btnNewConstruct" runat="server" Text="Create Construct" />
+    <asp:Button ID="btnNewConstruct" runat="server" Text="" />
     <asp:ListView ID="lvSuborders" runat="server">
         <LayoutTemplate>
             <div class="grid">

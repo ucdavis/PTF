@@ -41,13 +41,13 @@ body
 #login a:hover, .BackButton a:hover {color: white; border-bottom: 1px;}
 
 .BackButton {
-  float: left; margin-top: -82px;
+    float : left; margin-top: -82px;
     line-height: 3em; 
     text-transform: uppercase; 
     font-size: .7em; 
     letter-spacing: 2px; 
 }
-.BackButton img {position: relative; top: 4px;}
+.BackButton img {/*position: relative; top: 4px;*/}
 
 
 /* -------------------------------------------- */
@@ -101,9 +101,12 @@ cite {
 /* -------------------------------------------- */
 
 .grid {border: 0px none;}
+
+
+/* --- default tables --- */
 table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 910px; padding-bottom: 40px;}
-tbody {background: url(../Images/table_mid.png) repeat-y top center;}
-tr {background: url(../Images/table_row.png) repeat-y top center;}
+tbody {background: url(../Images/table_mid.png) repeat-y 1px top;}
+tr {background: url(../Images/table_row.png) repeat-y top center; width: 64px}
 tr.head {background: url(../Images/table_top.png) no-repeat top center;
   color: #fff; font-size: .9em;
   vertical-align: bottom;
@@ -116,9 +119,33 @@ tr#footer {url(../Images/table_btm.png) no-repeat bottom left;}
 
 tr.pager td.info {text-align: right;}
 
+
+/* --- subtables --- */
+table table, table table tbody, table table tr, table table tr.head {background: transparent; width: inherit;}
+table table {width: 785px; padding-bottom: 0px;}
+table table td {font-size: 1.1em;}
+tr#row {background: transparent;}
+tr#row td {}
+tr#row table th {font-weight: bold;}
+tr#row table tr.head {height: auto; color: #000; 
+    /* border-bottom: 1px solid #222; background: url(../Images/subtable_top.png); height: 25px */
+}
+
+/*
+tr#row table th.col2 {width: 70px;}
+tr#row table th.col3 {width: 19%;}
+tr#row table th.col4 {width: 19%;}
+tr#row table th.col5 {width: 19%;}
+tr#row table th.col6 {width: 103px;}*/
+
+
+
+/* --- data tables --- */
 table#orders td a {font-size: 1.5em; font-weight: bold;}
 table#suborders td, table.experiments td, table#dataTable td {font-size: 1.3em;}
 
+
+/* --- info tables --- */
 table.InfoTable, table.InfoTable tbody, table.InfoTable tr, table.InfoTable tr.head {background: transparent;}
 
 table.InfoTable td {padding-bottom: 0.5em; }
@@ -133,8 +160,12 @@ td.c3.col1, td.c3.col3, td.c3.col5 {width: 15%}
 td.c3.col2, td.c3.col4, td.c3.col6 {width: 18%}
 
 div.CollapsiblePanelHeader div {}
-div.CollapsiblePanelHeader div span {color: #d67129}
+div.CollapsiblePanelHeader div span {color: #d67129; font-size: 0.9em;}
 
+td.InfoFieldValue input[type="text"] {width: 75%;} /* to make space for the save btns */
+
+
+/* --- notes tables --- */
 table.notes {background: url(../Images/notes_btm.png) no-repeat bottom center; width: 431px;}
 table.notes tr {background: url(../Images/notes_mid.png) repeat-y top center;}
 table.notes tr.head {background: url(../Images/notes_top.png) no-repeat top center;
@@ -150,6 +181,19 @@ table.notes tr.head {background: url(../Images/notes_top.png) no-repeat top cent
 /*   btn styles                                 */
 /* -------------------------------------------- */
 
+img[alt="save"] {position: relative; top: 4px;}
+
 input[type="submit"] {background: transparent; border: 0px none; padding: 0px; margin: 0px;}
+/*
 input[id*="btn"] {background: url(../Images/btn_left.png) no-repeat top left; height: 33px;}
+input[id*="btn"] {background: url(../Images/btn_createexp.png) no-repeat top left; height: 33px;}
+*/
+input[id*="btnNewConstruct"] 
+{
+    background: url(../Images/btn_createcon.png) no-repeat top left; 
+    height: 33px; line-height: 300px; overflow: hidden;
+    width: 164px;     
+    cursor: pointer;
+    margin-left: 20px;
+}
 
