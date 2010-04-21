@@ -214,6 +214,7 @@
                         DataTextField="Name" DataValueField="ID" AppendDataBoundItems="true">
                         <asp:ListItem Text="--Select Note Type--" Value="-1"></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvNoteType" ControlToValidate="ddlNoteType" InitialValue="-1" runat="server" ErrorMessage="*" ValidationGroup="MakeNote"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -221,13 +222,14 @@
                 <td>
                     <asp:TextBox ID="tbNote" runat="server" Height="146px" TextMode="MultiLine" 
                         Width="287px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvNoteText" ControlToValidate="tbNote" runat="server" ErrorMessage="*" ValidationGroup="MakeNote"></asp:RequiredFieldValidator>   
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
                     <asp:ImageButton ID="btnCreate" ImageUrl="~/Images/btn_create.png" runat="server" Text="Create" 
-                        onclick="btnCreate_Click" /></td>
+                        onclick="btnCreate_Click" ValidationGroup="MakeNote" /></td>
             </tr>
         </table>
     </div>
