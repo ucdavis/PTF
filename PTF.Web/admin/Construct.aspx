@@ -116,7 +116,6 @@
                         <th>Operator</th>
                         <th>Explant</th>
                         <th>Optical Density</th>
-                        <th>Status</th>
                         <th>Comments</th>
                     </tr>
                     <tr runat='server' id="itemplaceholder"></tr>
@@ -130,7 +129,6 @@
                 <td><%# Eval("Operator.OperatorName") %></td>
                 <td><%# Eval("Explant") %></td>
                 <td><%# Eval("OpticalDensity")%></td>
-                <td><%# Eval("Status.Name") %></td>
                 <td></td>
             </tr>
         </ItemTemplate>

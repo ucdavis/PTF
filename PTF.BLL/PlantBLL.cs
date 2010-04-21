@@ -33,9 +33,6 @@ namespace CAESDO.PTF.BLL
 
             NHibernateSessionManager.Instance.EvictObject(newPlant.Experiment);
             NHibernateSessionManager.Instance.EvictObject(newPlant);
-
-            // update the experiment
-            ExperimentBLL.UpdateStatus(ExperimentBLL.GetByID(newPlant.Experiment.ID));
         }
 
         [DataObjectMethod(DataObjectMethodType.Update)]
@@ -65,8 +62,8 @@ namespace CAESDO.PTF.BLL
 
             PlantBLL.Update(plant);
 
-            // update the experiment
-            ExperimentBLL.UpdateStatus(ExperimentBLL.GetByID(plant.Experiment.ID));
+            // update the construct
+            ConstructBLL.UpdateStatus(plant.Experiment.Construct);
         }
 
         public static void ChangeRecallusingAssay(Plant plant, bool recallusing)

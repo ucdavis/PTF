@@ -83,10 +83,7 @@ function ChangeCheckBox(checkBox, type)
 function OnComplete(result, context)
 {        
     $get(context.PlantID + "DateDelivered").innerHTML = result.ReturnText;
-       
-    // update the status of the experiment
-    $get("Status").innerHTML = result.Status;
-       
+              
     context.LoadImg.style.display = STR_None;
     context.ConfirmImg.style.display = STR_Inline;
     

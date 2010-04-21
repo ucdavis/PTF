@@ -67,7 +67,6 @@ public partial class admin_Experiment : System.Web.UI.Page
             litExplant.Text = experiment.Explant;
             litOpticalDensity.Text = experiment.OpticalDensity.ToString();
             litCrop.Text = experiment.Construct.SubOrder.Crop.Name;
-            litStatus.Text = experiment.Status.Name;
 
             litPIName.Text = experiment.Construct.Order.PI;
             litPICode.Text = experiment.Construct.Order.PICode;
@@ -144,9 +143,6 @@ public partial class admin_Experiment : System.Web.UI.Page
         Experiment experiment = ExperimentBLL.GetByID(ExperimentID);
         lvPlants.DataSource = experiment.Plants;
         lvPlants.DataBind();
-
-        // update the experiment status
-        litStatus.Text = experiment.Status.Name;
     }
     protected void lbBack_Click(object sender, EventArgs e)
     {
@@ -161,19 +157,19 @@ public partial class admin_Experiment : System.Web.UI.Page
         // shipped status
         if (StatusBLL.GetByID(statusID).Name == StatusText.STR_Shipped)
         {
-            return new ChangeStatusReturn { IsComplete = true, ReturnText = DateTime.Now.ToString("d"), Status = PlantBLL.GetByID(plantID).Experiment.Status.Name };
+            return new ChangeStatusReturn { IsComplete = true, ReturnText = DateTime.Now.ToString("d")};
             //return DateTime.Now.ToString("d");
         }
         // any completed status
         else if (StatusBLL.GetByID(statusID).IsComplete)
         {
-            return new ChangeStatusReturn { IsComplete = true, ReturnText = string.Empty, Status = PlantBLL.GetByID(plantID).Experiment.Status.Name };
+            return new ChangeStatusReturn { IsComplete = true, ReturnText = string.Empty};
             //return "complete";
         }
         // any not complete status
         else
         {
-            return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty, Status = PlantBLL.GetByID(plantID).Experiment.Status.Name };
+            return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty};
             //return string.Empty;
         }
     }
@@ -224,5 +220,4 @@ public class ChangeStatusReturn
 {
     public bool IsComplete { get; set; }
     public string ReturnText { get; set; }
-    public string Status { get; set; }
 }

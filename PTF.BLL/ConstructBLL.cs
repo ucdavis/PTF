@@ -74,19 +74,21 @@ namespace CAESDO.PTF.BLL
             // experiments exist
             else
             {
-                bool complete = true;
+                int count = 0;
 
                 foreach (Experiment e in construct.Experiments)
                 {
-                    if (!e.Status.IsComplete)
+                    foreach (Plant p in e.Plants)
                     {
-                        complete = false;
-                        break;
+                        if (p.Status.Name == StatusText.STR_Shipped)
+                        {
+                            count++;
+                        }
                     }
                 }
 
                 // all experiments are complete
-                if (complete)
+                if (count >= construct.SubOrder.NumberOfPlants)
                 {
                     construct.Status = StatusBLL.GetByName(StatusText.STR_Complete);
                 }

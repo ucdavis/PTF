@@ -22,8 +22,6 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string Comments { get; set; }
         public virtual decimal OpticalDensity { get; set; }
 
-        public virtual Status Status { get; set; }
-
         public virtual IList<Plant> Plants { get; set; }
         public virtual IList<Note> Notes { get; set; }
 
