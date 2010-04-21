@@ -59,7 +59,7 @@
         <ItemTemplate>
             <tr id="row" runat="server" class="group">
                 <td class="first">
-                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>', 'orders');" />
+                    <img src="../images/plus.png" onclick="toggleGroup(this, 1, 'orders');" />
                 </td>
                 <td><a href='<%# "Order.aspx?oid=" + Eval("ID") %>'><%# Eval("ID") %></a></td>
                 <td><%# Eval("PI") %></td>
@@ -71,24 +71,39 @@
                 <td><%# Eval("Constructs.Count") %></td>
                 <td><%# Eval("Status.Name") %></td>
             </tr>
-                <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
-                    <LayoutTemplate>
-                        <tr runat="server" id="itemplaceholder"></tr>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr id="row" runat="server" class="item hidden">
-                            <td class="first">
-                            </td>
-                            <td colspan="2"><%# "# Plants: " + Eval("NumberOfPlants") %></td>
-                            <td colspan="2"><%# "Crop: " + Eval("Crop.Name") %></td>
-                            <td colspan="2"><%# "Plant Selection: " + Eval("PlantSelection.Name") %></td>
-                            <td colspan="2"><%# "Genotype: " + Eval("Genotype.Name") %></td>
-                            <td>
-                                <%# "# Constructs: " + Eval("Constructs.Count") %>
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                </asp:ListView>
+            <tr id="row" class="item hidden">
+                <td class="first"></td>
+                <td colspan="8">
+                    <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
+                        <LayoutTemplate>
+                            <table>
+                                <tr>
+                                    <th class="first"></th>
+                                    <th># Plants</th>
+                                    <th>Crop</th>
+                                    <th>Plant Selection</th>
+                                    <th>Genotype</th>
+                                    <th>Constructs</th>
+                                </tr>
+                                <tr runat="server" id="itemplaceholder"></tr>
+                            </table>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <tr id="row2" runat="server">
+                                <td class="first">
+                                </td>
+                                <td ><%# Eval("NumberOfPlants") %></td>
+                                <td ><%# Eval("Crop.Name") %></td>
+                                <td ><%# Eval("PlantSelection.Name") %></td>
+                                <td ><%# Eval("Genotype.Name") %></td>
+                                <td>
+                                    <%# Eval("Constructs.Count") %>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </td>
+            </tr>
         </ItemTemplate>
     </asp:ListView>
     <asp:ObjectDataSource ID="odsOrders" runat="server" 
