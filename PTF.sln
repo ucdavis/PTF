@@ -14,9 +14,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PTF.Web", "PTF.Web", "{1CFE
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.KeyFile = "..\caesdo.snk"
-		Debug.AspNetCompiler.DelaySign = "false"
-		Debug.AspNetCompiler.AllowPartiallyTrustedCallers = "false"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/PTF.Web"
@@ -24,9 +21,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PTF.Web", "PTF.Web", "{1CFE
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.KeyFile = "..\caesdo.snk"
-		Release.AspNetCompiler.DelaySign = "false"
-		Release.AspNetCompiler.AllowPartiallyTrustedCallers = "false"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "42854"
@@ -39,8 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.Core", "PTF.Core\PTF.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.Data", "PTF.Data\PTF.Data.csproj", "{031EECA0-481E-444A-B4DE-A3977607DA5F}"
 EndProject
-Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "PTF.Web_deploy", "PTF.Web_deploy\PTF.Web_deploy.wdproj", "{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}"
-EndProject
 Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "PTF.SQL", "PTF.SQL\PTF.SQL.dbp", "{87F594B7-AD06-409C-B4D2-58E2D7665711}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTFConvert", "PTFConvert\PTFConvert.csproj", "{CAFBE9F5-F53B-4582-8507-CE44D1F42079}"
@@ -49,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.CLR", "PTF.CLR\PTF.CLR.
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = http://cubert:8080/
 		SccLocalPath0 = .
@@ -71,15 +63,12 @@ Global
 		SccLocalPath5 = .
 		SccProjectFilePathRelativizedFromConnection5 = PTF.Web\\
 		SccProjectEnlistmentChoice5 = 2
-		SccProjectUniqueName6 = PTF.Web_deploy\\PTF.Web_deploy.wdproj
-		SccProjectName6 = PTF.Web_deploy
-		SccLocalPath6 = PTF.Web_deploy
-		SccProjectUniqueName7 = PTFConvert\\PTFConvert.csproj
-		SccProjectName7 = PTFConvert
-		SccLocalPath7 = PTFConvert
-		SccProjectUniqueName8 = PTF.CLR\\PTF.CLR.csproj
-		SccProjectName8 = PTF.CLR
-		SccLocalPath8 = PTF.CLR
+		SccProjectUniqueName6 = PTFConvert\\PTFConvert.csproj
+		SccProjectName6 = PTFConvert
+		SccLocalPath6 = PTFConvert
+		SccProjectUniqueName7 = PTF.CLR\\PTF.CLR.csproj
+		SccProjectName7 = PTF.CLR
+		SccLocalPath7 = PTF.CLR
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -130,16 +119,6 @@ Global
 		{031EECA0-481E-444A-B4DE-A3977607DA5F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{031EECA0-481E-444A-B4DE-A3977607DA5F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{031EECA0-481E-444A-B4DE-A3977607DA5F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Release|.NET.ActiveCfg = Release|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3B11EDE2-E9AD-4662-987A-C50F9EDD77CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CAFBE9F5-F53B-4582-8507-CE44D1F42079}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{CAFBE9F5-F53B-4582-8507-CE44D1F42079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CAFBE9F5-F53B-4582-8507-CE44D1F42079}.Debug|Any CPU.Build.0 = Debug|Any CPU
