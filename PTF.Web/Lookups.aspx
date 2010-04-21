@@ -7,82 +7,57 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <AjaxControlToolkit:TabContainer ID="TabContainer1" runat="server" Height="500px"
-        ActiveTabIndex="0">
+    <AjaxControlToolkit:TabContainer ID="TabContainer1" runat="server" Height="500px" ActiveTabIndex="0">
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Note Types" ID="TabPanel1">
             <ContentTemplate>
-
-<%--                <asp:ListView ID="lvNoteTypes" runat="server" DataSourceID="odsNoteTypes" InsertItemPosition="LastItem" DataKeyNames="Identifier">
-                    <EditItemTemplate>
-                        <li>
-                            <asp:Panel runat="server" ID="pnlEdit" class="itemPanel">
-                                <asp:TextBox ID="tbEdit" runat="server" Text='<%# Bind("Name") %>' />
-                                <asp:ImageButton runat="server" ID="ibtnSave" ImageUrl="~/Images/save.png" CssClass="icon" CommandName="Update" ToolTip="Save Changes" />
-                                <asp:ImageButton runat="server" ID="ibtnCancelSave" ImageUrl="~/Images/cancel.png" CssClass="icon" CommandName="Cancel" ToolTip="Cancel Changes" />
-                                <asp:CheckBox ID="cbEdit" runat="server" Checked='<%# Bind("IsActive") %>' Visible="false" />
-                            </asp:Panel>
-                        </li>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                        <li>
-                            <asp:TextBox ID="tbNewName" Text='<%# Bind("Name") %>' MaxLength="50" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvNewName" runat="server" ErrorMessage="*" ControlToValidate="tbNewName" ValidationGroup="NewLookup"></asp:RequiredFieldValidator>                      
-                            <asp:ImageButton runat="server" ID="ibtnInsert" ImageUrl="~/Images/add.png" ToolTip="Add New" CssClass="icon" CommandName="Insert" ValidationGroup="NewLookup" />
-                        </li>
-                    </InsertItemTemplate>
-                    <ItemTemplate>
-                        <li>
-                            <asp:Panel runat="server" ID="pnlName" class="itemPanel" >
-                                <asp:ImageButton runat="server" ID="ibtnDelete" ImageUrl="~/Images/delete.png" CssClass="icon" CommandName="Delete" ToolTip="Delete" />
-                                <AjaxControlToolkit:ConfirmButtonExtender ID="cbeDelete" TargetControlID="ibtnDelete" runat="server" ConfirmText="Are you sure you want to delete this lookup value?" />
-                                <asp:ImageButton runat="server" ID="ibtnEdit" ImageUrl="~/Images/edit.png" CommandName="Edit" CssClass="icon" ToolTip="Edit" />
-                                <%# Eval("Name") %></asp:Panel>
-                        </li>
-                    </ItemTemplate>
-                    <LayoutTemplate>
-                        <ul class="Lookups">
-                            <li id="ItemPlaceHolder" runat="server"></li>
-                        </ul>
-                    </LayoutTemplate>
-                </asp:ListView>--%>
-
                 
-                
-                <CAESDO:Lookups runat="server" ID="NoteTypes" DataSourceID="odsNoteTypes" TypeName="CAESDO.PTF.BLL.NoteTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" />
+                <CAESDO:Lookups runat="server" ID="lookNoteTypes" TypeName="CAESDO.PTF.BLL.NoteTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" />
 
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Crops">
             <ContentTemplate>
+              
+                <CAESDO:Lookups runat="server" ID="lookCrops" TypeName="CAESDO.PTF.BLL.CropBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Crop" />
+                
+            </ContentTemplate>
+        </AjaxControlToolkit:TabPanel>
+        <AjaxControlToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Agro Strain">
+            <ContentTemplate>
             
-                <asp:ListView ID="lvCrops" runat="server" DataSourceID="odsCrops">
-                    <LayoutTemplate>
-                        <ul class="Lookups">
-                            <li id="ItemPlaceHolder" runat="server"></li>
-                        </ul>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <li><asp:Panel runat="server" ID="pnlName" class="itemPanel"><%# Eval("Name") %></asp:Panel></li>
-                    </ItemTemplate>
-                </asp:ListView>
+                <CAESDO:Lookups runat="server" ID="lookAgroStrains" TypeName="CAESDO.PTF.BLL.AgroStrainBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.AgroStrain" />
+                
+            </ContentTemplate>
+        </AjaxControlToolkit:TabPanel>
+        <AjaxControlToolkit:TabPanel ID="TabPanel4" runat="server" HeaderText="Status">
+            <ContentTemplate>
+            
+                <CAESDO:Lookups runat="server" ID="lookStatus" TypeName="CAESDO.PTF.BLL.StatusBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Status" />
+                
+            </ContentTemplate>       
+        </AjaxControlToolkit:TabPanel>
+        <AjaxControlToolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="Selectable Marker">
+            <ContentTemplate>
+            
+                <CAESDO:Lookups runat="server" ID="lookSelectableMarker" TypeName="CAESDO.PTF.BLL.SelectableMarkerBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.SelectableMarker" />
+                
+            </ContentTemplate>        
+        </AjaxControlToolkit:TabPanel>
+        <AjaxControlToolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="Geno Type">
+            <ContentTemplate>
+            
+                <CAESDO:Lookups runat="server" ID="lookGenoType" TypeName="CAESDO.PTF.BLL.GenoTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.GenoType" />
+                
+            </ContentTemplate>        
+        </AjaxControlToolkit:TabPanel>
+        <AjaxControlToolkit:TabPanel ID="TabPanel7" runat="server" HeaderText="Trans Gene">
+            <ContentTemplate>
+            
+                <CAESDO:Lookups runat="server" ID="lookTransGene" TypeName="CAESDO.PTF.BLL.TransGeneBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.TransGene" />
                 
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
     </AjaxControlToolkit:TabContainer>
     
-    <asp:ObjectDataSource ID="odsNoteTypes" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
-        TypeName="CAESDO.PTF.BLL.NoteTypeBLL" 
-        DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" UpdateMethod="Update" 
-        InsertMethod="Insert">
-    </asp:ObjectDataSource> 
-    <asp:ObjectDataSource ID="odsCrops" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAll" 
-        TypeName="CAESDO.PTF.BLL.CropBLL">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="Name" Name="propertyName" Type="String" />
-                <asp:Parameter DefaultValue="True" Name="ascending" Type="Boolean" />
-            </SelectParameters>
-    </asp:ObjectDataSource>
     </asp:Content>
 

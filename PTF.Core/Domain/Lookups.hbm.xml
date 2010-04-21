@@ -20,7 +20,7 @@
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains" >
-		<id name="id" access="field" column="NoteTypeID" unsaved-value="0">
+		<id name="id" access="field" column="AgroStrainID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
 

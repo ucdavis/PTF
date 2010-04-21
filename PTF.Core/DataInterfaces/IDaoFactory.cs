@@ -11,13 +11,13 @@ namespace CAESDO.PTF.Core.DataInterfaces
         IGenericDao<T, IdT> GetGenericDao<T, IdT>();
 
         #region Lookups
-        INoteTypeDao GetNoteTypeDao();
-        ICropDao GetCropDao();
-        IAgroStrainDao GetAgroStrainDao();
-        IStatusDao GetStatusDao();
-        ISelectableMarkerDao GetSelectableMarkerDao();
-        IGenoTypeDao GetGenoTypeDao();
-        ITransGeneDao GetTransGeneDao();
+        //INoteTypeDao GetNoteTypeDao();
+        //ICropDao GetCropDao();
+        //IAgroStrainDao GetAgroStrainDao();
+        //IStatusDao GetStatusDao();
+        //ISelectableMarkerDao GetSelectableMarkerDao();
+        //IGenoTypeDao GetGenoTypeDao();
+        //ITransGeneDao GetTransGeneDao();
         #endregion
     }
 
@@ -28,13 +28,13 @@ namespace CAESDO.PTF.Core.DataInterfaces
     public interface IGenericDao<T, IdT> : IDao<T, IdT> { }
 
     #region Lookups
-    public interface INoteTypeDao : IDao<NoteType, int> { }
-    public interface ICropDao : IDao<Crop, int> { }
-    public interface IAgroStrainDao : IDao<AgroStrain, int> { }
-    public interface IStatusDao : IDao<Status, int> { }
-    public interface ISelectableMarkerDao : IDao<SelectableMarker, int> { }
-    public interface IGenoTypeDao : IDao<GenoType, int> { }
-    public interface ITransGeneDao : IDao<TransGene, int> { }
+    //public interface INoteTypeDao : IDao<NoteType, int> { }
+    //public interface ICropDao : IDao<Crop, int> { }
+    //public interface IAgroStrainDao : IDao<AgroStrain, int> { }
+    //public interface IStatusDao : IDao<Status, int> { }
+    //public interface ISelectableMarkerDao : IDao<SelectableMarker, int> { }
+    //public interface IGenoTypeDao : IDao<GenoType, int> { }
+    //public interface ITransGeneDao : IDao<TransGene, int> { }
     #endregion
 
     #endregion

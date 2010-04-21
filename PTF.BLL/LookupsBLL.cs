@@ -47,11 +47,13 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public static void Delete(T obj)
         {
-            obj.IsActive = false;
+            var deleteObj = LookupBLLBase<T, IdT>.GetByID(obj.ID);
+
+            deleteObj.IsActive = false;
 
             using (var ts = new TransactionScope())
             {
-                EnsurePersistent(ref obj);
+                EnsurePersistent(ref deleteObj);
 
                 ts.CommittTransaction();
             }
