@@ -84,7 +84,7 @@
                 <span id="RechargeAmount">
                     <asp:Literal ID="litRecharge" runat="server"></asp:Literal>
                 </span>    
-                <asp:LinkButton ID="lbChangeRechargeAmount" runat="server">[Change]</asp:LinkButton>
+                <asp:LinkButton ID="lbChangeRechargeAmount" runat="server"><img src="../Images/pencil.png" /></asp:LinkButton>
             </td>
             <td class="InfoFieldName">Status:&nbsp;</td>
             <td class="InfoFieldValue">
