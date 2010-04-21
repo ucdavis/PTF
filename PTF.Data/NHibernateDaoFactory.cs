@@ -51,6 +51,16 @@ namespace CAESDO.PTF.Data
 
                 return criteria.List<Construct>() as List<Construct>;
             }
+
+            public List<Construct> GetForBilling()
+            {
+                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Construct))
+                    .Add(Expression.IsNull("InvoiceDate"))
+                    .CreateCriteria("Status")
+                        .Add(Expression.Eq("Name", "Complete"));
+
+                return criteria.List<Construct>() as List<Construct>;
+            }
         }
 
         public class ExperimentDao : AbstractNHibernateDao<Experiment, int>, IExperimentDao

@@ -26,6 +26,7 @@ namespace CAESDO.PTF.Core.DataInterfaces
     public interface IConstructDao : IDao<Construct, int> 
     {
         List<Construct> GetByOrder(Order Order);
+        List<Construct> GetForBilling();
     }
 
     public interface IExperimentDao : IDao<Experiment, int>

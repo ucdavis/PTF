@@ -34,6 +34,13 @@ namespace CAESDO.PTF.BLL
 
             return ConstructBLL.GetByInclusionExample(construct, "ConstructCode");
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Construct> GetForBilling()
+        {
+            return ConstructBLL.daoFactory.GetConstructDao().GetForBilling();
+        }
+
         #endregion
 
         #region Modify Methods
@@ -59,6 +66,7 @@ namespace CAESDO.PTF.BLL
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "Accountant")]
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Construct construct)
         {
@@ -132,6 +140,15 @@ namespace CAESDO.PTF.BLL
 
             // update the order status
             OrderBLL.UpdateStatus(construct.Order);
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role="Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role="Accountant")]
+        public static void Bill(Construct construct)
+        {
+            construct.InvoiceDate = DateTime.Now;
+
+            ConstructBLL.Update(construct);
         }
         #endregion
 
