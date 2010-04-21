@@ -14,6 +14,8 @@ using System.Net;
 using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.BLL;
 
+using System.Linq.Dynamic;
+
 /// <summary>
 /// Summary description for CatbertManager
 /// </summary>
@@ -114,6 +116,21 @@ public class CatbertManager
         SetSecurityContext();
 
         return catops.GetUsersByApplications(AppName);
+    }
+
+    [DataObjectMethod(DataObjectMethodType.Select)]
+    public static CatOps.CatbertUsers[] GetUsersInApplication(string sortExp)
+    {
+        var users = GetUsersInApplication().AsQueryable();
+
+        if (string.IsNullOrEmpty(sortExp))
+        {
+            return users.OrderBy("FirstName").ToArray();
+        }
+        else
+        {
+            return users.OrderBy(sortExp).ToArray();
+        }
     }
 
     public static int InsertNewUser(string login)

@@ -18,7 +18,7 @@
                 TargetControlID="lbNewUser" PopupControlID="pnlNewUser" DynamicServicePath="" 
                 Enabled="True">
             </AjaxControlToolkit:ModalPopupExtender>
-            <asp:Panel ID="pnlNewUser" runat="server" style="border:solid 1px black; background-color:oldlace;">
+            <asp:Panel ID="pnlNewUser" runat="server" style="border:solid 1px black; background-color:oldlace; display:none;">
             Search For New User:<br /><br />
                  Login ID:
                  <asp:TextBox ID="txtAddUserLoginID" runat="server"></asp:TextBox><br />
@@ -116,13 +116,15 @@
                             <th>
                             </th>
                             <th>
-                                User Name</th>
+                                <asp:LinkButton ID="lbSortUserName" CommandName="Sort" CommandArgument="Login" runat="server">User Name</asp:LinkButton> 
+                            </th>
                             <th>
-                                Role</th>
+                                <asp:LinkButton ID="lbSortRole" CommandName="Sort" CommandArgument="Role" runat="server">Role</asp:LinkButton></th>
                             <th>
-                                Last Name</th>
+                                <asp:LinkButton ID="lbSortLastName" CommandName="Sort" CommandArgument="LastName" runat="server">Last Name</asp:LinkButton>
+                            </th>
                             <th>
-                                First Name</th>
+                                <asp:LinkButton ID="lbSortFirstName" CommandName="Sort" CommandArgument="FirstName" runat="server">First Name</asp:LinkButton></th>
                             <th>
                                 Employee ID</th>
                         </tr>
@@ -135,7 +137,7 @@
             <asp:Button ID="btnDummyUpdateUserInfo" runat="server" Text="Button" style="display:none;" />
             <AjaxControlToolkit:ModalPopupExtender ID="mpeUpdateUserInfo" runat="server" TargetControlID="btnDummyUpdateUserInfo" PopupControlID="pnlUpdateUserInfo" CancelControlID="lbCloseUserInfo">
             </AjaxControlToolkit:ModalPopupExtender>
-            <asp:Panel ID="pnlUpdateUserInfo" runat="server" style="border:solid 1px black; background-color:oldlace;">
+            <asp:Panel ID="pnlUpdateUserInfo" runat="server" style="border:solid 1px black; background-color:oldlace; display:none;">
                 <span class="ModalTitle">User Information for <asp:Label ID="lblUserInfoName" runat="server" Text=""></asp:Label> </span>
                 
                 <br />
@@ -191,7 +193,7 @@
             </asp:Panel>
             
             <asp:ObjectDataSource ID="odsStaffUsers" runat="server" 
-                OldValuesParameterFormatString="original_{0}" 
+                OldValuesParameterFormatString="original_{0}" SortParameterName="sortExp" 
                 SelectMethod="GetUsersInApplication" TypeName="CatbertManager"></asp:ObjectDataSource>
                 
             </ContentTemplate>

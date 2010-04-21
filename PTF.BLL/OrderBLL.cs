@@ -6,6 +6,7 @@ using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.Data;
 using System.ComponentModel;
 
+using System.Linq.Dynamic;
 
 namespace CAESDO.PTF.BLL
 {
@@ -132,23 +133,13 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<Order> GetAllSorted(string propertyName)
         {
-            // default sorting
             if (string.IsNullOrEmpty(propertyName))
             {
                 return OrderBLL.GetAll("id", false);
             }
-            // has a space, so it has a DESC in it for descending sorting
-            else if (propertyName.Contains(' '))
-            {
-                // get the property name
-                string prop = propertyName.Substring(0, propertyName.IndexOf(' '));
-
-                return OrderBLL.GetAll(prop, false);
-            }
-            // just the property name it is for ascending
             else
             {
-                return OrderBLL.GetAll(propertyName, true);
+                return OrderBLL.GetAll().AsQueryable().OrderBy(propertyName).ToList();
             }
         }
     }
