@@ -144,14 +144,7 @@ public partial class admin_Experiment : System.Web.UI.Page
         lvPlants.DataSource = experiment.Plants;
         lvPlants.DataBind();
     }
-    protected void btnSaveChangeStatus_Click(object sender, EventArgs e)
-    {
-        PlantBLL.ChangeStatus(PlantBLL.GetByID(Convert.ToInt32(tbPlantID.Text)), StatusBLL.GetByID(Convert.ToInt32(ddlStatus.SelectedValue)));        
 
-        //rebind the grid
-        lvPlants.DataSource = ExperimentBLL.GetByID(ExperimentID).Plants;
-        lvPlants.DataBind();
-    }
 
     [WebMethod]
     public static string SaveChangeStatus(int plantID, int statusID)
@@ -166,6 +159,22 @@ public partial class admin_Experiment : System.Web.UI.Page
         {
             return string.Empty;
         }
+    }
+
+    [WebMethod]
+    public static string SaveRecallusingAssay(int plantID, bool recallusing)
+    {
+        PlantBLL.ChangeRecallusingAssay(PlantBLL.GetByID(plantID), recallusing);
+
+        return string.Empty;
+    }
+
+    [WebMethod]
+    public static string SaveRooting(int plantID, bool rooting)
+    {
+        PlantBLL.ChangeRooting(PlantBLL.GetByID(plantID), rooting);
+
+        return string.Empty;
     }
 
     protected void lvPlants_ItemDataBound(object sender, ListViewItemEventArgs e)

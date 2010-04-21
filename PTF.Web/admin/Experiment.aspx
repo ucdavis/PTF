@@ -1,62 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Experiment.aspx.cs" Inherits="admin_Experiment" Title="PTF | Experiment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <script type="text/javascript" language="javascript">    
-        var STR_LoadingImg = "LoadingImg";
-        var STR_ConfirmImg = "ConfirmImg";
-        var STR_FailImg = "FailImg";
-    
-        var STR_Inline = "inline";
-        var STR_None = "none";
-    
-        function ChangeStatus(dropDown)
-        {       
-            var plantID = dropDown.parentNode.id;
-            var selectedIndex = dropDown.selectedIndex;
-            var value = dropDown.options[selectedIndex].value;
-            
-            if (dropDown.options[selectedIndex].text == "Shipped" && !confirm("Are you sure plant is shipping?"))
-            {
-                return;
-            }
-            
-            var context = new Array();           
-            context[0] = plantID;
-            context[1] = dropDown;
-            
-            // show the processing icon
-            $get(plantID + STR_LoadingImg).style.display = STR_Inline;
-            $get(plantID + STR_ConfirmImg).style.display = STR_None;
-            $get(plantID + STR_FailImg).style.display = STR_None;
-            
-            PageMethods.SaveChangeStatus(plantID, value, ChangeStatusOnComplete, ChangeStatusOnFail, context);
-        }
-        // successful complete of save
-        function ChangeStatusOnComplete(result, context)
-        {        
-            if (result != "")
-            {
-                context[1].disabled = true;
-            }
-            
-            $get(context[0] + "DateDelivered").innerHTML = result;
-            
-            $get(context[0] + STR_LoadingImg).style.display = STR_None;
-            $get(context[0] + STR_ConfirmImg).style.display = STR_Inline;
-            
-            // animate the check mark confirmation out
-            var target = $get(context[0] + STR_ConfirmImg);
-            var animation = new AjaxControlToolkit.Animation.FadeOutAnimation(target, 5, 25, 0, 1, true);
-            animation.play();
-        }
-        // failure of save
-        function ChangeStatusOnFail(result, context)
-        {
-            $get(context[0] + STR_FailImg).style.display = STR_Inline;
-            $get(context[0] + STR_LoadingImg).style.display = STR_None;
-        }
-    </script>
-
+    <script type="text/javascript" src="../JS/Experiment.js" />
     <span class="contractwarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
@@ -257,14 +202,22 @@
             </table>
         </LayoutTemplate>
         <ItemTemplate>
-            <tr>
+            <tr id='<%# Eval("id") %>'>
                 <td><%# Eval("Pedigree") %></td>
                 <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
-                <td><%--<%# Eval("ReCallusingAssay") %>--%>
-                    <asp:CheckBox ID="cbRecallusingAssay" runat="server" Checked='<%# Eval("ReCallusingAssay") %>' />
+                <td>
+                    <asp:CheckBox ID="cbRecallusingAssay" runat="server" Checked='<%# Eval("ReCallusingAssay") %>' OnClick='ChangeCheckBox(this, "Recallusing")' />
+                    
+                    <img id='<%# Eval("id").ToString() + "RecallusingLoadingImg" %>'  src="../Images/mozilla_blu.gif" style="display:none;" />
+                    <img id='<%# Eval("id").ToString() + "RecallusingConfirmImg" %>'src="../Images/confirm.png" style="display:none; width:16px; height:16px;" />
+                    <img id='<%# Eval("id").ToString() + "RecallusingFailImg" %>' src="../Images/cancel.png" style="display:none; width:16px; height:16px;" />
                 </td>
-                <td><%--<%# Eval("Rooting") %>--%>
-                    <asp:CheckBox ID="cbRooting" runat="server" Checked='<%# Eval("Rooting") %>' />
+                <td>
+                    <asp:CheckBox ID="cbRooting" runat="server" Checked='<%# Eval("Rooting") %>' OnClick='ChangeCheckBox(this, "Rooting")' />
+                    
+                    <img id='<%# Eval("id").ToString() + "RootingLoadingImg" %>'  src="../Images/mozilla_blu.gif" style="display:none;" />
+                    <img id='<%# Eval("id").ToString() + "RootingConfirmImg" %>'src="../Images/confirm.png" style="display:none; width:16px; height:16px;" />
+                    <img id='<%# Eval("id").ToString() + "RootingFailImg" %>' src="../Images/cancel.png" style="display:none; width:16px; height:16px;" />
                 </td>
                 <td>
                     <span id='<%# Eval("id").ToString() + "DateDelivered" %>'>
@@ -272,19 +225,19 @@
                     </span>
                 </td>
                 <td>
-                    <span id='<%# Eval("id") %>'>
+                    
                         <asp:DropDownList ID="ddlChangeStatus" runat="server" 
                             DataSourceID="odsStatus" DataTextField="Name" 
                             DataValueField="ID" onChange='ChangeStatus(this)' >
                         </asp:DropDownList>
                         
-                        <img id='<%# Eval("id").ToString() + "LoadingImg" %>' src="../Images/mozilla_blu.gif" style="display:none;" />
-                        <img id='<%# Eval("id").ToString() + "ConfirmImg" %>'src="../Images/confirm.png" style="display:none; width:16px; height:16px;" />
-                        <img id='<%# Eval("id").ToString() + "FailImg" %>' src="../Images/cancel.png" style="display:none; width:16px; height:16px;" />
+                        <img id='<%# Eval("id").ToString() + "StatusLoadingImg" %>' src="../Images/mozilla_blu.gif" style="display:none;" />
+                        <img id='<%# Eval("id").ToString() + "StatusConfirmImg" %>'src="../Images/confirm.png" style="display:none; width:16px; height:16px;" />
+                        <img id='<%# Eval("id").ToString() + "StatusFailImg" %>' src="../Images/cancel.png" style="display:none; width:16px; height:16px;" />
                         
                         <asp:Literal ID="litStatus" runat="server" Visible="false"></asp:Literal>
 
-                    </span>
+                    
                 </td>
                 <td></td>
             </tr>

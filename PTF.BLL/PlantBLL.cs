@@ -58,5 +58,19 @@ namespace CAESDO.PTF.BLL
 
             PlantBLL.Update(plant);
         }
+
+        public static void ChangeRecallusingAssay(Plant plant, bool recallusing)
+        {
+            plant.ReCallusingAssay = recallusing;
+
+            PlantBLL.Update(plant);
+        }
+
+        public static void ChangeRooting(Plant plant, bool rooting)
+        {
+            plant.Rooting = rooting;
+
+            PlantBLL.Update(plant);
+        }
     }
 }
