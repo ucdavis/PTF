@@ -437,6 +437,9 @@
                 Recharge Number:</td>
             <td>
                 <asp:TextBox ID="tbRecharge" runat="server" MaxLength="20"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvRecharge" runat="server" 
+                    ErrorMessage="Recharge number is required." 
+                    ControlToValidate="tbSelectableMarkerGene" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

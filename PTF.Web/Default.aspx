@@ -4,7 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<br /><br /><br />
+    <p>
+        <h2>The Facility is no longer accepting orders from outside the University of California System.</h2>
+    </p>
+<br />
 <a href="admin/Default.aspx" title="Administrators"><img src="Images/menu_admin.png" alt="Administrators" /></a>
 <br /><br />
 <a href="restricted/Default.aspx" title="Clients"><img src="Images/menu_clients.png" alt="Clients" /></a>

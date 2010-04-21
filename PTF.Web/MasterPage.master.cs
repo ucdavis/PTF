@@ -18,6 +18,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
         get { return Session["Emulating"] == null ? false : (bool)Session["Emulating"]; }
         set { Session["Emulating"] = value; }
     }
+    private bool IsCasUser
+    {
+        get { return Session["CasUser"] == null ? false : (bool)Session["CasUser"]; }
+        set { Session["CasUser"] = value; }
+    }
 
     protected string STR_RedirectAddress
     {
@@ -42,25 +47,32 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         var user = Membership.GetUser();
 
-        if (IsEmulating)
+        if (user == null)
         {
-            FormsAuthentication.SignOut();
-
-            IsEmulating = false;
+            IsCasUser = true;
         }
 
-        if (user == null) // cas login, redirect to the cas logout page
-        {
-            FormsAuthentication.SignOut();
+        //var user = Membership.GetUser();
+
+        //if (IsEmulating)
+        //{
+        //    FormsAuthentication.SignOut();
+
+        //    IsEmulating = false;
+        //}
+
+        //if (user == null) // cas login, redirect to the cas logout page
+        //{
+        //    FormsAuthentication.SignOut();
             
-            // this was raising a "potentially dangerous" warning
-            //Response.Redirect("https://cas.ucdavis.edu/cas/logout?service=" + STR_RedirectAddress, true);
-            Response.Redirect("~/Default.aspx", true);
-        }
-        else
-        {
-            FormsAuthentication.SignOut();
-            Response.Redirect("~/Default.aspx", true);
-        }
+        //    // this was raising a "potentially dangerous" warning
+        //    //Response.Redirect("https://cas.ucdavis.edu/cas/logout?service=" + STR_RedirectAddress, true);
+        //    //Response.Redirect("~/Default.aspx", true);
+        //}
+        //else
+        //{
+        //    FormsAuthentication.SignOut();
+        //    //Response.Redirect("~/Default.aspx", true);
+        //}
     }
 }
