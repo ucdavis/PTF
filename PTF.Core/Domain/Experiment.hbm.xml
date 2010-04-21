@@ -20,6 +20,11 @@
 			<key column="EID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Plant, CAESDO.PTF.Core"/>
 		</bag>
+
+		<bag name="Notes" table="Notes">
+			<key column="EID" />
+			<one-to-many class="CAESDO.PTF.Core.Domain.Note, CAESDO.PTF.Core"/>
+		</bag>
 		
 	</class>
 </hibernate-mapping>

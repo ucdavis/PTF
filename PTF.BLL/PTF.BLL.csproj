@@ -63,6 +63,7 @@
     <Compile Include="ExperimentBLL.cs" />
     <Compile Include="GenericBLL.cs" />
     <Compile Include="LookupsBLL.cs" />
+    <Compile Include="NoteBLL.cs" />
     <Compile Include="OperatorBLL.cs" />
     <Compile Include="OrderBLL.cs" />
     <Compile Include="PlantBLL.cs" />

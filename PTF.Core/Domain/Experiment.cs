@@ -23,5 +23,31 @@ namespace CAESDO.PTF.Core.Domain
         public virtual float OpticalDensity { get; set; }
 
         public virtual IList<Plant> Plants { get; set; }
+        public virtual IList<Note> Notes { get; set; }
+
+        /// <summary>
+        /// Return all notes that fall under a specified note type
+        /// </summary>
+        /// <param name="noteType"></param>
+        /// <returns></returns>
+        public virtual List<Note> GetNotesbyType(Note.ExpNoteTypes noteType)
+        {       
+            var results = new List<Note>();
+
+            if (Notes == null)
+            {
+                return results;
+            }
+
+            foreach (Note n in Notes)
+            {
+                if (n.IsNotetype(noteType))
+                {
+                    results.Add(n);
+                }
+            }
+
+            return results;
+        }
     }
 }

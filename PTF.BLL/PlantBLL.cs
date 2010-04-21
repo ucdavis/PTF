@@ -21,6 +21,12 @@ namespace CAESDO.PTF.BLL
             // auto generate the sequence number
             newPlant.SequenceNumber = (newPlant.Experiment.Plants.Count + 1).ToString("000");
 
+            // assign the default status
+            Status s = new Status();
+            s.Name = StatusText.STR_Initiated;
+
+            newPlant.Status = StatusBLL.GetByInclusionExample(s, "Name")[0];
+
             using (var ts = new TransactionScope())
             {
                 EnsurePersistent(ref newPlant);

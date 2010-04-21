@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.Note, CAESDO.PTF.Core" table="Notes" >
+		<id name="id" access="field" column="NoteID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<property name="NoteText" column="Note" />
+		<property name="DateNote" column="DateNote" />
+
+		<many-to-one name="NoteType" class="CAESDO.PTF.Core.Domain.NoteType, CAESDO.PTF.Core" column="NoteTypeID" cascade="none" />
+		<many-to-one name="Experiment" class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core" column="EID" cascade="none" />
+		
+	</class>
+</hibernate-mapping>

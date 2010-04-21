@@ -59,6 +59,12 @@
     <Compile Include="Domain\Experiment.cs" />
     <Compile Include="Domain\ITrackable.cs" />
     <Compile Include="Domain\Lookups.cs" />
+    <Compile Include="Domain\Note.cs" />
+    <Compile Include="Domain\NoteTypes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoteTypes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Domain\Operator.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\Plant.cs" />
@@ -89,7 +95,15 @@
     <EmbeddedResource Include="Domain\Plant.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Domain\NoteTypes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NoteTypes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Domain\SubOrder.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\Note.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
