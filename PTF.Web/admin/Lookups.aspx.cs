@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using CAESDO.PTF.Core.Domain;
 using System.Web.Services;
+using System.Collections.Generic;
 
 public partial class Lookups : System.Web.UI.Page
 {
@@ -46,12 +47,12 @@ public partial class Lookups : System.Web.UI.Page
                 }
             }
 
-            cblPlantSelections.Visible = true;
+            cblPlantSelections.Style["display"] = "block";
             lbSaveCropPlantSelection.Visible = true;
         }
         else
         {
-            cblPlantSelections.Visible = false;
+            cblPlantSelections.Style["display"] = "none";
             lbSaveCropPlantSelection.Visible = false;
         }
     }

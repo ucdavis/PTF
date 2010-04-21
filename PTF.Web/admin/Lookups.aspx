@@ -3,6 +3,7 @@
 <%@ Register TagPrefix="CAESDO" TagName="Lookups" Src="~/UserControls/LookupsView.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -32,17 +33,17 @@
                     <AjaxControlToolkit:TabPanel ID="tcPlantSelectionAssociation" runat='server' HeaderText="Plant Selection Association">
                     <ContentTemplate>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                            
+                            <ContentTemplate>                          
+                                
                                 <asp:DropDownList ID="ddlCrops" runat="server" DataSourceID="odsCrops" AppendDataBoundItems="true" DataTextField="Name" DataValueField="id" AutoPostBack="true" OnSelectedIndexChanged="ddlCrops_OnSelectedIndexChange">
                                     <asp:ListItem Text="--Select a Crop--" Value="-1"></asp:ListItem>
                                 </asp:DropDownList>
                                 
-                                <asp:CheckBoxList ID="cblPlantSelections" runat="server" DataSourceID="odsPlantSelections" DataValueField="id" DataTextField="name" Visible="false">
+                                <asp:CheckBoxList ID="cblPlantSelections" runat="server" DataSourceID="odsPlantSelections" DataValueField="id" DataTextField="name" style="display:none;">
                                 </asp:CheckBoxList>
 
-                                <asp:LinkButton ID="lbSaveCropPlantSelection" runat="server" OnClick="lbSaveCropPlantSelection_OnClick" Visible="false">[Save]</asp:LinkButton>
-
+                                <asp:LinkButton ID="lbSaveCropPlantSelection" runat="server" OnClick="lbSaveCropPlantSelection_OnClick" Visible="false" >[Save]</asp:LinkButton>
+                                
                             </ContentTemplate>
                         </asp:UpdatePanel>
 
