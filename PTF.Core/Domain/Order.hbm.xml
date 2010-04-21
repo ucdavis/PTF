@@ -34,7 +34,6 @@
 		<property name="PICode" column="PICode" />
 		<property name="PIConstructName" column="PIConstructName" />
 		<many-to-one name="TransGene" class="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" column="TransGeneID" cascade="none" />
-		<many-to-one name="GenoType" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" column="GenoTypeID" cascade="none" />
 		<property name="Trait" column="Trait" />
 		
 		<property name="SelectableMarkerPromoter" column="SelectableMarkerPromoter" />
@@ -59,8 +58,8 @@
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>
 		</bag>
 
-		<bag name="SubOrders" table="SubOrders">
-			<key column="SubOrderID" />
+		<bag name="SubOrders" table="SubOrders" cascade="all-delete-orphan">
+			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core"/>
 		</bag>
 		

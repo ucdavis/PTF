@@ -171,6 +171,7 @@
                 shippingCountry.selectedIndex = 0;
                 shippingStateDDL.selectedIndex = 0;
                 shippingStateTB.value = str_empty;
+                shippingStateDDL.disabled = true;
             }
         }
         
@@ -344,9 +345,9 @@
             <td>
                 Address Line 1<br />
                 <asp:TextBox ID="tbMailing1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
-                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing1_TextBoxWatermarkExtender" 
+<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing1_TextBoxWatermarkExtender" 
                     runat="server" Enabled="True" TargetControlID="tbMailing1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>
+                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
                 <asp:RequiredFieldValidator ID="rfvMailing1" runat="server" Text="*" ControlToValidate="tbMailing1" ValidationGroup="NewOrder" 
                     ErrorMessage="Address Line 1 is required."></asp:RequiredFieldValidator>
             </td>
@@ -357,9 +358,9 @@
             <td>
                 Address Line 2<br />
                 <asp:TextBox ID="tbMailing2" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
-                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing2_TextBoxWatermarkExtender" 
+<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing2_TextBoxWatermarkExtender" 
                     runat="server" Enabled="True" TargetControlID="tbMailing2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc." WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>
+                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
             </td>
         </tr>
         <tr>
@@ -416,9 +417,9 @@
             <td>
                 Address Line 1 <br />
                 <asp:TextBox ID="tbShipping1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>                
-                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping1_TextBoxWatermarkExtender" 
+<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping1_TextBoxWatermarkExtender" 
                     runat="server" Enabled="True" TargetControlID="tbShipping1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>
+                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
                 <span id="ShippingAddressWarning" style="color:Red; display:none;">*</span>
             </td>
         </tr>
@@ -428,9 +429,9 @@
             <td>
                 Address Line 2 <br />
                 <asp:TextBox ID="tbShipping2" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
-                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping2_TextBoxWatermarkExtender" 
+<%--                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping2_TextBoxWatermarkExtender" 
                     runat="server" Enabled="True" TargetControlID="tbShipping2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc." WatermarkCssClass="watermark">
-                </AjaxControlToolkit:TextBoxWatermarkExtender>
+                </AjaxControlToolkit:TextBoxWatermarkExtender>--%>
             </td>
         </tr>
         <tr>
@@ -517,54 +518,17 @@
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td>
-                
-                <asp:ListView ID="lvSubOrder" runat="server">
-                    <LayoutTemplate>
-                        <ul>
-                            <li runat="server" id="ItemPlaceHolder" />
-                        </ul>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        
-                    </ItemTemplate>
-                </asp:ListView>
-                
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Crop:</td>
-            <td>
-                <asp:DropDownList ID="ddlCrop" runat="server" DataSourceID="odsCrop" 
-                    DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
-                        <asp:ListItem Text="--Select a Crop--" Value="-1" />
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvCrop" runat="server" 
-                    ErrorMessage="You are required to select a crop." 
-                    ControlToValidate="ddlCrop" InitialValue="-1" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Cultivar:</td>
-            <td>
-                <asp:TextBox ID="tbCultivar" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvCultivar" runat="server" Text="*" ControlToValidate="tbCultivar" ValidationGroup="NewOrder"
-                    ErrorMessage="Cultivar is required."></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Number of Plants:</td>
-            <td>
-                <asp:TextBox ID="tbNumberofPlants" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvNumberofPlants" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbNumberofPlants"
-                    ErrorMessage="Number of plants is required."></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                    ControlToValidate="tbNumberofPlants" ErrorMessage="Number of Plants is not a number." Text="*" ValidationExpression="\d*"
-                    ValidationGroup="NewOrder">*</asp:RegularExpressionValidator>
+            <td colspan="2">     
+                <asp:UpdatePanel ID="upPlantInformation" runat="server">
+                    <ContentTemplate>
+                        <asp:PlaceHolder ID="phPlantInformation" runat="server">
+                        </asp:PlaceHolder>
+                        <asp:LinkButton ID="lbAddPlantInformationFields" runat="server" 
+                                style="text-decoration:none;" onclick="lbAddPlantInformationFields_Click">
+                            <img src="../Images/add.png" style="height:16px; width:16px; border:none;" />
+                        </asp:LinkButton>
+                    </ContentTemplate>
+                </asp:UpdatePanel>    
 
             </td>
         </tr>
@@ -611,15 +575,6 @@
         </tr>
         <tr>
             <td class="style3">
-                Plant Selection:</td>
-            <td>
-                <asp:TextBox ID="tbPlantSelection" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvPlantSelection" runat="server" ControlToValidate="tbPlantSelection"
-                    ErrorMessage="Plant Selection is required." Text="*" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
                 Construct:</td>
             <td>
                 <asp:TextBox ID="tbConstruct" runat="server" MaxLength="50"></asp:TextBox>
@@ -655,6 +610,15 @@
                     DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
                         <asp:ListItem Text="--Select Transgene--" Value="-1" />
                 </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvTransGene" runat="server" ErrorMessage="Transgene is required." Text="*" ControlToValidate="ddlTransGene" ValidationGroup="NewOrder"></asp:RequiredFieldValidator></td>
+        </tr>
+        <tr>
+            <td class="style3">
+                Trait:
+            </td>
+            <td>
+                <asp:TextBox ID="tbTrait" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvTrait" runat="server" ControlToValidate="tbTrait" ErrorMessage="Trait is required." Text="*" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -769,6 +733,14 @@
         <asp:ObjectDataSource ID="odsAgroStrain" runat="server" 
             OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
             TypeName="CAESDO.PTF.BLL.AgroStrainBLL">
+        </asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="odsPlantSelection" runat="server" 
+            OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+            TypeName="CAESDO.PTF.BLL.PlantSelectionBLL">
+        </asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="odsGenoType" runat="server" 
+            OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+            TypeName="CAESDO.PTF.BLL.GenoTypeBLL">
         </asp:ObjectDataSource>
 </asp:Content>
 

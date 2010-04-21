@@ -13,7 +13,12 @@ namespace CAESDO.PTF.BLL
     {
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Order newOrder)
-        {         
+        {
+            if (newOrder.RechargeNumber == null)
+            {
+                newOrder.ContractExecuted = false;
+            }
+
             using (var ts = new TransactionScope())
             {
                 EnsurePersistent(ref newOrder);

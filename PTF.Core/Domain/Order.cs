@@ -26,7 +26,7 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         [StringLengthValidator(100)]
         public virtual string MailingAddress1 { get; set; }
-        [NotNullValidator]
+        [IgnoreNulls]
         [StringLengthValidator(100)]
         public virtual string MailingAddress2 { get; set; }
         [NotNullValidator]
@@ -45,7 +45,7 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         [StringLengthValidator(100)]
         public virtual string ShippingAddress1 { get; set; }
-        [NotNullValidator]
+        [IgnoreNulls]
         [StringLengthValidator(100)]
         public virtual string ShippingAddress2 { get; set; }
         [NotNullValidator]
@@ -76,8 +76,6 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(50)]
         public virtual string PICode { get; set; }
         public virtual TransGene TransGene { get; set; }
-        [IgnoreNulls]
-        public virtual GenoType GenoType { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string Trait { get; set; }
