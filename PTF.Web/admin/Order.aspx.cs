@@ -136,7 +136,7 @@ public partial class admin_Order : System.Web.UI.Page
             gvSuborder.DataSource = order.SubOrders;
             gvSuborder.DataBind();
         }
-        catch (NHibernate.ObjectNotFoundException onfe)
+        catch 
         {
             Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
         }

@@ -104,7 +104,7 @@ public partial class admin_Experiment : System.Web.UI.Page
                 btnAddPlant.Enabled = false;
             }
         }
-        catch (NHibernate.ObjectNotFoundException onfe)
+        catch 
         {
             Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY)); 
         }

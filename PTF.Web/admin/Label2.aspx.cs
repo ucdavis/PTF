@@ -44,6 +44,6 @@ public partial class admin_Label2 : System.Web.UI.Page
 
         pdfDoc.Pages.Add(page);
 
-        pdfDoc.DrawToWeb(this);
+        pdfDoc.DrawToWeb();
     }
 }

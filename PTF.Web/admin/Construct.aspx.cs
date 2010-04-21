@@ -87,7 +87,7 @@ public partial class admin_Construct : System.Web.UI.Page
                 litContractNotExecuted.Text = CommonStrings.STR_ContractNotExecutedWarning;
             }
         }
-        catch (NHibernate.ObjectNotFoundException onfe)
+        catch 
         {
             Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
         }

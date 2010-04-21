@@ -49,9 +49,6 @@ namespace CAESDO.PTF.BLL
             {
                 throw new Exception("Profile not found.");
             }
-
-            // shouldn't be able to get here.
-            return null;
         }
     }
 }
