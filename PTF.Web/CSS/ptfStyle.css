@@ -20,14 +20,28 @@ body
 .clear {clear: both;}
 #portal-footer {margin-top: 0px; background: transparent; border: 0px;}
 
+#updateImage {position: absolute; margin: auto auto; left: 50%; top: 50%;}
+
 
 
 /* -------------------------------------------- */
 /*   nav styles                                 */
 /* -------------------------------------------- */
 
-#login {color: White; text-transform: uppercase; font-size: .7em; letter-spacing: 2px; font-weight: bold; line-height: 3em; margin-top: 2px; text-align: right;}
-#login a:hover {color: white; border-bottom: 1px;}
+#login {
+    color: White; 
+    text-transform: uppercase; 
+    font-size: .7em; 
+    letter-spacing: 2px; 
+    font-weight: bold; 
+    line-height: 3em; 
+    margin-top: 2px; 
+    text-align: right;}
+#login a:hover, .BackButton a:hover {color: white; border-bottom: 1px;}
+
+.BackButton {
+  float: left; margin-top: -78px;
+}
 
 
 
@@ -97,7 +111,7 @@ tr#footer {url(../Images/table_btm.png) no-repeat bottom left;}
 tr.pager td.info {text-align: right;}
 
 table#orders td a {font-size: 1.5em; font-weight: bold;}
-table#suborders td {font-size: 1.3em;}
+table#suborders td, table.experiments td, table#dataTable td {font-size: 1.3em;}
 
 table.InfoTable, table.InfoTable tbody, table.InfoTable tr, table.InfoTable tr.head {background: transparent;}
 
@@ -108,8 +122,15 @@ td.InfoFieldValue {}
 td.col1, td.col3 {width: 28%;}
 td.col2, td.col4 {width: 22%;}
 
+td.c3.col1, td.c3.col3, td.c3.col5 {width: 15%}
+td.c3.col2, td.c3.col4, td.c3.col6 {width: 18%}
+
 div.CollapsiblePanelHeader div {}
 div.CollapsiblePanelHeader div span {color: #d67129}
+
+table.notes {width: 431px;}
+
+
 
 
 /* -------------------------------------------- */

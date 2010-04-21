@@ -24,7 +24,7 @@
         </Scripts>
     </asp:ScriptManager>
     
-    <div>
+    <div id="updateImage">
         <asp:UpdateProgress ID="UpdateProgress1" runat="server">
             <ProgressTemplate>
                 <asp:Image ID="imgUpdateProgress" runat="server" ImageUrl="~/Images/mozilla_blu.gif" />
@@ -38,7 +38,7 @@
         <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx"><asp:Image ID="Logo" ImageUrl="~/Images/logo.jpg" runat="server" alt="Plant Transformation Facility" /></asp:HyperLink>
         </div>
         <div id="login">
-            <%--<a href="Default.aspx">Home</a> &nbsp;|&nbsp; --%>
+            <a href="Default.aspx">Home</a> &nbsp;|&nbsp; 
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
                     <asp:LoginStatus ID="LoginStatus2" runat="server" />

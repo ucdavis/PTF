@@ -12,17 +12,17 @@
         <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click">[Back to Order]</asp:LinkButton>
     </div>
 
-    <table>
+    <table class="InfoTable">
         <tr>
-            <td class="InfoFieldName">Experiment Code:&nbsp;</td>
-            <td class="InfoFieldValue">
+            <td class="InfoFieldName c3 col1">Experiment Code:&nbsp;</td>
+            <td class="InfoFieldValue c3 col2">
                 <asp:Literal ID="litExperimentCode" runat="server"></asp:Literal></td>
-            <td class="InfoFieldName">Date Started:&nbsp;</td>
-            <td class="InfoFieldValue">
+            <td class="InfoFieldName c3 col3">Date Started:&nbsp;</td>
+            <td class="InfoFieldValue c3 col4">
                 <asp:Literal ID="litDateStarted" runat="server"></asp:Literal>
             </td>
-            <td class="InfoFieldName"></td>
-            <td class="InfoFieldValue"></td>
+            <td class="InfoFieldName c3 col5"></td>
+            <td class="InfoFieldValue c3 col6"></td>
         </tr>
         <tr>
             <td class="InfoFieldName">Operator:&nbsp;</td>
@@ -98,7 +98,7 @@
     
     <asp:ListView ID="lvInduction" runat="server">
         <LayoutTemplate>
-            <table cellpadding="5px">
+            <table cellpadding="0" class="notes left">
                 <tr><th colspan="2">Induction Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
@@ -110,12 +110,12 @@
             </tr>
         </ItemTemplate>
         <EmptyDataTemplate>
-            No induction notes.
+            <span class="notes empty">No induction notes.</span>
         </EmptyDataTemplate>
     </asp:ListView>
     <asp:ListView ID="lvElongationGermination" runat="server">
         <LayoutTemplate>
-            <table cellpadding="5px">
+            <table cellpadding="0" class="notes right">
                 <tr><th colspan="2">Elongation/Germination Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
@@ -127,12 +127,12 @@
             </tr>
         </ItemTemplate>
         <EmptyDataTemplate>
-            No Elongation/Germination notes.
+            <span class="notes empty">No Elongation/Germination notes.</span>
         </EmptyDataTemplate>
     </asp:ListView>
     <asp:ListView ID="lvRecallusing" runat="server">
         <LayoutTemplate>
-            <table cellpadding="5px">
+            <table cellpadding="0" class="notes left">
                 <tr><th colspan="2">Recallusing Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
@@ -144,12 +144,12 @@
             </tr>
         </ItemTemplate>
         <EmptyDataTemplate>
-            No Recallusing notes.
+            <span class="notes empty">No Recallusing notes.</span>
         </EmptyDataTemplate>    
     </asp:ListView>
     <asp:ListView ID="lvRooting" runat="server">
         <LayoutTemplate>
-            <table cellpadding="5px">
+            <table cellpadding="0" class="notes right">
                 <tr><th colspan="2">Rooting Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
@@ -161,7 +161,7 @@
             </tr>
         </ItemTemplate>  
         <EmptyDataTemplate>
-            No Rooting notes.
+            <span class="notes empty">No Rooting notes.</span>
         </EmptyDataTemplate>  
     </asp:ListView>
     
@@ -172,7 +172,7 @@
             <asp:Button ID="btnCancelMakeNote" runat="server" Text="X" />
         </div>
         
-        <table>
+        <table class="notes">
             <tr>
                 <td style="text-align:right; width:125px;">Note Type:&nbsp;</td>
                 <td>
@@ -204,8 +204,8 @@
     <asp:ListView ID="lvPlants" runat="server" 
         onitemdatabound="lvPlants_ItemDataBound">
         <LayoutTemplate>
-            <table>
-                <tr>
+            <table id="dataTable" cellpadding="0" cellspacing="0">
+                <tr class="head">
                     <th>Pedigree</th>
                     <th>Date Entered</th>
                     <th>Re-Callusing Assay</th>

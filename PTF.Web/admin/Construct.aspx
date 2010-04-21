@@ -109,7 +109,7 @@
     <asp:ListView ID="lvExperiments" runat="server">
         <LayoutTemplate>
             <div class="grid">
-                <table cellpadding="10" cellspacing="0">
+                <table cellpadding="10" cellspacing="0" class="experiments">
                     <tr class="head">
                         <th class="first"></th>
                         <th>Experiment Code</th>
@@ -144,7 +144,7 @@
             <asp:Button ID="btnCancelNewExperiment" runat="server" Text="X" />
         </div>
         <br /><br />
-        <table> 
+        <table id="dataTable"> 
             <tr>
                 <td>Operator:&nbsp;</td>
                 <td>
