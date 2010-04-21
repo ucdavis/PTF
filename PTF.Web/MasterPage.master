@@ -67,8 +67,8 @@
 		    emailaddress=( 'app' + 'requests'  +  '@' + 'caes.' + 'ucda' + 'vis.edu' );
 		    document.write( '<a href="mailto:' + emailaddress + '">' + linkname + '</a>' );
 		    -->
-		    </script>
-        Version: <%= System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() %>
+		    </script> 
+        | Version: <%= System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() %><br />Copyright © UC Regents, Davis campus. All rights reserved. 
     </div>
     
     </div>
