@@ -7,6 +7,7 @@
 		</id>
 
 		<property name="Name" column="NoteType" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" table="Crops">
@@ -15,6 +16,7 @@
 		</id>
 
 		<property name="Name" column="Crop" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains">
@@ -23,6 +25,7 @@
 		</id>
 
 		<property name="Name" column="AgroStrain" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" table="Status">
@@ -31,6 +34,7 @@
 		</id>
 
 		<property name="Name" column="Status" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" table="SelectableMarkers">
@@ -39,6 +43,7 @@
 		</id>
 
 		<property name="Name" column="SelectableMarker" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" table="GenoTypes">
@@ -47,6 +52,7 @@
 		</id>
 
 		<property name="Name" column="GenoType" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" table="TransGenes">
@@ -55,6 +61,7 @@
 		</id>
 
 		<property name="Name" column="TransGene" />
+		<property name="IsActive" column="IsActive" />
 	</class>
 	
 </hibernate-mapping>

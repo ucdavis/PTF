@@ -10,6 +10,11 @@
 }
 .itemPanel
 {
-	width: 175px;
+	width: 200px;
 	height: 30px;
+}
+.icon
+{
+	width: 16px;
+	height: 16px;
 }

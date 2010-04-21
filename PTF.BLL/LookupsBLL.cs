@@ -9,21 +9,56 @@ using System.ComponentModel;
 namespace CAESDO.PTF.BLL
 {
     [DataObject]
-    public class NoteTypeBLL : GenericBLL<NoteType, int> 
+    public class LookupBLLBase<T, IdT> : GenericBLL<T, IdT> where T : LookupBase<T, IdT>, new()
     {
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Save(string name)
         {
-            NoteType noteType = new NoteType() { Name = name };
+            var lookupTypeEntity = new T() { Name = name };//new LookupBase<T, IdT>() { Name = name };
 
             using (var ts = new TransactionScope())
             {
-                EnsurePersistent(ref noteType);
+                EnsurePersistent(ref lookupTypeEntity);
 
-                ts.CommittTransaction();    // committ the transaction
+                ts.CommittTransaction(); //commit the transaction
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public static void Update(T obj)
+        {
+            string name = obj.Name;
+        }
     }
+
+    [DataObject]
+    public class NoteTypeBLL : LookupBLLBase<NoteType, int>
+    {
+    }
+
+    //[DataObject]
+    //public class NoteTypeBLL : GenericBLL<NoteType, int>
+    //{
+    //    [DataObjectMethod(DataObjectMethodType.Insert)]
+    //    public static void Save(string name)
+    //    {
+    //        NoteType noteType = new NoteType() { Name = name };
+
+    //        using (var ts = new TransactionScope())
+    //        {
+    //            EnsurePersistent(ref noteType);
+
+    //            ts.CommittTransaction();    // committ the transaction
+    //        }
+    //    }
+
+    //    [DataObjectMethod(DataObjectMethodType.Update)]
+    //    public static void Update(NoteType noteType)
+    //    {
+    //        string name = noteType.Name;
+
+    //    }
+    //}
     [DataObject]
     public class CropBLL : GenericBLL<Crop, int> 
     {
