@@ -33,9 +33,10 @@ public partial class Logout : System.Web.UI.Page
         {
             IsEmulating = false;
 
-            Response.Redirect("~/Default.apsx");
+            Response.Redirect("~/Default.aspx");
         }
 
         if (IsCasUser){Response.Redirect("https://cas.ucdavis.edu/cas/logout?service=" + STR_RedirectAddress, true);}
+        else {Response.Redirect("~/Default.aspx");}
     }
 }
