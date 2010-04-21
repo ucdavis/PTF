@@ -231,27 +231,40 @@
         <ItemTemplate>
             <tr id="row" runat='server' class="group" >
                 <td class="first">
-                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("Constructs.Count") %>', 'suborders');" />
+                    <img src="../images/minus.png" onclick="toggleGroup(this, 1, 'suborders');" />
                 </td>
                 <td><%# Eval("NumberOfPlants") %></td>
                 <td><%# Eval("Crop.Name") %></td>
                 <td><%# Eval("PlantSelection.Name") %></td>
                 <td><%# Eval("GenoType.Name") %></td>
             </tr>
-            <asp:ListView ID="lvConstructs" runat="server" DataSource='<%# Eval("Constructs") %>'>
-                <LayoutTemplate>
-                    <tr runat='server' id="itemplaceholder"></tr>
-                </LayoutTemplate>
-                <ItemTemplate>
-                    <tr id="row" runat="server" class="item hidden">
-                        <td class="first" ></td>
-                        <td><a href='<%# "Construct.aspx?cid=" + Eval("id") %>'><%# Eval("ConstructCode") %></a></td>
-                        <td><%# Eval("DateCreated", "{0:d}") %></td>
-                        <td><%# Eval("RechargeAmount") %></td>
-                        <td><%# Eval("Status.Name") %></td>
-                    </tr>
-                </ItemTemplate>
-            </asp:ListView>
+            <tr id="row" class="item">
+                <td class="first"></td>
+                <td colspan="4">
+                    <asp:ListView ID="lvConstructs" runat="server" DataSource='<%# Eval("Constructs") %>'>
+                        <LayoutTemplate>
+                            <table>
+                                <tr>
+                                    <th>Construct Code</th>
+                                    <th>Date Created</th>
+                                    <th>Recharge Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                                <tr runat='server' id="itemplaceholder"></tr>
+                            </table>
+                        </LayoutTemplate>
+                        <ItemTemplate>
+                            <tr id="row2" runat="server" class="item">
+                                <td class="first" ></td>
+                                <td><a href='<%# "Construct.aspx?cid=" + Eval("id") %>'><%# Eval("ConstructCode") %></a></td>
+                                <td><%# Eval("DateCreated", "{0:d}") %></td>
+                                <td><%# Eval("RechargeAmount") %></td>
+                                <td><%# Eval("Status.Name") %></td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:ListView>
+                </td>
+            </tr>
         </ItemTemplate>
     </asp:ListView>
  
