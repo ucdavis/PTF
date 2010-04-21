@@ -12,7 +12,13 @@
     </div>
      <table class="InfoTable">
         <tr class="head">
-            <td colspan="4">Construct Information</td>
+            <td colspan="4">Construct Information
+            
+                <span style="float:right;">
+                    <asp:LinkButton ID="lbGenerateInvoice" runat="server" 
+                    onclick="lbGenerateInvoice_Click">Invoice</asp:LinkButton>
+                </span>
+            </td>
         </tr>
         <tr>
             <td class="InfoFieldName col1">Construct Code:&nbsp;</td>
@@ -64,7 +70,7 @@
             <td class="InfoFieldName">Recharge Amount:&nbsp;</td>
             <td class="InfoFieldValue">
                 $<asp:TextBox ID="tbRecharge" runat="server" Width="50px"></asp:TextBox>               
-                <a id="A1" onclick='if (Page_ClientValidate("Recharge")) { SaveProperty("<%= Request.QueryString["cid"] %>", "Recharge", "<%= tbRecharge.ClientID %>", "Recharge"); }'><img src="../Images/save.png" width="20px" alt="save" />
+                <a id="A1" onclick='if (Page_ClientValidate("Recharge")) { SaveProperty("<%= Request.QueryString["cid"] %>", "Recharge", "<%= tbRecharge.ClientID %>", "Construct"); }'><img src="../Images/save.png" width="20px" alt="save" />
                 <span id="Recharge"></span><br />
                 <asp:RegularExpressionValidator ID="revRecharge" ControlToValidate="tbRecharge" ValidationGroup="Recharge" ValidationExpression="^([1-9]{1}[\d]{0,2}(\,[\d]{3})*(\.[\d]{0,2})?|[1-9]{1}[\d]{0,}(\.[\d]{0,2})?|0(\.[\d]{0,2})?|(\.[\d]{1,2})?)$" runat="server" ErrorMessage="Not valid dollar amount."></asp:RegularExpressionValidator>
             </td>
