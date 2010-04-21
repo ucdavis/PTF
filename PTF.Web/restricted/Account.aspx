@@ -30,7 +30,7 @@ function SaveProfile()
         $get("ValidationWarnings").innerHTML = "";
         
         // save
-        PageMethods.SaveProfile($get('<%= tbAddress1.ClientID %>').value,
+        ScriptServices.SaveProfile($get('<%= tbAddress1.ClientID %>').value,
             $get('<%= tbAddress2.ClientID %>').value,
             $get('<%= tbCity.ClientID %>').value,
             stateDDL.options[stateDDL.selectedIndex].value,
@@ -117,9 +117,9 @@ function SaveProfileOnComplete ()
             <tr>
                 <td class="InfoFieldName"></td>
                 <td class="InfoFieldValue">
-                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="ProfileSave" />
-                    <div id="ValidationWarnings" style="display:none; color:Red;"></div>
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="ProfileSave" />                   
                     <asp:Button ID="btnSaveAddress" runat="server" Text="Save" ValidationGroup="ProfileSave" OnClientClick="SaveProfile(); return false" />
+                    <div id="ValidationWarnings" style="display:none; color:Red;"></div>
                 </td>
             </tr>
         </table>

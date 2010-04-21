@@ -113,6 +113,6 @@ public partial class restricted_Order : System.Web.UI.Page
 
     protected void lbBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Orders.aspx", true);
+        Response.Redirect("Default.aspx", true);
     }
 }
