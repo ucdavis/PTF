@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Experiments.aspx.cs" Inherits="admin_ExistingData_Experiments" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Experiments.aspx.cs" Inherits="admin_ExistingData_Experiments" Title="PTF | Archived Experiments" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 

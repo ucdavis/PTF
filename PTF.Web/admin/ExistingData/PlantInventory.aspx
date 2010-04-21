@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PlantInventory.aspx.cs" Inherits="admin_ExistingData_PlantInventory" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PlantInventory.aspx.cs" Inherits="admin_ExistingData_PlantInventory" Title="PTF | Archived Plant Inventory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript" src="../../JS/ExistingData.js"></script>

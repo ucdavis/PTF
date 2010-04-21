@@ -17,4 +17,9 @@ public partial class admin_ExistingData_Default : System.Web.UI.Page
     {
 
     }
+
+    protected void lbBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../Default.aspx", true);
+    }
 }

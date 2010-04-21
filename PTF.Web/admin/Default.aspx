@@ -59,7 +59,7 @@
     <li><a href=Operators.aspx><img src="../Images/menu_operators.png" title="Operators" /></a></li>
     <li><a href=Users.aspx><img src="../Images/menu_users.png" title="Users" /></a></li>
     <li><a href=Reports.aspx><img src="../Images/menu_reports.png" title="Reports" /></a></li>
-    <li><a href=Archive.aspx><img src="../Images/menu_archive.png" title="Archived Data" /></a></li>
+    <li><a href=ExistingData/Default.aspx><img src="../Images/menu_archive.png" title="Archived Data" /></a></li>
     </ul>
 </asp:Content>
 
