@@ -23,9 +23,11 @@
     <span class="ContractWarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="BackButton">
+        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click">[Back to Order]</asp:LinkButton>
+    </div>
      <table class="InfoTable">
         <tr>
             <td class="InfoFieldName col1">Construct Code:&nbsp;</td>

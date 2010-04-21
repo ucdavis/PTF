@@ -85,6 +85,7 @@ public partial class admin_Construct : System.Web.UI.Page
             Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
         }
     }
+
     protected void btnCreate_Click(object sender, EventArgs e)
     {
         Experiment exp = new Experiment()
@@ -110,6 +111,10 @@ public partial class admin_Construct : System.Web.UI.Page
         // update the status in case something changes
         litStatus.Text = ConstructBLL.GetByID(ConstructID).Status.Name;
     }
+    protected void lbBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Order.aspx?oid=" + ConstructBLL.GetByID(ConstructID).Order.ID.ToString(), true);
+    }
 
     [WebMethod]
     public static string ChangeRecharge(int ConstructID, decimal RechargeAmount)
@@ -118,4 +123,5 @@ public partial class admin_Construct : System.Web.UI.Page
 
         return RechargeAmount.ToString("c");
     }
+
 }

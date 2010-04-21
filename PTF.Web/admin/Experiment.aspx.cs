@@ -148,7 +148,10 @@ public partial class admin_Experiment : System.Web.UI.Page
         // update the experiment status
         litStatus.Text = experiment.Status.Name;
     }
-
+    protected void lbBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Construct.aspx?cid=" + ExperimentBLL.GetByID(ExperimentID).Construct.ID.ToString(), true);
+    }
 
     [WebMethod]
     public static ChangeStatusReturn SaveChangeStatus(int plantID, int statusID)
