@@ -366,6 +366,22 @@ table#constructs td.last {padding-right: 20px;}
 table#constructs {}
 
 
+.clientOrder.InfoTable {font-size: 1.2em;}
+#orders td.labels {font-size: 1.1em; font-weight: bold;}
+.clientOrder.InfoTable .InfoFieldName {width: 250px;}
+
+
+.popup.wide .prices td {font-size: 0.9em; height: 2em; border-bottom: 1px solid #bbb;}
+.prices td.first {width: 220px;}
+.prices td.labels, .prices .labels td {font-size: 1.1em; font-weight: bold;}
+.prices .labels td {color: #d67129;}
+.orderform .prices td.labels {width: inherit;}
+.fineprint {font-size: 0.9em; font-style: italic;}
+
+
+
+
+
 
 
 /* -------------------------------------------- */

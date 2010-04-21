@@ -272,7 +272,7 @@
         <tr>
             <td colspan="2">
             <h1 class="orderform">Client Information </h2>
-            <i>* Bold indicates required field</i>
+            <i>* Bold indicates required field</i><br />
             </td>
         </tr>
         <tr>
@@ -330,7 +330,7 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                Country: 
+                Country: <br />
                 <asp:DropDownList ID="ddlMailingCountry" runat="server" 
                     DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID"  
                     AppendDataBoundItems="True" onChange="javascript:onCountryChange(this);"  >
@@ -395,7 +395,7 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                Country: 
+                Country: <br />
                 <asp:DropDownList ID="ddlShippingCountry" runat="server" 
                     DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" 
                     onChange="onCountryChange(this);" AppendDataBoundItems=true >
@@ -456,6 +456,111 @@
                <i>* If you select the "Other" option for genotype or plant selection someone from the PTF will be calling you to discuss your order.</i>
                <br />
                <i>** If you wish to request more than one crop/plant selection/genotype combination use the "plus" button for more rows.  Place one combination in each row.</i>
+                <br /><br />
+                <span class="btnPrices">
+                <asp:ImageButton ID="btnPrices" runat="server" ImageUrl="~/Images/btn_prices.png" />
+                </span>
+    <AjaxControlToolkit:ModalPopupExtender ID="mpePrices" BackgroundCssClass="popup_shadow" runat="server" TargetControlID="btnPrices" PopupControlID="pnlPrices" CancelControlID="btnCancelPrices">
+    </AjaxControlToolkit:ModalPopupExtender>
+    <asp:Panel ID="pnlPrices" runat="server" style="display:none;">
+    <div class="popup wide">
+        <div class="close">
+            <asp:ImageButton ID="btnCancelPrices" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
+        </div>
+    <h2>Transformation Services Pricing Schedule</h2>
+        <br />
+        <table class="prices">
+            <tr class="labels">
+                <td class="first">&nbsp;</td>
+                <td>Cultivar</td>
+                <td>Selection System</td>
+                <td>Cost *</td>
+            </tr>
+            <tr>
+                <td class="labels">Alfalfa - <em>Medicago sativa</em></td>
+                <td>Regen SY, Regen S</td>
+                <td>Kanamycin</td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Canola - <em>Brassica napus</em></td>
+                <td>Westar</td>
+                <td>Kanamycin</td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Citrus - <em>Poncirus trifoliata (L.)<br />Raf. x C. sinensis</em></td>
+                <td>Carizzo</td>
+                <td>Kanamycin</td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Carrot - <em>Daucus carota</em></td>
+                <td>Imperator</td>
+                <td>Kanamycin</td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Grape - <em>Vitis vinifera</em></td>
+                <td>Thompson Seedless</td>
+                <td>Kanamycin<br />Hygromycin<br /><br /></td>
+                <td>20 hrs @ $50/hr = $1,000</td>
+            </tr>
+            <tr>
+                <td class="labels">Lettuce - <em>Lactuca sativa</em></td>
+                <td>Most cultivars</td>
+                <td>Kanamycin</td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Rice - <em>Oryza sativa</em></td>
+                <td>Kitaake, Nipponbare</td>
+                <td>Hygromycin</td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Tobacco - <em>Nicotiana benthamiana</em></td>
+                <td>&nbsp;</td>
+                <td>Kanamycin<br />Hygromycin<br />Glufosinate<br /><br /></td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Tobacco - <em>Nicotiana tabacum</em></td>
+                <td>Sansum NN, SR-1, Xanthi</td>
+                <td>Kanamycin<br />Hygromycin<br />Glufosinate<br /><br /></td>
+                <td>5 hrs @ $50/hr = $250</td>
+            </tr>
+            <tr>
+                <td class="labels">Tomato - <em>Lycopersicom esculentum</em></td>
+                <td>Moneymaker, T-5, UC-82B<br />VF36, MicroTom, etc**</td>
+                <td>Kanamycin<br />Hygromycin<br />Glufosinate<br /><br /></td>
+                <td>10 hrs @ $50/hr = $500</td>
+            </tr>
+            <tr>
+                <td class="labels">Walnut - <em>Juglans regia</em></td>
+                <td>CR-1</td>
+                <td>Kanamycin</td>
+                <td>30 hrs @ $50/hr = $1,500</td>
+            </tr>
+            <tr>
+                <td class="labels">Walnut - <em>Juglans hindsii x J. regia</em></td>
+                <td>PX-1</td>
+                <td>Kanamycin</td>
+                <td>30 hrs @ $50/hr = $1,500</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="3" class="fineprint">* Cost = Number of hours required to construct 10 independent transgenic events @ $50/hr.
+                <br />** Many other cultivars can be transformed, contact the Facility for details.<br /></td>
+            </tr>
+        </table>
+        <asp:ImageButton ID="btnCancelPrices2" ToolTip="Close" ImageUrl="~/Images/btn_cancel.png" runat="server" Text="X" />
+        
+    </div>
+    <p class="popup_bottom wide">&nbsp;</p>
+    </asp:Panel>
+                
+                
                 <asp:UpdatePanel ID="upPlantInformation" runat="server">
                     <ContentTemplate>
                         <asp:PlaceHolder ID="phPlantInformation" runat="server">

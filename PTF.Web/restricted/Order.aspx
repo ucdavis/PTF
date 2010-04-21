@@ -9,7 +9,7 @@
         <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../Images/back.png" alt="" /> [Back to Orders]</asp:LinkButton>
     </div>
 
-<table class="InfoTable">
+<table class="InfoTable clientOrder">
     <tr>
         <td class="InfoFieldName">Order ID:&nbsp;</td>
         <td class="InfoFieldValue">
@@ -74,7 +74,7 @@
                 <td class="first">
                     <img src="../images/minus.png" onclick="toggleGroup(this, '<%# Eval("Plants.Count") %>', 'orders');" /> 
                 </td>
-                <td colspan="2">Crop:&nbsp;<%# Eval("Crop.Name") %></td>
+                <td colspan="2" class="labels">Crop:&nbsp;<%# Eval("Crop.Name") %></td>
                 <td colspan="2">Plant Selection:&nbsp;<%# Eval("PlantSelection.Name") %></td>
                 <td>GenoType:&nbsp;<%# Eval("GenoType.Name") %></td>
             </tr>
@@ -85,7 +85,7 @@
                 <ItemTemplate>
                     <tr id="row" class="item">
                         <td class="first"></td>
-                        <td><%# Eval("Pedigree") %></td>
+                        <td class="labels"><%# Eval("Pedigree") %></td>
                         <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
                         <td><%# Eval("ReCallusingAssay") %></td>
                         <td><%# Eval("Rooting") %></td>
