@@ -19,6 +19,7 @@ public partial class admin_Users : System.Web.UI.Page
 
     }
 
+    #region Clients
     protected void lbReset_Command(object sender, CommandEventArgs e)
     {
         Guid key = new Guid(e.CommandArgument.ToString());
@@ -37,6 +38,9 @@ public partial class admin_Users : System.Web.UI.Page
 
         gvClients.DataBind();
     }
+    #endregion
+
+    #region Staff
     protected void lvStaffUsers_SelectedIndexChanged(object sender, EventArgs e)
     {
         // get the login id
@@ -89,8 +93,8 @@ public partial class admin_Users : System.Web.UI.Page
         }
 
         // Add the user to the given role/unit
-        DropDownList unit = lview.Items[lview.SelectedIndex].FindControl("ddlAddUserRole") as DropDownList;
-        DropDownList role = lview.Items[lview.SelectedIndex].FindControl("ddlAddUserUnit") as DropDownList;
+        DropDownList unit = lview.Items[lview.SelectedIndex].FindControl("ddlAddUserUnit") as DropDownList;
+        DropDownList role = lview.Items[lview.SelectedIndex].FindControl("ddlAddUserRole") as DropDownList;
 
         if (userID == -1 || unit == null || role == null)
         {
@@ -138,6 +142,35 @@ public partial class admin_Users : System.Web.UI.Page
         lvUserRoles.DataSource = CatbertManager.GetRolesByUser(lblUserInfoLoginID.Text);
         lvUserRoles.DataBind();
 
+        // update the staff grid too
+        lvStaffUsers.DataBind();
+
         mpeUpdateUserInfo.Show();
     }
+    protected void btnAddUserUnit_Click(object sender, EventArgs e)
+    {
+        //Add the user to the desired unit
+        bool success = CatbertManager.AddUserToUnit(lblUserInfoLoginID.Text, int.Parse(ddlUnits.SelectedValue));
+        //update the grid
+        CAESDO.PTF.Core.Domain.User selectedUser = UserBLL.GetByLogin(lblUserInfoLoginID.Text);
+
+        lvUserUnits.DataSource = selectedUser.Units;
+        lvUserUnits.DataBind();
+
+        mpeUpdateUserInfo.Show();
+    }
+
+    protected void btnAddUserRole_Click(object sender, EventArgs e)
+    {
+        bool success = CatbertManager.AddUserToRole(lblUserInfoLoginID.Text, int.Parse(ddlRoles.SelectedValue));
+
+        CAESDO.PTF.Core.Domain.User selectedUser = UserBLL.GetByLogin(lblUserInfoLoginID.Text);
+
+        lvUserRoles.DataSource = CatbertManager.GetRolesByUser(lblUserInfoLoginID.Text);
+        lvUserRoles.DataBind();
+
+        mpeUpdateUserInfo.Show();
+    }
+
+    #endregion
 }

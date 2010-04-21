@@ -166,7 +166,13 @@
                         </tr>
                     </ItemTemplate>
                 </asp:ListView>
-                                
+                
+                
+                <asp:DropDownList ID="ddlUnits" DataTextField="Unit" DataValueField="UnitID" runat="server" DataSourceID="odsUnits">
+                </asp:DropDownList>
+                <asp:Button ID="btnAddUserUnit" runat="server" OnClick="btnAddUserUnit_Click" Text="Add Unit" />
+                <br /><br />
+                                                                
                 <asp:ListView ID="lvUserRoles" runat="server" DataKeyNames="RoleID" 
                     onitemdeleting="lvUserRoles_ItemDeleting">
                     <LayoutTemplate>
@@ -182,12 +188,17 @@
                         <tr>
                             <td><%# Eval("Role") %></td>
                             <td>
-                                <asp:LinkButton ID="lbDeleteUserUnit" runat="server">[Delete]</asp:LinkButton>
+                                <asp:LinkButton ID="lbDeleteUserUnit" CommandName="Delete" runat="server">[Delete]</asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
                 </asp:ListView>
                 
+                <asp:DropDownList ID="ddlRoles" runat="server" DataSourceID="odsRoles" DataTextField="Role" DataValueField="RoleID">
+                </asp:DropDownList>
+                <asp:Button ID="btnAddUserRole" runat="server" OnClick="btnAddUserRole_Click" Text="Add Role" />
+                
+                <br /><br />
                 <asp:LinkButton ID="lbSaveUserInfo" runat="server">[Save]</asp:LinkButton>
                 <asp:LinkButton ID="lbCloseUserInfo" runat="server">[Close]</asp:LinkButton>
             </asp:Panel>
@@ -196,6 +207,12 @@
                 OldValuesParameterFormatString="original_{0}" SortParameterName="sortExp" 
                 SelectMethod="GetUsersInApplication" TypeName="CatbertManager"></asp:ObjectDataSource>
                 
+            <asp:ObjectDataSource ID="odsUnits" runat="server" 
+                        OldValuesParameterFormatString="original_{0}" SelectMethod="GetUnits" 
+                        TypeName="CatbertManager"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="odsRoles" runat="server" 
+                        OldValuesParameterFormatString="original_{0}" SelectMethod="GetRoles" 
+                        TypeName="CatbertManager"></asp:ObjectDataSource>    
             </ContentTemplate>
         </asp:UpdatePanel>
         </ContentTemplate>        

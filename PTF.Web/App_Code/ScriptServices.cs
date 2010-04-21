@@ -27,6 +27,8 @@ public class ScriptServices : System.Web.Services.WebService
         //InitializeComponent(); 
     }
 
+    #region Generic Methods
+
     [WebMethod]
     public void SaveProperty(int objID, string property, string value, string objType)
     {
@@ -61,6 +63,9 @@ public class ScriptServices : System.Web.Services.WebService
                 break;
             case "Comment":
                 order.Comments = value;
+                break;
+            case "ContractNumber":
+                order.ContractNumber = value;
                 break;
         };
 
@@ -99,5 +104,70 @@ public class ScriptServices : System.Web.Services.WebService
 
         PlantBLL.Update(plant);
     }
+
+    #endregion
+
+    #region Admin/Orders.aspx
+    [WebMethod]
+    public static void SaveContractNumber(int orderID, string contractNumber)
+    {
+        var order = OrderBLL.GetByID(orderID);
+
+        order.ContractNumber = contractNumber;
+
+        OrderBLL.Update(order);
+    }
+    #endregion
+
+    #region Admin/Constructs.aspx
+    #endregion
+
+    #region Admin/Experiments.aspx
+    [WebMethod]
+    public ChangeStatusReturn SaveChangeStatus(int plantID, int statusID)
+    {
+        PlantBLL.ChangeStatus(PlantBLL.GetByID(plantID), StatusBLL.GetByID(statusID));
+
+        // shipped status
+        if (StatusBLL.GetByID(statusID).Name == StatusText.STR_Shipped)
+        {
+            return new ChangeStatusReturn { IsComplete = true, ReturnText = DateTime.Now.ToString("d") };
+            //return DateTime.Now.ToString("d");
+        }
+        // any completed status
+        else if (StatusBLL.GetByID(statusID).IsComplete)
+        {
+            return new ChangeStatusReturn { IsComplete = true, ReturnText = string.Empty };
+            //return "complete";
+        }
+        // any not complete status
+        else
+        {
+            return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
+            //return string.Empty;
+        }
+    }
+
+    [WebMethod]
+    public ChangeStatusReturn SaveRecallusingAssay(int plantID, bool recallusing)
+    {
+        PlantBLL.ChangeRecallusingAssay(PlantBLL.GetByID(plantID), recallusing);
+
+        return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
+    }
+
+    [WebMethod]
+    public ChangeStatusReturn SaveRooting(int plantID, bool rooting)
+    {
+        PlantBLL.ChangeRooting(PlantBLL.GetByID(plantID), rooting);
+
+        return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
+    }
+    #endregion
 }
 
+public class ChangeStatusReturn
+{
+    public bool IsComplete { get; set; }
+    public string ReturnText { get; set; }
+}

@@ -4,23 +4,6 @@
 
 <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
 <script type="text/javascript" src="../JS/Order.js"></script>
-
-<script type="text/javascript">
-    function SaveContractNumber()
-    {    
-        var contractNumber = $get('<%= tbContractNumber.ClientID %>').value;
-    
-        PageMethods.SaveContractNumber('<%= Request.QueryString["oid"] %>', contractNumber, ExecuteContractOnComplete, null, contractNumber);
-    }
-    
-    function ExecuteContractOnComplete(result, context)
-    {
-        $get("ContractExecuted").innerHTML = context;
-        $get('<%= tbContractNumber.ClientID %>').style.display = "none";
-        $get('<%= lbContractNumber.ClientID %>').style.display = "none";
-    }
-</script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -84,9 +67,10 @@
                     <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
                 <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <div id="ContractExecuted"><asp:Literal ID="litContractExecuted" runat="server"></asp:Literal></div>
                     <asp:TextBox ID="tbContractNumber" runat="server" Visible="false"></asp:TextBox>&nbsp;
                     <asp:LinkButton ID="lbContractNumber" runat="server" OnClientClick="SaveContractNumber(); return false;" Visible="false"><img src="../Images/save.png" width="15px" alt="save" /></asp:LinkButton>
+                    <a id="ContractNumberButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <span id="ContractNumber"></span>
                 </td>            
             </tr>
             <tr>

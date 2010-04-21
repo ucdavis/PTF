@@ -157,47 +157,6 @@ public partial class admin_Experiment : System.Web.UI.Page
         Response.Redirect("Construct.aspx?cid=" + ExperimentBLL.GetByID(ExperimentID).Construct.ID.ToString(), true);
     }
 
-    [WebMethod]
-    public static ChangeStatusReturn SaveChangeStatus(int plantID, int statusID)
-    {
-        PlantBLL.ChangeStatus(PlantBLL.GetByID(plantID), StatusBLL.GetByID(statusID));
-
-        // shipped status
-        if (StatusBLL.GetByID(statusID).Name == StatusText.STR_Shipped)
-        {
-            return new ChangeStatusReturn { IsComplete = true, ReturnText = DateTime.Now.ToString("d")};
-            //return DateTime.Now.ToString("d");
-        }
-        // any completed status
-        else if (StatusBLL.GetByID(statusID).IsComplete)
-        {
-            return new ChangeStatusReturn { IsComplete = true, ReturnText = string.Empty};
-            //return "complete";
-        }
-        // any not complete status
-        else
-        {
-            return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty};
-            //return string.Empty;
-        }
-    }
-
-    [WebMethod]
-    public static ChangeStatusReturn SaveRecallusingAssay(int plantID, bool recallusing)
-    {
-        PlantBLL.ChangeRecallusingAssay(PlantBLL.GetByID(plantID), recallusing);
-
-        return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
-    }
-
-    [WebMethod]
-    public static ChangeStatusReturn SaveRooting(int plantID, bool rooting)
-    {
-        PlantBLL.ChangeRooting(PlantBLL.GetByID(plantID), rooting);
-
-        return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
-    }
-
     protected void lvPlants_ItemDataBound(object sender, ListViewItemEventArgs e)
     {
         if (e.Item.ItemType == ListViewItemType.DataItem)
@@ -234,8 +193,3 @@ public partial class admin_Experiment : System.Web.UI.Page
     }
 }
 
-public class ChangeStatusReturn
-{
-    public bool IsComplete { get; set; }
-    public string ReturnText { get; set; }
-}

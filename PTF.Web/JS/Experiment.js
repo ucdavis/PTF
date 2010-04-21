@@ -51,7 +51,7 @@ function ChangeStatus(dropDown)
     context.ConfirmImg.style.display = STR_None;
     context.FailImg.style.display = STR_None;
     
-    PageMethods.SaveChangeStatus(plantID, value, OnComplete, OnFail, context);
+    ScriptServices.SaveChangeStatus(plantID, value, OnComplete, OnFail, context);
 }
 
 function ChangeCheckBox(checkBox, type)
@@ -71,11 +71,11 @@ function ChangeCheckBox(checkBox, type)
     
     if (type == STR_Recallusing)
     {
-        PageMethods.SaveRecallusingAssay(plantID, checkBox.checked, OnComplete, OnFail, context); 
+        ScriptServices.SaveRecallusingAssay(plantID, checkBox.checked, OnComplete, OnFail, context); 
     }
     else
     {
-        PageMethods.SaveRooting(plantID, checkBox.checked, OnComplete, OnFail, context);
+        ScriptServices.SaveRooting(plantID, checkBox.checked, OnComplete, OnFail, context);
     }
 }
 

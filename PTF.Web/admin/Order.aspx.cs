@@ -63,14 +63,6 @@ public partial class admin_Order : System.Web.UI.Page
 
                 btnNewConstruct.Visible = false;
 
-                if (tbContractNumber.Visible)
-                {
-                    tbContractNumber.Visible = false;
-                    lbContractNumber.Visible = false;
-
-                    litContractExecuted.Text = string.Empty;
-                    litContractExecuted.Visible = true;
-                }
             }
        }
     }
@@ -97,22 +89,14 @@ public partial class admin_Order : System.Web.UI.Page
             {
                 // this order has a recharge number no need for a contract
                 litRechargeNumber.Text = order.RechargeNumber;
-                litContractExecuted.Text = CommonStrings.STR_NotAvailable;
+                tbContractNumber.Enabled = false;
             }
             else
             {
                 // contract is required
-                if (string.IsNullOrEmpty(order.ContractNumber) && !User.IsInRole("Reader"))
-                {
-                    // make the button visible
-                    lbContractNumber.Visible = true;
-                    tbContractNumber.Visible = true;
-                }
-                else
-                {
-                    // contract has been executed.
-                    litContractExecuted.Text = order.ContractNumber;
-                }
+                tbContractNumber.Visible = true;
+                tbContractNumber.Text = order.ContractNumber;
+
                 litRechargeNumber.Text = CommonStrings.STR_NotAvailable;
             }
             if (order.RequiresShippingPermit)
@@ -207,40 +191,5 @@ public partial class admin_Order : System.Web.UI.Page
         lvSuborders.DataBind();
     }
 
-    [WebMethod]
-    public static void SaveContractNumber(int orderID, string contractNumber)
-    {
-        var order = OrderBLL.GetByID(orderID);
 
-        order.ContractNumber = contractNumber;
-
-        OrderBLL.Update(order);
-    }
-
-    [WebMethod]
-    public static void SaveProperty(int orderID, string property, string value)
-    {
-        var order = OrderBLL.GetByID(orderID);
-
-        switch (property)
-        {
-            case "WorkingBox":
-                order.WorkingBox = value;
-                break;
-            case "ArchivedBox":
-                order.ArchiveBox = value;
-                break;
-            case "Location":
-                order.Location = value;
-                break;
-            case "Position":
-                order.Position = value;
-                break;
-            case "Comment":
-                order.Comments = value;
-                break;
-        };
-
-        OrderBLL.Update(order);
-    }
 }
