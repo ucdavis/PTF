@@ -63,5 +63,14 @@
 		<property name="Name" column="TransGene" />
 		<property name="IsActive" column="IsActive" />
 	</class>
-	
+
+	<class name="CAESDO.PTF.Core.Domain.Country, CAESDO.PTF.Core" table="Countries" >
+		<id name="id" access="field" column="CountryID" unsaved-value="0">
+			<generator class="assigned" />
+		</id>
+
+		<property name="Name" column="Name" />
+		<property name="IsActive" column="IsActive" />
+	</class>
+
 </hibernate-mapping>

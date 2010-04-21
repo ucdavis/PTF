@@ -44,11 +44,12 @@ namespace CAESDO.PTF.BLL
             return daoFactory.GetGenericDao<T, IdT>().GetByProperty(propertyName, propertyValue);
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<T> GetAll()
         {
             return daoFactory.GetGenericDao<T, IdT>().GetAll();
         }
-
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<T> GetAll(string propertyName, bool ascending)
         {
             return daoFactory.GetGenericDao<T, IdT>().GetAll(propertyName, ascending);

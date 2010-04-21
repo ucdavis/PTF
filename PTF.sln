@@ -29,7 +29,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PTF.Web", "PTF.Web", "{1CFE
 		Release.AspNetCompiler.AllowPartiallyTrustedCallers = "false"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "14219"
+		VWDPort = "3778"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
