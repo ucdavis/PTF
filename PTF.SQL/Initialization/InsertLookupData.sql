@@ -1,10 +1,10 @@
-﻿-- Note Types
+﻿-- == Note Types == --
 insert into NoteTypes (NoteType, IsActive) values ('Induction', 1)
 insert into NoteTypes (NoteType, IsActive) values ('Elongation/Germination', 1)
 insert into NoteTypes (NoteType, IsActive) values ('Recallusing', 1)
 insert into NoteTypes (NoteType, IsActive) values ('Rooting', 1)
 
--- Status
+-- == Status == --
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Initiated', 1, 0, 1)
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Dead', 1, 1, 1)
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Shipped', 1, 1, 1)
@@ -13,7 +13,7 @@ Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Pending'
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Complete', 1, 1, 0)
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Cancelled', 1, 1, 0)
 
--- States
+-- == States == --
 insert into states (stateid, [name], isactive) values ('AK', 'Alaska', 1 )
 insert into states (stateid, [name], isactive) values ('AL', 'Alabama', 1 )
 insert into states (stateid, [name], isactive) values ('AR', 'Arkansas', 1 )
@@ -66,8 +66,7 @@ insert into states (stateid, [name], isactive) values ('WI', 'Wisconsin', 1 )
 insert into states (stateid, [name], isactive) values ('WV', 'West Virginia', 1 )
 insert into states (stateid, [name], isactive) values ('WY', 'Wyoming', 1 )
 
--- Countries
-
+-- == Countries == --
 insert into countries (countryid, name, isactive) values ('ABW', '(Aruba)', 1 )
 insert into countries (countryid, name, isactive) values ('AFG', 'Afghanistan', 1 )
 insert into countries (countryid, name, isactive) values ('AGO', 'Angola', 1 )
@@ -109,8 +108,8 @@ insert into countries (countryid, name, isactive) values ('CAN', 'Canada', 1 )
 insert into countries (countryid, name, isactive) values ('CCK', '(Cocos (Keeling) Islands)', 1 )
 insert into countries (countryid, name, isactive) values ('CHE', 'Switzerland', 1 )
 insert into countries (countryid, name, isactive) values ('CHL', 'Chile', 1 )
-insert into countries (countryid, name, isactive) values ('CHN', 'People's Republic of China', 1 )
-insert into countries (countryid, name, isactive) values ('CIV', 'Côte d'Ivoire', 1 )
+insert into countries (countryid, name, isactive) values ('CHN', 'People''s Republic of China', 1 )
+insert into countries (countryid, name, isactive) values ('CIV', 'Côte d''Ivoire', 1 )
 insert into countries (countryid, name, isactive) values ('CMR', 'Cameroon', 1 )
 insert into countries (countryid, name, isactive) values ('COD', 'Democratic Republic of the Congo', 1 )
 insert into countries (countryid, name, isactive) values ('COG', 'Republic of the Congo', 1 )
@@ -306,3 +305,321 @@ insert into countries (countryid, name, isactive) values ('YEM', 'Yemen', 1 )
 insert into countries (countryid, name, isactive) values ('ZAF', 'South Africa', 1 )
 insert into countries (countryid, name, isactive) values ('ZMB', 'Zambia', 1 )
 insert into countries (countryid, name, isactive) values ('ZWE', 'Zimbabwe', 1 )
+
+-- == Crop == --
+insert into crops (crop, isactive) values ('Alfalfa', 1)
+insert into crops (crop, isactive) values ('Canola', 1)
+insert into crops (crop, isactive) values ('Carrot', 1)
+insert into crops (crop, isactive) values ('Citrus', 1)
+insert into crops (crop, isactive) values ('Cucumber', 1)
+insert into crops (crop, isactive) values ('Grape', 1)
+insert into crops (crop, isactive) values ('Lettuce', 1)
+insert into crops (crop, isactive) values ('Melon', 1)
+insert into crops (crop, isactive) values ('Mimulus', 1)
+insert into crops (crop, isactive) values ('Pepper', 1)
+insert into crops (crop, isactive) values ('Petunia', 1)
+insert into crops (crop, isactive) values ('Potato', 1)
+insert into crops (crop, isactive) values ('Rice', 1)
+insert into crops (crop, isactive) values ('Tobacco', 1)
+insert into crops (crop, isactive) values ('Tomato', 1)
+insert into crops (crop, isactive) values ('Truncatula', 1)
+insert into crops (crop, isactive) values ('Walnut', 1)
+
+-- == Genotypes == --
+
+declare @Cropid int, @Genotypeid int
+
+insert into genotypes (genotype, isactive) values ('Other', 1)
+
+	-- alfalfa
+insert into genotypes (genotype, isactive) values ('Regen SY4', 1)
+insert into genotypes (genotype, isactive) values ('Regen S7', 1)
+insert into genotypes (genotype, isactive) values ('UC2525-14', 1)
+insert into genotypes (genotype, isactive) values ('R97-37-1', 1)
+insert into genotypes (genotype, isactive) values ('RC97-37-5', 1)
+
+	-- Crop Associations
+	select @cropid = cropid from crops where crop = 'Alfalfa'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Regen SY4'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Regen S7'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'UC2525-14'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'R97-37-1'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'RC97-37-5'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+	-- Canola
+insert into genotypes (genotype, isactive) values ('Westar', 1)
+
+	-- Crop Associations
+	select @cropid = cropid from crops where crop = 'Canola'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Westar'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+	-- Carrot
+insert into genotypes (genotype, isactive) values ('Imperator', 1)
+
+	select @cropid = cropid from crops where crop = 'Carrot'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Imperator'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+	-- Citrus
+insert into genotypes (genotype, isactive) values ('Carrizo', 1)
+
+	select @cropid = cropid from crops where crop = 'Citrus'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Carrizo'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+	-- Cucumber
+	
+	select @cropid = cropid from crops where crop = 'Cucumber'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Grape
+insert into genotypes (genotype, isactive) values ('Thompson Seedless', 1)
+
+	select @cropid = cropid from crops where crop = 'Grape'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Thompson Seedless'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+	-- Lettuce
+insert into genotypes (genotype, isactive) values ('Cobbum Green', 1)
+insert into genotypes (genotype, isactive) values ('Diana', 1)
+insert into genotypes (genotype, isactive) values ('Mariska', 1)
+insert into genotypes (genotype, isactive) values ('Ninja', 1)
+insert into genotypes (genotype, isactive) values ('Summer Bibb', 1)
+insert into genotypes (genotype, isactive) values ('Valmaine', 1)
+
+	select @cropid = cropid from crops where crop = 'Lettuce'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Cobbum Green'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Diana'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Mariska'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Ninja'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Summer Bibb'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Valmaine'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Melon
+	
+	select @cropid = cropid from crops where crop = 'Melon'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Mimulus
+insert into genotypes (genotype, isactive) values ('gattatus', 1)
+insert into genotypes (genotype, isactive) values ('nasutus', 1)
+
+	select @cropid = cropid from crops where crop = 'Mimulus'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'gattatus'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+
+	select @genotypeid = genotypeid from genotypes where genotype = 'nasutus'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+
+	-- Pepper
+insert into genotypes (genotype, isactive) values ('R&C Cayenne', 1)
+
+	select @cropid = cropid from crops where crop = 'Pepper'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'R&C Cayenne'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	-- Petunia
+insert into genotypes (genotype, isactive) values ('Mitchell', 1)
+
+	select @cropid = cropid from crops where crop = 'Petunia'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Mitchell'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Potato
+insert into genotypes (genotype, isactive) values ('Kennebec', 1)
+
+	select @cropid = cropid from crops where crop = 'Potato'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Kennebec'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	-- Rice
+insert into genotypes (genotype, isactive) values ('Kitaake', 1)
+insert into genotypes (genotype, isactive) values ('Nipponbare', 1)
+
+	select @cropid = cropid from crops where crop = 'Rice'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Kitaake'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Nipponbare'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Tobacco
+insert into genotypes (genotype, isactive) values ('Benthamiana', 1)
+insert into genotypes (genotype, isactive) values ('Maryland Mammoth', 1)
+insert into genotypes (genotype, isactive) values ('Rastroensis', 1)
+insert into genotypes (genotype, isactive) values ('Samsun', 1)
+insert into genotypes (genotype, isactive) values ('Samsun NN', 1)
+insert into genotypes (genotype, isactive) values ('SR1', 1)
+insert into genotypes (genotype, isactive) values ('Sylvestris', 1)
+insert into genotypes (genotype, isactive) values ('TI1347', 1)
+insert into genotypes (genotype, isactive) values ('Xanthi', 1)
+
+	select @cropid = cropid from crops where crop = 'Tobacco'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Benthamiana'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+
+	select @genotypeid = genotypeid from genotypes where genotype = 'Maryland Mammoth'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Rastroensis'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Samsun'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Samsun NN'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'SR1'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Sylvestris'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'TI1347'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Xanthi'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Tomato
+insert into genotypes (genotype, isactive) values ('Ailsa Craig', 1)
+insert into genotypes (genotype, isactive) values ('Microtom', 1)
+insert into genotypes (genotype, isactive) values ('Moneymaker', 1)
+insert into genotypes (genotype, isactive) values ('T5', 1)
+insert into genotypes (genotype, isactive) values ('VF36', 1)
+insert into genotypes (genotype, isactive) values ('10 56E', 1)
+
+	select @cropid = cropid from crops where crop = 'Tomato'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Ailsa Craig'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Microtom'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Moneymaker'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'T5'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'VF36'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = '10 56E'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Truncatula
+insert into genotypes (genotype, isactive) values ('A17', 1)
+
+	select @cropid = cropid from crops where crop = 'Truncatula'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'A17'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+	
+	-- Walnut
+insert into genotypes (genotype, isactive) values ('PX-1', 1)
+
+	select @cropid = cropid from crops where crop = 'Walnut'
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'PX-1'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)	
+	
+	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
+	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
+
+-- == Agrostrains == --
+insert into agrostrains (agrostrain, isactive) value ('ABI', 1)
+insert into agrostrains (agrostrain, isactive) value ('AGL0', 1)
+insert into agrostrains (agrostrain, isactive) value ('AGL1', 1)
+insert into agrostrains (agrostrain, isactive) value ('ASE', 1)
+insert into agrostrains (agrostrain, isactive) value ('C58', 1)
+insert into agrostrains (agrostrain, isactive) value ('C58C1', 1)
+insert into agrostrains (agrostrain, isactive) value ('EHA101', 1)
+insert into agrostrains (agrostrain, isactive) value ('EHA105', 1)
+insert into agrostrains (agrostrain, isactive) value ('EHA105pch32', 1)
+insert into agrostrains (agrostrain, isactive) value ('GV3019', 1)
+insert into agrostrains (agrostrain, isactive) value ('GV3101', 1)
+insert into agrostrains (agrostrain, isactive) value ('GV3101pMP90RK', 1)
+insert into agrostrains (agrostrain, isactive) value ('GV2260', 1)
+insert into agrostrains (agrostrain, isactive) value ('LBA4404', 1)
