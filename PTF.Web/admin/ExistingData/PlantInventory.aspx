@@ -7,7 +7,7 @@
 
     <asp:ListView ID="lvPlants" runat="server" DataSourceID="odsPlants">
         <LayoutTemplate>
-            <table id="Plants">
+            <table id="Plants" class="InfoTable">
                 <tr>
                     <th scope="col"><asp:LinkButton ID="lbSortPedigree" CommandName="Sort" CommandArgument="Pedigree" runat="server">Pedigree</asp:LinkButton></th>
                     <th scope="col"><asp:LinkButton ID="lbSortTransformation_Code" CommandName="Sort" CommandArgument="Transformation_Code" runat="server">Transformation_Code</asp:LinkButton></th>
@@ -38,8 +38,8 @@
                 <td><%# Eval("Pedigree")%></td>
                 <td><%# Eval("Transformation_Code")%></td>
                 <td><%# Eval("Crop") %></td>
-                <td><%# Eval("Date_Initiated") %></td>
-                <td><%# Eval("Date_entered") %></td>
+                <td><%# Eval("Date_Initiated", "{0:M/d/yy h:mm tt}") %></td>
+                <td><%# Eval("Date_entered", "{0:M/d/yy h:mm tt}")%></td>
                 <td><%# Eval("Genotype") %></td>
                 <td><%# Eval("PI") %></td>
                 <td><%# Eval("Client") %></td>
@@ -54,7 +54,7 @@
                 <td><%# Eval("Re_callusing_Assay") %></td>
                 <td><%# Eval("Rooting") %></td>
                 <td><%# Eval("Comment") %></td>
-                <td><%# Eval("Date_delivered") %></td>
+                <td><%# Eval("Date_delivered", "{0:M/d/yy h:mm tt}")%></td>
             </tr>
         </ItemTemplate>
     </asp:ListView>

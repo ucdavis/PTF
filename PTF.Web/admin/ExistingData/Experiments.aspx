@@ -9,7 +9,7 @@
 
     <asp:ListView ID="lvExperiments" runat="server" DataSourceID="odsExperiments">
         <LayoutTemplate>
-            <table id="Experiments">
+            <table id="Experiments" class="InfoTable">
                 <tr>
                     <th scope="col">
                         <asp:LinkButton ID="lbSortExperiment" CommandName="Sort" CommandArgument="Experiment" runat="server">Experiment</asp:LinkButton>
@@ -99,7 +99,7 @@
         <ItemTemplate>
             <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("Experiment") %>'>
                 <td><%# Eval("Experiment")%></td>
-                <td><%# Eval("Date")%></td>
+                <td><%# Eval("Date", "{0:M/d/yy h:mm tt}")%></td>
                 <td><%# Eval("PI")%></td>
                 <td><%# Eval("Client")%></td>
                 <td><%# Eval("Operator")%></td>
@@ -122,7 +122,7 @@
                 <td><%# Eval("Rooting") %></td>
                 <td><%# Eval("Trait") %></td>
                 <td><%# Eval("Comment") %></td>
-                <td><%# Eval("Invoice_Sent") %></td>
+                <td><%# Eval("Invoice_Sent", "{0:M/d/yy h:mm tt}")%></td>
                 <td><%# Eval("Targeted___of_Plants") %></td>
                 <td><%# Eval("Optical_Density") %></td>
             </tr>

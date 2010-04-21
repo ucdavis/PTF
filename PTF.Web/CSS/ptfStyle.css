@@ -321,7 +321,7 @@ table.field {background: url(../Images/field_btm.png) bottom center no-repeat; m
 /* --- crops lookup table --- */
 #ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_tcCrops_body table {background: none;}
 
-#ctl00_ContentPlaceHolder1_TabContainer1 {overflow-x: hidden; overflow-y: auto;}
+#ctl00_ContentPlaceHolder1_TabContainer1 {overflow-x: hidden; overflow-y: auto; height: 600px;}
 
 
 /* --- user info popup table --- */
