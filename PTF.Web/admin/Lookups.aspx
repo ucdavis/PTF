@@ -56,7 +56,7 @@
                                     <asp:ListItem Text="--Select a Crop--" Value="-1"></asp:ListItem>
                                 </asp:DropDownList>
                                 
-                                <asp:CheckBoxList ID="cblGenoTypes" runat="server" DataSourceID="odsGenoTypes" DataValueField="id" DataTextField="name" style="display:none;">
+                                <asp:CheckBoxList ID="cblGenoTypes" runat="server" DataSourceID="odsGenoTypes" DataValueField="id" DataTextField="name" style="display:none;" RepeatDirection="Horizontal" RepeatColumns="3">
                                 </asp:CheckBoxList>
                                 
                                 <asp:LinkButton ID="lbSaveCropGenoTypes" runat="server" OnClick="lbSaveCropGenoTypes_OnClick" Visible="false"><img src="../Images/save.png" alt="Save" /></asp:LinkButton>
