@@ -188,7 +188,6 @@
                 <td>Seed Lot Number:&nbsp;</td>
                 <td>
                     <asp:TextBox ID="tbSeedLotNumber" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvSeedLotNumber" runat="server" ErrorMessage="*" ControlToValidate="tbSeedLotNumber" ValidationGroup="NewExperiment"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
