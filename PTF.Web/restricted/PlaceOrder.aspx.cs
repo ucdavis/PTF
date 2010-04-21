@@ -317,7 +317,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         tbMailingZip.Text = profile.Zip ?? string.Empty;
         tbMailingState.Text = profile.InternationalState ?? string.Empty;
 
-        if (profile.State != null)
+        if (profile.State != null && profile.Country.ID == "USA")
         {
             if (profile.State.IsActive)
             {

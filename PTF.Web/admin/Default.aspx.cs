@@ -23,37 +23,35 @@ public partial class admin_Default : System.Web.UI.Page
        
     protected void Page_Load(object sender, EventArgs e)
     {
-#if DEBUG
-            if (User.IsInRole("Admin"))
+        if (User.IsInRole("EmulationUser"))
+        {
+            // make the panel visible
+            pnlEmulation.Visible = true;
+
+            // check if they are already emulating
+            if (IsEmulating)
             {
-                // make the panel visible
-                pnlEmulation.Visible = true;
+                // hide the emulate buttons
+                tbUserToEmulate.Visible = false;
+                btnEmulate.Visible = false;
 
-                // check if they are already emulating
-                if (IsEmulating)
-                {
-                    // hide the emulate buttons
-                    tbUserToEmulate.Visible = false;
-                    btnEmulate.Visible = false;
-
-                    // show the already emulating controls
-                    litCurrentEmulation.Visible = true;
-                    litCurrentEmulation.Text = "You are currently emulating " + User.Identity.Name;
-                    btnExitEmulation.Visible = true;
-                }
-                else
-                {
-                    // hide the emulate buttons
-                    tbUserToEmulate.Visible = true;
-                    btnEmulate.Visible = true;
-
-                    // show the already emulating controls
-                    litCurrentEmulation.Visible = false;
-                    litCurrentEmulation.Text = string.Empty;
-                    btnExitEmulation.Visible = false;
-                }
+                // show the already emulating controls
+                litCurrentEmulation.Visible = true;
+                litCurrentEmulation.Text = "You are currently emulating " + User.Identity.Name;
+                btnExitEmulation.Visible = true;
             }
-#endif
+            else
+            {
+                // hide the emulate buttons
+                tbUserToEmulate.Visible = true;
+                btnEmulate.Visible = true;
+
+                // show the already emulating controls
+                litCurrentEmulation.Visible = false;
+                litCurrentEmulation.Text = string.Empty;
+                btnExitEmulation.Visible = false;
+            }
+        }
     }
 
     [WebMethod]

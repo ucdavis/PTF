@@ -34,7 +34,7 @@ public partial class restricted_Account : System.Web.UI.Page
         tbZip.Text = profile.Zip ?? string.Empty;
         tbInternationalState.Text = profile.InternationalState ?? string.Empty;
 
-        if (profile.State != null)
+        if (profile.State != null && profile.Country.ID == "USA")
         {
             if (profile.State.IsActive)
             {

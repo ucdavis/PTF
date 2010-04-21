@@ -31,19 +31,24 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsEmulating)
+        {
+            Response.Write("You are currently is emulation mode.");
+        }
+
         litVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
     }
     protected void LoginStatus1_LoggingOut(object sender, LoginCancelEventArgs e)
     {
         var user = Membership.GetUser();
-#if DEBUG
+
         if (IsEmulating)
         {
             FormsAuthentication.SignOut();
 
             IsEmulating = false;
         }
-#endif
+
         if (user == null) // cas login, redirect to the cas logout page
         {
             FormsAuthentication.SignOut();

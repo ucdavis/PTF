@@ -121,7 +121,7 @@
     <value>&lt;p&gt;Your password has been reset by the administrator.  Please log in using the password below to log in and proceed to the account page to reset your password.&lt;/p&gt;&lt;p&gt;New Password:&amp;nbsp;{password}&lt;/p&gt;Plant Transformation System Administrator</value>
   </data>
   <data name="STR_ClientConfirmationMessage" xml:space="preserve">
-    <value>This message is to inform you that your order has been successfully submitted.  Please check the ordering system for up to date status of your order at https://website.ucdavis.edu/ptf. - Plant Transformation Facility Administrator</value>
+    <value>This message is to inform you that your order has been successfully submitted.  Please check the ordering system for up to date status of your order at https://secure.caes.ucdavis.edu/ptf. - Plant Transformation Facility Administrator</value>
   </data>
   <data name="STR_NewOrder" xml:space="preserve">
     <value>A new order has been placed.</value>
