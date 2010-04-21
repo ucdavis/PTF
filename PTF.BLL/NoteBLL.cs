@@ -17,6 +17,7 @@ namespace CAESDO.PTF.BLL
 
         #region Modify Methods
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Note newNote)
         {
