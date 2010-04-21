@@ -77,6 +77,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StatusText.resx</DependentUpon>
     </Compile>
+    <Compile Include="SubOrderBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="caesdo.snk" />
