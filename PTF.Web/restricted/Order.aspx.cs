@@ -81,6 +81,7 @@ public partial class restricted_Order : System.Web.UI.Page
             litOrderID.Text = order.ID.ToString();
             litStatus.Text = order.Status.Name;
             litComments.Text = order.Comments;
+            litNameOfConstruct.Text = order.PIConstructName;
 
             if (order.RequiresShippingPermit)
             {

@@ -28,6 +28,16 @@
         </td>
     </tr>
     <tr>
+        <td class="InfoFieldName">Construct:</td>
+        <td class="InfoFieldValue">
+            <asp:Literal ID="litNameOfConstruct" runat="server"></asp:Literal>
+        </td>
+        <td class="InfoFieldName">
+            &nbsp;</td>
+        <td class="InfoFieldValue">
+            &nbsp;</td>
+    </tr>
+    <tr>
         <td class="InfoFieldName">Status:&nbsp;</td>
         <td class="InfoFieldValue">
             <asp:Literal ID="litStatus" runat="server"></asp:Literal></td>
