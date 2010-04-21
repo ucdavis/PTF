@@ -18,11 +18,12 @@
             
         <WizardSteps>
             <asp:WizardStep ID="WizardStep1" runat="server" StepType="finish" Title="Create Account">
-              <table border="0" cellpadding="5" style="font-weight:bold;" class="noStyle">
+              <table border="0px" cellpadding="5" style="font-weight:bold;" class="noStyle">
                         <tr class="head">
                             <td rowspan="8" style="width: 30px">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td rowspan="8" style="width: 10px">&nbsp;</td>
+                            <td colspan="2" style="width: 320px">&nbsp;</td>
+                            <td rowspan="8" style="width: 30px">&nbsp;</td>
+                            <td style="width: 400px">&nbsp;</td>
                         </tr>
                         <tr>
                             <td align="right">
@@ -32,11 +33,16 @@
                                 <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email"
                                     ErrorMessage="E-mail is required." ToolTip="E-mail is required." ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="EmailUCValid" runat="server" 
-                                    ControlToValidate="Email" ValidationGroup="CreateAccount"
-                                    ValidationExpression="ucdavis.edu$|berkeley.edu$|uci.edu$|ucla.edu$|ucmerced.edu$|ucr.edu$|ucsd.edu$|ucsf.edu$|ucsb.edu$|ucsc.edu$"
-                                    ErrorMessage="Because the Facility is no longer accepting orders from outside the University of California System we are requiring new accounts to use their University of California campus assigned email address.  Please contact the Facility staff if you have questions or cannot create an account using your University email address."
-                                    ToolTip="Because the Facility is no longer accepting orders from outside the University of California System we are requiring new accounts to use their University of California campus assigned email address.  Please contact the Facility staff if you have questions or cannot create an account using your University email address."
-                                    >*</asp:RegularExpressionValidator>
+                                ControlToValidate="Email" ValidationGroup="CreateAccount"
+                                ValidationExpression="ucdavis.edu$|berkeley.edu$|uci.edu$|ucla.edu$|ucmerced.edu$|ucr.edu$|ucsd.edu$|ucsf.edu$|ucsb.edu$|ucsc.edu$"
+                                ErrorMessage="Because the Facility is no longer accepting orders from outside the University of California System we are requiring new accounts to use their University of California campus assigned email address.  Please contact the Facility staff if you have questions or cannot create an account using your University email address."
+                                ToolTip="Because the Facility is no longer accepting orders from outside the University of California System we are requiring new accounts to use their University of California campus assigned email address.  Please contact the Facility staff if you have questions or cannot create an account using your University email address."
+                                >*</asp:RegularExpressionValidator>
+                                
+                            </td>
+                            <td rowspan="7" style="color: red">
+                                <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
+                                <asp:ValidationSummary ID="ErrorMessages" ValidationGroup="CreateAccount" runat="server" />
                             </td>
                         </tr>
                         <tr>
@@ -86,10 +92,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" colspan="2" style="color: red">
-                                <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
-                                <asp:ValidationSummary ID="ErrorMessages" ValidationGroup="CreateAccount" runat="server" />
-                            </td>
+                            <td colspan="2">&nbsp;</td>
                         </tr>
                     </table>
             </asp:WizardStep>

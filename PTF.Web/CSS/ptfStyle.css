@@ -337,10 +337,11 @@ table.login .register a {
 table.login .register a:hover {background-position: -120px 0px;}
 
 .registerWizard .boxTitle h2 {display: none;}
-.registerWizard {background: url(../Images/register_bg.png) no-repeat; width: 405px; height: 358px;}
+.registerWizard {background: url(../Images/register_bg.png) no-repeat; /* width: 405px; */ height: 358px;}
 .registerWizard table, .registerWizard tbody, .registerWizard tr {background: transparent none; border: 0px none;}
 .registerWizard tr.head td {height: 73px;}
-.registerWizard input[type=image] {margin-right: 70px;}
+.registerWizard tr {height: inherit;}
+.registerWizard input[type=image] {margin-right: 793px;}
 
 h2.orderform, h1.orderform {background: url(../Images/menu_bg.png) no-repeat; width: 317px; height: 33px; padding: 20px 15px 10px; display: block;}
 .orderform img {vertical-align: middle;}
