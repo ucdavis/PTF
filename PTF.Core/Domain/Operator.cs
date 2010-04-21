@@ -10,7 +10,7 @@ namespace CAESDO.PTF.Core.Domain
     {
         [NotNullValidator]
         [StringLengthValidator(100)]
-        public virtual string Name { get; set; }
+        public virtual string OperatorName { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(5)]
         public virtual string OperatorCode { get; set; }
@@ -19,5 +19,11 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         public virtual bool IsSelectable { get; set; }
         public virtual int EffectiveID { get; set; }
+
+        public virtual int Identifier
+        {
+            get { return id; }
+            set { id = value; }
+        }
     }
 }

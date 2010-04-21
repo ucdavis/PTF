@@ -1,4 +1,10 @@
-﻿body {
+﻿.OperatorPanel
+{
+	border: 1px solid black;
+	width: 300px;
+	background-color: oldlace;
+}
+body {
 }
 .Lookups li
 {
