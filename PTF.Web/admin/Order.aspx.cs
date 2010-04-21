@@ -80,7 +80,7 @@ public partial class admin_Order : System.Web.UI.Page
             else
             {
                 // contract is required
-                if (!order.ContractExecuted)
+                if (string.IsNullOrEmpty(order.ContractNumber))
                 {
                     // make the button visible
                     litContractExecuted.Text = "No";
@@ -190,7 +190,7 @@ public partial class admin_Order : System.Web.UI.Page
     {
         var order = OrderBLL.GetByID(orderID);
 
-        order.ContractExecuted = true;
+        //order.ContractExecuted = true;
 
         OrderBLL.Update(order);
     }

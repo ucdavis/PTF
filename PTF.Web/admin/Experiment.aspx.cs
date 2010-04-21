@@ -88,7 +88,7 @@ public partial class admin_Experiment : System.Web.UI.Page
             lvPlants.DataBind();
 
             // place the contract warning
-            if (!experiment.Construct.Order.ContractExecuted && experiment.Construct.Order.RequiresContract)
+            if (string.IsNullOrEmpty(experiment.Construct.Order.ContractNumber) && experiment.Construct.Order.RequiresContract)
             {
                 litContractNotExecuted.Text = CommonStrings.STR_ContractNotExecutedWarning;
 

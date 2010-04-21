@@ -17,7 +17,11 @@ namespace CAESDO.PTF.BLL
         {
             if (newOrder.RechargeNumber == null)
             {
-                newOrder.ContractExecuted = false;
+                newOrder.ContractNumber = string.Empty;
+            }
+            else
+            {
+                newOrder.ContractNumber = null;
             }
 
             newOrder.Status = StatusBLL.GetByName(StatusText.STR_Pending);

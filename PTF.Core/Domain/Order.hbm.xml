@@ -43,7 +43,7 @@
 		<property name="OtherUCResearch" column="OtherUCResearch" />
 		<property name="UserID" column="UserID" />
 		<property name="RechargeNumber" column="RechargeNumber" />
-		<property name="ContractExecuted" column="ContractExecuted" />
+		<property name="ContractNumber" column="ContractNumber" />
 		<property name="ShippingPermit" column="ShippingPermit" />
 
 		<property name="Comments" column="Comments" />

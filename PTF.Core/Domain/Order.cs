@@ -98,7 +98,8 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(20)]
         public virtual string RechargeNumber { get; set; }
         [IgnoreNulls]
-        public virtual bool ContractExecuted { get; set; }
+        [StringLengthValidator(50)]
+        public virtual string ContractNumber { get; set; }
         //[RegexValidator("^\d{2}-\d{3}-\d{3}[nm]$")]
         [IgnoreNulls]
         public virtual string ShippingPermit { get; set; }

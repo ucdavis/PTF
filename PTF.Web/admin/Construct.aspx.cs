@@ -75,7 +75,7 @@ public partial class admin_Construct : System.Web.UI.Page
             lvExperiments.DataBind();
 
             // add a warning if the contract has not been executed yet.
-            if (!construct.Order.ContractExecuted && construct.Order.RequiresContract)
+            if (string.IsNullOrEmpty(construct.Order.ContractNumber) && construct.Order.RequiresContract)
             {
                 litContractNotExecuted.Text = CommonStrings.STR_ContractNotExecutedWarning;
             }
