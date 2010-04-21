@@ -78,7 +78,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmailText.resx</DependentUpon>
     </Compile>
-    <Compile Include="ExistingBLL.cs" />
     <Compile Include="ExperimentBLL.cs" />
     <Compile Include="GenericBLL.cs" />
     <Compile Include="LookupsBLL.cs" />
