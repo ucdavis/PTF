@@ -379,6 +379,13 @@ table#constructs {}
 .fineprint {font-size: 0.9em; font-style: italic;}
 
 
+/* ----- reports table ----- */
+
+#ctl00_ContentPlaceHolder1_ReportViewer1 table, #ctl00_ContentPlaceHolder1_ReportViewer1 tbody,
+#ctl00_ContentPlaceHolder1_ReportViewer1 thead, #ctl00_ContentPlaceHolder1_ReportViewer1 td,
+#ctl00_ContentPlaceHolder1_ReportViewer1 tr, #ctl00_ContentPlaceHolder1_ReportViewer1 th {width: inherit; background-image: none;}
+
+
 
 
 
