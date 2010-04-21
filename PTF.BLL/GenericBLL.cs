@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CAESDO.CASH.Core.DataInterfaces;
-using CAESDO.CASH.Core.Domain;
-using CAESDO.CASH.Data;
 using System.ComponentModel;
+using CAESDO.NHibernatev2.Core.DataInterfaces;
+using CAESDO.NHibernatev2.Core.Domain;
+using CAESDO.NHibernatev2.Data;
 
-namespace CAESDO.PTF.BLL
+namespace CAESDO.NHibernatev2.BLL
 {
     [DataObject]
     public class GenericBLL<T, IdT>
@@ -15,7 +15,7 @@ namespace CAESDO.PTF.BLL
         {
             get
             {
-                return new CAESDO.CASH.Data.NHibernateDaoFactory();
+                return new CAESDO.NHibernatev2.Data.NHibernateDaoFactory();
             }
         }
 
@@ -32,6 +32,16 @@ namespace CAESDO.PTF.BLL
         public static T GetNullableByID(IdT id)
         {
             return daoFactory.GetGenericDao<T, IdT>().GetNullableByID(id);
+        }
+
+        public static T GetByName(string name)
+        {
+            return daoFactory.GetGenericDao<T, IdT>().GetByProperty("Name", name);
+        }
+
+        public static T GetByProperty(string propertyName, object propertyValue)
+        {
+            return daoFactory.GetGenericDao<T, IdT>().GetByProperty(propertyName, propertyValue);
         }
 
         public static List<T> GetAll()
@@ -83,7 +93,7 @@ namespace CAESDO.PTF.BLL
                     return false;
                 }
             }
-            
+
             //Perform the requested operation
             if (forceSave)
             {
@@ -95,6 +105,44 @@ namespace CAESDO.PTF.BLL
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Like MakePersistent, but throws an application exception on persistance failure
+        /// </summary>
+        public static void EnsurePersistent(ref T entity)
+        {
+            EnsurePersistent(ref entity, false);
+        }
+
+        public static void EnsurePersistent(ref T entity, bool forceSave)
+        {
+            bool success = MakePersistent(ref entity, forceSave);
+
+            if (!success)
+            {
+                string validationErrors = null;
+
+                //If the entity is of type domainObject, get validation errors
+                if (entity is DomainObject<T, IdT>)
+                {
+                    DomainObject<T, IdT> obj = entity as DomainObject<T, IdT>;
+
+                    validationErrors = obj.getValidationResultsAsString(entity);
+                }
+
+                StringBuilder errorMessage = new StringBuilder();
+
+                errorMessage.AppendLine(string.Format("Object of type {0} could not be persisted\n\n", typeof(T)));
+
+                if (!string.IsNullOrEmpty(validationErrors))
+                {
+                    errorMessage.Append("Validation Errors: ");
+                    errorMessage.Append(validationErrors);
+                }
+
+                throw new ApplicationException(errorMessage.ToString());
+            }
         }
 
         public static void Remove(T entity)

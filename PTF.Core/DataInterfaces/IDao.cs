@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAESDO.PTF.Core.DataInterfaces
+namespace CAESDO.NHibernatev2.Core.DataInterfaces
 {
     public interface IDao<T, IdT>
     {
@@ -11,6 +11,7 @@ namespace CAESDO.PTF.Core.DataInterfaces
         List<T> GetByExample(T exampleInstance, params string[] propertiesToExclude);
         List<T> GetByInclusionExample(T exampleInstance, params string[] propertiesToInclude);
         List<T> GetByInclusionExample(T exampleInstance, string propertyName, bool ascending, params string[] propertiesToInclude);
+        T GetByProperty(string propertyName, object propertyValue);
         T GetUniqueByExample(T exampleInstance, params string[] propertiesToExclude);
         T Save(T entity);
         T SaveOrUpdate(T entity);

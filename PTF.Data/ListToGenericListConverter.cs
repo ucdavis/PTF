@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CAESDO.PTF.Data
+namespace CAESDO.NHibernatev2.Data
 {
     public class ListToGenericListConverter<T>
     {

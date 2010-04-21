@@ -1,8 +1,8 @@
 using System;
 using System.Web;
-using CAESDO.Recruitment.Data;
+using CAESDO.NHibernatev2.Data;
 
-namespace CAESDO.PTF.Web
+namespace CAESDO.NHibernatev2.Web
 {
     /// <summary>
     /// Implements the Open-Session-In-View pattern using <see cref="NHibernateSessionManager" />.

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CAESDO.PTF.Data
+namespace CAESDO.NHibernatev2.Data
 {
     public class TransactionScope : IDisposable
     {
+        private bool _transactionCommitted = false;
+
         public TransactionScope()
         {
             NHibernateSessionManager.Instance.GetSession();
@@ -18,6 +20,13 @@ namespace CAESDO.PTF.Data
             NHibernateSessionManager.Instance.RollbackTransaction();
         }
 
+        public void CommittTransaction()
+        {
+            NHibernateSessionManager.Instance.CommitTransaction();
+
+            _transactionCommitted = true;
+        }
+
         public bool HasOpenTransaction
         {
             get { return NHibernateSessionManager.Instance.HasOpenTransaction(); }
@@ -27,13 +36,16 @@ namespace CAESDO.PTF.Data
 
         public void Dispose()
         {
-            try
+            if (_transactionCommitted == false) //rollback the transaction if it hasn't been committed
             {
-                NHibernateSessionManager.Instance.CommitTransaction();
-            }
-            finally
-            {
-                //NHibernateSessionManager.Instance.CloseSession();
+                try
+                {
+                    NHibernateSessionManager.Instance.RollbackTransaction();
+                }
+                finally
+                {
+                    //NHibernateSessionManager.Instance.CloseSession();
+                }
             }
         }
 
