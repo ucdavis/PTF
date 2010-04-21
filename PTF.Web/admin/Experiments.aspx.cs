@@ -40,7 +40,8 @@ public partial class admin_Experiments : System.Web.UI.Page
         {
             if (ConstructID > 0)
             {
-
+                lvExperiments.DataSourceID = "odsExperimentsByConstruct";
+                lvExperiments.DataBind();
             }
         }
     }

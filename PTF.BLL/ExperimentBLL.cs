@@ -19,7 +19,7 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<Experiment> GetByConstruct(Construct construct)
         {
-            return ExperimentBLL.GetByConstruct(construct);
+            return ExperimentBLL.daoFactory.GetExperimentDao().GetByConstruct(construct);
         }
     }
 }
