@@ -16,6 +16,8 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string SeedLotNumber { get; set; }
         public virtual string AgroStrain { get; set; }
         public virtual string AgroCode { get; set; }
+        public virtual string PIConstructCode { get; set; }
+        public virtual string Plasmid { get; set; }
         public virtual string AgroSelection { get; set; }
         public virtual string PlantSelection { get; set; }
         public virtual string Explant { get; set; }
@@ -32,26 +34,5 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string InvoiceSent { get; set; }
         public virtual int TargetedNumPlants { get; set; }
         public virtual float OpticalDensity { get; set; }
-
-
-      ,[Agro Code]
-      ,[PI Construct Code]
-      ,[Plasmid]
-      ,[Agro Selection]
-      ,[Plant Selection]
-      ,[Explant]
-      ,[Precondition]
-      ,[Co-Culture]
-      ,[Induction]
-      ,[Induction II]
-      ,[Induction III]
-      ,[Elongation/Germination]
-      ,[Recallusing]
-      ,[Rooting]
-      ,[Trait]
-      ,[Comment]
-      ,[Invoice Sent]
-      ,[Targeted # of Plants]
-      ,[Optical Density]
     }
 }

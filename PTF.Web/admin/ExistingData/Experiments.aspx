@@ -12,126 +12,128 @@
             <table id="Experiments" class="InfoTable">
                 <tr>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortExperiment" CommandName="Sort" CommandArgument="Experiment" runat="server">Experiment</asp:LinkButton>
+                        Experiment
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortDate" CommandName="Sort" CommandArgument="Date" runat="server">Date</asp:LinkButton>
+                        Date
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortPI" CommandName="Sort" CommandArgument="PI" runat="server">PI</asp:LinkButton>
+                        PI
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortClient" CommandName="Sort" CommandArgument="Client" runat="server">Client</asp:LinkButton>
+                        Client
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortOperator" CommandName="Sort" CommandArgument="Operator" runat="server">Operator</asp:LinkButton>
+                        Operator
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortCropSpecies" CommandName="Sort" CommandArgument="Crop_species" runat="server">Crop Species</asp:LinkButton>
+                        Crop Species
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortCultivar" CommandName="Sort" CommandArgument="Cultivar" runat="server">Cultivar</asp:LinkButton>
+                        Cultivar
+                    </th>
+                    <th scope="col">Seed Lot Number</th>
+                    <th scope="col">
+                        Agro Strain
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortAgroStrain" CommandName="Sort" CommandArgument="Agro_Strain" runat="server">Agro Strain</asp:LinkButton>
+                        Agro Code
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortAgroCode" CommandName="Sort" CommandArgument="Agro_Code" runat="server">Agro Code</asp:LinkButton>
+                        PI Construct Code
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortPIConstructCode" CommandName="Sort" CommandArgument="PI_Construct_Code" runat="server">PI Construct Code</asp:LinkButton>
+                        Plasmid
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortPlasmid" CommandName="Sort" CommandArgument="Plasmid" runat="server">Plasmid</asp:LinkButton>
+                        Agro Selection
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortAgroSelection" CommandName="Sort" CommandArgument="Agro_Selection" runat="server">Agro Selection</asp:LinkButton>
+                        Plant Selection
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortPlantSelection" CommandName="Sort" CommandArgument="Plant_Selection" runat="server">Plant Selection</asp:LinkButton>
+                        Explant
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortExplant" CommandName="Sort" CommandArgument="Explant" runat="server">Explant</asp:LinkButton>
+                        Precondition
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortPrecondition" CommandName="Sort" CommandArgument="Precondition" runat="server">Precondition</asp:LinkButton>
+                        Co_Culture
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortCoCulture" CommandName="Sort" CommandArgument="Co_Culture" runat="server">Co_Culture</asp:LinkButton>
+                        Induction
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortInduction" CommandName="Sort" CommandArgument="Induction" runat="server">Induction</asp:LinkButton>
+                        Induction II
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortInductionII" CommandName="Sort" CommandArgument="Induction_II" runat="server">Induction II</asp:LinkButton>
+                        Induction III
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortInductionIII" CommandName="Sort" CommandArgument="Induction_III" runat="server">Induction III</asp:LinkButton>
+                        Elongation Germination
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortElongationGermination" CommandName="Sort" CommandArgument="Elongation_Germination" runat="server">Elongation Germination</asp:LinkButton>
+                        Recallusing
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortRecallusing" CommandName="Sort" CommandArgument="Recallusing" runat="server">Recallusing</asp:LinkButton>
+                        Rooting
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortRooting" CommandName="Sort" CommandArgument="Rooting" runat="server">Rooting</asp:LinkButton>
+                        Trait
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortTrait" CommandName="Sort" CommandArgument="Trait" runat="server">Trait</asp:LinkButton>
+                        Comment
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortComment" CommandName="Sort" CommandArgument="Comment" runat="server">Comment</asp:LinkButton>
+                        Invoice Sent
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortInvoiceSent" CommandName="Sort" CommandArgument="Invoice_Sent" runat="server">Invoice Sent</asp:LinkButton>
+                        Targeted # of Plants
                     </th>
                     <th scope="col">
-                        <asp:LinkButton ID="lbSortTargetedfPlants" CommandName="Sort" CommandArgument="Targeted___of_Plants" runat="server">Targeted # of Plants</asp:LinkButton>
-                    </th>
-                    <th scope="col">
-                        <asp:LinkButton ID="lbSortOpticalDensity" CommandName="Sort" CommandArgument="Optical_Density" runat="server">Optical Density</asp:LinkButton>
+                        Optical Density
                     </th>
                 </tr>
                 <tr runat='server' id="ItemPlaceHolder"></tr>
             </table>
         </LayoutTemplate>
         <ItemTemplate>
-            <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("Experiment") %>'>
-                <td><%# Eval("Experiment")%></td>
+            <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("id") %>'>
+                <td><%# Eval("id")%></td>
                 <td><%# Eval("Date", "{0:M/d/yy h:mm tt}")%></td>
                 <td><%# Eval("PI")%></td>
                 <td><%# Eval("Client")%></td>
                 <td><%# Eval("Operator")%></td>
-                <td><%# Eval("Crop_species")%></td>
+                <td><%# Eval("CropSpecies")%></td>
                 <td><%# Eval("Cultivar") %></td>
-                <td><%# Eval("Agro_Strain") %></td>
-                <td><%# Eval("Agro_Code") %></td>
-                <td><%# Eval("PI_Construct_Code") %></td>
+                <td><%# Eval("SeedLotNumber") %></td>
+                <td><%# Eval("AgroStrain")%></td>
+                <td><%# Eval("AgroCode")%></td>
+                <td><%# Eval("PIConstructCode") %></td>
                 <td><%# Eval("Plasmid") %></td>
-                <td><%# Eval("Agro_Selection") %></td>
-                <td><%# Eval("Plant_Selection") %></td>
+                <td><%# Eval("AgroSelection")%></td>
+                <td><%# Eval("PlantSelection")%></td>
                 <td><%# Eval("Explant") %></td>
                 <td><%# Eval("Precondition") %></td>
-                <td><%# Eval("Co_Culture") %></td>
+                <td><%# Eval("CoCulture")%></td>
                 <td><%# Eval("Induction") %></td>
-                <td><%# Eval("Induction_II") %></td>
-                <td><%# Eval("Induction_III") %></td>
-                <td><%# Eval("Elongation_Germination") %></td>
+                <td><%# Eval("InductionII") %></td>
+                <td><%# Eval("InductionIII") %></td>
+                <td><%# Eval("ElongationGermination") %></td>
                 <td><%# Eval("Recallusing") %></td>
                 <td><%# Eval("Rooting") %></td>
                 <td><%# Eval("Trait") %></td>
                 <td><%# Eval("Comment") %></td>
-                <td><%# Eval("Invoice_Sent", "{0:M/d/yy h:mm tt}")%></td>
-                <td><%# Eval("Targeted___of_Plants") %></td>
-                <td><%# Eval("Optical_Density") %></td>
+                <td><%# Eval("InvoiceSent", "{0:M/d/yy h:mm tt}")%></td>
+                <td><%# Eval("TargetedNumPlants") %></td>
+                <td><%# Eval("OpticalDensity") %></td>
             </tr>
         </ItemTemplate>
     </asp:ListView>
 
     <asp:ObjectDataSource ID="odsExperiments" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAllExperiments" 
-        TypeName="CAESDO.PTF.BLL.ExistingBLL" SortParameterName="sortExp">
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAll" 
+        TypeName="CAESDO.PTF.BLL.ArchivedExperimentBLL" >
     </asp:ObjectDataSource>
 
     <script type="text/javascript">
