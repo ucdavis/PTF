@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using CAESDO.PTF.Core.Domain;
 using Resources;
+using System.Web.Services;
 
 public partial class admin_Experiment : System.Web.UI.Page
 {
@@ -150,5 +151,51 @@ public partial class admin_Experiment : System.Web.UI.Page
         //rebind the grid
         lvPlants.DataSource = ExperimentBLL.GetByID(ExperimentID).Plants;
         lvPlants.DataBind();
+    }
+
+    [WebMethod]
+    public static string SaveChangeStatus(int plantID, int statusID)
+    {
+        PlantBLL.ChangeStatus(PlantBLL.GetByID(plantID), StatusBLL.GetByID(statusID));
+
+        if (StatusBLL.GetByID(statusID).Name == StatusText.STR_Shipped)
+        {
+            return DateTime.Now.ToString("d");
+        }
+        else
+        {
+            return string.Empty;
+        }
+    }
+
+    protected void lvPlants_ItemDataBound(object sender, ListViewItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListViewItemType.DataItem)
+        {
+            var ddl = (DropDownList)e.Item.FindControl("ddlChangeStatus");
+
+            var currentItem = (ListViewDataItem)e.Item;
+            var plant = (Plant)currentItem.DataItem;
+
+            // check to see if the status is in the drop down list
+            if (ddl.Items.FindByValue(plant.Status.ID.ToString()) == null)
+            {
+                var lit = (Literal)e.Item.FindControl("litStatus");
+
+                lit.Visible = true;
+                lit.Text = plant.Status.Name;
+            }
+            else
+            {
+                // deal with the situation where it is in the drop down
+                ddl.SelectedValue = plant.Status.ID.ToString();
+
+                // if it's shipped don't allow it to be changed
+                if (plant.Status.Name == StatusText.STR_Shipped)
+                {
+                    ddl.Enabled = false;
+                }
+            }
+        }
     }
 }

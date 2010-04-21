@@ -1,34 +1,59 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Experiment.aspx.cs" Inherits="admin_Experiment" Title="PTF | Experiment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <script type="text/javascript" language="javascript">
-        function ChangeStatus(plantID, statusID, statusName)
-        {    
-            // get the plant id we are working with
-            $get('<%= tbPlantID.ClientID %>').value = plantID;
-                        
-            if (statusName != '<%= CAESDO.PTF.BLL.StatusText.STR_Shipped %>')
+    <script type="text/javascript" language="javascript">    
+        var STR_LoadingImg = "LoadingImg";
+        var STR_ConfirmImg = "ConfirmImg";
+        var STR_FailImg = "FailImg";
+    
+        var STR_Inline = "inline";
+        var STR_None = "none";
+    
+        function ChangeStatus(dropDown)
+        {       
+            var plantID = dropDown.parentNode.id;
+            var selectedIndex = dropDown.selectedIndex;
+            var value = dropDown.options[selectedIndex].value;
+            
+            if (dropDown.options[selectedIndex].text == "Shipped" && !confirm("Are you sure plant is shipping?"))
             {
-                // get the drop down for status
-                var status = $get('<%= ddlStatus.ClientID %>');
-                
-                // iterate through and find the current status and select that
-                for (i = 0; i < status.options.length; i++)
-                {           
-                    if (status.options[i].value == statusID)
-                    {
-                        status.selectedIndex = i;
-                        break;
-                    }
-                }
-                // show the modal
-                var modal = $find("mpeChangeStatus");
-                modal.show();
+                return;
             }
-            else
+            
+            var context = new Array();           
+            context[0] = plantID;
+            context[1] = dropDown;
+            
+            // show the processing icon
+            $get(plantID + STR_LoadingImg).style.display = STR_Inline;
+            $get(plantID + STR_ConfirmImg).style.display = STR_None;
+            $get(plantID + STR_FailImg).style.display = STR_None;
+            
+            PageMethods.SaveChangeStatus(plantID, value, ChangeStatusOnComplete, ChangeStatusOnFail, context);
+        }
+        // successful complete of save
+        function ChangeStatusOnComplete(result, context)
+        {        
+            if (result != "")
             {
-                alert("Shipped plants cannot have their status changed.");
+                context[1].disabled = true;
             }
+            
+            $get(context[0] + "DateDelivered").innerHTML = result;
+            
+            $get(context[0] + STR_LoadingImg).style.display = STR_None;
+            $get(context[0] + STR_ConfirmImg).style.display = STR_Inline;
+            
+            // animate the check mark confirmation out
+            var target = $get(context[0] + STR_ConfirmImg);
+            var animation = new AjaxControlToolkit.Animation.FadeOutAnimation(target, 5, 25, 0, 1, true);
+            animation.play();
+        }
+        // failure of save
+        function ChangeStatusOnFail(result, context)
+        {
+            $get(context[0] + STR_FailImg).style.display = STR_Inline;
+            $get(context[0] + STR_LoadingImg).style.display = STR_None;
         }
     </script>
 
@@ -215,7 +240,8 @@
     <asp:Button ID="btnAddPlant" runat="server" Text="Add Plant" 
         onclick="btnAddPlant_Click" />
     
-    <asp:ListView ID="lvPlants" runat="server">
+    <asp:ListView ID="lvPlants" runat="server" 
+        onitemdatabound="lvPlants_ItemDataBound">
         <LayoutTemplate>
             <table>
                 <tr>
@@ -234,37 +260,36 @@
             <tr>
                 <td><%# Eval("Pedigree") %></td>
                 <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
-                <td><%# Eval("ReCallusingAssay") %></td>
-                <td><%# Eval("Rooting") %></td>
-                <td><%# Eval("DateDelivered", "{0:MM/dd/yyyy}") %></td>
+                <td><%--<%# Eval("ReCallusingAssay") %>--%>
+                    <asp:CheckBox ID="cbRecallusingAssay" runat="server" Checked='<%# Eval("ReCallusingAssay") %>' />
+                </td>
+                <td><%--<%# Eval("Rooting") %>--%>
+                    <asp:CheckBox ID="cbRooting" runat="server" Checked='<%# Eval("Rooting") %>' />
+                </td>
                 <td>
-                    <a href='javascript:ChangeStatus(<%# Eval("id") %>, <%# Eval("Status.id") %>, "<%# Eval("Status.Name") %>")'>
-                        <%# Eval("Status.Name") %>
-                    </a>
+                    <span id='<%# Eval("id").ToString() + "DateDelivered" %>'>
+                        <%# Eval("DateDelivered", "{0:MM/dd/yyyy}") %>
+                    </span>
+                </td>
+                <td>
+                    <span id='<%# Eval("id") %>'>
+                        <asp:DropDownList ID="ddlChangeStatus" runat="server" 
+                            DataSourceID="odsStatus" DataTextField="Name" 
+                            DataValueField="ID" onChange='ChangeStatus(this)' >
+                        </asp:DropDownList>
+                        
+                        <img id='<%# Eval("id").ToString() + "LoadingImg" %>' src="../Images/mozilla_blu.gif" style="display:none;" />
+                        <img id='<%# Eval("id").ToString() + "ConfirmImg" %>'src="../Images/confirm.png" style="display:none; width:16px; height:16px;" />
+                        <img id='<%# Eval("id").ToString() + "FailImg" %>' src="../Images/cancel.png" style="display:none; width:16px; height:16px;" />
+                        
+                        <asp:Literal ID="litStatus" runat="server" Visible="false"></asp:Literal>
+
+                    </span>
                 </td>
                 <td></td>
             </tr>
         </ItemTemplate>
     </asp:ListView>
-
-    <asp:Button ID="btnChangeStatusDummy" runat="server" Text="Dummy" style="display:none;" />
-    <asp:Panel ID="pnlChangeStatus" runat="server" style="border:solid 1px black; background-color:oldlace;" Width="200px">
-        <div style="float:right;">
-            <asp:Button ID="btnCancelChangeStatus" runat="server" Text="X" />
-        </div>
-        <br />
-        <asp:TextBox ID="tbPlantID" runat="server" style="display:none;"></asp:TextBox>
-        Status:&nbsp;<asp:DropDownList ID="ddlStatus" runat="server" 
-            DataSourceID="odsStatus" DataTextField="Name" DataValueField="ID" >
-        </asp:DropDownList>
-        <asp:RequiredFieldValidator ID="rfvChangeStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="-1"></asp:RequiredFieldValidator>
-        <br />
-        <asp:Button ID="btnSaveChangeStatus" runat="server" Text="Change" ValidationGroup="ChangeStatus" 
-            onclick="btnSaveChangeStatus_Click" />
-    </asp:Panel>
-    <AjaxControlToolkit:ModalPopupExtender ID="mpeChangeStatus" BehaviorID="mpeChangeStatus" runat="server" TargetControlID="btnChangeStatusDummy" 
-        PopupControlID="pnlChangeStatus" CancelControlID="btnCancelChangeStatus">
-    </AjaxControlToolkit:ModalPopupExtender>
     
     <asp:ObjectDataSource ID="odsNoteTypes" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
