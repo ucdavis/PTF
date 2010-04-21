@@ -51,4 +51,36 @@ public partial class Orders : System.Web.UI.Page
         }
 
     }
+    protected void lbPageSize10_Click(object sender, EventArgs e)
+    {
+        var pager = (DataPager)lvOrders.FindControl("pager");
+
+        pager.PageSize = 10;
+
+        lvOrders.DataBind();
+    }
+    protected void lbPageSize25_Click(object sender, EventArgs e)
+    {
+        var pager = (DataPager)lvOrders.FindControl("pager");
+
+        pager.PageSize = 25;
+
+        lvOrders.DataBind();
+    }
+    protected void lbPageSize50_Click(object sender, EventArgs e)
+    {
+        var pager = (DataPager)lvOrders.FindControl("pager");
+
+        pager.PageSize = 50;
+
+        lvOrders.DataBind();
+    }
+    protected void lbPageSize100_Click(object sender, EventArgs e)
+    {
+        var pager = (DataPager)lvOrders.FindControl("pager");
+
+        pager.PageSize = 100;
+
+        lvOrders.DataBind();
+    }
 }

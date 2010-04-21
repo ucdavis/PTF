@@ -8,7 +8,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-    
+    Page Size: 
+        <asp:LinkButton ID="lbPageSize10" runat="server" onclick="lbPageSize10_Click">10</asp:LinkButton>
+        &nbsp;|&nbsp;
+        <asp:LinkButton ID="lbPageSize25" runat="server" onclick="lbPageSize25_Click">25</asp:LinkButton>
+        &nbsp;|&nbsp;
+        <asp:LinkButton ID="lbPageSize50" runat="server" onclick="lbPageSize50_Click">50</asp:LinkButton>
+        &nbsp;|&nbsp;
+        <asp:LinkButton ID="lbPageSize100" runat="server" onclick="lbPageSize100_Click">100</asp:LinkButton>
     <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" >
         <LayoutTemplate>
             <div class="grid">
