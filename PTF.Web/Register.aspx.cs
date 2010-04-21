@@ -24,10 +24,10 @@ public partial class Register : System.Web.UI.Page
         MembershipCreateStatus status;
 
         //Only proceed if all of the fields are valid
-        if (EmailRequired.IsValid && PasswordCompare.IsValid && PasswordRequired.IsValid && QuestionRequired.IsValid && AnswerRequired.IsValid)
+        if (EmailRequired.IsValid && PasswordCompare.IsValid && PasswordRequired.IsValid) //&& QuestionRequired.IsValid && AnswerRequired.IsValid)
         {
-
-            MembershipUser user = Membership.CreateUser(Email.Text, Password.Text, Email.Text, Question.Text, Answer.Text, true, out status);
+            //MembershipUser user = Membership.CreateUser(Email.Text, Password.Text, Email.Text, Question.Text, Answer.Text, true, out status);
+            MembershipUser user = Membership.CreateUser(Email.Text, Password.Text, Email.Text, "Q", "A", true, out status);
 
             switch (status)
             {

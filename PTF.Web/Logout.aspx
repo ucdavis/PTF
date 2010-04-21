@@ -5,11 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    
+    <script type="text/javascript">
+    
+        // do an auto redirect, since doing it server side is causing an exception to be thrown
+    
+        if (new Boolean("<%= IsCasUser %>")) {
+            window.location = "https://cas.ucdavis.edu/cas/logout?service=" + "<%= STR_RedirectAddress %>";
+        }
+        else {
+            window.location = "<%= STR_RedirectAddress %>";
+        }
+    </script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     
+       
     </div>
     </form>
 </body>
