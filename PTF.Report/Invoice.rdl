@@ -376,7 +376,7 @@ and constructs.constructcode = @ConstructCode</CommandText>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Comments.Value</Value>
                               <Style>
                                 <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -399,6 +399,7 @@ and constructs.constructcode = @ConstructCode</CommandText>
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -742,40 +743,6 @@ and constructs.constructcode = @ConstructCode</CommandText>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox16">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>="Comments: " &amp; First(Fields!Comments.Value, "DataSet1")</Value>
-                <Style>
-                  <FontFamily>Times New Roman</FontFamily>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>3.15667in</Top>
-        <Left>0.23958in</Left>
-        <Height>0.25in</Height>
-        <Width>6.98958in</Width>
-        <ZIndex>11</ZIndex>
-        <Style>
-          <Border>
-            <Color>DarkGray</Color>
-            <Style>Solid</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox20">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -795,7 +762,7 @@ and constructs.constructcode = @ConstructCode</CommandText>
         <Left>4.5in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -807,7 +774,7 @@ and constructs.constructcode = @ConstructCode</CommandText>
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.88583in</Height>
+    <Height>4.43792in</Height>
     <Style />
   </Body>
   <ReportParameters>
@@ -818,6 +785,16 @@ and constructs.constructcode = @ConstructCode</CommandText>
   </ReportParameters>
   <Width>8in</Width>
   <Page>
+    <PageFooter>
+      <Height>1in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <LeftMargin>0.5in</LeftMargin>
     <RightMargin>0.5in</RightMargin>
     <TopMargin>0.5in</TopMargin>
