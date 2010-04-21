@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DataInterfaces\IDao.cs" />
     <Compile Include="DataInterfaces\IDaoFactory.cs" />
+    <Compile Include="Domain\Construct.cs" />
     <Compile Include="Domain\DomainObject.cs" />
     <Compile Include="Domain\ITrackable.cs" />
     <Compile Include="Domain\Lookups.cs" />
@@ -70,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Domain\Order.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\Construct.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

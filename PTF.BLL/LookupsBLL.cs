@@ -20,6 +20,24 @@ namespace CAESDO.PTF.BLL
             return LookupBLLBase<T, IdT>.GetByInclusionExample(obj, "Name", true, "IsActive" );
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static T GetByName(string name)
+        {
+            var obj = new T();
+            obj.Name = name;
+
+            List<T> results = LookupBLLBase<T, IdT>.GetByInclusionExample(obj, "Name");
+
+            if (results.Count() > 0) // check if there were results
+            {
+                return results[0];  // return the first result
+            }
+            else
+            {
+                return null;    // return nothing, no match on the name
+            }
+        }
+
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(T obj)
         {

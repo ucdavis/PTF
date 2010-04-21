@@ -17,4 +17,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
 
     }
+    protected void LoginStatus1_LoggingOut(object sender, LoginCancelEventArgs e)
+    {
+        var user = Membership.GetUser();
+
+        if (user == null) // cas login, redirect to the cas logout page
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("https://cas.ucdavis.edu/cas/logout", true);
+        }
+    }
 }

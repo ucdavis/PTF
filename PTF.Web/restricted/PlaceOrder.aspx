@@ -19,12 +19,6 @@
             width: 175px;
             float: left;
         }
-        .watermark
-        {
-            font-weight: lighter;
-            font-style: italic;
-            color: #C0C0C0;
-        }
     </style>
     
     <script type="text/javascript" src="../JS/PlaceOrder.js" ></script>
@@ -117,6 +111,7 @@
             }
         }
     </script>
+    <link href="../CSS/Main.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 

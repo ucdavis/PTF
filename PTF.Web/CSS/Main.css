@@ -18,3 +18,9 @@
 	width: 16px;
 	height: 16px;
 }
+.watermark
+{
+    font-weight: lighter;
+    font-style: italic;
+    color: #C0C0C0;
+}

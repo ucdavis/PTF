@@ -129,5 +129,7 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string ShippingPermit { get; set; }
         [NotNullValidator]
         public virtual bool OtherUCResearch { get; set; }
+
+        public virtual IList<Construct> Constructs { get; set; }
     }
 }

@@ -55,6 +55,11 @@
 		<property name="ShippingPermit" column="ShippingPermit" />
 
 		<property name="OtherUCResearch" column="OtherUCResearch" />
+
+		<bag name="Constructs" table="Constructs">
+			<key column="OrderID" />
+			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>
+		</bag>
 		
 	</class>
 </hibernate-mapping>
