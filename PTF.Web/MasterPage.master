@@ -17,6 +17,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+        </asp:ScriptManager>
     <div>
         <div style="float:right">
             <a href="Default.aspx">Home</a> &nbsp;|&nbsp;
@@ -33,8 +35,9 @@
                 </LoggedInTemplate>
             </asp:LoginView>
         </div>
-        <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-        </cc1:ToolkitScriptManager>
+       <%-- <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="true">
+        </cc1:ToolkitScriptManager>--%>
+
         <div style="float:left">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             

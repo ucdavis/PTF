@@ -47,5 +47,18 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction();
             }
         }
+
+        /// <summary>
+        /// Change the recharge amount.
+        /// </summary>
+        /// <param name="constructID"></param>
+        /// <param name="rechargeAmount"></param>
+        public static void ChangeRechargeAmount(int constructID, decimal rechargeAmount)
+        {
+            Construct construct = ConstructBLL.GetByID(constructID);
+            construct.RechargeAmount = rechargeAmount;
+
+            ConstructBLL.Update(construct);
+        }
     }
 }

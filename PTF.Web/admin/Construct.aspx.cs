@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using CAESDO.PTF.Core.Domain;
+using System.Web.Services;
 
 public partial class admin_Construct : System.Web.UI.Page
 {
@@ -62,6 +63,7 @@ public partial class admin_Construct : System.Web.UI.Page
             litGenotype.Text = construct.SubOrder.GenoType.Name;
             litPlantSelection.Text = construct.SubOrder.PlantSelection.Name;
             litAgroStrain.Text = construct.Order.AgroStrain.Name;
+            litBacterialSelection.Text = construct.Order.BacterialSelection;
             litPlasmid.Text = construct.Order.Plasmid;
             litPICode.Text = construct.Order.PICode;
             litInvoiceDate.Text = construct.InvoiceDate != null ? ((DateTime)construct.InvoiceDate).ToString("d") : string.Empty;
@@ -90,5 +92,19 @@ public partial class admin_Construct : System.Web.UI.Page
 
         lvExperiments.DataSource = ConstructBLL.GetByID(ConstructID).Experiments;
         lvExperiments.DataBind();
+
+        // clear out the controls
+        ddlOperators.SelectedIndex = -1;
+        tbSeedLotNumber.Text = string.Empty;
+        tbExplant.Text = string.Empty;
+        tbOpticalDensity.Text = string.Empty;
+    }
+
+    [WebMethod]
+    public static string ChangeRecharge(int ConstructID, decimal RechargeAmount)
+    {
+        ConstructBLL.ChangeRechargeAmount(ConstructID, RechargeAmount);
+
+        return RechargeAmount.ToString("c");
     }
 }

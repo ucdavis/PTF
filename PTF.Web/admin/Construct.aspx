@@ -1,8 +1,26 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Construct.aspx.cs" Inherits="admin_Construct" Title="PTF | Construct" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<script type="text/javascript" language="javascript">
+    function ChangeRechargeAmount()
+    {      
+        var constructID = '<%= Request.QueryString["cid"] %>';
+        var rechargeAmount = $get('<%= tbChangeRechargeAmount.ClientID %>').value;
+            
+        PageMethods.ChangeRecharge(constructID, rechargeAmount, ChangeRechargeAmountOnComplete);
+    }
+    
+    function ChangeRechargeAmountOnComplete(result)
+    {
+        var rechargeSpan = $get("RechargeAmount");
+        rechargeSpan.innerHTML = result;
+                
+        $get('<%= tbChangeRechargeAmount.ClientID %>').value = "";
+    }
+</script>
 
-  </asp:Content>
+
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <table class="InfoTable">
         <tr>
@@ -54,7 +72,11 @@
         <tr>
             <td class="InfoFieldName">Recharge Amount:&nbsp;</td>
             <td class="InfoFieldValue">
-                <asp:Literal ID="litRecharge" runat="server"></asp:Literal></td>
+                <span id="RechargeAmount">
+                    <asp:Literal ID="litRecharge" runat="server"></asp:Literal>
+                </span>    
+                <asp:LinkButton ID="lbChangeRechargeAmount" runat="server">[Change]</asp:LinkButton>
+            </td>
             <td class="InfoFieldName"></td>
             <td class="InfoFieldValue"></td>
         </tr>  
@@ -142,6 +164,20 @@
             onclick="btnCreate_Click" ValidationGroup="NewExperiment" />
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
+    </AjaxControlToolkit:ModalPopupExtender>
+    
+    <asp:Panel ID="pnlChangeRechargeAmount" runat="server" Width="250px" style="border:solid 1px black; background-color:oldlace;">
+        <div style="float:right;">
+            <asp:Button ID="btnCancelChangeRechargeAmount" runat="server" Text="X" />
+        </div>
+        
+        <br />
+        Recharge Amount:&nbsp;$<asp:TextBox ID="tbChangeRechargeAmount" runat="server" Width="50px"></asp:TextBox><br />
+        <asp:Button ID="btnSaveChangeRechargeAmount" runat="server" Text="Save" />
+    </asp:Panel>
+    <AjaxControlToolkit:ModalPopupExtender ID="mpeChangeRechargeAmount" runat="server" 
+        TargetControlID="lbChangeRechargeAmount" PopupControlID="pnlChangeRechargeAmount" 
+        CancelControlID="btnCancelChangeRechargeAmount" OkControlID="btnSaveChangeRechargeAmount" OnOkScript="ChangeRechargeAmount()">
     </AjaxControlToolkit:ModalPopupExtender>
     
     <asp:ObjectDataSource ID="odsOperators" runat="server" 
