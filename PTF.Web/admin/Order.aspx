@@ -1,9 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="admin_Order" Title="PTF | Order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-
-<script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
-<script type="text/javascript" src="../JS/Order.js"></script>
+    <script type="text/javascript" src="../JS/Order.js"></script>
+    <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">

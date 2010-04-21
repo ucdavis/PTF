@@ -67,6 +67,9 @@ public class ScriptServices : System.Web.Services.WebService
             case "ContractNumber":
                 order.ContractNumber = value;
                 break;
+            case "ShippingPermit":
+                order.ShippingPermit = value;
+                break;
         };
 
         OrderBLL.Update(order);
@@ -164,6 +167,18 @@ public class ScriptServices : System.Web.Services.WebService
         PlantBLL.ChangeRooting(PlantBLL.GetByID(plantID), rooting);
 
         return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
+    }
+    #endregion
+
+    #region restricted/Order.aspx
+    [WebMethod]
+    public static void SaveShippingPermit(int orderID, string shippingPermit)
+    {
+        var order = OrderBLL.GetByID(orderID);
+
+        order.ShippingPermit = shippingPermit;
+
+        OrderBLL.Update(order);
     }
     #endregion
 }

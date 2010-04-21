@@ -1,33 +1,14 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="restricted_Order" Title="PTF | Order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
-
-<script type="text/javascript">
-    function SaveShippingPermit()
-    {
-        // validate the validators
-        if (!Page_ClientValidate("ShippingPermit"))
-        {
-            return;
-        }
-    
-        var shippingPermit = $get('<%= tbShippingPermit.ClientID %>').value;
-    
-        PageMethods.SaveShippingPermit('<%= Request.QueryString["oid"] %>', shippingPermit, SaveShippingPermitOnComplete, null, shippingPermit);
-    }
-    
-    function SaveShippingPermitOnComplete(result, context)
-    {
-        $get("ShippingPermit").innerHTML = context;
-        
-        $get('<%= tbShippingPermit.ClientID %>').style.display = "none";
-        $get('<%= lbSaveShippingPermit.ClientID %>').style.display = "none";
-    }
-</script>
-
+    <script type="text/javascript" src="../JS/Order.js"></script>
+    <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="BackButton">
+        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../Images/back.png" alt="" /> [Back to Orders]</asp:LinkButton>
+    </div>
+
 <table class="InfoTable">
     <tr>
         <td class="InfoFieldName">Order ID:&nbsp;</td>
@@ -37,13 +18,13 @@
         <td class="InfoFieldName">
             <asp:Literal ID="litShippingPermitPrompt" runat="server" Visible="false">Shipping Permit:&nbsp;</asp:Literal></td>
         <td class="InfoFieldValue">
-            <div id="ShippingPermit">
-                <asp:Literal ID="litShippingPermit" runat="server" Visible="false"></asp:Literal>
-            </div>
-            <asp:TextBox ID="tbShippingPermit" runat="server" Visible="false" MaxLength="11"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvShippingPermit" runat="server" ErrorMessage="*" ControlToValidate="tbShippingPermit" ValidationGroup="ShippingPermit"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="revShippingPermit" runat="server" ErrorMessage="Correct format: xx-xxx-xxxn/m" ControlToValidate="tbShippingPermit" ValidationExpression="^\d{2}-\d{3}-\d{3}[nm]$" ValidationGroup="ShippingPermit"></asp:RegularExpressionValidator>
-            <asp:LinkButton ID="lbSaveShippingPermit" runat="server" OnClientClick="SaveShippingPermit(); return false;" Visible="false">[Save]</asp:LinkButton>
+            <asp:Panel runat='server' ID="pnlShippingPermit" Visible="false">
+                <asp:TextBox ID="tbShippingPermit" runat="server" MaxLength="11" Width="80px"></asp:TextBox>           
+                <a id="ShippingPermitButton" onclick='if (Page_ClientValidate("ShippingPermit")) { SaveProperty("<%= Request.QueryString["oid"] %>", "ShippingPermit", "<%= tbShippingPermit.ClientID %>", "Order");}'><img src="../Images/save.png" width="15px" alt="save" />
+                <span id="ShippingPermit"></span>
+                <asp:RequiredFieldValidator ID="rfvShippingPermit" runat="server" ErrorMessage="*" ControlToValidate="tbShippingPermit" ValidationGroup="ShippingPermit"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="revShippingPermit" runat="server" ErrorMessage="Correct format: xx-xxx-xxxn/m" ControlToValidate="tbShippingPermit" ValidationExpression="^\d{2}-\d{3}-\d{3}[nm]$" ValidationGroup="ShippingPermit"></asp:RegularExpressionValidator>           
+            </asp:Panel>
         </td>
     </tr>
     <tr>
@@ -67,12 +48,12 @@
             <div class="grid">
             <table id="orders" cellpadding="10" cellspacing="0">
                 <tr class="Head">
-                    <td class="first"></td>
-                    <td>Pedigree</td>
-                    <td>Date Initiated</td>
-                    <td>Re-Callusing Assay</td>
-                    <td>Rooting</td>
-                    <td>Date Delivered</td>
+                    <th class="first"></th>
+                    <th>Pedigree</th>
+                    <th>Date Initiated</th>
+                    <th>Re-Callusing Assay</th>
+                    <th>Rooting</th>
+                    <th>Date Delivered</th>
                 </tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>

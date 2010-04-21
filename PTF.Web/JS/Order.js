@@ -28,7 +28,6 @@ function SaveProperty(queryString, property, txtBox, objType)
     
     divTag.appendChild(img);
     
-    //PageMethods.SaveProperty(queryString, property, $get(txtBox).value, objType, SavePropertyOnComplete, SavePropertyOnFail, property);
     ScriptServices.SaveProperty(queryString, property, $get(txtBox).value, objType, SavePropertyOnComplete, SavePropertyOnFail, property);
 }
 

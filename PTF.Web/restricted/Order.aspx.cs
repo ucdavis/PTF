@@ -84,18 +84,22 @@ public partial class restricted_Order : System.Web.UI.Page
 
             if (order.RequiresShippingPermit)
             {
+                pnlShippingPermit.Visible = true;
                 litShippingPermitPrompt.Visible = true;
+                tbShippingPermit.Text = order.ShippingPermit;
 
-                if (string.IsNullOrEmpty(order.ShippingPermit))
-                {
-                    tbShippingPermit.Visible = true;
-                    lbSaveShippingPermit.Visible = true;
-                }
-                else
-                {
-                    litShippingPermit.Visible = true;
-                    litShippingPermit.Text = order.ShippingPermit;
-                }
+                //litShippingPermitPrompt.Visible = true;
+
+                //if (string.IsNullOrEmpty(order.ShippingPermit))
+                //{
+                //    tbShippingPermit.Visible = true;
+                //    //lbSaveShippingPermit.Visible = true;
+                //}
+                //else
+                //{
+                //    litShippingPermit.Visible = true;
+                //    //litShippingPermit.Text = order.ShippingPermit;
+                //}
             }
 
             lvSuborders.DataSource = order.SubOrders;
@@ -107,13 +111,8 @@ public partial class restricted_Order : System.Web.UI.Page
         }
     }
 
-    [WebMethod]
-    public static void SaveShippingPermit(int orderID, string shippingPermit)
+    protected void lbBack_Click(object sender, EventArgs e)
     {
-        var order = OrderBLL.GetByID(orderID);
-
-        order.ShippingPermit = shippingPermit;
-
-        OrderBLL.Update(order);
+        Response.Redirect("Orders.aspx", true);
     }
 }

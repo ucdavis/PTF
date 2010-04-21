@@ -278,7 +278,7 @@
         </ItemTemplate>
     </asp:ListView>
     
-    <asp:Button runat="server" ID="btnDummyPlantNote" Text="DUmmy" />
+    <asp:Button runat="server" ID="btnDummyPlantNote" Text="DUmmy" style="display:none;" />
     <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
     </AjaxControlToolkit:ModalPopupExtender>
     <asp:Panel ID="pnlPlantNote" runat="server" style="border:solid 1px black; background-color:oldlace;" Width="400px">
