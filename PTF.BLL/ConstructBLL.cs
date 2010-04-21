@@ -91,6 +91,9 @@ namespace CAESDO.PTF.BLL
                 if (count >= construct.SubOrder.NumberOfPlants)
                 {
                     construct.Status = StatusBLL.GetByName(StatusText.STR_Complete);
+
+                    // email the administrator
+                    EmailBLL.ConstructComplete(construct);
                 }
                 else
                 {

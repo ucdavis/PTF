@@ -13,7 +13,7 @@ namespace CAESDO.PTF.BLL
     public class OrderBLL : GenericBLL<Order, int>
     {
         [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Insert(Order newOrder, string mailFromAddress, string mailToAddress)
+        public static void Insert(Order newOrder)
         {
             if (newOrder.RechargeNumber == null)
             {
@@ -33,8 +33,8 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction(); //commit the transaction
             }
 
-            // notify the administrator
-            EmailBLL.OrderCreated(newOrder, mailFromAddress, mailToAddress);
+            // notify the administrator and the administrator
+            EmailBLL.OrderCreated(newOrder);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
@@ -119,6 +119,7 @@ namespace CAESDO.PTF.BLL
 
                 if (complete)
                 {
+                    // order is complete
                     order.Status = StatusBLL.GetByName(StatusText.STR_Complete);
                 }
                 else

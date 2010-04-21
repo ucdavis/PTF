@@ -9,7 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">
-        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click">[Back to Order]</asp:LinkButton>
+        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click">[Back to Construct]</asp:LinkButton>
     </div>
 
     <table class="InfoTable">

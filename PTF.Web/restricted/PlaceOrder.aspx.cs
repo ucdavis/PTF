@@ -148,7 +148,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         }
 
         // insert the order and email the admin
-        OrderBLL.Insert(newOrder, ConfigurationManager.AppSettings["EmailFrom"], ConfigurationManager.AppSettings["OrderPlacedEmail"]);
+        OrderBLL.Insert(newOrder);
 
         // update the user profile if they haven't put an address down
         var userProfile = UserProfileBLL.GetByUserID((Guid)Membership.GetUser().ProviderUserKey);

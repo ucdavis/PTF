@@ -70,11 +70,29 @@ namespace CAESDO.PTF.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This message is to inform you that your message has been successfully been submitted.  Please check the ordering system for up to date status of your order at https://website.ucdavis.edu/ptf. - Plant Transformation Facility Administrator.
+        /// </summary>
+        internal static string STR_ClientConfirmationMessage {
+            get {
+                return ResourceManager.GetString("STR_ClientConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A new order has been placed..
         /// </summary>
         internal static string STR_NewOrder {
             get {
                 return ResourceManager.GetString("STR_NewOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An order has been completed and is ready for billing..
+        /// </summary>
+        internal static string STR_OrderCompleted {
+            get {
+                return ResourceManager.GetString("STR_OrderCompleted", resourceCulture);
             }
         }
     }
