@@ -116,12 +116,19 @@ public partial class admin_Order : System.Web.UI.Page
             litSelectableMarkerGene.Text = order.SelectableMarkerGene;
             litAdditionalInformation.Text = order.AdditionalInformation;
 
-            litWorkingBox.Text = order.WorkingBox;
-            litLocation.Text = order.Location;
-            litArchivedBox.Text = order.ArchiveBox;
-            litPosition.Text = order.Position;
+            //litWorkingBox.Text = order.WorkingBox;
+            //litLocation.Text = order.Location;
+            //litArchivedBox.Text = order.ArchiveBox;
+            //litPosition.Text = order.Position;
 
-            litComments.Text = order.Comments;
+            tbWorkingBox.Text = order.WorkingBox;
+            tbLocation.Text = order.Location;
+            tbArchivedBox.Text = order.ArchiveBox;
+            tbPosition.Text = order.Position;
+
+            tbComments.Text = order.Comments;
+
+            //litComments.Text = order.Comments;
 
             lvSuborders.DataSource = order.SubOrders;
             lvSuborders.DataBind();
@@ -191,6 +198,33 @@ public partial class admin_Order : System.Web.UI.Page
         var order = OrderBLL.GetByID(orderID);
 
         order.ContractNumber = contractNumber;
+
+        OrderBLL.Update(order);
+    }
+
+    [WebMethod]
+    public static void SaveProperty(int orderID, string property, string value)
+    {
+        var order = OrderBLL.GetByID(orderID);
+
+        switch (property)
+        {
+            case "WorkingBox":
+                order.WorkingBox = value;
+                break;
+            case "ArchivedBox":
+                order.ArchiveBox = value;
+                break;
+            case "Location":
+                order.Location = value;
+                break;
+            case "Position":
+                order.Position = value;
+                break;
+            case "Comment":
+                order.Comments = value;
+                break;
+        };
 
         OrderBLL.Update(order);
     }

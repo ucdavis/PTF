@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
 <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
+<script type="text/javascript" src="../JS/Order.js"></script>
 
 <script type="text/javascript">
     function SaveContractNumber()
@@ -18,6 +19,70 @@
         $get('<%= tbContractNumber.ClientID %>').style.display = "none";
         $get('<%= lbContractNumber.ClientID %>').style.display = "none";
     }
+    
+    function SaveProperty(property, txtBox)
+{
+    // dynamically add the loading image   
+    var img = document.createElement('img');
+    img.setAttribute("id", "load");
+    img.setAttribute("src", "../Images/mozilla_blu.gif");
+    
+    var divTag = $get(property);
+    
+    // make sure only one image shows, if another is showing a save is probably being executed.
+    if (divTag.lastChild != null)
+    {
+        if (divTag.lastChild.id == "load")
+        {
+            return;
+        }
+        else
+        {
+            var imgs = divTag.childNodes;
+            for(i = 0; i < imgs.length; i++)
+            {
+                divTag.removeChild(imgs[i]);
+            }
+        }
+    }
+    
+    divTag.appendChild(img);
+    
+    PageMethods.SaveProperty('<%= Request.QueryString["oid"] %>', property, $get(txtBox).value, SavePropertyOnComplete, SavePropertyOnFail, property);
+}
+function SavePropertyOnComplete(result, context)
+{   
+    // remove the only child
+    var divTag = $get(context);
+    divTag.removeChild(divTag.lastChild);
+    
+    // play an animation
+    var confirm = document.createElement('img');
+    confirm.setAttribute("id", "confirmIMG");
+    confirm.setAttribute("src", "../Images/confirm.png");
+    confirm.setAttribute("style", "width:16px; height:16px;");
+            
+    divTag.appendChild(confirm);
+    
+    // animate the check mark confirmation out
+    var animation = new AjaxControlToolkit.Animation.FadeOutAnimation(confirm, 2, 25, 0, 1, true);
+    animation.play();
+}
+function SavePropertyOnFail(result, context)
+{
+    // remove the only child
+    var divTag = $get(context);
+    divTag.removeChild(divTag.lastChild);
+    
+    // play an animation
+    var confirm = document.createElement('img');
+    confirm.setAttribute("id", "confirmIMG");
+    confirm.setAttribute("src", "../Images/cancel.png");
+    confirm.setAttribute("style", "width:16px; height:16px;");
+            
+    divTag.appendChild(confirm);
+}
+    
 </script>
 
 </asp:Content>
@@ -180,24 +245,45 @@
             <tr>
                 <td class="InfoFieldName">Working Box:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litWorkingBox" runat="server"></asp:Literal></td>
+                    <%--<asp:Literal ID="litWorkingBox" runat="server"></asp:Literal>--%>
+                    <asp:TextBox ID="tbWorkingBox" runat="server"></asp:TextBox>
+                    <a onclick='SaveProperty("WorkingBox", "<%= tbWorkingBox.ClientID %>");'>[Save]</a>
+                    <div id="WorkingBox"></div>
+                </td>
                 <td class="InfoFieldName">Archived Box:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litArchivedBox" runat="server"></asp:Literal></td>            
+                    <%--<asp:Literal ID="litArchivedBox" runat="server"></asp:Literal>--%>
+                    <asp:TextBox ID="tbArchivedBox" runat="server"></asp:TextBox>
+                    <a onclick='SaveProperty("ArchivedBox", "<%= tbArchivedBox.ClientID %>");'>[Save]</a>
+                    <div id="ArchivedBox"></div>
+                </td>            
             </tr>                                                                        
             <tr>
                 <td class="InfoFieldName">Location:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litLocation" runat="server"></asp:Literal></td>
+                    <%--<asp:Literal ID="litLocation" runat="server"></asp:Literal>--%>
+                    <asp:TextBox ID="tbLocation" runat="server"></asp:TextBox>
+                    <a onclick='SaveProperty("Location", "<%= tbLocation.ClientID %>");'>[Save]</a>
+                    <div id="Location"></div>
+                </td>
                 <td class="InfoFieldName">Position:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litPosition" runat="server"></asp:Literal></td>            
+                    <%--<asp:Literal ID="litPosition" runat="server"></asp:Literal>--%>
+                    <asp:TextBox ID="tbPosition" runat="server"></asp:TextBox>
+                    <a onclick='SaveProperty("Position", "<%= tbPosition.ClientID %>");'>[Save]</a>
+                    <div id="Position"></div>
+                </td>            
             </tr>     
             <tr><td colspan="4"></td></tr>
             <tr>
                 <td class="InfoFieldName">Comments:&nbsp;</td>
                 <td class="InfoFieldValue" colspan="3">
-                    <asp:Literal ID="litComments" runat="server"></asp:Literal></td>
+                    <%--<asp:Literal ID="litComments" runat="server"></asp:Literal>--%>
+                    <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
+                        Width="338px"></asp:TextBox>
+                    <a onclick='SaveProperty("Comment", "<%= tbComments.ClientID %>");'>[Save]</a>
+                    <div id="Comment"></div>
+                </td>
             </tr>       
         </table>
     </asp:Panel>
