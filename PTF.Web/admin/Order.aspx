@@ -1,13 +1,21 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="admin_Order" Title="PTF | Order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <script type="text/javascript" src="../JS/Order.js"></script>
-    <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
     
-    <script type="text/javascript">
-        
+    <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
+    <script type="text/javascript" src="../JS/Order.js"></script>
 
+    <script type="text/javascript">
+    function SaveAgroStrain(orderID, dropDown, literal)
+    {
+        var panel = $get(dropDown).parentNode;
+        
+        var value = $get(dropDown).options[$get(dropDown).selectedIndex].value;
+        
+        ScriptServices.SaveProperty(orderID, "AgroStrain", value, "Order", SaveSuborderPropertyOnComplete, SaveSuborderPropertyOnFail, $get(dropDown));
+    }
     </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">
@@ -143,7 +151,11 @@
             <tr>
                 <td class="InfoFieldName">Agro Strain:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litAgroStrain" runat="server"></asp:Literal></td>
+                    <asp:Literal ID="litAgroStrain" runat="server"></asp:Literal>
+                    <asp:Panel runat="server" id="pnlAgroStrain" Visible="false">
+                        <asp:DropDownList ID="ddlAgroStrain" runat="server" DataValueField="id" DataTextField="Name" AppendDataBoundItems="true"></asp:DropDownList>
+                        <a id="AgroStrainButton" onclick='SaveAgroStrain("<%= Request.QueryString["oid"] %>", "<%= ddlAgroStrain.ClientID %>", "<%= litAgroStrain.ClientID %>");'><img src="../Images/save.png" width="20px" alt="save" /></a></asp:Panel>
+                </td>
                 <td class="InfoFieldName">Transgene:&nbsp;</td>
                 <td class="InfoFieldValue"><asp:Literal ID="litTransgene" runat="server"></asp:Literal></td>            
             </tr>

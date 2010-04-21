@@ -116,7 +116,18 @@ public partial class admin_Order : System.Web.UI.Page
             litConstructName.Text = order.PIConstructName;
             litPlasmid.Text = order.Plasmid;
             litBacterialSelection.Text = order.BacterialSelection;
-            litAgroStrain.Text = order.AgroStrain.Name;
+
+            if (order.AgroStrain.Name != STR_Other)
+            {
+                litAgroStrain.Text = order.AgroStrain.Name;
+            }
+            else // client has selected "other"
+            {
+                pnlAgroStrain.Visible = true;
+                ddlAgroStrain.DataSource = AgroStrainBLL.GetActive().Where(agro => agro.Name != STR_Other);
+                ddlAgroStrain.DataBind();
+            }
+
             litTransgene.Text = order.TransGene.Name;
             litTrait.Text = order.Trait;
             litSelectableMarkerPromoter.Text = order.SelectableMarkerPromoter;

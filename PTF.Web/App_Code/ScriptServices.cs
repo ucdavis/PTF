@@ -84,6 +84,9 @@ public class ScriptServices : System.Web.Services.WebService
             case "ShippingPermit":
                 order.ShippingPermit = value;
                 break;
+            case "AgroStrain":
+                order.AgroStrain = AgroStrainBLL.GetByID(Convert.ToInt32(value));
+                break;
         };
 
         OrderBLL.Update(order);

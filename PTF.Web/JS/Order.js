@@ -92,6 +92,8 @@ function SaveSuborderProperty(suborderID, button, propertyName)
     ScriptServices.SaveProperty(suborderID, propertyName, value, "Suborder", SaveSuborderPropertyOnComplete, SaveSuborderPropertyOnFail, dropDown);
 }
 
+
+
 function SaveSuborderPropertyOnComplete(result, context)
 {
     // hide the panel
