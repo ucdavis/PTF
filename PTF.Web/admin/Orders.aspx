@@ -9,10 +9,6 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate><div id="pages">
     Page Size: 
-        <asp:LinkButton ID="lbPageSize10" runat="server" onclick="lbPageSize10_Click">10</asp:LinkButton>
-        &nbsp;|&nbsp;
-        <asp:LinkButton ID="lbPageSize25" runat="server" onclick="lbPageSize25_Click">25</asp:LinkButton>
-        &nbsp;|&nbsp;
         <asp:LinkButton ID="lbPageSize50" runat="server" onclick="lbPageSize50_Click">50</asp:LinkButton>
         &nbsp;|&nbsp;
         <asp:LinkButton ID="lbPageSize100" runat="server" onclick="lbPageSize100_Click">100</asp:LinkButton></div><div class="clear">&nbsp;</div>
@@ -44,7 +40,7 @@
 <%--                </table>
                 <table id="pager" cellpadding="20" cellspacing="0">--%>
                     <tr class="pager">
-                        <asp:DataPager ID="pager" runat="server" PageSize="10">
+                        <asp:DataPager ID="pager" runat="server" PageSize="50">
                             <Fields>
                                 <asp:TemplatePagerField OnPagerCommand="PagerCommand">
                                     <PagerTemplate>
@@ -132,4 +128,3 @@
     </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
-
