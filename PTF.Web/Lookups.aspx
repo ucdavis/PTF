@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Lookups.aspx.cs" Inherits="Lookups" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Lookups.aspx.cs" Inherits="Lookups" Title="Untitled Page" %>
+
+<%@ Register TagPrefix="CAESDO" TagName="Lookups" Src="~/LookupsView.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="CSS/Main.css" rel="stylesheet" type="text/css" />
@@ -10,7 +12,7 @@
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Note Types" ID="TabPanel1">
             <ContentTemplate>
 
-                <asp:ListView ID="lvNoteTypes" runat="server" DataSourceID="odsNoteTypes" InsertItemPosition="LastItem" DataKeyNames="Identifier">
+<%--                <asp:ListView ID="lvNoteTypes" runat="server" DataSourceID="odsNoteTypes" InsertItemPosition="LastItem" DataKeyNames="Identifier">
                     <EditItemTemplate>
                         <li>
                             <asp:Panel runat="server" ID="pnlEdit" class="itemPanel">
@@ -42,7 +44,11 @@
                             <li id="ItemPlaceHolder" runat="server"></li>
                         </ul>
                     </LayoutTemplate>
-                </asp:ListView>
+                </asp:ListView>--%>
+
+                
+                
+                <CAESDO:Lookups runat="server" ID="NoteTypes" DataSourceID="odsNoteTypes" TypeName="CAESDO.PTF.BLL.NoteTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" />
 
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
