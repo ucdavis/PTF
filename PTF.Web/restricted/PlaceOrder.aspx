@@ -517,6 +517,23 @@
             </td>
         </tr>
         <tr>
+            <td></td>
+            <td>
+                
+                <asp:ListView ID="lvSubOrder" runat="server">
+                    <LayoutTemplate>
+                        <ul>
+                            <li runat="server" id="ItemPlaceHolder" />
+                        </ul>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        
+                    </ItemTemplate>
+                </asp:ListView>
+                
+            </td>
+        </tr>
+        <tr>
             <td class="style3">
                 Crop:</td>
             <td>
@@ -543,11 +560,12 @@
                 Number of Plants:</td>
             <td>
                 <asp:TextBox ID="tbNumberofPlants" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvNumberofPlants" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbNumberofPlants"
+                    ErrorMessage="Number of plants is required."></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="tbNumberofPlants" ErrorMessage="Number of Plants is not a number." Text="*" ValidationExpression="\d*"
                     ValidationGroup="NewOrder">*</asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="rfvNumberofPlants" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbNumberofPlants"
-                    ErrorMessage="Number of plants is required."></asp:RequiredFieldValidator>
+
             </td>
         </tr>
         <tr>
@@ -583,8 +601,11 @@
             <td class="style3">
                 Agrobacterium Strain:</td>
             <td>
-                <asp:TextBox ID="tbAgrobacteriumStrain" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvAgrobacteriumStrain" runat="server" ControlToValidate="tbAgrobacteriumStrain"
+                <asp:DropDownList ID="ddlAgroStrain" runat="server" AppendDataBoundItems=True 
+                    DataSourceID="odsAgroStrain" DataTextField="Name" DataValueField="ID">
+                    <asp:ListItem Value="-1" Text="--Select Agro Strain--"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvAgrobacteriumStrain" runat="server" ControlToValidate="ddlAgroStrain" InitialValue="-1"
                     ErrorMessage="Agrobacterium Strain is required." Text="*" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
             </td>
         </tr>
@@ -641,39 +662,7 @@
                 &nbsp;</td>
             <td>
                 &nbsp;</td>
-        </tr>
-        <tr>
-            <td class="style2" colspan="2">
-                <strong>Construct: Gene of Interest</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Promoter:</td>
-            <td>
-                <asp:TextBox ID="tbGeneOfInterestPromoter" runat="server" MaxLength="50"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Gene:</td>
-            <td>
-                <asp:TextBox ID="tbGeneOfInterestGene" runat="server" MaxLength="50"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Terminator:</td>
-            <td>
-                <asp:TextBox ID="tbGeneOfInterestTerminator" runat="server" MaxLength="50"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
+        </tr>  
         <tr>
             <td class="style2" colspan="2">
                 <strong>Construct: Selectable Marker</strong></td>
@@ -696,44 +685,6 @@
                 <asp:RequiredFieldValidator ID="rfvSelectableMarkerGene" runat="server" 
                     ErrorMessage="Selectable Marker Gene is required." 
                     ControlToValidate="tbSelectableMarkerGene" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Terminator:</td>
-            <td>
-                <asp:TextBox ID="tbSelectableMarkerTerminator" runat="server" MaxLength="50"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td class="style2" colspan="2">
-                <strong>Construct: Scorable Marker (if applicable)</strong></td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Promoter:</td>
-            <td>
-                <asp:TextBox ID="tbScorableMarkerPromoter" runat="server" MaxLength="50"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Gene:</td>
-            <td>
-                <asp:TextBox ID="tbScorableMarkerGene" runat="server" MaxLength="50"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style3">
-                Terminator:</td>
-            <td>
-                <asp:TextBox ID="tbScorableMarkerTerminator" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -815,5 +766,9 @@
     <asp:ObjectDataSource ID="odsState" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.StateBLL"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="odsAgroStrain" runat="server" 
+            OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+            TypeName="CAESDO.PTF.BLL.AgroStrainBLL">
+        </asp:ObjectDataSource>
 </asp:Content>
 

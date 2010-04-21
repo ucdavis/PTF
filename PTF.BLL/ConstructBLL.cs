@@ -14,9 +14,9 @@ namespace CAESDO.PTF.BLL
         public static void Insert(Construct obj)
         {
             obj.DateCreated = DateTime.Now;
-            obj.Status = StatusBLL.GetByName(StatusNames.Pending);
+            //obj.Status = StatusBLL.GetByName(StatusNames.Pending);
 
-            obj.ContractExecuted = false;
+            //obj.ContractExecuted = false;
 
             using (var ts = new TransactionScope())
             {
@@ -56,11 +56,11 @@ namespace CAESDO.PTF.BLL
         /// <returns></returns>
         public static Construct SetHoldPendingContract(Construct construct)
         {
-            // just make sure it's not complete or cancelled
-            if (construct.Status.Name != StatusText.STR_Complete && construct.Status.Name != StatusText.STR_Cancelled)
-            {
-                construct.Status = StatusBLL.GetByName(StatusText.STR_HoldPendingContract);
-            }
+            //// just make sure it's not complete or cancelled
+            //if (construct.Status.Name != StatusText.STR_Complete && construct.Status.Name != StatusText.STR_Cancelled)
+            //{
+            //    construct.Status = StatusBLL.GetByName(StatusText.STR_HoldPendingContract);
+            //}
 
             return construct;
         }
@@ -72,14 +72,14 @@ namespace CAESDO.PTF.BLL
         /// <returns></returns>
         public static Construct SetPending(Construct construct)
         {
-            // it can not be in complete or cancelled status
-            if (construct.Status.Name != StatusText.STR_Complete 
-                && construct.Status.Name != StatusText.STR_Cancelled
-                //TODO: also can not have any experiments
-                )
-            {
-                construct.Status = StatusBLL.GetByName(StatusText.STR_Pending);
-            }
+            //// it can not be in complete or cancelled status
+            //if (construct.Status.Name != StatusText.STR_Complete 
+            //    && construct.Status.Name != StatusText.STR_Cancelled
+            //    //TODO: also can not have any experiments
+            //    )
+            //{
+            //    construct.Status = StatusBLL.GetByName(StatusText.STR_Pending);
+            //}
 
             return construct;
         }

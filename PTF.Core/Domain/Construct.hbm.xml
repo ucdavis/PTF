@@ -13,7 +13,6 @@
 		
 		<property name="PlantsDelivered" column="PlantsDelivered" />
 		<property name="TransformationInitiated" column="TransformationInitiated" />
-		<many-to-one name="AgroStrain" class="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" column="AgroStrainID" cascade="none" />
 
 		<property name="Comments" column="Comment" />
 		<property name="InvoiceDate" column="InvoiceDate" />

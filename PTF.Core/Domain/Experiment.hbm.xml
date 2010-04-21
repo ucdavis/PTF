@@ -10,9 +10,7 @@
 		<property name="DateStarted" column="DateStarted" />
 		<property name="SeedLotNumber" column="SeedLotNumber" />
 		<property name="Explant" column="Explant" />
-		<property name="Trait" column="Trait" />
 		<property name="Comments" column="Comments" />
-		<property name="TargetNumPlants" column="TargetNumPlants" />
 		<property name="OpticalDensity" column="OpticalDensity" />
 
 		<many-to-one name="Operator" class="CAESDO.PTF.Core.Domain.Operator, CAESDO.PTF.Core" column="OperatorID" cascade="none" />

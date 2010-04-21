@@ -69,8 +69,8 @@ public partial class admin_Construct : System.Web.UI.Page
         lblPI.Text = order.PI;
 
         lblBacterialSelection.Text = order.BacterialSelection;
-        lblAgroBacteriumStrain.Text = order.AgroBacteriumStrain;
-        lblPlantSelection.Text = order.PlantSelection;
+        //lblAgroBacteriumStrain.Text = order.AgroBacteriumStrain;
+        //lblPlantSelection.Text = order.PlantSelection;
 
         //right column
         lblContact.Text = order.Contact;
@@ -151,19 +151,19 @@ public partial class admin_Construct : System.Web.UI.Page
     {
         CAESDO.PTF.Core.Domain.Construct construct = new CAESDO.PTF.Core.Domain.Construct()
         {
-            PlantsRequested = tbPlantsRequested.Text,
-            PIConstructName = tbPIConstructName.Text,
-            PICode = tbPICode.Text,
-            AgroStrain = AgroStrainBLL.GetByID(Convert.ToInt32(ddlAgroStrain.SelectedValue)),
-            BacterialSelection = tbBacterialSelection.Text,
-            Plasmid = tbPlasmid.Text,
-            Trait = tbTrait.Text,
-            GeneOfInterest = tbGeneofInterest.Text,
-            SelectableMarker = PlantSelectionBLL.GetByID(Convert.ToInt32(ddlSelectableMarker.SelectedValue)),
-            Crop = CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)),
-            Genotype = GenoTypeBLL.GetByID(Convert.ToInt32(ddlGenotype.SelectedValue)),
-            DateReceived = DateTime.Parse(tbDateReceived.Text),
-            Comments = !string.IsNullOrEmpty(tbComment.Text) ? tbComment.Text : null,
+            //PlantsRequested = tbPlantsRequested.Text,
+            //PIConstructName = tbPIConstructName.Text,
+            //PICode = tbPICode.Text,
+            //AgroStrain = AgroStrainBLL.GetByID(Convert.ToInt32(ddlAgroStrain.SelectedValue)),
+            //BacterialSelection = tbBacterialSelection.Text,
+            //Plasmid = tbPlasmid.Text,
+            //Trait = tbTrait.Text,
+            //GeneOfInterest = tbGeneofInterest.Text,
+            //SelectableMarker = PlantSelectionBLL.GetByID(Convert.ToInt32(ddlSelectableMarker.SelectedValue)),
+            //Crop = CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)),
+            //Genotype = GenoTypeBLL.GetByID(Convert.ToInt32(ddlGenotype.SelectedValue)),
+            //DateReceived = DateTime.Parse(tbDateReceived.Text),
+            //Comments = !string.IsNullOrEmpty(tbComment.Text) ? tbComment.Text : null,
             Order = OrderBLL.GetByID(OrderID)
         };
 
