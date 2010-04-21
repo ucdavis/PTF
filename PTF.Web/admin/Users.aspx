@@ -13,7 +13,13 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
-            <asp:LinkButton ID="lbNewUser" runat="server"><img src="../Images/btn_newuser.png" /></asp:LinkButton>
+                    <div style="width:100%; height: 500px" align="Center">
+                        <iframe id="frame" frameborder="0" src='<%= ConfigurationManager.AppSettings["AdminPageURL"] %>'
+                            scrolling="auto" name="frame" style="width:100%; height:100%;">
+                        </iframe>
+                    </div>
+
+            <%--<asp:LinkButton ID="lbNewUser" runat="server"><img src="../Images/btn_newuser.png" /></asp:LinkButton>
             <AjaxControlToolkit:ModalPopupExtender ID="mpeNewUser" runat="server" CancelControlID="btnAddUserCancel" 
                 TargetControlID="lbNewUser" PopupControlID="pnlNewUser" DynamicServicePath="" 
                 Enabled="True" BackgroundCssClass="popup_shadow">
@@ -227,7 +233,7 @@
                         TypeName="CatbertManager"></asp:ObjectDataSource>
             <asp:ObjectDataSource ID="odsRoles" runat="server" 
                         OldValuesParameterFormatString="original_{0}" SelectMethod="GetRoles" 
-                        TypeName="CatbertManager"></asp:ObjectDataSource>    
+                        TypeName="CatbertManager"></asp:ObjectDataSource> --%>   
             </ContentTemplate>
         </asp:UpdatePanel>
         </ContentTemplate>        
