@@ -160,3 +160,14 @@ body {
 {
 	background-color:#F5F5F5;
 }
+.WrapperDiv {
+    width:800px;height:400px;
+}        
+.WrapperDiv TH {
+    position:relative;
+}
+.WrapperDiv TR 
+{
+    /* Needed for IE */
+    height:0px;
+} 
