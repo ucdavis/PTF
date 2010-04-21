@@ -18,6 +18,7 @@ Begin DataProject = "PTF.SQL"
       End
    End
    Begin Folder = "Initialization"
+      Script = "CopyData.sql"
       Script = "CreateDB.sql"
       Script = "InsertLookupData.sql"
    End
