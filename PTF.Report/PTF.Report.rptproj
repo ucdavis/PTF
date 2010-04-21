@@ -39,7 +39,8 @@
       <Name>DebugLocal</Name>
       <Platform>Win32</Platform>
       <Options>
-        <TargetFolder>PTF.Report</TargetFolder>
+        <TargetServerURL>http://vogel/reportserver</TargetServerURL>
+        <TargetFolder>PTF</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
       </Options>
     </Configuration>
