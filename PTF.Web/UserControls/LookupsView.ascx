@@ -8,14 +8,14 @@
             <li>
                 <asp:Panel runat="server" ID="pnlEdit" class="itemPanel">
                     <asp:TextBox ID="tbEdit" runat="server" Text='<%# Bind("Name") %>' />
-                    <asp:ImageButton runat="server" ID="ibtnSave" ImageUrl="~/Images/save.png" CssClass="icon" CommandName="Update" ToolTip="Save Changes" />
-                    <asp:ImageButton runat="server" ID="ibtnCancelSave" ImageUrl="~/Images/cancel.png" CssClass="icon" CommandName="Cancel" ToolTip="Cancel Changes" />
+                    <asp:ImageButton runat="server" ID="ibtnSave" ImageUrl="~/Images/save.png" CssClass="icon" Width="20px" CommandName="Update" ToolTip="Save Changes" />
+                    <asp:ImageButton runat="server" ID="ibtnCancelSave" ImageUrl="~/Images/cancel.png" CssClass="icon" Width="20px" CommandName="Cancel" ToolTip="Cancel Changes" />
                     <asp:CheckBox ID="cbEdit" runat="server" Checked='<%# Bind("IsActive") %>' Visible="false" />
                 </asp:Panel>
             </li>
         </EditItemTemplate>
         <InsertItemTemplate>
-            <li>
+            <li class="newItem">
                 <asp:TextBox ID="tbNewName" Text='<%# Bind("Name") %>' MaxLength="50" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvNewName" runat="server" ErrorMessage="*" ControlToValidate="tbNewName" ValidationGroup='<%# Eval("ValidationGroup") %>'> <%--ValidationGroup="NewLookup">--%></asp:RequiredFieldValidator>                      
                 <asp:ImageButton runat="server" ID="ibtnInsert" ImageUrl="~/Images/add.png" ToolTip="Add New" CssClass="icon" CommandName="Insert" ValidationGroup='<%# Eval("ValidationGroup") %>' /> <%--ValidationGroup="NewLookup" />--%>
@@ -24,7 +24,7 @@
         <ItemTemplate>
             <li>
                 <asp:Panel runat="server" ID="pnlName" class="itemPanel" >
-                    <asp:ImageButton runat="server" ID="ibtnDelete" ImageUrl="~/Images/delete.png" CssClass="icon" CommandName="Delete" ToolTip="Delete" />
+                    <asp:ImageButton runat="server" ID="ibtnDelete" ImageUrl="~/Images/delete-x.png" Width="20px" CssClass="icon" CommandName="Delete" ToolTip="Delete" />
                     <AjaxControlToolkit:ConfirmButtonExtender ID="cbeDelete" TargetControlID="ibtnDelete" runat="server" ConfirmText="Are you sure you want to delete this lookup value?" />
                     <asp:ImageButton runat="server" ID="ibtnEdit" ImageUrl="~/Images/edit.png" CommandName="Edit" CssClass="icon" ToolTip="Edit" />
                     <%# Eval("Name") %></asp:Panel>
@@ -34,6 +34,7 @@
             <ul class="Lookups">
                 <li id="ItemPlaceHolder" runat="server"></li>
             </ul>
+            <div class="clear">&nbsp;</div>
         </LayoutTemplate>
     </asp:ListView>
     

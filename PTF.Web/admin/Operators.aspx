@@ -6,9 +6,9 @@
 
     <asp:ListView ID="lvOperators" runat="server" DataSourceID="odsOperators" DataKeyNames="Identifier" InsertItemPosition="LastItem">
         <LayoutTemplate>
-            <table>
-                <tr>
-                    <th></th>
+            <table class="dataTable" cellpadding="0" cellspacing="0">
+                <tr class="head">
+                    <th colspan="2"></th>
                     <th>Name</th>
                     <th>Is Student</th>
                     <th>Effective ID</th>
@@ -18,9 +18,10 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
+                <td class="first">&nbsp;</td>
                 <td>
-                    <asp:LinkButton ID="lbEdit" runat="server" CommandName="Edit">[Edit]</asp:LinkButton>
-                    <asp:LinkButton ID="lbDelete" runat="server" CommandName="Delete">[Delete]</asp:LinkButton>
+                    <asp:LinkButton ID="lbEdit" runat="server" CommandName="Edit"><img src="../Images/edit.png" width="20px" /></asp:LinkButton>
+                    <asp:LinkButton ID="lbDelete" runat="server" CommandName="Delete"><img src="../Images/delete-x.png" width="20px" /></asp:LinkButton>
                 </td>
                 <td><%# Eval("OperatorName") %></td>
                 <td>
@@ -31,9 +32,10 @@
         </ItemTemplate>
         <EditItemTemplate>
             <tr>
+                <td class="first">&nbsp;</td>
                 <td>
-                    <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Update">[Update]</asp:LinkButton>
-                    <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel">[Cancel]</asp:LinkButton>
+                    <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Update"><img src="../Images/save.png" width="20px" /></asp:LinkButton>
+                    <asp:LinkButton ID="lbCancel" runat="server" CommandName="Cancel"><img src="../Images/cancel.png" width="20px" /></asp:LinkButton>
                 </td>
                 <td>
                     <asp:Label ID="lblName" runat="server" Text='<%# Bind("OperatorName") %>'></asp:Label>
@@ -48,8 +50,9 @@
         </EditItemTemplate>
         <InsertItemTemplate>
             <tr>
+                <td class="first">&nbsp;</td>
                 <td>
-                    <asp:LinkButton ID="lbInsert" runat="server" CommandName="Insert">[Insert]</asp:LinkButton>
+                    <asp:LinkButton ID="lbInsert" runat="server" CommandName="Insert"><img src="../Images/insert.png" width="20px" /></asp:LinkButton>
                 </td>
                 <td>
                     <asp:TextBox ID="tbInsertName" runat="server" Text='<%# Bind("OperatorName") %>'></asp:TextBox>

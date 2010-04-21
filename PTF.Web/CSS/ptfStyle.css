@@ -155,7 +155,7 @@ table#orders td a {font-size: 1.5em; font-weight: bold;}
 table#suborders td, table.experiments td, table#dataTable td {font-size: 1.3em;}
 table#suborders td td {font-size: 1em;}
 
-table.experiment tr.head th {padding-bottom: 1em;}
+table.experiment tr.head th, table.dataTable tr.head th {padding-bottom: 1em;}
 
 
 /* --- info tables --- */
@@ -218,6 +218,9 @@ div.popup {
 .newconstruct table, .newconstruct td, .newconstruct th, .newconstruct tr {border: 0px none;}
 .newconstruct td, .newconstruct th {padding: .5em; vertical-align: bottom}
 .newconstruct td {vertical-align: middle;}
+
+li.newItem {display: block; float: none;}
+
 
 
 

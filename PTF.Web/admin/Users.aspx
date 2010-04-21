@@ -13,19 +13,19 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
-            <asp:LinkButton ID="lbNewUser" runat="server">[New User]</asp:LinkButton>
+            <asp:LinkButton ID="lbNewUser" runat="server"><img src="../Images/btn_newuser.png" /></asp:LinkButton>
             <AjaxControlToolkit:ModalPopupExtender ID="mpeNewUser" runat="server" CancelControlID="btnAddUserCancel" 
                 TargetControlID="lbNewUser" PopupControlID="pnlNewUser" DynamicServicePath="" 
                 Enabled="True">
             </AjaxControlToolkit:ModalPopupExtender>
-            <asp:Panel ID="pnlNewUser" runat="server" style="border:solid 1px black; background-color:oldlace; display:none;">
-            Search For New User:<br /><br />
+            <asp:Panel ID="pnlNewUser" CssClass="popup" runat="server" style="display:none;">
+            <h2>Search For New User:</h2><br /><br />
                  Login ID:
                  <asp:TextBox ID="txtAddUserLoginID" runat="server"></asp:TextBox><br />
                  <br />
-                 <asp:Button ID="btnAddUserSearch" runat="server" OnClick="btnAddUserSearch_Click"
-                     Text="Search" />
-                 <asp:Button ID="btnAddUserCancel" runat="server" Text="Close" />
+                 <asp:ImageButton ID="btnAddUserSearch" runat="server" OnClick="btnAddUserSearch_Click"
+                     Text="Search" ImageUrl="~/Images/btn_lookup.png" />
+                 <asp:ImageButton ID="btnAddUserCancel" runat="server" Text="Close" ImageUrl="~/Images/btn_close.png" />
                  <br />
                  <asp:Label ID="lblAddUserStatus" runat="server" ForeColor="Green" EnableViewState="False"></asp:Label><br />
                  
@@ -111,8 +111,8 @@
                     </tr>
                 </ItemTemplate>
                 <LayoutTemplate>
-                    <table>
-                        <tr>
+                    <table class="dataTable" cellpadding="0" cellspacing="0">
+                        <tr class="head">
                             <th>
                             </th>
                             <th>
@@ -147,8 +147,8 @@
                 <asp:ListView ID="lvUserUnits" runat="server" DataKeyNames="UnitID" 
                     onitemdeleting="lvUserUnits_ItemDeleting">
                     <LayoutTemplate>
-                        <table>
-                            <tr>
+                        <table class="dataTable" cellpadding="0" cellspacing="0">
+                            <tr class="head">
                                 <th>Unit</th>
                                 <th>FIS Code</th>
                                 <th>Remove</th>
@@ -176,8 +176,8 @@
                 <asp:ListView ID="lvUserRoles" runat="server" DataKeyNames="RoleID" 
                     onitemdeleting="lvUserRoles_ItemDeleting">
                     <LayoutTemplate>
-                        <table>
-                            <tr>
+                        <table class="dataTable" cellpadding="0" cellspacing="0">
+                            <tr class="head">
                                 <th>Role</th>
                                 <th>Remove</th>
                             </tr>

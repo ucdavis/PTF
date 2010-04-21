@@ -64,7 +64,7 @@
             <td class="InfoFieldName">Recharge Amount:&nbsp;</td>
             <td class="InfoFieldValue">
                 $<asp:TextBox ID="tbRecharge" runat="server" Width="50px"></asp:TextBox>               
-                <a id="A1" onclick='if (Page_ClientValidate("Recharge")) { SaveProperty("<%= Request.QueryString["cid"] %>", "Recharge", "<%= tbRecharge.ClientID %>", "Recharge"); }'><img src="../Images/save.png" width="15px" alt="save" />
+                <a id="A1" onclick='if (Page_ClientValidate("Recharge")) { SaveProperty("<%= Request.QueryString["cid"] %>", "Recharge", "<%= tbRecharge.ClientID %>", "Recharge"); }'><img src="../Images/save.png" width="20px" alt="save" />
                 <span id="Recharge"></span><br />
                 <asp:RegularExpressionValidator ID="revRecharge" ControlToValidate="tbRecharge" ValidationGroup="Recharge" ValidationExpression="^([1-9]{1}[\d]{0,2}(\,[\d]{3})*(\.[\d]{0,2})?|[1-9]{1}[\d]{0,}(\.[\d]{0,2})?|0(\.[\d]{0,2})?|(\.[\d]{1,2})?)$" runat="server" ErrorMessage="Not valid dollar amount."></asp:RegularExpressionValidator>
             </td>
@@ -83,7 +83,7 @@
             </td>
             <td colspan="3" class="InfoFieldValue">
                 <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
-                <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["cid"] %>", "Comment", "<%= tbComments.ClientID %>", "Construct");'><img src="../Images/save.png" width="15px" alt="save" />
+                <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["cid"] %>", "Comment", "<%= tbComments.ClientID %>", "Construct");'><img src="../Images/save.png" width="20px" alt="save" />
                 <span id="Comment"></span>
             </td>
         </tr>                          

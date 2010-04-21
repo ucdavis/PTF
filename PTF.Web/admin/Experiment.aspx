@@ -100,7 +100,7 @@
             <td class="InfoFieldValue" colspan="3">
                 <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
                     Width="338px"></asp:TextBox>
-                <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["eid"] %>", "Comment", "<%= tbComments.ClientID %>", "Experiment");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["eid"] %>", "Comment", "<%= tbComments.ClientID %>", "Experiment");'><img src="../Images/save.png" width="20px" alt="save" /></a>
                 <span id="Comment"></span>
             </td>
         </tr>
@@ -295,7 +295,7 @@
         </div>
         
         <asp:TextBox ID="tbPlantComment" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
-        <a id="SavePlantComments" onclick='SavePlantComments("<%= tbPlantID.ClientID %>", "PlantComment", "<%= tbPlantComment.ClientID %>", "Plant");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+        <a id="SavePlantComments" onclick='SavePlantComments("<%= tbPlantID.ClientID %>", "PlantComment", "<%= tbPlantComment.ClientID %>", "Plant");'><img src="../Images/save.png" width="20px" alt="save" /></a>
         <span id="PlantComment"></span>
     </asp:Panel>
     
