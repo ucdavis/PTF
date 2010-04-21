@@ -61,7 +61,7 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         public virtual Country ShippingCountry { get; set; }
 
-        [NotNullValidator]
+        [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string Plasmid { get; set; }
         [NotNullValidator]
@@ -72,7 +72,7 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         [StringLengthValidator(50)]
         public virtual string PIConstructName { get; set; }
-        [NotNullValidator]
+        [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string PICode { get; set; }
         public virtual TransGene TransGene { get; set; }

@@ -177,6 +177,8 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             userProfile.State = ddlMailingState.Style[STR_StyleProperty] != STR_DDLUnselected && ddlMailingState.SelectedValue != STR_DDLUnselected ? StateBLL.GetByID(ddlMailingState.SelectedValue) : null;
             userProfile.InternationalState = tbMailingState.Style[STR_StyleProperty] != STR_DDLUnselected && !string.IsNullOrEmpty(tbMailingState.Text) ? tbMailingState.Text : null;
             userProfile.Zip = tbMailingZip.Text;
+
+            UserProfileBLL.Update(userProfile);
         }
          
         Response.Redirect("default.aspx");
@@ -196,29 +198,14 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
             DropDownList cropDDL = new DropDownList();
             cropDDL.ID = controlNames[(int)ControlNames.ddlCrop];
-            //cropDDL.DataSourceID = "odsCrop";
-            //cropDDL.DataTextField = "Name";
-            //cropDDL.DataValueField = "id";
-            //cropDDL.AppendDataBoundItems = true;
-            //cropDDL.Items.Add(new ListItem("--Select a Crop--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(cropDDL);
 
             DropDownList plantSelectionDDL = new DropDownList();
             plantSelectionDDL.ID = controlNames[(int)ControlNames.ddlPlantSelection];
-            //plantSelectionDDL.DataSourceID = "odsPlantSelection";
-            //plantSelectionDDL.DataTextField = "Name";
-            //plantSelectionDDL.DataValueField = "id";
-            //plantSelectionDDL.AppendDataBoundItems = true;
-            //plantSelectionDDL.Items.Add(new ListItem("--Select a Plant Selection--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(plantSelectionDDL);
 
             DropDownList genotypeDDL = new DropDownList();
             genotypeDDL.ID = controlNames[(int)ControlNames.ddlGenotype];
-            //genotypeDDL.DataSourceID = "odsGenoType";
-            //genotypeDDL.DataTextField = "Name";
-            //genotypeDDL.DataValueField = "id";
-            //genotypeDDL.AppendDataBoundItems = true;
-            //genotypeDDL.Items.Add(new ListItem("--Select a Genotype--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(genotypeDDL);
 
             // add in the ajax extenders

@@ -411,8 +411,6 @@
                 Plasmid:</td>
             <td>
                 <asp:TextBox ID="tbPlasmid" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvPlasmid" runat="server" Text="*" ControlToValidate="tbPlasmid" ValidationGroup="NewOrder"
-                    ErrorMessage="Plasmid is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -442,8 +440,6 @@
                 Construct Code:</td>
             <td>
                 <asp:TextBox ID="tbConstruct" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvConstruct" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbConstruct" 
-                    ErrorMessage="Construct is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -482,7 +478,6 @@
             </td>
             <td>
                 <asp:TextBox ID="tbTrait" runat="server" MaxLength="50"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvTrait" runat="server" ControlToValidate="tbTrait" ErrorMessage="Trait is required." Text="*" ValidationGroup="NewOrder"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>

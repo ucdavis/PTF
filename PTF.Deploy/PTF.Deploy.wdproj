@@ -40,8 +40,9 @@
     <UseWebConfigReplacement>true</UseWebConfigReplacement>
     <SingleAssemblyName>PTF</SingleAssemblyName>
     <OutputPath>.\Test</OutputPath>
-    <KeyFile>..\..\caesdo.snk</KeyFile>
-    <AllowPartiallyTrustedCallers>true</AllowPartiallyTrustedCallers>
+    <KeyFile>
+    </KeyFile>
+    <AllowPartiallyTrustedCallers>false</AllowPartiallyTrustedCallers>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
@@ -81,10 +82,10 @@
       <Section>connectionStrings</Section>
     </WebConfigReplacementFiles>
     <AssemblyAttributes Include="AssemblyFileVersion">
-      <Value>1.11.25.2008</Value>
+      <Value>1.12.4.2008</Value>
     </AssemblyAttributes>
     <AssemblyAttributes Include="AssemblyVersion">
-      <Value>1.11.25.2008</Value>
+      <Value>1.12.4.2008</Value>
     </AssemblyAttributes>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v9.0\Microsoft.WebDeployment.targets" />
