@@ -78,6 +78,7 @@
       <DependentUpon>StatusText.resx</DependentUpon>
     </Compile>
     <Compile Include="SubOrderBLL.cs" />
+    <Compile Include="UserProfileBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="caesdo.snk" />

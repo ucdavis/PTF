@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.UserProfile, CAESDO.PTF.Core" table="UserProfiles" >
+		<id name="id" access="field" column="UserProfileID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<property name="UserID" column="UserID" />
+		<property name="Address1" column="Address1" />
+		<property name="Address2" column="Address2" />
+		<property name="City" column="City" />
+		<many-to-one name="State" class="CAESDO.PTF.Core.Domain.State, CAESDO.PTF.Core" column="State" cascade="none" />
+		<property name="InternationalState" column="InternationalState" />
+		<property name="Zip" column="Zip" />
+		<many-to-one name="Country" class="CAESDO.PTF.Core.Domain.Country, CAESDO.PTF.Core" column="Country" cascade="none" />
+		
+	</class>
+	
+</hibernate-mapping>

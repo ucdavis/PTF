@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using CAESDO.PTF.BLL;
 
 public partial class Register : System.Web.UI.Page
 {
@@ -26,7 +27,7 @@ public partial class Register : System.Web.UI.Page
         if (EmailRequired.IsValid && PasswordCompare.IsValid && PasswordRequired.IsValid && QuestionRequired.IsValid && AnswerRequired.IsValid)
         {
 
-            Membership.CreateUser(Email.Text, Password.Text, Email.Text, Question.Text, Answer.Text, true, out status);
+            MembershipUser user = Membership.CreateUser(Email.Text, Password.Text, Email.Text, Question.Text, Answer.Text, true, out status);
 
             switch (status)
             {
@@ -39,6 +40,10 @@ public partial class Register : System.Web.UI.Page
                     e.Cancel = true;
                     break;
                 case MembershipCreateStatus.Success:
+
+                    // create the user profile
+                    UserProfileBLL.CreateProfile((Guid)user.ProviderUserKey);
+
                     FormsAuthentication.RedirectFromLoginPage(Email.Text, false);
                     //Response.Redirect(FormsAuthentication.DefaultUrl);
                     break;
