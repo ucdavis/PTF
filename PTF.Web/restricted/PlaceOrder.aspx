@@ -439,7 +439,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Construct:</td>
+                Construct Code:</td>
             <td>
                 <asp:TextBox ID="tbConstruct" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvConstruct" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbConstruct" 

@@ -68,7 +68,8 @@
 		    document.write( '<a href="mailto:' + emailaddress + '">' + linkname + '</a>' );
 		    -->
 		    </script> 
-        | Version: <%= System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() %><br />Copyright © UC Regents, Davis campus. All rights reserved. 
+        | Version: 
+        <asp:Literal ID="litVersion" runat="server"></asp:Literal><br />Copyright © UC Regents, Davis campus. All rights reserved. 
     </div>
     
     </div>
