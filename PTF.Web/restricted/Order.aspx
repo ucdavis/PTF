@@ -6,6 +6,12 @@
 <script type="text/javascript">
     function SaveShippingPermit()
     {
+        // validate the validators
+        if (!Page_ClientValidate("ShippingPermit"))
+        {
+            return;
+        }
+    
         var shippingPermit = $get('<%= tbShippingPermit.ClientID %>').value;
     
         PageMethods.SaveShippingPermit('<%= Request.QueryString["oid"] %>', shippingPermit, SaveShippingPermitOnComplete, null, shippingPermit);
@@ -34,7 +40,9 @@
             <div id="ShippingPermit">
                 <asp:Literal ID="litShippingPermit" runat="server" Visible="false"></asp:Literal>
             </div>
-            <asp:TextBox ID="tbShippingPermit" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="tbShippingPermit" runat="server" Visible="false" MaxLength="11"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvShippingPermit" runat="server" ErrorMessage="*" ControlToValidate="tbShippingPermit" ValidationGroup="ShippingPermit"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revShippingPermit" runat="server" ErrorMessage="Correct format: xx-xxx-xxxn/m" ControlToValidate="tbShippingPermit" ValidationExpression="^\d{2}-\d{3}-\d{3}[nm]$" ValidationGroup="ShippingPermit"></asp:RegularExpressionValidator>
             <asp:LinkButton ID="lbSaveShippingPermit" runat="server" OnClientClick="SaveShippingPermit(); return false;" Visible="false">[Save]</asp:LinkButton>
         </td>
     </tr>

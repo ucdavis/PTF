@@ -4,6 +4,19 @@
 
 <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
 
+<script type="text/javascript">
+    function ExecuteContract()
+    {
+        PageMethods.ExecuteContract('<%= Request.QueryString["oid"] %>', ExecuteContractOnComplete);
+    }
+    
+    function ExecuteContractOnComplete(result)
+    {
+        $get("ContractExecuted").innerHTML = "Yes";
+        $get('<%= lbExecuted.ClientID %>').style.display = "none";
+    }
+</script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -67,7 +80,9 @@
                     <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
                 <td class="InfoFieldName">Contract Executed:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litContractExecuted" runat="server"></asp:Literal></td>            
+                    <div id="ContractExecuted"><asp:Literal ID="litContractExecuted" runat="server"></asp:Literal></div>
+                    <asp:LinkButton ID="lbExecuted" runat="server" Visible="false" OnClientClick="ExecuteContract(); return false;">[Executed]</asp:LinkButton>
+                </td>            
             </tr>
             <tr>
                 <td class="InfoFieldName"></td>

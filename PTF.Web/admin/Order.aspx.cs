@@ -14,6 +14,7 @@ using CAESDO.PTF.BLL;
 using System.Text;
 using CAESDO.PTF.Core.Domain;
 using Resources;
+using System.Web.Services;
 
 public partial class admin_Order : System.Web.UI.Page
 {
@@ -79,7 +80,17 @@ public partial class admin_Order : System.Web.UI.Page
             else
             {
                 // contract is required
-                litContractExecuted.Text = order.ContractExecuted.ToString();
+                if (!order.ContractExecuted)
+                {
+                    // make the button visible
+                    litContractExecuted.Text = "No";
+                    lbExecuted.Visible = true;
+                }
+                else
+                {
+                    // contract has been executed.
+                    litContractExecuted.Text = "Yes";
+                }
                 litRechargeNumber.Text = CommonStrings.STR_NotAvailable;
             }
             if (order.RequiresShippingPermit)
@@ -172,5 +183,15 @@ public partial class admin_Order : System.Web.UI.Page
         // update the list view with all sub orders
         lvSuborders.DataSource = suborder.Order.SubOrders;
         lvSuborders.DataBind();
+    }
+
+    [WebMethod]
+    public static void ExecuteContract(int orderID)
+    {
+        var order = OrderBLL.GetByID(orderID);
+
+        order.ContractExecuted = true;
+
+        OrderBLL.Update(order);
     }
 }

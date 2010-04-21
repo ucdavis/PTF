@@ -9,6 +9,7 @@
     <li><a href=Lookups.aspx>Lookups</a></li>
     <li><a href=Operators.aspx>Operators</a></li>
     <li><a href=Users.aspx>Users</a></li>
+    <li><a href=Reports.aspx>Reports</a></li>
     </ul>
 </asp:Content>
 
