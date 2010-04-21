@@ -79,6 +79,9 @@
         </tr>       
     </table>
     
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<ContentTemplate>
+   
     <asp:Button ID="btnMakeNote" runat="server" Text="Make Note" />
     
     <asp:ListView ID="lvInduction" runat="server">
@@ -251,5 +254,8 @@
     <asp:ObjectDataSource ID="odsStatus" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.StatusBLL"></asp:ObjectDataSource>    
+        
+</ContentTemplate>
+</asp:UpdatePanel>
 </asp:Content>
 

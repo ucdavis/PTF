@@ -93,6 +93,10 @@
         </tr>                          
     </table>
     <br />
+    
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<ContentTemplate>   
+
     <asp:Button ID="btnNewExperiment" runat="server" Text="Create Experiment" /><br />
     <asp:ListView ID="lvExperiments" runat="server">
         <LayoutTemplate>
@@ -125,7 +129,7 @@
         </EmptyDataTemplate>
     </asp:ListView>
     
-    <asp:Panel ID="pnlNewExperiment" runat="server" Width="300px" BackColor="OldLace">
+    <asp:Panel ID="pnlNewExperiment" runat="server" Width="300px" BackColor="OldLace" style="display:none;">
         <div style="float:right;">
             <asp:Button ID="btnCancelNewExperiment" runat="server" Text="X" />
         </div>
@@ -169,7 +173,14 @@
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
     </AjaxControlToolkit:ModalPopupExtender>
-    
+       
+    <asp:ObjectDataSource ID="odsOperators" runat="server" 
+         OldValuesParameterFormatString="original_{0}" SelectMethod="GetSelectable" 
+         TypeName="CAESDO.PTF.BLL.OperatorBLL"></asp:ObjectDataSource>
+         
+</ContentTemplate>
+</asp:UpdatePanel>
+
     <asp:Panel ID="pnlChangeRechargeAmount" runat="server" Width="250px" style="border:solid 1px black; background-color:oldlace;">
         <div style="float:right;">
             <asp:Button ID="btnCancelChangeRechargeAmount" runat="server" Text="X" />
@@ -183,9 +194,6 @@
         TargetControlID="lbChangeRechargeAmount" PopupControlID="pnlChangeRechargeAmount" 
         CancelControlID="btnCancelChangeRechargeAmount" OkControlID="btnSaveChangeRechargeAmount" OnOkScript="ChangeRechargeAmount()">
     </AjaxControlToolkit:ModalPopupExtender>
-    
-    <asp:ObjectDataSource ID="odsOperators" runat="server" 
-         OldValuesParameterFormatString="original_{0}" SelectMethod="GetSelectable" 
-         TypeName="CAESDO.PTF.BLL.OperatorBLL"></asp:ObjectDataSource>
+
 </asp:Content>
 

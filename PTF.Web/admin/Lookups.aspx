@@ -10,58 +10,74 @@
         Height="500px" ActiveTabIndex="0">
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Note Types" ID="TabPanel1">
             <ContentTemplate>
-                
-                <CAESDO:Lookups runat="server" ID="lookNoteTypes" TypeName="CAESDO.PTF.BLL.NoteTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" ValidationGroup="NoteTypes" />
-
+                <asp:UpdatePanel ID="upNoteTypes" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookNoteTypes" TypeName="CAESDO.PTF.BLL.NoteTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" ValidationGroup="NoteTypes" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>               
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Crops">
             <ContentTemplate>
-              
-                <CAESDO:Lookups runat="server" ID="lookCrops" TypeName="CAESDO.PTF.BLL.CropBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Crop" ValidationGroup="Crops" />
-                
+                <asp:UpdatePanel ID="upCrops" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookCrops" TypeName="CAESDO.PTF.BLL.CropBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Crop" ValidationGroup="Crops" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>                
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Agro Strain">
             <ContentTemplate>
-            
-                <CAESDO:Lookups runat="server" ID="lookAgroStrains" TypeName="CAESDO.PTF.BLL.AgroStrainBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.AgroStrain" ValidationGroup="AgroStrains" />
-                
+                <asp:UpdatePanel ID="upAgroStrains" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookAgroStrains" TypeName="CAESDO.PTF.BLL.AgroStrainBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.AgroStrain" ValidationGroup="AgroStrains" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>                
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel4" runat="server" HeaderText="Status">
             <ContentTemplate>
-            
-                <CAESDO:Lookups runat="server" ID="lookStatus" TypeName="CAESDO.PTF.BLL.StatusBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Status" ValidationGroup="Status" />
-                
+                <asp:UpdatePanel ID="upStatus" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookStatus" TypeName="CAESDO.PTF.BLL.StatusBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Status" ValidationGroup="Status" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>                
             </ContentTemplate>       
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="Plant Selection">
             <ContentTemplate>
-            
-                <CAESDO:Lookups runat="server" ID="lookPlantSelection" TypeName="CAESDO.PTF.BLL.PlantSelectionBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.PlantSelection" ValidationGroup="PlantSelection" />
-                
+                <asp:UpdatePanel ID="upPlantSelection" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookPlantSelection" TypeName="CAESDO.PTF.BLL.PlantSelectionBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.PlantSelection" ValidationGroup="PlantSelection" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </ContentTemplate>        
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="Geno Type">
             <ContentTemplate>
-            
-                <CAESDO:Lookups runat="server" ID="lookGenoType" TypeName="CAESDO.PTF.BLL.GenoTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.GenoType" ValidationGroup="GenoType" />
-                
+                <asp:UpdatePanel ID="upGenoType" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookGenoType" TypeName="CAESDO.PTF.BLL.GenoTypeBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.GenoType" ValidationGroup="GenoType" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>                
             </ContentTemplate>        
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel7" runat="server" HeaderText="Trans Gene">
             <ContentTemplate>
-            
-                <CAESDO:Lookups runat="server" ID="lookTransGene" TypeName="CAESDO.PTF.BLL.TransGeneBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.TransGene" ValidationGroup="TransGene" />
-                
+                <asp:UpdatePanel ID="upTransGene" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookTransGene" TypeName="CAESDO.PTF.BLL.TransGeneBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.TransGene" ValidationGroup="TransGene" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel8" runat="server" HeaderText="Countries">
             <ContentTemplate>
-            
-                <CAESDO:Lookups runat="server" ID="lookCountry" TypeName="CAESDO.PTF.BLL.CountryBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Country" ValidationGroup="Country" />
-            
+                <asp:UpdatePanel ID="upCountry" runat="server">
+                    <ContentTemplate>
+                        <CAESDO:Lookups runat="server" ID="lookCountry" TypeName="CAESDO.PTF.BLL.CountryBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Country" ValidationGroup="Country" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
     </AjaxControlToolkit:TabContainer>

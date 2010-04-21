@@ -195,6 +195,8 @@
     </AjaxControlToolkit:CollapsiblePanelExtender>
  <br />
  
+<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<ContentTemplate>    
     <asp:Button ID="btnNewConstruct" runat="server" Text="Create Construct" />
     <asp:ListView ID="lvSuborders" runat="server">
         <LayoutTemplate>
@@ -237,7 +239,7 @@
         </ItemTemplate>
     </asp:ListView>
  
-    <asp:Panel ID="pnlNewConstruct" runat="server" Width="400px" BorderWidth="1px" BorderStyle="Solid" BackColor="OldLace">
+    <asp:Panel ID="pnlNewConstruct" runat="server" Width="400px" BorderWidth="1px" BorderStyle="Solid" BackColor="OldLace" style="display:none;">
         <div style="float:right;">
             <asp:Button ID="btnCancel" runat="server" Text="X" />
         </div>
@@ -270,5 +272,7 @@
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewConstruct" runat="server" TargetControlID="btnNewConstruct" CancelControlID="btnCancel" PopupControlID="pnlNewConstruct">
     </AjaxControlToolkit:ModalPopupExtender>
+</ContentTemplate>
+</asp:UpdatePanel>    
 </asp:Content>
 

@@ -22,6 +22,15 @@
             <asp:ScriptReference Assembly="AjaxControlToolkit" Name="AjaxControlToolkit.Animation.Animations.js" />
         </Scripts>
     </asp:ScriptManager>
+    
+    <div>
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+            <ProgressTemplate>
+                <asp:Image ID="imgUpdateProgress" runat="server" ImageUrl="~/Images/mozilla_blu.gif" />
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </div>
+    
     <div>
         <div style="float:right">
             <a href="Default.aspx">Home</a> &nbsp;|&nbsp;
