@@ -175,19 +175,19 @@ public partial class admin_Experiment : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static string SaveRecallusingAssay(int plantID, bool recallusing)
+    public static ChangeStatusReturn SaveRecallusingAssay(int plantID, bool recallusing)
     {
         PlantBLL.ChangeRecallusingAssay(PlantBLL.GetByID(plantID), recallusing);
 
-        return string.Empty;
+        return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
     }
 
     [WebMethod]
-    public static string SaveRooting(int plantID, bool rooting)
+    public static ChangeStatusReturn SaveRooting(int plantID, bool rooting)
     {
         PlantBLL.ChangeRooting(PlantBLL.GetByID(plantID), rooting);
 
-        return string.Empty;
+        return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty };
     }
 
     protected void lvPlants_ItemDataBound(object sender, ListViewItemEventArgs e)

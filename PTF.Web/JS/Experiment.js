@@ -75,7 +75,7 @@ function ChangeCheckBox(checkBox, type)
     }
     else
     {
-        PageMethod.SaveRooting(plantID, checkBox.checked, OnComplete, OnFail, context);
+        PageMethods.SaveRooting(plantID, checkBox.checked, OnComplete, OnFail, context);
     }
 }
 

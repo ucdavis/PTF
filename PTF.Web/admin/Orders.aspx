@@ -6,22 +6,32 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-    <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+    
+    <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" >
         <LayoutTemplate>
             <div class="grid">
                 <table id="orders" cellpadding="15" cellspacing="0">
                     <tr class="head">
                         <th class="first"></th>
-                        <th>Order ID</th>
-                        <th>PI</th>
-                        <th>Contact Name</th>
-                        <th>Contact E-mail</th>
-                        <th>Construct Name</th>
-                        <th>PI Code</th>
-                        <th>Date Requested</th>
+                        <th>
+                            <asp:LinkButton ID="lbSortOrderID" CommandName="Sort" CommandArgument="id" runat="server">Order ID</asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lbSortPI" CommandName="Sort" CommandArgument="PI" runat="server">PI</asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lbSortContactName" CommandName="Sort" CommandArgument="Contact"  runat="server">Contact Name</asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lbSortContactEmail" CommandName="Sort" CommandArgument="ContactEmail"  runat="server">Contact E-mail</asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lbSortContructName" CommandName="Sort" CommandArgument="PIConstructName"  runat="server">Construct Name</asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lbSortPICode" CommandName="Sort" CommandArgument="PICode"  runat="server">PI Code</asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lbSortDateRequested" CommandName="Sort" CommandArgument="DateRequested"  runat="server">Date Requested</asp:LinkButton></th>
                         <th># Constructs</th>
-                        <th>Status</th>
+                        <th>
+                            <asp:LinkButton ID="lbSortStatus" CommandName="Sort" CommandArgument="Status" runat="server">Status</asp:LinkButton></th>
                     </tr>
                     <tr id="ItemPlaceHolder" runat="server"></tr>
 <%--                </table>
@@ -107,14 +117,11 @@
         </ItemTemplate>
     </asp:ListView>
     <asp:ObjectDataSource ID="odsOrders" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAll" 
-        TypeName="CAESDO.PTF.BLL.OrderBLL">
-        <SelectParameters>
-            <asp:Parameter DefaultValue="DateRequested" Name="propertyName" Type="String" />
-            <asp:Parameter DefaultValue="false" Name="ascending" Type="Boolean" />
-        </SelectParameters>
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAllSorted" 
+        TypeName="CAESDO.PTF.BLL.OrderBLL" SortParameterName="propertyName" >
     </asp:ObjectDataSource>
     
-
+    </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
 
