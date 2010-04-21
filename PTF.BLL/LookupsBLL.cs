@@ -62,85 +62,94 @@ namespace CAESDO.PTF.BLL
     public class NoteTypeBLL : LookupBLLBase<NoteType, int> {}
     [DataObject]
     public class CropBLL : LookupBLLBase<Crop, int> { }
-
     [DataObject]
-    public class AgroStrainBLL : GenericBLL<AgroStrain, int> 
-    {
-        [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Save(string name)
-        {
-            AgroStrain agroStrain = new AgroStrain() { Name = name };
-
-            using (var ts = new TransactionScope())
-            {
-                EnsurePersistent(ref agroStrain);
-
-                ts.CommittTransaction();    // committ the transaction
-            }
-        }
-    }
+    public class AgroStrainBLL : LookupBLLBase<AgroStrain, int> { }
     [DataObject]
-    public class StatusBLL : GenericBLL<Status, int> 
-    {
-        [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Save(string name)
-        {
-            Status status = new Status() { Name = name };
-
-            using (var ts = new TransactionScope())
-            {
-                EnsurePersistent(ref status);
-
-                ts.CommittTransaction();    // committ the transaction
-            }
-        }
-    }
+    public class StatusBLL : LookupBLLBase<Status, int> { }
     [DataObject]
-    public class SelectableMarkerBLL : GenericBLL<SelectableMarker, int> 
-    {
-        [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Save(string name)
-        {
-            SelectableMarker selectableMarker = new SelectableMarker() { Name = name };
-
-            using (var ts = new TransactionScope())
-            {
-                EnsurePersistent(ref selectableMarker);
-
-                ts.CommittTransaction();    // committ the transaction
-            }
-        }
-    }
+    public class SelectableMarkerBLL : LookupBLLBase<SelectableMarker, int> { }
     [DataObject]
-    public class GenoTypeBLL : GenericBLL<GenoType, int> 
-    {
-        [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Save(string name)
-        {
-            GenoType genoType = new GenoType() { Name = name };
-
-            using (var ts = new TransactionScope())
-            {
-                EnsurePersistent(ref genoType);
-
-                ts.CommittTransaction();    // committ the transaction
-            }
-        }
-    }
+    public class GenoTypeBLL : LookupBLLBase<GenoType, int> { }
     [DataObject]
-    public class TransGeneBLL : GenericBLL<TransGene, int> 
-    {
-        [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Save(string name)
-        {
-            TransGene transGene = new TransGene() { Name = name };
+    public class TransGeneBLL : LookupBLLBase<TransGene, int> { }
+    //[DataObject]
+    //public class AgroStrainBLL : GenericBLL<AgroStrain, int> 
+    //{
+    //    [DataObjectMethod(DataObjectMethodType.Insert)]
+    //    public static void Save(string name)
+    //    {
+    //        AgroStrain agroStrain = new AgroStrain() { Name = name };
 
-            using (var ts = new TransactionScope())
-            {
-                EnsurePersistent(ref transGene);
+    //        using (var ts = new TransactionScope())
+    //        {
+    //            EnsurePersistent(ref agroStrain);
 
-                ts.CommittTransaction();    // committ the transaction
-            }
-        }
-    }
+    //            ts.CommittTransaction();    // committ the transaction
+    //        }
+    //    }
+    //}
+    //[DataObject]
+    //public class StatusBLL : GenericBLL<Status, int> 
+    //{
+    //    [DataObjectMethod(DataObjectMethodType.Insert)]
+    //    public static void Save(string name)
+    //    {
+    //        Status status = new Status() { Name = name };
+
+    //        using (var ts = new TransactionScope())
+    //        {
+    //            EnsurePersistent(ref status);
+
+    //            ts.CommittTransaction();    // committ the transaction
+    //        }
+    //    }
+    //}
+    //[DataObject]
+    //public class SelectableMarkerBLL : GenericBLL<SelectableMarker, int> 
+    //{
+    //    [DataObjectMethod(DataObjectMethodType.Insert)]
+    //    public static void Save(string name)
+    //    {
+    //        SelectableMarker selectableMarker = new SelectableMarker() { Name = name };
+
+    //        using (var ts = new TransactionScope())
+    //        {
+    //            EnsurePersistent(ref selectableMarker);
+
+    //            ts.CommittTransaction();    // committ the transaction
+    //        }
+    //    }
+    //}
+    //[DataObject]
+    //public class GenoTypeBLL : GenericBLL<GenoType, int> 
+    //{
+    //    [DataObjectMethod(DataObjectMethodType.Insert)]
+    //    public static void Save(string name)
+    //    {
+    //        GenoType genoType = new GenoType() { Name = name };
+
+    //        using (var ts = new TransactionScope())
+    //        {
+    //            EnsurePersistent(ref genoType);
+
+    //            ts.CommittTransaction();    // committ the transaction
+    //        }
+    //    }
+    //}
+    //[DataObject]
+    //public class TransGeneBLL : GenericBLL<TransGene, int> 
+    //{
+    //    [DataObjectMethod(DataObjectMethodType.Insert)]
+    //    public static void Save(string name)
+    //    {
+    //        TransGene transGene = new TransGene() { Name = name };
+
+    //        using (var ts = new TransactionScope())
+    //        {
+    //            EnsurePersistent(ref transGene);
+
+    //            ts.CommittTransaction();    // committ the transaction
+    //        }
+    //    }
+    //}
 }
