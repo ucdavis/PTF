@@ -28,42 +28,40 @@
 		<property name="ShippingZip" column="ShippingZip" />
 		<many-to-one name="ShippingCountry" class="CAESDO.PTF.Core.Domain.Country, CAESDO.PTF.Core" column="ShippingCountry" cascade="none" />
 
-		<property name="Cultivar" column="Cultivar" />
 		<property name="Plasmid" column="Plasmid" />
 		<property name="BacterialSelection" column="BacterialSelection" />
 		<many-to-one name="AgroStrain" class="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" column="AgroStrainID" cascade="none" />
-		<property name="AgroBacteriumStrain" column="AgroBacteriumStrain" />
-		<property name="PlantSelection" column="PlantSelection" />
-		<property name="Construct" column="Construct" />
-		<property name="NameOfYourConstruct" column="NameOfYourConstruct" />
+		<property name="PICode" column="PICode" />
+		<property name="PIConstructName" column="PIConstructName" />
 		<many-to-one name="TransGene" class="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" column="TransGeneID" cascade="none" />
-		<property name="GeneOfInterestPromoter" column="GeneOfInterestPromoter" />
-		<property name="GeneOfInterestGene" column="GeneOfInterestGene" />
-		<property name="GeneOfInterestTerminator" column="GeneOfInterestTerminator" />
+		<property name="GenoType" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" column="GenoTypeID" cascade="none" />
+		<property name="Trait" column="Trait" />
+		
 		<property name="SelectableMarkerPromoter" column="SelectableMarkerPromoter" />
 		<property name="SelectableMarkerGene" column="SelectableMarkerGene" />
-		<property name="SelectableMarkerTerminator" column="SelectableMarkerTerminator" />
-		<property name="ScorableMarkerPromoter" column="ScorableMarkerPromoter" />
-		<property name="ScorableMarkerGene" column="ScorableMarkerGene" />
-		<property name="ScorableMarkerTerminator" column="ScorableMarkerTerminator" />
+
 		<property name="AdditionalInformation" column="AdditionalInformation" />
+		<property name="OtherUCResearch" column="OtherUCResearch" />
 		<property name="UserID" column="UserID" />
 		<property name="RechargeNumber" column="RechargeNumber" />
 		<property name="ContractExecuted" column="ContractExecuted" />
 		<property name="ShippingPermit" column="ShippingPermit" />
 
-		<property name="OtherUCResearch" column="OtherUCResearch" />
-
 		<property name="Comments" column="Comments" />
+		<property name="DateReceived" column="DateReceived" />
 		<property name="ArchiveBox" column="ArchivedBox" />
 		<property name="Position" column="Position" />
 		<property name="WorkingBox" column="WorkingBox" />
 		<property name="Location" column="Location" />
-		
-		
+				
 		<bag name="Constructs" table="Constructs">
 			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>
+		</bag>
+
+		<bag name="SubOrders" table="SubOrders">
+			<key column="SubOrderID" />
+			<one-to-many class="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core"/>
 		</bag>
 		
 	</class>
