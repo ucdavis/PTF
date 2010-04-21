@@ -26,5 +26,17 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(12)]
         public virtual string Zip { get; set; }
         public virtual Country Country { get; set; }
+
+        public virtual bool HasAddress
+        {
+            get 
+            {
+                if (string.IsNullOrEmpty(Address1) && string.IsNullOrEmpty(City)
+                    && string.IsNullOrEmpty(Zip) && Country == null)
+                    return false;
+                else
+                    return true;
+            }
+        }
     }
 }

@@ -149,6 +149,20 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         // insert the order and email the admin
         OrderBLL.Insert(newOrder, ConfigurationManager.AppSettings["EmailFrom"], ConfigurationManager.AppSettings["OrderPlacedEmail"]);
 
+        // update the user profile if they haven't put an address down
+        var userProfile = UserProfileBLL.GetByUserID((Guid)Membership.GetUser().ProviderUserKey);
+
+        if (!userProfile.HasAddress)
+        {
+            userProfile.Address1 = tbMailing1.Text;
+            userProfile.Address2 = !string.IsNullOrEmpty(tbMailing2.Text) ? tbMailing2.Text : null;
+            userProfile.City = tbMailingCity.Text;
+            userProfile.Country = CountryBLL.GetByID(ddlMailingCountry.SelectedValue);
+            userProfile.State = ddlMailingState.Style[STR_StyleProperty] != STR_DDLUnselected && ddlMailingState.SelectedValue != STR_DDLUnselected ? StateBLL.GetByID(ddlMailingState.SelectedValue) : null;
+            userProfile.InternationalState = tbMailingState.Style[STR_StyleProperty] != STR_DDLUnselected && !string.IsNullOrEmpty(tbMailingState.Text) ? tbMailingState.Text : null;
+            userProfile.Zip = tbMailingZip.Text;
+        }
+         
         Response.Redirect("default.aspx");
     }
 
