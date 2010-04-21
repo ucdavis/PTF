@@ -83,13 +83,13 @@ public partial class admin_Order : System.Web.UI.Page
                 if (string.IsNullOrEmpty(order.ContractNumber))
                 {
                     // make the button visible
-                    litContractExecuted.Text = "No";
-                    lbExecuted.Visible = true;
+                    lbContractNumber.Visible = true;
+                    tbContractNumber.Visible = true;
                 }
                 else
                 {
                     // contract has been executed.
-                    litContractExecuted.Text = "Yes";
+                    litContractExecuted.Text = order.ContractNumber;
                 }
                 litRechargeNumber.Text = CommonStrings.STR_NotAvailable;
             }
@@ -186,11 +186,11 @@ public partial class admin_Order : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static void ExecuteContract(int orderID)
+    public static void SaveContractNumber(int orderID, string contractNumber)
     {
         var order = OrderBLL.GetByID(orderID);
 
-        //order.ContractExecuted = true;
+        order.ContractNumber = contractNumber;
 
         OrderBLL.Update(order);
     }

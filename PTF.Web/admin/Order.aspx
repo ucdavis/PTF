@@ -5,15 +5,18 @@
 <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
 
 <script type="text/javascript">
-    function ExecuteContract()
-    {
-        PageMethods.ExecuteContract('<%= Request.QueryString["oid"] %>', ExecuteContractOnComplete);
+    function SaveContractNumber()
+    {    
+        var contractNumber = $get('<%= tbContractNumber.ClientID %>').value;
+    
+        PageMethods.SaveContractNumber('<%= Request.QueryString["oid"] %>', contractNumber, ExecuteContractOnComplete, null, contractNumber);
     }
     
-    function ExecuteContractOnComplete(result)
+    function ExecuteContractOnComplete(result, context)
     {
-        $get("ContractExecuted").innerHTML = "Yes";
-        $get('<%= lbExecuted.ClientID %>').style.display = "none";
+        $get("ContractExecuted").innerHTML = context;
+        $get('<%= tbContractNumber.ClientID %>').style.display = "none";
+        $get('<%= lbContractNumber.ClientID %>').style.display = "none";
     }
 </script>
 
@@ -78,10 +81,11 @@
                 <td class="InfoFieldName">Recharge Number:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
-                <td class="InfoFieldName">Contract Executed:&nbsp;</td>
+                <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <div id="ContractExecuted"><asp:Literal ID="litContractExecuted" runat="server"></asp:Literal></div>
-                    <asp:LinkButton ID="lbExecuted" runat="server" Visible="false" OnClientClick="ExecuteContract(); return false;">[Executed]</asp:LinkButton>
+                    <asp:TextBox ID="tbContractNumber" runat="server" Visible="false"></asp:TextBox>
+                    <asp:LinkButton ID="lbContractNumber" runat="server" OnClientClick="SaveContractNumber(); return false;" Visible="false">[Save]</asp:LinkButton>
                 </td>            
             </tr>
             <tr>
@@ -255,7 +259,6 @@
                         </LayoutTemplate>
                         <ItemTemplate>
                             <tr id="row2" runat="server" class="item">
-                                <td class="first" ></td>
                                 <td><a href='<%# "Construct.aspx?cid=" + Eval("id") %>'><%# Eval("ConstructCode") %></a></td>
                                 <td><%# Eval("DateCreated", "{0:d}") %></td>
                                 <td><%# Eval("RechargeAmount") %></td>
