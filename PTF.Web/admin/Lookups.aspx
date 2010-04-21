@@ -50,6 +50,22 @@
                         
                     </ContentTemplate>
                 </AjaxControlToolkit:TabPanel>
+                <AjaxControlToolkit:TabPanel ID="tcGenoTypeAssociation" runat="server" HeaderText="Genotype Association">
+                    <ContentTemplate>
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="ddlCropsGenoTypeAssociation" runat="server" DataSourceID="odsCrops" AppendDataBoundItems="true" DataTextField="Name" DataValueField="id" AutoPostBack="true" OnSelectedIndexChanged="ddlCropsGenoTypeAssociation_OnSelectedIndexChange">
+                                    <asp:ListItem Text="--Select a Crop--" Value="-1"></asp:ListItem>
+                                </asp:DropDownList>
+                                
+                                <asp:CheckBoxList ID="cblGenoTypes" runat="server" DataSourceID="odsGenoTypes" DataValueField="id" DataTextField="name" style="display:none;">
+                                </asp:CheckBoxList>
+                                
+                                <asp:LinkButton ID="lbSaveCropGenoTypes" runat="server" OnClick="lbSaveCropGenoTypes_OnClick" Visible="false">[Save]</asp:LinkButton>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>   
+                    </ContentTemplate>
+                </AjaxControlToolkit:TabPanel>
                 </AjaxControlToolkit:TabContainer>
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
@@ -106,5 +122,8 @@
     <asp:ObjectDataSource ID="odsPlantSelections" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.PlantSelectionBLL"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsGenoTypes" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+        TypeName="CAESDO.PTF.BLL.GenoTypeBLL"></asp:ObjectDataSource>    
     </asp:Content>
 

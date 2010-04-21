@@ -62,6 +62,25 @@ public class PTFWS : System.Web.Services.WebService
 
         return values.ToArray();
     }
+    [WebMethod]
+    public CascadingDropDownNameValue[] GetGenotypeForCrops(string knownCategoryValues, string category)
+    {
+        var values = new List<CascadingDropDownNameValue>();
 
+        StringDictionary kv = CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
+
+        int cropID;
+        if (!kv.ContainsKey("Crop") || !Int32.TryParse(kv["Crop"], out cropID))
+        {
+            return null;
+        }
+
+        foreach (GenoType gt in CropBLL.GetByID(cropID).GenoTypes)
+        {
+            values.Add(new CascadingDropDownNameValue(gt.Name, gt.ID.ToString()));
+        }
+
+        return values.ToArray();
+    }
 }
 

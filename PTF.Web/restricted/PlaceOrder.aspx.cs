@@ -39,7 +39,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             Session[STR_PlantInformationControls] = value;
         }
     }
-    private enum ControlNames { ddlCrop = 0, ddlGenotype, tbNumPlants, ddlPlantSelection, ccdCrop, ccdPlantSelection }
+    private enum ControlNames { ddlCrop = 0, ddlGenotype, tbNumPlants, ddlPlantSelection, ccdCrop, ccdPlantSelection, ccdGenoType }
 
     protected override void OnInit(EventArgs e)
     {
@@ -214,11 +214,11 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
             DropDownList genotypeDDL = new DropDownList();
             genotypeDDL.ID = controlNames[(int)ControlNames.ddlGenotype];
-            genotypeDDL.DataSourceID = "odsGenoType";
-            genotypeDDL.DataTextField = "Name";
-            genotypeDDL.DataValueField = "id";
-            genotypeDDL.AppendDataBoundItems = true;
-            genotypeDDL.Items.Add(new ListItem("--Select a Genotype--", STR_DDLUnselected));
+            //genotypeDDL.DataSourceID = "odsGenoType";
+            //genotypeDDL.DataTextField = "Name";
+            //genotypeDDL.DataValueField = "id";
+            //genotypeDDL.AppendDataBoundItems = true;
+            //genotypeDDL.Items.Add(new ListItem("--Select a Genotype--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(genotypeDDL);
 
             // add in the ajax extenders
@@ -245,6 +245,18 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
                 };
             phPlantInformation.Controls.Add(ccdPlantSelection);
 
+            CascadingDropDown ccdGenotype = new CascadingDropDown()
+                {
+                    ID = controlNames[(int)ControlNames.ccdGenoType],
+                    Category = "GenoType",
+                    TargetControlID = controlNames[(int)ControlNames.ddlGenotype],
+                    ParentControlID = controlNames[(int)ControlNames.ddlCrop],
+                    PromptText = "--Select a Genotype--",
+                    ServicePath = "~/WS/PTFWS.asmx",
+                    ServiceMethod = "GetGenotypeForCrops"
+                };
+            phPlantInformation.Controls.Add(ccdGenotype);
+
             TextBox tbNumPlants = new TextBox();
             tbNumPlants.ID = controlNames[(int)ControlNames.tbNumPlants];
             phPlantInformation.Controls.Add(tbNumPlants);
@@ -259,6 +271,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         string plantSelectionDDLId = "ddlPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdCrop = "cddCrop" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdPlantSelection = "ccdPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
+        string ccdGenotype = "ccdGenotype" + ((int)PlantInformationControls.Count + 1).ToString();
 
         List<string> controlNames = new List<string>();
         controlNames.Add(cropDLLId);
@@ -267,6 +280,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         controlNames.Add(numPlantsTBId);
         controlNames.Add(ccdCrop);
         controlNames.Add(ccdPlantSelection);
+        controlNames.Add(ccdGenotype);
 
         List<List<string>> masterList = PlantInformationControls;
         masterList.Add(controlNames);

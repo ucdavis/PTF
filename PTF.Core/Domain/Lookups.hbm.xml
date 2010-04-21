@@ -22,6 +22,12 @@
 			<key column="CropID" />
 			<many-to-many column="PlantSelectionID" class="CAESDO.PTF.Core.Domain.PlantSelection, CAESDO.PTF.Core" />
 		</bag>
+
+		<bag name="GenoTypes" table="CropXGenotypes">
+			<key column="CropID" />
+			<many-to-many column="GenoTypeID" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" />
+		</bag>
+		
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains" >

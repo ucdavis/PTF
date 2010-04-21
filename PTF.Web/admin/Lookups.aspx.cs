@@ -88,4 +88,69 @@ public partial class Lookups : System.Web.UI.Page
         // update hte crop object
         CropBLL.Update(crop);
     }
+
+    protected void ddlCropsGenoTypeAssociation_OnSelectedIndexChange(object sender, EventArgs e)
+    {
+        var dropDown = (DropDownList)sender;
+        int cropID = Convert.ToInt32(dropDown.SelectedValue);
+
+        foreach (ListItem li in cblGenoTypes.Items)
+        {
+            li.Selected = false;
+        }
+
+        if (cropID != -1)
+        {
+            var crop = CropBLL.GetByID(cropID);
+
+            foreach (GenoType gt in crop.GenoTypes)
+            {
+                foreach (ListItem li in cblGenoTypes.Items)
+                {
+                    if (Convert.ToInt32(li.Value) == gt.ID)
+                    {
+                        li.Selected = true;
+                    }
+                }
+            }
+
+            cblGenoTypes.Style["display"] = "block";
+            lbSaveCropGenoTypes.Visible = true;
+        }
+        else
+        {
+            cblGenoTypes.Style["display"] = "none";
+            lbSaveCropGenoTypes.Visible = false;
+        }
+    }
+    protected void lbSaveCropGenoTypes_OnClick(object sender, EventArgs e)
+    {
+        int cropID = Convert.ToInt32(ddlCropsGenoTypeAssociation.SelectedValue);
+        var crop = CropBLL.GetByID(cropID);
+
+        foreach (ListItem li in cblGenoTypes.Items)
+        {
+            var gt = GenoTypeBLL.GetByID(Convert.ToInt32(li.Value));
+
+            if (li.Selected)
+            {
+                // not in the list so add it in
+                if (!crop.GenoTypes.Contains(gt))
+                {
+                    crop.GenoTypes.Add(gt);
+                }
+                else // not selected, make sure it isn't in the list
+                {
+                    // contained, remove it from the list
+                    if (crop.GenoTypes.Contains(gt))
+                    {
+                        crop.GenoTypes.Remove(gt);
+                    }
+                }
+            }
+        }
+
+        // update the crop object
+        CropBLL.Update(crop);
+    }
 }

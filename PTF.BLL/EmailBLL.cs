@@ -54,7 +54,7 @@ namespace CAESDO.PTF.BLL
             cmessage.IsBodyHtml = true;
 
             client.Send(cmessage);
-#endif
+            #endif
         }
 
         public static void ConstructComplete(Construct construct)
