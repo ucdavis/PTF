@@ -181,6 +181,7 @@
         
             Page_ClientValidate();  // validate the other controls
             
+            // validate the mailing state to see if either the ddl or the tb was filled properly
             if (!ValidateMailing())
             {
                 warningString += "<li>Mailing City is required.</li>";
@@ -192,7 +193,7 @@
             }
             
             var shippingFields = ValidateShipping();
-            
+
             $get("ShippingAddressWarning").style.display = str_none;
             $get("ShippingCityWarning").style.display = str_none;
             $get("ShippingStateWarning").style.display = str_none;
@@ -285,7 +286,7 @@
             else
             {
                 // validate the other parts of the address
-                if ($get("<%= tbShipping1.ClientID %>").value == "Street Address, P.O. Box, Comapny Name")
+                if ($get("<%= tbShipping1.ClientID %>").value == str_empty)
                 {
                     fields.push(str_address1);
                 }
@@ -610,7 +611,7 @@
                     DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
                         <asp:ListItem Text="--Select Transgene--" Value="-1" />
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="rfvTransGene" runat="server" ErrorMessage="Transgene is required." Text="*" ControlToValidate="ddlTransGene" ValidationGroup="NewOrder"></asp:RequiredFieldValidator></td>
+                <asp:RequiredFieldValidator ID="rfvTransGene" runat="server" InitialValue="-1" ErrorMessage="Transgene is required." Text="*" ControlToValidate="ddlTransGene" ValidationGroup="NewOrder"></asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="style3">
