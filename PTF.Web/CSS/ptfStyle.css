@@ -129,7 +129,7 @@ div.CollapsiblePanelHeader div {}
 div.CollapsiblePanelHeader div span {color: #d67129}
 
 table.notes {background: url(../Images/notes_btm.png) no-repeat bottom center; width: 431px;}
-tbody {background: url(../Images/notes_mid.png) repeat-y top center;}
+tr {background: url(../Images/notes_mid.png) repeat-y top center;}
 tr.head {background: url(../Images/notes_top.png) no-repeat top center;
   color: #fff; font-size: .9em;
   vertical-align: bottom;
