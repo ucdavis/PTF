@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.BLL;
 using System.Collections.Generic;
+using AjaxControlToolkit;
 
 public partial class restricted_PlaceOrder : System.Web.UI.Page
 {
@@ -38,7 +39,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             Session[STR_PlantInformationControls] = value;
         }
     }
-    private enum ControlNames { ddlCrop = 0, ddlGenotype, tbNumPlants, ddlPlantSelection }
+    private enum ControlNames { ddlCrop = 0, ddlGenotype, tbNumPlants, ddlPlantSelection, ccdCrop, ccdPlantSelection }
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -180,12 +181,21 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
             DropDownList cropDDL = new DropDownList();
             cropDDL.ID = controlNames[(int)ControlNames.ddlCrop];
-            cropDDL.DataSourceID = "odsCrop";
+            //cropDDL.DataSourceID = "odsCrop";
             cropDDL.DataTextField = "Name";
             cropDDL.DataValueField = "id";
-            cropDDL.AppendDataBoundItems = true;
-            cropDDL.Items.Add(new ListItem("--Select a Crop--", STR_DDLUnselected));
+            //cropDDL.AppendDataBoundItems = true;
+            //cropDDL.Items.Add(new ListItem("--Select a Crop--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(cropDDL);
+
+            DropDownList plantSelectionDDL = new DropDownList();
+            plantSelectionDDL.ID = controlNames[(int)ControlNames.ddlPlantSelection];
+            //plantSelectionDDL.DataSourceID = "odsPlantSelection";
+            plantSelectionDDL.DataTextField = "Name";
+            plantSelectionDDL.DataValueField = "id";
+            //plantSelectionDDL.AppendDataBoundItems = true;
+            //plantSelectionDDL.Items.Add(new ListItem("--Select a Plant Selection--", STR_DDLUnselected));
+            phPlantInformation.Controls.Add(plantSelectionDDL);
 
             DropDownList genotypeDDL = new DropDownList();
             genotypeDDL.ID = controlNames[(int)ControlNames.ddlGenotype];
@@ -196,14 +206,29 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             genotypeDDL.Items.Add(new ListItem("--Select a Genotype--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(genotypeDDL);
 
-            DropDownList plantSelectionDDL = new DropDownList();
-            plantSelectionDDL.ID = controlNames[(int)ControlNames.ddlPlantSelection];
-            plantSelectionDDL.DataSourceID = "odsPlantSelection";
-            plantSelectionDDL.DataTextField = "Name";
-            plantSelectionDDL.DataValueField = "id";
-            plantSelectionDDL.AppendDataBoundItems = true;
-            plantSelectionDDL.Items.Add(new ListItem("--Select a Plant Selection--", STR_DDLUnselected));
-            phPlantInformation.Controls.Add(plantSelectionDDL);
+            // add in the ajax extenders
+            CascadingDropDown ccdCrop = new CascadingDropDown()
+                {
+                    ID = controlNames[(int)ControlNames.ccdCrop],
+                    TargetControlID = controlNames[(int)ControlNames.ddlCrop],
+                    Category = "Crop",
+                    PromptText = "--Select a Crop--",
+                    ServicePath = "~/WS/PTFWS.asmx",
+                    ServiceMethod = "GetCrops"
+                };
+            phPlantInformation.Controls.Add(ccdCrop);
+
+            CascadingDropDown ccdPlantSelection = new CascadingDropDown()
+                {
+                    ID = controlNames[(int)ControlNames.ccdPlantSelection],
+                    Category = "PlantSelection",
+                    TargetControlID = controlNames[(int)ControlNames.ddlPlantSelection],
+                    ParentControlID = controlNames[(int)ControlNames.ddlCrop],
+                    PromptText = "--Select a Plant Selection--",
+                    ServicePath = "~/WS/PTFWS.asmx",
+                    ServiceMethod = "GetPlantSelectionForCrops"
+                };
+            phPlantInformation.Controls.Add(ccdPlantSelection);
 
             TextBox tbNumPlants = new TextBox();
             tbNumPlants.ID = controlNames[(int)ControlNames.tbNumPlants];
@@ -213,16 +238,20 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
     protected void AddControls()
     {
-        string cropDLLId = "ddlCrop" + PlantInformationControls.Count + 1;
-        string genotypeDDLId = "ddlGenotype" + PlantInformationControls.Count + 1;
-        string numPlantsTBId = "tbNumPlants" + PlantInformationControls.Count + 1;
-        string plantSelectionDDLId = "ddlPlantSelection" + PlantInformationControls.Count + 1;
+        string cropDLLId = "ddlCrop" + ((int)PlantInformationControls.Count + 1).ToString();
+        string genotypeDDLId = "ddlGenotype" + ((int)PlantInformationControls.Count + 1).ToString();
+        string numPlantsTBId = "tbNumPlants" + ((int)PlantInformationControls.Count + 1).ToString();
+        string plantSelectionDDLId = "ddlPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
+        string ccdCrop = "cddCrop" + ((int)PlantInformationControls.Count + 1).ToString();
+        string ccdPlantSelection = "ccdPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
 
         List<string> controlNames = new List<string>();
         controlNames.Add(cropDLLId);
         controlNames.Add(genotypeDDLId);
         controlNames.Add(plantSelectionDDLId);
         controlNames.Add(numPlantsTBId);
+        controlNames.Add(ccdCrop);
+        controlNames.Add(ccdPlantSelection);
 
         List<List<string>> masterList = PlantInformationControls;
         masterList.Add(controlNames);
