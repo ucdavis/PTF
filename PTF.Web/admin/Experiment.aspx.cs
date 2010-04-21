@@ -92,6 +92,9 @@ public partial class admin_Experiment : System.Web.UI.Page
             lvRooting.DataSource = experiment.GetNotesbyType(Note.ExpNoteTypes.Rooting);
             lvRooting.DataBind();
 
+            lvCoCulture.DataSource = experiment.GetNotesbyType(Note.ExpNoteTypes.CoCulture);
+            lvCoCulture.DataBind();
+
             lvPlants.DataSource = experiment.Plants;
             lvPlants.DataBind();
 
@@ -141,6 +144,9 @@ public partial class admin_Experiment : System.Web.UI.Page
 
         lvRooting.DataSource = experiment.GetNotesbyType(Note.ExpNoteTypes.Rooting);
         lvRooting.DataBind();
+
+        lvCoCulture.DataSource = experiment.GetNotesbyType(Note.ExpNoteTypes.CoCulture);
+        lvCoCulture.DataBind();
 
         // clear out the modal controls
         ddlNoteType.SelectedIndex = -1;

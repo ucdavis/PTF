@@ -61,6 +61,9 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction(); //commit the transaction
             }
 
+            // update the order object's status
+            OrderBLL.UpdateStatus(obj.Order);
+
             NHibernateSessionManager.Instance.EvictObject(obj);
         }
 

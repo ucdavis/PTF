@@ -61,6 +61,15 @@ namespace CAESDO.PTF.Core.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Co-Culture.
+        /// </summary>
+        internal static string STR_CoCulture {
+            get {
+                return ResourceManager.GetString("STR_CoCulture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elongation/Germination.
         /// </summary>
         internal static string STR_ElongationGermination {

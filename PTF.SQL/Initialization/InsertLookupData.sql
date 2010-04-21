@@ -3,6 +3,7 @@ insert into NoteTypes (NoteType, IsActive) values ('Induction', 1)
 insert into NoteTypes (NoteType, IsActive) values ('Elongation/Germination', 1)
 insert into NoteTypes (NoteType, IsActive) values ('Recallusing', 1)
 insert into NoteTypes (NoteType, IsActive) values ('Rooting', 1)
+insert into NoteTypes (NoteType, IsActive) values ('Co-Culture', 1)
 
 -- == Status == --
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Initiated', 1, 0, 1)

@@ -12,7 +12,7 @@ namespace CAESDO.PTF.Core.Domain
         public virtual Experiment Experiment { get; set; }
         public virtual DateTime DateNote { get; set; }
 
-        public enum ExpNoteTypes { Induction, ElongationGermination, Recallusing, Rooting };
+        public enum ExpNoteTypes { Induction, ElongationGermination, Recallusing, Rooting, CoCulture };
 
         /// <summary>
         /// Tells you whether or not the note is of a certain type
@@ -43,6 +43,12 @@ namespace CAESDO.PTF.Core.Domain
                     break;
                 case Note.ExpNoteTypes.Rooting:
                     if (this.NoteType.Name == NoteTypes.STR_Rooting)
+                    {
+                        return true;
+                    }
+                    break;
+                case Note.ExpNoteTypes.CoCulture:
+                    if (this.NoteType.Name == NoteTypes.STR_CoCulture)
                     {
                         return true;
                     }

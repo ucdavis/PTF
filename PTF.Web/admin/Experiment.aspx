@@ -179,6 +179,23 @@
             <span class="notes empty">No Rooting notes.</span>
         </EmptyDataTemplate>  
     </asp:ListView>
+        <asp:ListView ID="lvCoCulture" runat="server">
+        <LayoutTemplate>
+            <table cellpadding="0" class="notes right">
+                <tr class="head"><th colspan="2">Co-Culture Notes</th></tr>
+                <tr id="ItemPlaceHolder" runat="server"></tr>
+            </table>
+        </LayoutTemplate>
+        <ItemTemplate>
+            <tr>
+                <td class="date"><%# Eval("DateNote", "{0:MM/dd/yyyy}")%></td>
+                <td><%# Eval("NoteText")%></td>
+            </tr>
+        </ItemTemplate>
+        <EmptyDataTemplate>
+            <span class="notes empty">No Co-Culture notes.</span>
+        </EmptyDataTemplate>
+    </asp:ListView>
     
     <AjaxControlToolkit:ModalPopupExtender ID="mpeMakeNote" BackgroundCssClass="popup_shadow" runat="server" TargetControlID="btnMakeNote" PopupControlID="pnlMakeNote" CancelControlID="btnCancelMakeNote">
     </AjaxControlToolkit:ModalPopupExtender>
