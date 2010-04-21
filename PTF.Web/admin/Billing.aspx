@@ -33,7 +33,7 @@
             <tr>
                 <td>
                     <div id='<%# Eval("ConstructCode") %>'>
-                        <asp:LinkButton ID="lbBilled" CommandName="Select" OnClientClick='return ConfirmBilling(this);' runat="server">Billed</asp:LinkButton>
+                        <asp:LinkButton ID="lbBilled" CommandName="Select" OnClientClick='return ConfirmBilling(this);' runat="server">Bill</asp:LinkButton>
                     </div>
                 </td>
                 <td><%# Eval("ConstructCode") %></td>
