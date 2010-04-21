@@ -7,7 +7,7 @@ body
 {
   min-width: 1040px;
   margin: 0 auto; 
-  background: url(../Images/bg_body.jpg) repeat-x;
+  background: url(../Images/bg_body.jpg) repeat-x fixed;
   text-align: left;
 }
 

@@ -57,15 +57,15 @@ function SaveProfileOnComplete ()
 </script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" class="noStyle">
 
-    <div id="ChangePassword">
-        <asp:ChangePassword ID="ChangePassword1" runat="server">
+    <div id="ChangePassword" class="noStyle">
+        <asp:ChangePassword ID="ChangePassword1" runat="server" class="noStyle">
         </asp:ChangePassword>
     </div>
-
+<br /><br />
     <div id="Profile">
-        <table>
+        <table class="noStyle">
             <tr>
                 <td class="InfoFieldName">Address Line 1:&nbsp;</td>
                 <td class="InfoFieldValue">
@@ -118,7 +118,7 @@ function SaveProfileOnComplete ()
                 <td class="InfoFieldName"></td>
                 <td class="InfoFieldValue">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="ProfileSave" />                   
-                    <asp:Button ID="btnSaveAddress" runat="server" Text="Save" ValidationGroup="ProfileSave" OnClientClick="SaveProfile(); return false" />
+                    <asp:ImageButton ID="btnSaveAddress" runat="server" Text="Save" ImageUrl="~/Images/save.png" Width="20px" ValidationGroup="ProfileSave" OnClientClick="SaveProfile(); return false" />
                     <div id="ValidationWarnings" style="display:none; color:Red;"></div>
                 </td>
             </tr>

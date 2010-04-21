@@ -202,10 +202,10 @@
         }
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" class="noStyle">
 
 
-    <table class="style1">
+    <table class="style1 noStyle">
         <tr>
             <td class="style3">
                 Principal Investigator: </td>
@@ -572,7 +572,7 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:Button ID="btnPlaceOrder" runat="server" Text="Submit Order" 
+                <asp:ImageButton ID="btnPlaceOrder" runat="server" ImageUrl="~/Images/btn_submitorder.png" Text="Submit Order" 
                     ValidationGroup="NewOrder" OnClientClick="return ValidateStates();" onclick="btnPlaceOrder_Click" />
             </td>
         </tr>
