@@ -22,12 +22,12 @@ public partial class admin_Users : System.Web.UI.Page
     #region Clients
     protected void lbReset_Command(object sender, CommandEventArgs e)
     {
-        Guid key = new Guid(e.CommandArgument.ToString());
+        //Guid key = new Guid(e.CommandArgument.ToString());
 
-        var user = Membership.GetUser(key);
-        var newPassword = user.ResetPassword();
+        //var user = Membership.GetUser(key);
+        //var newPassword = user.ResetPassword(
 
-        EmailBLL.ResetPasswordEmail(key, newPassword);
+        //EmailBLL.ResetPasswordEmail(key, newPassword);
     }
     protected void lbUnlock_Command(object sender, CommandEventArgs e)
     {

@@ -434,7 +434,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Recharge Number:</td>
+                <strong>Recharge Number:</strong></td>
             <td>
                 <asp:TextBox ID="tbRecharge" runat="server" MaxLength="20"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvRecharge" runat="server" 
