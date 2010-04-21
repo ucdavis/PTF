@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
 
-	<class name="CAESDO.PTF.Core.Domain.NoteType, CAESDO.PTF.Core" table="NoteTypes">
+	<class name="CAESDO.PTF.Core.Domain.NoteType, CAESDO.PTF.Core" table="NoteTypes" >
 		<id name="id" access="field" column="NoteTypeID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
@@ -10,7 +10,7 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" table="Crops">
+	<class name="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" table="Crops" >
 		<id name="id" access="field" column="CropID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
@@ -19,7 +19,7 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains">
+	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains" >
 		<id name="id" access="field" column="NoteTypeID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
@@ -28,7 +28,7 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" table="Status">
+	<class name="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" table="Status" >
 		<id name="id" access="field" column="StatusID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
@@ -37,7 +37,7 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" table="SelectableMarkers">
+	<class name="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" table="SelectableMarkers" >
 		<id name="id" access="field" column="SelectableMarkerID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
@@ -46,7 +46,7 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" table="GenoTypes">
+	<class name="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" table="GenoTypes" >
 		<id name="id" access="field" column="GenoTypeID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
@@ -55,7 +55,7 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" table="TransGenes">
+	<class name="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" table="TransGenes" >
 		<id name="id" access="field" column="TransGeneID" unsaved-value="0">
 			<generator class="identity" />
 		</id>

@@ -10,21 +10,29 @@
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Note Types" ID="TabPanel1">
             <ContentTemplate>
 
-                <asp:ListView ID="lvNoteTypes" runat="server" DataSourceID="odsNoteTypes">
+                <asp:ListView ID="lvNoteTypes" runat="server" DataSourceID="odsNoteTypes" InsertItemPosition="LastItem" DataKeyNames="Identifier">
                     <EditItemTemplate>
                         <li>
-                            <asp:Panel runat="server" ID="pnlEdit" class="itemPanel" BorderStyle="Solid" BorderWidth="1px">
+                            <asp:Panel runat="server" ID="pnlEdit" class="itemPanel">
                                 <asp:TextBox ID="tbEdit" runat="server" Text='<%# Bind("Name") %>' />
-                                <asp:ImageButton runat="server" ID="ibtnUpdateNoteType" ImageUrl="~/Images/save.png" CssClass="icon" CommandName="Update" ToolTip="Save Changes" />
-                                <asp:ImageButton runat="server" ID="ibtnCancelNoteType" ImageUrl="~/Images/cancel.png" CssClass="icon" CommandName="Cancel" ToolTip="Cancel Changes" />
+                                <asp:ImageButton runat="server" ID="ibtnSave" ImageUrl="~/Images/save.png" CssClass="icon" CommandName="Update" ToolTip="Save Changes" />
+                                <asp:ImageButton runat="server" ID="ibtnCancelSave" ImageUrl="~/Images/cancel.png" CssClass="icon" CommandName="Cancel" ToolTip="Cancel Changes" />
+                                <asp:CheckBox ID="cbEdit" runat="server" Checked='<%# Bind("IsActive") %>' Visible="false" />
                             </asp:Panel>
                         </li>
                     </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <li>
+                            <asp:TextBox ID="tbNewName" Text='<%# Bind("Name") %>' MaxLength="50" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvNewName" runat="server" ErrorMessage="*" ControlToValidate="tbNewName" ValidationGroup="NewLookup"></asp:RequiredFieldValidator>                      
+                            <asp:ImageButton runat="server" ID="ibtnInsert" ImageUrl="~/Images/add.png" ToolTip="Add New" CssClass="icon" CommandName="Insert" ValidationGroup="NewLookup" />
+                        </li>
+                    </InsertItemTemplate>
                     <ItemTemplate>
                         <li>
-                            <asp:Panel runat="server" ID="pnlName" class="itemPanel" BorderStyle="Solid" BorderWidth="1px">
-                                <asp:ImageButton runat="server" ID="ibtnDeleteNoteType" ImageUrl="~/Images/delete.png" CssClass="icon" CommandName="Delete" ToolTip="Delete" />
-                                <AjaxControlToolkit:ConfirmButtonExtender ID="cbeDeleteNoteType" TargetControlID="ibtnDeleteNoteType" runat="server" ConfirmText="Are you sure you want to delete this note type?" />
+                            <asp:Panel runat="server" ID="pnlName" class="itemPanel" >
+                                <asp:ImageButton runat="server" ID="ibtnDelete" ImageUrl="~/Images/delete.png" CssClass="icon" CommandName="Delete" ToolTip="Delete" />
+                                <AjaxControlToolkit:ConfirmButtonExtender ID="cbeDelete" TargetControlID="ibtnDelete" runat="server" ConfirmText="Are you sure you want to delete this lookup value?" />
                                 <asp:ImageButton runat="server" ID="ibtnEdit" ImageUrl="~/Images/edit.png" CommandName="Edit" CssClass="icon" ToolTip="Edit" />
                                 <%# Eval("Name") %></asp:Panel>
                         </li>
@@ -57,13 +65,10 @@
     </AjaxControlToolkit:TabContainer>
     
     <asp:ObjectDataSource ID="odsNoteTypes" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAll" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.NoteTypeBLL" 
-        DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" UpdateMethod="Update">
-        <SelectParameters>
-            <asp:Parameter DefaultValue="Name" Name="propertyName" Type="String" />
-            <asp:Parameter DefaultValue="True" Name="ascending" Type="Boolean" />
-        </SelectParameters>
+        DataObjectTypeName="CAESDO.PTF.Core.Domain.NoteType" UpdateMethod="Update" 
+        InsertMethod="Insert">
     </asp:ObjectDataSource> 
     <asp:ObjectDataSource ID="odsCrops" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetAll" 

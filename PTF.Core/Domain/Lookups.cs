@@ -16,6 +16,12 @@ namespace CAESDO.PTF.Core.Domain
 
         [NotNullValidator]
         public virtual bool IsActive { get; set; }
+
+        public virtual IdT Identifier
+        {
+            get { return id; }
+            set { id = value; }
+        }
     }
 
     //public class NoteType : DomainObject<NoteType, int>
