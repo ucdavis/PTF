@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <asp:ListView ID="lvExperiments" runat="server">
+    <asp:ListView ID="lvExperiments" runat="server" DataSourceID="odsExperiments">
         <LayoutTemplate>
             <table id="Experiments">
                 <tr>
@@ -97,7 +97,7 @@
             </table>
         </LayoutTemplate>
         <ItemTemplate>
-            <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("Construct_Code") %>'>
+            <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("Experiment") %>'>
                 <td><%# Eval("Experiment")%></td>
                 <td><%# Eval("Date")%></td>
                 <td><%# Eval("PI")%></td>
