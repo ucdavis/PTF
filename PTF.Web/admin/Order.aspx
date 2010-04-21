@@ -12,6 +12,11 @@
 
 
     <table class="InfoTable">
+        <tr class="head">
+            <td colspan="4">
+                Order Information
+            </td>
+        </tr>
         <tr>
             <td class="InfoFieldName col1">Order:&nbsp;</td>
             <td class="InfoFieldValue col2">
@@ -21,7 +26,6 @@
                 <asp:Literal ID="litDateRequested" runat="server"></asp:Literal></td>            
         </tr>
     </table>
-    <br />
     <asp:Panel ID="pnlCustomerInfoHeader" runat="server" class="CollapsiblePanelHeader">
         <div style="float:left;">
             Customer Information
@@ -71,8 +75,7 @@
                     <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
                 <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbContractNumber" runat="server" Visible="false"></asp:TextBox>&nbsp;
-                    <asp:LinkButton ID="lbContractNumber" runat="server" OnClientClick="SaveContractNumber(); return false;" Visible="false"><img src="../Images/save.png" width="15px" alt="save" /></asp:LinkButton>
+                    <asp:TextBox ID="tbContractNumber" runat="server" Width="75px"></asp:TextBox>&nbsp;
                     <a id="ContractNumberButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="ContractNumber"></span>
                 </td>            
@@ -169,13 +172,13 @@
             <tr>
                 <td class="InfoFieldName">Working Box:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbWorkingBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tbWorkingBox" runat="server" Width="75px"></asp:TextBox>
                     <a id="WorkingBoxButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "WorkingBox", "<%= tbWorkingBox.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="WorkingBox"></span>
                 </td>
                 <td class="InfoFieldName">Archived Box:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbArchivedBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tbArchivedBox" runat="server" Width="75px"></asp:TextBox>
                     <a id="ArchivedBoxbutton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ArchivedBox", "<%= tbArchivedBox.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="ArchivedBox"></span>
                 </td>            
@@ -183,13 +186,13 @@
             <tr>
                 <td class="InfoFieldName">Location:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbLocation" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tbLocation" runat="server" Width="75px"></asp:TextBox>
                     <a id="LocationButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Location", "<%= tbLocation.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Location"></span>
                 </td>
                 <td class="InfoFieldName">Position:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbPosition" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="tbPosition" runat="server" Width="75px"></asp:TextBox>
                     <a id="PositionButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Position", "<%= tbPosition.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Position"></span>
                 </td>            

@@ -9,6 +9,8 @@
     {
         SaveProperty($get(plantIDBox).value, property, txtBox, objType);
     }
+    
+
     </script>
     
     <span class="ContractWarning">
@@ -266,16 +268,17 @@
                         
                         <asp:Literal ID="litStatus" runat="server" Visible="false"></asp:Literal>
 
-                    
                 </td>
                 <td>
+                    <span id='<%# Eval("id") + "CommentText" %>' style="display:none;"><%# Eval("Comments") %></span>
+                                                      
                     <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'>[Edit]</a>
                 </td>
             </tr>
         </ItemTemplate>
     </asp:ListView>
     
-    <asp:Button runat="server" ID="btnDummyPlantNote" style="display:none;" />
+    <asp:Button runat="server" ID="btnDummyPlantNote" Text="DUmmy" />
     <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
     </AjaxControlToolkit:ModalPopupExtender>
     <asp:Panel ID="pnlPlantNote" runat="server" style="border:solid 1px black; background-color:oldlace;" Width="400px">

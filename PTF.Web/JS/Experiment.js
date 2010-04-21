@@ -98,9 +98,9 @@ function OnFail(result, context)
     context.LoadImg.style.display = STR_None;
 }
 
-function EditPlantComments(plantID, plantIDBox, modal, commentTextBox, commentText)
+function EditPlantComments(plantID, plantIDBox, modal, commentTextBox, comments)
 {
     $get(plantIDBox).value = plantID;
     $find(modal).show();
-    $get(commentTextBox).value = commentText;    
+    $get(commentTextBox).value = $get(plantID + 'CommentText').innerHTML;
 }
