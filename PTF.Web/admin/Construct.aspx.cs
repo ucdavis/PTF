@@ -82,7 +82,7 @@ public partial class admin_Construct : System.Web.UI.Page
                 Operator = OperatorBLL.GetByID(Convert.ToInt32(ddlOperators.SelectedValue)),
                 SeedLotNumber = tbSeedLotNumber.Text,
                 Explant = tbExplant.Text,
-                OpticalDensity = float.Parse(tbOpticalDensity.Text),
+                OpticalDensity = decimal.Parse(tbOpticalDensity.Text),
                 Construct = ConstructBLL.GetByID(ConstructID)
             };
 

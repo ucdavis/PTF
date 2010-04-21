@@ -20,7 +20,7 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(50)]
         public virtual string Explant { get; set; }
         public virtual string Comments { get; set; }
-        public virtual float OpticalDensity { get; set; }
+        public virtual decimal OpticalDensity { get; set; }
 
         public virtual IList<Plant> Plants { get; set; }
         public virtual IList<Note> Notes { get; set; }

@@ -7,8 +7,6 @@
     <ul style="list-style-type:none;">
     <li><a href=Orders.aspx>Orders</a></li>
     <li><a href=Lookups.aspx>Lookups</a></li>
-    <li><a href=Construct.aspx>Constructs</a></li>
-    <li><a href=Experiments.aspx>Experiments</a></li>
     <li><a href=Operators.aspx>Operators</a></li>
     <li><a href=Users.aspx>Users</a></li>
     </ul>

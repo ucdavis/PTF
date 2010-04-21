@@ -112,26 +112,34 @@
                         DataTextField="OperatorName" DataValueField="ID" AppendDataBoundItems="true">
                             <asp:ListItem Text="--Select an Operator--" Value="-1"></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvOperators" runat="server" ErrorMessage="*" ControlToValidate="ddlOperators" InitialValue="-1" ValidationGroup="NewExperiment"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td>Seed Lot Number:&nbsp;</td>
                 <td>
-                    <asp:TextBox ID="tbSeedLotNumber" runat="server"></asp:TextBox></td>
+                    <asp:TextBox ID="tbSeedLotNumber" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvSeedLotNumber" runat="server" ErrorMessage="*" ControlToValidate="tbSeedLotNumber" ValidationGroup="NewExperiment"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>Explant:&nbsp;</td>
                 <td>
-                    <asp:TextBox ID="tbExplant" runat="server"></asp:TextBox></td>
+                    <asp:TextBox ID="tbExplant" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvExplant" runat="server" ErrorMessage="*" ControlToValidate="tbExplant" ValidationGroup="NewExperiment"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td>Optical Density:&nbsp;</td>
                 <td>
-                    <asp:TextBox ID="tbOpticalDensity" runat="server"></asp:TextBox></td>
+                    <asp:TextBox ID="tbOpticalDensity" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvOpticalDensity" runat="server" ErrorMessage="*" ControlToValidate="tbOpticalDensity" ValidationGroup="NewExperiment"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="revOpticalDensity" runat="server" ErrorMessage="*" ControlToValidate="tbOpticalDensity" ValidationGroup="NewExperiment"></asp:RegularExpressionValidator>
+                </td>
             </tr>
         </table>
         <asp:Button ID="btnCreate" runat="server" Text="Create" 
-            onclick="btnCreate_Click" />
+            onclick="btnCreate_Click" ValidationGroup="NewExperiment" />
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
     </AjaxControlToolkit:ModalPopupExtender>

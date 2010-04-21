@@ -190,6 +190,7 @@
                     <th>Re-Callusing Assay</th>
                     <th>Rooting</th>
                     <th>Date Delivered</th>
+                    <th>Status</th>
                     <th>Comments</th>
                 </tr>
                 <tr runat='server' id="ItemPlaceHolder"></tr>
@@ -202,6 +203,7 @@
                 <td><%# Eval("ReCallusingAssay") %></td>
                 <td><%# Eval("Rooting") %></td>
                 <td><%# Eval("DateDelivered") %></td>
+                <td><%# Eval("Status.Name") %></td>
                 <td></td>
             </tr>
         </ItemTemplate>

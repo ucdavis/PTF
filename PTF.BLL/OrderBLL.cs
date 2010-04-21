@@ -25,6 +25,8 @@ namespace CAESDO.PTF.BLL
 
                 ts.CommittTransaction(); //commit the transaction
             }
+
+            //TODO: Email admin once the order is created
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
