@@ -51,6 +51,16 @@ namespace CAESDO.PTF.BLL
             }
         }
 
+        public static List<Construct> GetByCode(string constructCode)
+        {
+            var construct = new Construct()
+                {
+                    ConstructCode = constructCode
+                };
+
+            return ConstructBLL.GetByInclusionExample(construct, "ConstructCode");
+        }
+
         /// <summary>
         /// Change the recharge amount.
         /// </summary>

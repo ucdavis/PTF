@@ -51,21 +51,14 @@ namespace CAESDO.PTF.BLL
             }
         }
 
-        ///// <summary>
-        ///// Allow to override algorithm to mark an experiment complete so that the construct will be marked complete.
-        ///// Only allowed if there are no plants available for this experiment.
-        ///// </summary>
-        ///// <param name="experiment"></param>
-        //public static void MarkComplete(Experiment experiment)
-        //{
-        //    if (experiment.Plants.Count <= 0)
-        //    {
-        //        // save the experiment
-        //        ExperimentBLL.Update(experiment);
+        public static List<Experiment> GetByCode(string experimentCode)
+        {
+            var exp = new Experiment()
+            {
+                ExperimentCode = experimentCode
+            };
 
-        //        // update the status of the construct
-        //        ConstructBLL.UpdateStatus(experiment.Construct);
-        //    }
-        //}
+            return ExperimentBLL.GetByInclusionExample(exp, "ExperimentCode");
+        }
     }
 }
