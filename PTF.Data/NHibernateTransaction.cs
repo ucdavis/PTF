@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CAESDO.NHibernatev2.Data
+namespace CAESDO.PTF.Data
 {
     public class TransactionScope : IDisposable
     {

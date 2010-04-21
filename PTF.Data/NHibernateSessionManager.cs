@@ -4,7 +4,7 @@ using NHibernate;
 using NHibernate.Cache;
 using NHibernate.Cfg;
 
-namespace CAESDO.NHibernatev2.Data
+namespace CAESDO.PTF.Data
 {
     /// <summary>
     /// Handles creation and management of sessions and transactions.  It is a singleton because 
@@ -46,13 +46,7 @@ namespace CAESDO.NHibernatev2.Data
         #endregion
 
         private void InitSessionFactory() {
-            Configuration NHibernateConfig = new Configuration().Configure();
-            System.Reflection.Assembly coreAssembly = System.Reflection.Assembly.Load("CAESDO.NHibernatev2.Core");
-
-            NHibernateConfig.AddInputStream(NHibernate.Mapping.Attributes.HbmSerializer.Default.Serialize(coreAssembly));
-
-            sessionFactory = NHibernateConfig.BuildSessionFactory();
-            //sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            sessionFactory = new Configuration().Configure().BuildSessionFactory();
         }
 
         /// <summary>

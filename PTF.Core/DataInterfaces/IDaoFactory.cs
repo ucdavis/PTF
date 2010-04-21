@@ -1,7 +1,7 @@
-using CAESDO.NHibernatev2.Core.Domain;
+using CAESDO.PTF.Core.Domain;
 using System.Collections.Generic;
 
-namespace CAESDO.NHibernatev2.Core.DataInterfaces
+namespace CAESDO.PTF.Core.DataInterfaces
 {
     /// <summary>
     /// Provides an interface for retrieving DAO objects

@@ -57,6 +57,16 @@
   <ItemGroup>
     <None Include="caesdo.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PTF.Core\PTF.Core.csproj">
+      <Project>{96C16422-3827-4D04-B34E-BA27EA3F3D8B}</Project>
+      <Name>PTF.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PTF.Data\PTF.Data.csproj">
+      <Project>{031EECA0-481E-444A-B4DE-A3977607DA5F}</Project>
+      <Name>PTF.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

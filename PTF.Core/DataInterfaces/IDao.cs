@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CAESDO.NHibernatev2.Core.DataInterfaces
+namespace CAESDO.PTF.Core.DataInterfaces
 {
     public interface IDao<T, IdT>
     {

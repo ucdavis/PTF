@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using NHibernate.Mapping.Attributes;
 
-namespace CAESDO.NHibernatev2.Core.Domain
+namespace CAESDO.PTF.Core.Domain
 {
     public abstract class DomainObject<T, IdT>
     {
-        /// <summary>
-        /// ID may be of type string, int, custom type, etc.
-        /// </summary>
-        [Id(0,Name="id", Access="field", Column="{{Id.Column}}")]
-        [AttributeIdentifier("Id.Column", Value = "AppExceptionID")] // Default value
-            [Generator(1,Class="{{Id.GeneratorClass}}")]
-            [AttributeIdentifier("Id.GeneratorClass", Value = "identity")] // Default value
         public virtual IdT ID
         {
             get { return id; }

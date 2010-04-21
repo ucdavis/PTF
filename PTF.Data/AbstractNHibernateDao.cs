@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Expression;
-using CAESDO.NHibernatev2.Core.DataInterfaces;
+using CAESDO.PTF.Core.DataInterfaces;
 
-namespace CAESDO.NHibernatev2.Data
+namespace CAESDO.PTF.Data
 {
     public abstract class AbstractNHibernateDao<T, IdT> : IDao<T, IdT>
     {

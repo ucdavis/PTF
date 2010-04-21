@@ -8,6 +8,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PTF.Web", "PTF.Web", "{1CFE
 		SccLocalPath = "SAK"
 		SccProvider = "SAK"
 		TargetFramework = "3.5"
+		ProjectReferences = "{803AB19A-B148-487D-99A8-E3FF8BE222F4}|PTF.BLL.dll;{96C16422-3827-4D04-B34E-BA27EA3F3D8B}|PTF.Core.dll;{031EECA0-481E-444A-B4DE-A3977607DA5F}|PTF.Data.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/PTF.Web"
 		Debug.AspNetCompiler.PhysicalPath = "PTF.Web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"

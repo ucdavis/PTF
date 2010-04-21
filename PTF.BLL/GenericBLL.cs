@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
-using CAESDO.NHibernatev2.Core.DataInterfaces;
-using CAESDO.NHibernatev2.Core.Domain;
-using CAESDO.NHibernatev2.Data;
+using CAESDO.PTF.Core.DataInterfaces;
+using CAESDO.PTF.Core.Domain;
+using CAESDO.PTF.Data;
 
-namespace CAESDO.NHibernatev2.BLL
+namespace CAESDO.PTF.BLL
 {
     [DataObject]
     public class GenericBLL<T, IdT>
@@ -15,7 +15,7 @@ namespace CAESDO.NHibernatev2.BLL
         {
             get
             {
-                return new CAESDO.NHibernatev2.Data.NHibernateDaoFactory();
+                return new CAESDO.PTF.Data.NHibernateDaoFactory();
             }
         }
 

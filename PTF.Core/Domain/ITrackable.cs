@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CAESDO.NHibernatev2.Core.Domain
+namespace CAESDO.PTF.Core.Domain
 {
     public interface ITrackable
     {
