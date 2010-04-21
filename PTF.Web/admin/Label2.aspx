@@ -1,1 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Label2.aspx.cs" Inherits="admin_Label2" %>

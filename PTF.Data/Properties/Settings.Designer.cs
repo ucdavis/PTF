@@ -26,7 +26,7 @@ namespace PTF.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=flexo;Initial Catalog=PTF;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=boxy;Initial Catalog=PTF;Integrated Security=True")]
         public string PTFConnectionString {
             get {
                 return ((string)(this["PTFConnectionString"]));
