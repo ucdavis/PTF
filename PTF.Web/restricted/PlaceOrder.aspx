@@ -16,7 +16,7 @@
         }
         .addressFields
         {
-            width: 175px;
+            width: 180px;
             float: left;
         }
     </style>
@@ -110,6 +110,53 @@
                 }
             }
         }
+        
+        function ValidateStates()
+        {       
+            debugger;
+           
+            // validate the page?
+        
+            var mailingFlag = false;
+            var shippingFlag = false;
+        
+            var mailingStateDDL = $get("<%= ddlMailingState.ClientID %>");
+            var mailingStateTB = $get("<%= tbMailingState.ClientID %>");
+            var mailingCountryDDL = $get("<%= ddlMailingCountry.ClientID %>");
+            
+            // first check to see if the mailing country is still at -1
+            if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == "-1")
+            {
+                // no way a state can be selected
+            }
+            else if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == "USA")
+            {
+                // drop down state needs to have something selected
+                if (mailingStateDDL.options[mailingStateDDL.selectedIndex].value != "-1")
+                {
+                    // we are good on the mailing address
+                    mailingFlag = true;
+                }
+            }
+            else
+            {
+                // international state is necessary
+                if (mailingStateTB.value != "")
+                {
+                    mailingFlag = true;
+                }
+            }
+        
+            // check the shipping info
+            
+            var shippingStateDDL = $get("<%= ddlShippingState.ClientID %>");
+            var shippingStateTB = $get("<%= tbShippingState.ClientID %>");
+            var shippingCountryDDL = $get("<%= ddlShippingCountry.ClientID %>");
+            
+            alert("HI");
+        
+            return false;
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -133,6 +180,8 @@
                 <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing1_TextBoxWatermarkExtender" 
                     runat="server" Enabled="True" TargetControlID="tbMailing1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
                 </AjaxControlToolkit:TextBoxWatermarkExtender>
+                <asp:RequiredFieldValidator ID="rfvMailing1" runat="server" Text="*" ControlToValidate="tbMailing1" ValidationGroup="NewOrder" 
+                    ErrorMessage="Address Line 1 is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -153,6 +202,8 @@
                 <div class="addressFields">
                 City<br />
                 <asp:TextBox ID="tbMailingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvMailingCity" runat="server" Text="*" ControlToValidate="tbMailingCity" ValidationGroup="NewOrder"
+                        ErrorMessage="Mailing City is required."></asp:RequiredFieldValidator>
                 </div>
                 <div class="addressFields">
                     State/Province/Region<br />
@@ -160,10 +211,13 @@
                     <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
                         <asp:ListItem Text="--Select a State--" Value="-1" />
                     </asp:DropDownList>
+                    <div id="MailingStateWarning" style="color:Red; display:none;">*</div>
                 </div>
                 <div class="addressFields">
                 Zip/Postal Code<br />
                 <asp:TextBox ID="tbMailingZip" runat="server" Width="160px" MaxLength="12"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvMailingZip" runat="server" Text="*" ControlToValidate="tbMailingZip" ValidationGroup="NewOrder" 
+                        ErrorMessage="Mailing ZIP is required."></asp:RequiredFieldValidator>
                 </div>
             </td>
         </tr>
@@ -177,6 +231,8 @@
                     AppendDataBoundItems="True" onChange="javascript:onCountryChange(this);"  >
                     <asp:ListItem Text="--Select a Country--" Value="-1" />
                 </asp:DropDownList>                    
+                <asp:RequiredFieldValidator ID="rfvMailingCountry" runat="server"  Text="*" ControlToValidate="ddlMailingCountry" ValidationGroup="NewOrder" InitialValue="-1"
+                    ErrorMessage="Mailing Country is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -302,6 +358,8 @@
                 Cultivar:</td>
             <td>
                 <asp:TextBox ID="tbCultivar" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvCultivar" runat="server" Text="*" ControlToValidate="tbCultivar" ValidationGroup="NewOrder"
+                    ErrorMessage="Cultivar is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -329,6 +387,8 @@
                 Plasmid:</td>
             <td>
                 <asp:TextBox ID="tbPlasmid" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvPlasmid" runat="server" Text="*" ControlToValidate="tbPlasmid" ValidationGroup="NewOrder"
+                    ErrorMessage="Plasmid is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -364,6 +424,8 @@
                 Construct:</td>
             <td>
                 <asp:TextBox ID="tbConstruct" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvConstruct" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbConstruct" 
+                    ErrorMessage="Construct is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -371,6 +433,8 @@
                 Name of Your Construct:</td>
             <td>
                 <asp:TextBox ID="tbNameOfYourConstruct" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvYourconstruct" runat="server" Text="*" ControlToValidate="tbNameOfYourConstruct" ValidationGroup="NewOrder"
+                    ErrorMessage="Name of your construct is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -551,7 +615,7 @@
                 &nbsp;</td>
             <td>
                 <asp:Button ID="btnPlaceOrder" runat="server" Text="Submit Order" 
-                    ValidationGroup="NewOrder" onclick="btnPlaceOrder_Click" />
+                    ValidationGroup="NewOrder" OnClientClick="return ValidateStates();" onclick="btnPlaceOrder_Click" />
             </td>
         </tr>
     </table>
