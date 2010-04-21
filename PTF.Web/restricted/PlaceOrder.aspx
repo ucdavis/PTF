@@ -29,6 +29,13 @@
         var str_country = "country";
         var str_state = "state";
           
+        var str_inline = "inline";
+        var str_none = "none";
+        var str_usa = "USA";
+          
+        var str_empty = "";
+        var str_unselected = "-1";
+          
         function onCountryChange(ddl)
         {      
             var index = ddl.selectedIndex;
@@ -53,92 +60,143 @@
         }
        function ChangeCountry (countryCode, stateDropDown, internationalStateBox)
         {
-            if (countryCode == "USA")
+            if (countryCode == str_usa)
             {
-                stateDropDown.style.display = "inline";
+                stateDropDown.style.display = str_inline;
                 stateDropDown.disabled = false;
-                internationalStateBox.style.display = "none";
+                internationalStateBox.style.display = str_none;
             }
-            else if (countryCode == "-1")
+            else if (countryCode == str_unselected)
             {
-                stateDropDown.style.display = "inline";
+                stateDropDown.style.display = str_inline;
                 stateDropDown.disabled = true;
-                internationalStateBox.style.display = "none";        
+                internationalStateBox.style.display = str_none;        
             }
             else
             {
-                stateDropDown.style.display = "none";
-                internationalStateBox.style.display = "inline";    
+                stateDropDown.style.display = str_none;
+                internationalStateBox.style.display = str_inline;    
             }
         }
         function onShippingAddressSame(checkBox)
         {
+            var mailing1 = $get("<%= tbMailing1.ClientID %>");
+            var mailing2 = $get("<%= tbMailing2.ClientID %>");
+            var mailingCity = $get("<%= tbMailingCity.ClientID %>");
+            var mailingStateDDL = $get("<%= ddlMailingState.ClientID %>");
+            var mailingStateTB = $get("<%= tbMailingState.ClientID %>");
+            var mailingZip = $get("<%= tbMailingZip.ClientID %>");
+            var mailingCountry = $get("<%= ddlMailingCountry.ClientID %>");
+            
+            var shipping1 = $get("<%= tbShipping1.ClientID %>");
+            var shipping2 = $get("<%= tbShipping2.ClientID %>");
+            var shippingCity = $get("<%= tbShippingCity.ClientID %>");
+            var shippingStateTB = $get("<%= tbShippingState.ClientID %>");
+            var shippingStateDDL = $get("<%= ddlShippingState.ClientID %>");
+            var shippingZip = $get("<%= tbShippingZip.ClientID %>");
+            var shippingCountry = $get("<%= ddlShippingCountry.ClientID %>");
+            
+            
+            // addresses are the same
             if (checkBox.checked)
             {
-                $get("<%= tbShipping1.ClientID %>").disabled = true;
-                $get("<%= tbShipping2.ClientID %>").disabled = true;
-                $get("<%= tbShippingCity.ClientID %>").disabled = true;
-                $get("<%= tbShippingState.ClientID %>").disabled = true;
-                $get("<%= ddlShippingState.ClientID %>").disabled = true;
-                $get("<%= tbShippingZip.ClientID %>").disabled = true;
-                $get("<%= ddlShippingCountry.ClientID %>").disabled = true;
-            }
-            else
-            {
-                $get("<%= tbShipping1.ClientID %>").disabled = false;
-                $get("<%= tbShipping2.ClientID %>").disabled = false;
-                $get("<%= tbShippingCity.ClientID %>").disabled = false;
-                $get("<%= tbShippingZip.ClientID %>").disabled = false;
-                $get("<%= ddlShippingCountry.ClientID %>").disabled = false;
+                // move the addresses
+                shipping1.value = mailing1.value;
+                shipping2.value = mailing2.value;
+                shippingCity.value = mailingCity.value;
+                shippingZip.value = mailingZip.value;
+                shippingCountry.selectedIndex = mailingCountry.selectedIndex;
                 
-                var ddl = $get("<%= ddlShippingCountry.ClientID %>");
-                var index = ddl.selectedIndex;
-                var value = ddl.options[index].value;
-                
-                if (value == "USA")
+                // decide on the state control to show
+                if (mailingCountry.options[mailingCountry.selectedIndex].value == str_usa)
                 {
-                    $get("<%= ddlShippingState.ClientID %>").style.display = "inline";
-                    $get("<%= ddlShippingState.ClientID %>").disabled = false;
-                    $get("<%= tbShippingState.ClientID %>").style.display = "none";
-                }
-                else if (value == "-1")
-                {
-                    $get("<%= ddlShippingState.ClientID %>").style.display = "inline";
-                    $get("<%= ddlShippingState.ClientID %>").disabled = true;
-                    $get("<%= tbShippingState.ClientID %>").style.display = "none";      
+                    shippingStateDDL.selectedIndex = mailingStateDDL.selectedIndex;
+                    
+                    shippingStateDDL.style.display = str_inline;
+                    shippingStateTB.style.display = str_none;
+                    
                 }
                 else
                 {
-                    $get("<%= ddlShippingState.ClientID %>").style.display = "none";
-                    $get("<%= tbShippingState.ClientID %>").style.display = "inline";
-                    $get("<%= tbShippingState.ClientID %>").disabled = false;      
+                    shippingStateTB.value = mailingStateTB.value;
+                    
+                    shippingStateDDL.style.display = str_none;
+                    shippingStateTB.style.display = str_inline;
                 }
+            
+                // disable the boxes
+                shipping1.disabled = true;
+                shipping2.disabled = true;
+                shippingCity.disabled = true;
+                shippingStateTB.disabled = true;
+                shippingStateDDL.disabled = true;
+                shippingZip.disabled = true;
+                shippingCountry.disabled = true;
+            }
+            // user has decided addresses are not the same
+            else
+            {
+                shipping1.disabled = false;
+                shipping2.disabled = false;
+                shippingCity.disabled = false;
+                shippingZip.disabled = false;
+                shippingCountry.disabled = false;
+                
+                shippingStateDDL.disabled = false;
+                shippingStateTB.disabled = false;
+                
+                var value = shippingCountry.options[shippingCountry.selectedIndex].value;
+                
+                if (value == str_usa)
+                {
+                    shippingStateDDL.style.display = str_inline;
+                    shippingStateTB.style.display = str_none;
+                }
+                else if (value == str_unselected)
+                {
+                    shippingStateDDL.style.display = str_inline;
+                    shippingStateTB.style.display = str_none;
+                }
+                else
+                {
+                    shippingStateDDL.style.display = str_none;
+                    shippingStateTB.style.display = str_inline;
+                }
+            
+                // clear the values
+                shipping1.value = str_empty;
+                shipping2.value = str_empty;
+                shippingCity.value = str_empty;
+                shippingZip.value = str_empty;
+                shippingCountry.selectedIndex = 0;
+                shippingStateDDL.selectedIndex = 0;
+                shippingStateTB.value = str_empty;
             }
         }
         
         function ValidateStates()
         {       
-            var warningString = "";               
+            var warningString = str_empty;               
         
             Page_ClientValidate();  // validate the other controls
             
             if (!ValidateMailing())
             {
                 warningString += "<li>Mailing City is required.</li>";
-                $get("MailingStateWarning").style.display = "inline";
+                $get("MailingStateWarning").style.display = str_inline;
             }
             else
             {
-                $get("MailingStateWarning").style.display = "none";
+                $get("MailingStateWarning").style.display = str_none;
             }
             
             var shippingFields = ValidateShipping();
             
-            $get("ShippingAddressWarning").style.display = "none";
-            $get("ShippingCityWarning").style.display = "none";
-            $get("ShippingStateWarning").style.display = "none";
-            $get("ShippingZipWarning").style.display = "none";
-            $get("ShippingCountryWarning").style.display = "none";
+            $get("ShippingAddressWarning").style.display = str_none;
+            $get("ShippingCityWarning").style.display = str_none;
+            $get("ShippingStateWarning").style.display = str_none;
+            $get("ShippingZipWarning").style.display = str_none;
+            $get("ShippingCountryWarning").style.display = str_none;
             
             if (shippingFields.length > 0)
             {
@@ -147,30 +205,30 @@
                     switch(shippingFields[i])
                     {
                         case str_address1:  warningString += "<li>Shipping Address 1 is required.</li>";
-                                            $get("ShippingAddressWarning").style.display = "inline";
+                                            $get("ShippingAddressWarning").style.display = str_inline;
                                             break;
                         case str_city:      warningString += "<li>Shipping City is required.</li>";
-                                            $get("ShippingCityWarning").style.display = "inline";
+                                            $get("ShippingCityWarning").style.display = str_inline;
                                             break;
                         case str_state:     warningString += "<li>Shipping State is required.</li>";
-                                            $get("ShippingStateWarning").style.display = "inline";
+                                            $get("ShippingStateWarning").style.display = str_inline;
                                             break;
                         case str_zip:       warningString += "<li>Shipping ZIP is required.</li>";
-                                            $get("ShippingZipWarning").style.display = "inline";
+                                            $get("ShippingZipWarning").style.display = str_inline;
                                             break;
                         case str_country:   warningString += "<li>Shipping country is required.</li>";
-                                            $get("ShippingCountryWarning").style.display = "inline";
+                                            $get("ShippingCountryWarning").style.display = str_inline;
                                             break;
                         default:            break;
                     }
                 }
             }
         
-            if (warningString != "")
+            if (warningString != str_empty)
             {
                 var warningsBox = $get("ValidationWarnings");
                 warningsBox.innerHTML = "<ul>" + warningString + "</ul>";
-                warningsBox.style.display = "inline";
+                warningsBox.style.display = str_inline;
                 
                 return false;
             }
@@ -187,10 +245,10 @@
             var mailingCountryDDL = $get("<%= ddlMailingCountry.ClientID %>");        
             
             // usa is selected
-            if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == "USA")
+            if (mailingCountryDDL.options[mailingCountryDDL.selectedIndex].value == str_usa)
             {
                 // drop down state needs to have something selected
-                if (mailingStateDDL.options[mailingStateDDL.selectedIndex].value != "-1")
+                if (mailingStateDDL.options[mailingStateDDL.selectedIndex].value != str_unselected)
                 {
                     // we are good on the mailing address
                     return true;
@@ -199,7 +257,7 @@
             else // inernational is selected
             {               
                 // international state is necessary
-                if (mailingStateTB.value != "")
+                if (mailingStateTB.value != str_empty)
                 {
                     return true;
                 }
@@ -230,27 +288,27 @@
                 {
                     fields.push(str_address1);
                 }
-                if ($get("<%= tbShippingCity.ClientID %>").value == "")
+                if ($get("<%= tbShippingCity.ClientID %>").value == str_empty)
                 {
                     fields.push(str_city);
                 }
-                if ($get("<%= tbShippingZip.ClientID %>").value == "")
+                if ($get("<%= tbShippingZip.ClientID %>").value == str_empty)
                 {
                     fields.push(str_zip);
                 }
                               
-                if (shippingCountryDDL.options[shippingCountryDDL.selectedIndex].value != "-1")
+                if (shippingCountryDDL.options[shippingCountryDDL.selectedIndex].value != str_unselected)
                 {
-                    if (shippingCountryDDL.options[shippingCountryDDL.selectedIndex].value == "USA")
+                    if (shippingCountryDDL.options[shippingCountryDDL.selectedIndex].value == str_usa)
                     {
-                        if (shippingStateDDL.options[shippingStateDDL.selectedIndex].value == "-1")
+                        if (shippingStateDDL.options[shippingStateDDL.selectedIndex].value == str_unselected)
                         {
                             fields.push(str_state);
                         }
                     }
                     else // international, validate the txt box
                     {
-                        if (shippingStateTB.value == "")
+                        if (shippingStateTB.value == str_empty)
                         {
                             fields.push(str_state);
                         }
