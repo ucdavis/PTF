@@ -1,47 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Labels.aspx.cs" Inherits="Labels" Title="PTF | Labels" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <script type="text/javascript">
-    function PrintLabels()
-    {
-        var selectedPlants = new Array();
-
-        var table = $get("PlantsTable");
-        
-        for (i = 0; i < table.rows.length; i++)
-        {
-            var id = table.rows[i].id;
-            
-            // check to see if we have an id
-            if (id != "")
-            {
-                var row = $get(id);
-                var children = row.getElementsByTagName("input"); 
-                
-                var checkBox = children[0];
-                
-                if (checkBox.checked)
-                {
-                    selectedPlants.push(id);
-                }
-            }
-        }
-     
-        if (selectedPlants.length > 0)
-        {
-            PageMethods.ExportToLabels(selectedPlants, PrintLabelsOnComplete);
-        }
-        else
-        {
-            alert("You need to select a plant to print a label for.");
-        }
-    }
-
-    function PrintLabelsOnComplete (result)
-    {
-        var win = window.open('ExportLabel.aspx','ExportLabel'); // Do not put spaces in the second parameter
-    }
-    </script>
+    <script type="text/javascript" src="../JS/Labels.js"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -51,7 +11,7 @@
 <asp:ListView ID="lvPlants" runat="server" DataSourceID="odsPlants">
     <LayoutTemplate>
         <div class="grid">
-        <table cellspacing="0" id="PlantsTable">
+        <table cellspacing="0" cellpadding="15" id="PlantsTable">
             <tr class="head">
                 <th></th>
                 <th><asp:LinkButton ID="lbPedigree" CommandName="Sort" CommandArgument="PedigreeCode" runat="server">Pedigree</asp:LinkButton></th>
