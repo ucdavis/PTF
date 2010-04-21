@@ -33,10 +33,10 @@
             <tr>
                 <td>
                     <div id='<%# Eval("ConstructCode") %>'>
-                        <asp:LinkButton ID="lbBilled" CommandName="Select" OnClientClick='return ConfirmBilling(this);' runat="server">Bill</asp:LinkButton>
+                        <asp:LinkButton ID="lbBilled" CommandName="Select" OnClientClick='return ConfirmBilling(this);' runat="server"><img src="../Images/btn_bill.png" alt="Bill" /></asp:LinkButton>
                     </div>
                 </td>
-                <td><%# Eval("ConstructCode") %></td>
+                <td class="firstnum"><%# Eval("ConstructCode") %></td>
                 <td><%# Eval("Order.PI") %></td>
                 <td><%# Eval("Order.RechargeNumber") == null ? Resources.CommonStrings.STR_NotAvailable : Eval("Order.RechargeNumber") %></td>
                 <td><%# Eval("Order.ContractNumber") == null ? Resources.CommonStrings.STR_NotAvailable : Eval("Order.ContractNumber")%></td>

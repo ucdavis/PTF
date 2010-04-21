@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <a onclick="PrintLabels()">[Print]</a>
+    <a onclick="PrintLabels()" class="button"><img src="../Images/btn_print.png" alt="Print" /></a>
 
 <asp:ListView ID="lvPlants" runat="server" DataSourceID="odsPlants">
     <LayoutTemplate>
@@ -27,7 +27,7 @@
     <ItemTemplate>
         <tr id='<%# Eval("id") %>'>
             <td><span id="checkBox"><asp:CheckBox ID="cbSelected" runat="server" /></span></td>
-            <td><%# Eval("Pedigree")%></td>
+            <td class="firstnum"><%# Eval("Pedigree")%></td>
             <td><%# Eval("Experiment.Construct.SubOrder.Crop.Name")%></td>
             <td><%# Eval("Experiment.Construct.Order.PICode") %></td>
             <td><%# Eval("Experiment.Construct.SubOrder.GenoType.Name") %></td>

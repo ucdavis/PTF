@@ -122,6 +122,7 @@ span.right {float: right;}
 .dropdown a:hover, .dropdown a:active {color: #638C24}*/
 
 input.disabled {background: transparent; border: none;}
+.button {padding-left: 20px;}
 
 
 
@@ -151,7 +152,7 @@ td.first {padding-left: 20px;}
 
 td a {font-weight: bold;}
 table#suborders td.firstnum, table.construct td.firstnum, table#dataTable td.firstnum {font-size: 1.5em; font-weight: bold;}
-table#suborders table td.firstnum {font-size: 1.25em;}
+table#suborders table td.firstnum, td.firstnum {font-size: 1.25em; font-weight: bold;}
 
 
 /* --- subtables --- */
@@ -296,7 +297,7 @@ div.popup.wide {
 }
 .popup h2 {color: #fff; padding-left: 0px;}
 .popup.wide h2 {color: #fff; padding-left: 0px; margin-top: 0px;}
-.popup .close, .popup .button {float: right; padding-right: 0px;}
+.popup .close, .popup .button {float: right; padding-right: 0px; padding-left: 0px;}
 
 .popup.wide table {max-width: 780px}
 .popup.wide td {font-size: 0.9em;}
