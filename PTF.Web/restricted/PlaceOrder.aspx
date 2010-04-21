@@ -566,7 +566,7 @@
                         <asp:PlaceHolder ID="phPlantInformation" runat="server">
                         </asp:PlaceHolder>
                         <asp:LinkButton ID="lbAddPlantInformationFields" runat="server" 
-                                style="text-decoration:none;" onclick="lbAddPlantInformationFields_Click">
+                                style="text-decoration:none;" onclick="lbAddPlantInformationFields_Click" ToolTip="Click here for another row to enter more plant information.">
                             <img src="../Images/add.png" style="height:16px; width:16px; border:none;" />
                         </asp:LinkButton>
                     </ContentTemplate>
