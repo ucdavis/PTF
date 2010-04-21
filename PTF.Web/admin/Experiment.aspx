@@ -181,7 +181,7 @@
     </asp:ListView>
         <asp:ListView ID="lvCoCulture" runat="server">
         <LayoutTemplate>
-            <table cellpadding="0" class="notes right">
+            <table cellpadding="0" class="notes left">
                 <tr class="head"><th colspan="2">Co-Culture Notes</th></tr>
                 <tr id="ItemPlaceHolder" runat="server"></tr>
             </table>
