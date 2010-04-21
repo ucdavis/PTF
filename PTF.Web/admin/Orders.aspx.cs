@@ -35,7 +35,7 @@ public partial class Orders : System.Web.UI.Page
                 Crop = CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)),
                 Genotype = GenoTypeBLL.GetByID(Convert.ToInt32(ddlGenotype.SelectedValue)),
                 DateReceived = DateTime.Parse(tbDateReceived.Text),
-                Comments = tbComment.Text,
+                Comments = !string.IsNullOrEmpty(tbComment.Text) ? tbComment.Text : null,
                 Order = OrderBLL.GetByID(Convert.ToInt32(tbOrderID.Text))
             };
 
@@ -45,6 +45,9 @@ public partial class Orders : System.Web.UI.Page
         {
             construct.RechargeAmount = parsedRecharge;
         }
+
+        // Save the object
+        ConstructBLL.Insert(construct);
 
         // update the list view to reflect the new construct
         lvOrders.DataBind();

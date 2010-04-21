@@ -16,7 +16,7 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(10)]
         public virtual string PlantsRequested { get; set; }
         public virtual int PlantsDelivered { get; set; }
-        public virtual DateTime TransformationInitiated { get; set; }
+        public virtual DateTime? TransformationInitiated { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string PIConstructName { get; set; }
@@ -37,9 +37,9 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(200)]
         public virtual string GeneOfInterest { get; set; }
         public virtual SelectableMarker SelectableMarker { get; set; }
-        public virtual int ArchivedBox { get; set; }
-        public virtual int Position { get; set; }
-        public virtual int WorkingBox { get; set; }
+        public virtual int? ArchivedBox { get; set; }
+        public virtual int? Position { get; set; }
+        public virtual int? WorkingBox { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string Location { get; set; }
@@ -48,7 +48,7 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string Comments { get; set; }
         public virtual Status Status { get; set; }
         public virtual DateTime DateReceived { get; set; }
-        public virtual DateTime InvoiceDate { get; set; }
+        public virtual DateTime? InvoiceDate { get; set; }
         public virtual decimal RechargeAmount { get; set; }
         public virtual bool ContractExecuted { get; set; }
     }

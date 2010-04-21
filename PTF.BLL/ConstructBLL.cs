@@ -16,6 +16,8 @@ namespace CAESDO.PTF.BLL
             obj.DateCreated = DateTime.Now;
             obj.Status = StatusBLL.GetByName(StatusNames.Pending);
 
+            obj.ContractExecuted = false;
+
             using (var ts = new TransactionScope())
             {
                 EnsurePersistent(ref obj);
