@@ -88,7 +88,9 @@ namespace CAESDO.PTF.Core.Domain
     //}
 
     public class NoteType : LookupBase<NoteType, int> { }
-    public class Crop : LookupBase<Crop, int> { }
+    public class Crop : LookupBase<Crop, int> {
+        public virtual IList<PlantSelection> PlantSelections { get; set; }
+    }
     public class AgroStrain : LookupBase<AgroStrain, int> { }
     public class Status : LookupBase<Status, int> {
         public virtual bool IsComplete { get; set; }

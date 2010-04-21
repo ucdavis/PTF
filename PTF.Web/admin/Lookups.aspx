@@ -19,11 +19,37 @@
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Crops">
             <ContentTemplate>
-                <asp:UpdatePanel ID="upCrops" runat="server">
+                <AjaxControlToolkit:TabContainer ID="tcCrops" runat="server">
+                <AjaxControlToolkit:TabPanel ID="tpCrops" runat='server' HeaderText="Crops">
                     <ContentTemplate>
-                        <CAESDO:Lookups runat="server" ID="lookCrops" TypeName="CAESDO.PTF.BLL.CropBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Crop" ValidationGroup="Crops" />
+                        <asp:UpdatePanel ID="upCrops" runat="server">
+                            <ContentTemplate>
+                                <CAESDO:Lookups runat="server" ID="lookCrops" TypeName="CAESDO.PTF.BLL.CropBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Crop" ValidationGroup="Crops" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>                     
                     </ContentTemplate>
-                </asp:UpdatePanel>                
+                </AjaxControlToolkit:TabPanel>
+                    <AjaxControlToolkit:TabPanel ID="tcPlantSelectionAssociation" runat='server' HeaderText="Plant Selection Association">
+                    <ContentTemplate>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                            
+                                <asp:DropDownList ID="ddlCrops" runat="server" DataSourceID="odsCrops" AppendDataBoundItems="true" DataTextField="Name" DataValueField="id" AutoPostBack="true" OnSelectedIndexChanged="ddlCrops_OnSelectedIndexChange">
+                                    <asp:ListItem Text="--Select a Crop--" Value="-1"></asp:ListItem>
+                                </asp:DropDownList>
+                                
+                                <asp:CheckBoxList ID="cblPlantSelections" runat="server" DataSourceID="odsPlantSelections" DataValueField="id" DataTextField="name" Visible="false">
+                                </asp:CheckBoxList>
+
+                                <asp:LinkButton ID="lbSaveCropPlantSelection" runat="server" OnClick="lbSaveCropPlantSelection_OnClick" Visible="false">[Save]</asp:LinkButton>
+
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+                        
+                    </ContentTemplate>
+                </AjaxControlToolkit:TabPanel>
+                </AjaxControlToolkit:TabContainer>
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Agro Strain">
@@ -73,5 +99,11 @@
         </AjaxControlToolkit:TabPanel>
     </AjaxControlToolkit:TabContainer>
     
+    <asp:ObjectDataSource ID="odsCrops" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+        TypeName="CAESDO.PTF.BLL.CropBLL"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsPlantSelections" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+        TypeName="CAESDO.PTF.BLL.PlantSelectionBLL"></asp:ObjectDataSource>
     </asp:Content>
 

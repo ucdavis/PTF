@@ -5,12 +5,14 @@ using System.Text;
 using CAESDO.PTF.Core.Domain;
 using System.ComponentModel;
 using CAESDO.PTF.Data;
+using System.Security.Permissions;
 
 namespace CAESDO.PTF.BLL
 {
     [DataObject]
     public class PlantBLL : GenericBLL<Plant, int>
     {
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Plant newPlant)
         {

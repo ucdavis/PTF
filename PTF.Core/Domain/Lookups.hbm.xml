@@ -17,6 +17,11 @@
 
 		<property name="Name" column="Crop" />
 		<property name="IsActive" column="IsActive" />
+
+		<bag name="PlantSelections" table="CropXPlantSelection" cascade="all-delete-orphan">
+			<key column="CropID" />
+			<many-to-many column="PlantSelectionID" class="CAESDO.PTF.Core.Domain.PlantSelection, CAESDO.PTF.Core" />
+		</bag>
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains" >
