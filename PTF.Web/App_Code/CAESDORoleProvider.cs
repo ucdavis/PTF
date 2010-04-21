@@ -9,6 +9,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Web.Configuration;
 using System.Collections;
+using CAESOps;
 
 namespace CAESDO
 {
@@ -118,7 +119,7 @@ namespace CAESDO
             //pointing to a web.config connection strings section
             _connectionString = WebConfigurationManager.ConnectionStrings[_connectionStringKey].ToString();
             _dops = new DataOps();
-            _dops.ConnectionString = _connectionString;
+            _dops.ConnectionString = _connectionStringKey;
         }
 
         /// <summary>
