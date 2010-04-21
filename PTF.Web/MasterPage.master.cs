@@ -33,7 +33,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (IsEmulating)
         {
-            Response.Write("You are currently is emulation mode.");
+            Response.Write("You are currently in emulation mode.");
         }
 
         litVersion.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -53,7 +53,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             FormsAuthentication.SignOut();
             
-            Response.Redirect("https://cas.ucdavis.edu/cas/logout?service=" + STR_RedirectAddress, true);
+            // this was raising a "potentially dangerous" warning
+            //Response.Redirect("https://cas.ucdavis.edu/cas/logout?service=" + STR_RedirectAddress, true);
+            Response.Redirect("~/Default.aspx", true);
         }
         else
         {
