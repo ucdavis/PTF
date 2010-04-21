@@ -1,24 +1,24 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Construct.aspx.cs" Inherits="admin_Construct" Title="PTF | Construct" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-
+    <script type="text/javascript" src="../JS/Order.js"></script>
     <script type="text/javascript" language="javascript">
-    function ChangeRechargeAmount()
-    {      
-        var constructID = '<%= Request.QueryString["cid"] %>';
-        var rechargeAmount = $get('<%= tbChangeRechargeAmount.ClientID %>').value;
-            
-        PageMethods.ChangeRecharge(constructID, rechargeAmount, ChangeRechargeAmountOnComplete);
-    }
-    
-    function ChangeRechargeAmountOnComplete(result)
-    {
-        var rechargeSpan = $get("RechargeAmount");
-        rechargeSpan.innerHTML = result;
+        function ChangeRechargeAmount()
+        {      
+            var constructID = '<%= Request.QueryString["cid"] %>';
+            var rechargeAmount = $get('<%= tbChangeRechargeAmount.ClientID %>').value;
                 
-        $get('<%= tbChangeRechargeAmount.ClientID %>').value = "";
-    }
-</script>
+            PageMethods.ChangeRecharge(constructID, rechargeAmount, ChangeRechargeAmountOnComplete);
+        }
+        
+        function ChangeRechargeAmountOnComplete(result)
+        {
+            var rechargeSpan = $get("RechargeAmount");
+            rechargeSpan.innerHTML = result;
+                    
+            $get('<%= tbChangeRechargeAmount.ClientID %>').value = "";
+        }
+    </script>
 
     <span class="ContractWarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
@@ -96,10 +96,13 @@
             </td>
         </tr>  
         <tr>
-            <td colspan="4" class="InfoFieldName">
+            <td class="InfoFieldName">
                 <strong>Comments:</strong>
-                <br />
-                <asp:Literal ID="litComments" runat="server"></asp:Literal>
+            </td>
+            <td colspan="3" class="InfoFieldValue">
+                <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
+                <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["cid"] %>", "Comment", "<%= tbComments.ClientID %>", "Construct");'><img src="../Images/save.png" width="15px" alt="save" />
+                <span id="Comment"></span>
             </td>
         </tr>                          
     </table>
@@ -132,7 +135,7 @@
                 <td><%# Eval("Operator.OperatorName") %></td>
                 <td><%# Eval("Explant") %></td>
                 <td><%# Eval("OpticalDensity")%></td>
-                <td></td>
+                <td><%# Eval("Comments") %></td>
             </tr>
         </ItemTemplate>
         <EmptyDataTemplate>

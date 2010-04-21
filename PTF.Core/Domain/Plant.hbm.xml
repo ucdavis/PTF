@@ -11,7 +11,7 @@
 		<property name="DateEntered" column="DateEntered" />
 		<property name="ReCallusingAssay" column="ReCallusingAssay" />
 		<property name="Rooting" column="Rooting" />
-		<property name="Comment" column="Comment" />
+		<property name="Comments" column="Comment" />
 		<property name="DateDelivered" column="DateDelivered" />
 
 		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />

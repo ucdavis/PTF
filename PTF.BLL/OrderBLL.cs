@@ -18,7 +18,8 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<Order> GetByUser(Guid currentUser)
         {
-            return OrderBLL.GetByInclusionExample(new Order() { UserID = currentUser }, "UserID");
+            var list = OrderBLL.GetByInclusionExample(new Order() { UserID = currentUser }, "UserID");
+            return list.AsQueryable().OrderBy("DateRequested DESC").ToList();
         }
 
         /// <summary>

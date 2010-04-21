@@ -1,6 +1,6 @@
 ﻿/// <reference name="MicrosoftAjax.js"/>
 
-function SaveProperty(queryString, property, txtBox)
+function SaveProperty(queryString, property, txtBox, objType)
 {
     // dynamically add the loading image   
     var img = document.createElement('img');
@@ -28,8 +28,10 @@ function SaveProperty(queryString, property, txtBox)
     
     divTag.appendChild(img);
     
-    PageMethods.SaveProperty(queryString, property, $get(txtBox).value, SavePropertyOnComplete, SavePropertyOnFail, property);
+    //PageMethods.SaveProperty(queryString, property, $get(txtBox).value, objType, SavePropertyOnComplete, SavePropertyOnFail, property);
+    ScriptServices.SaveProperty(queryString, property, $get(txtBox).value, objType, SavePropertyOnComplete, SavePropertyOnFail, property);
 }
+
 function SavePropertyOnComplete(result, context)
 {   
     // remove the only child

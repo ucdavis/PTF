@@ -2,7 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript" src="../JS/Experiment.js" ></script>
-
+    <script type="text/javascript" src="../JS/Order.js"></script>
+    
+    <script type="text/javascript">
+    function SavePlantComments(plantIDBox, property, txtBox, objType)
+    {
+        SaveProperty($get(plantIDBox).value, property, txtBox, objType);
+    }
+    </script>
+    
     <span class="ContractWarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
@@ -82,6 +90,15 @@
                 <asp:Literal ID="litPICode" runat="server"></asp:Literal>
             </td>
         </tr>       
+        <tr>
+            <td class="InfoFieldName">Comments:&nbsp;</td>
+            <td class="InfoFieldValue" colspan="3">
+                <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
+                    Width="338px"></asp:TextBox>
+                <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["eid"] %>", "Comment", "<%= tbComments.ClientID %>", "Experiment");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                <span id="Comment"></span>
+            </td>
+        </tr>
     </table>
     
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -248,10 +265,23 @@
 
                     
                 </td>
-                <td></td>
+                <td>
+                    <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'>[Edit]</a>
+                </td>
             </tr>
         </ItemTemplate>
     </asp:ListView>
+    
+    <asp:Button runat="server" ID="btnDummyPlantNote" style="display:none;" />
+    <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
+    </AjaxControlToolkit:ModalPopupExtender>
+    <asp:Panel ID="pnlPlantNote" runat="server" style="border:solid 1px black; background-color:oldlace;" Width="400px">
+        <asp:TextBox runat='server' ID="tbPlantID" style="display:none;" ></asp:TextBox>
+        <asp:LinkButton ID="lbCancelPlantNote" runat="server">[Close]</asp:LinkButton>
+        <asp:TextBox ID="tbPlantComment" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
+        <a id="SavePlantComments" onclick='SavePlantComments("<%= tbPlantID.ClientID %>", "PlantComment", "<%= tbPlantComment.ClientID %>", "Plant");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+        <span id="PlantComment"></span>
+    </asp:Panel>
     
     <asp:ObjectDataSource ID="odsNoteTypes" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 

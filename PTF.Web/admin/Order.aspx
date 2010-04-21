@@ -19,7 +19,6 @@
         $get('<%= tbContractNumber.ClientID %>').style.display = "none";
         $get('<%= lbContractNumber.ClientID %>').style.display = "none";
     }
-       
 </script>
 
 </asp:Content>
@@ -183,13 +182,13 @@
                 <td class="InfoFieldName">Working Box:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbWorkingBox" runat="server"></asp:TextBox>
-                    <a id="WorkingBoxButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "WorkingBox", "<%= tbWorkingBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="WorkingBoxButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "WorkingBox", "<%= tbWorkingBox.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="WorkingBox"></span>
                 </td>
                 <td class="InfoFieldName">Archived Box:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbArchivedBox" runat="server"></asp:TextBox>
-                    <a id="ArchivedBoxbutton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ArchivedBox", "<%= tbArchivedBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="ArchivedBoxbutton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ArchivedBox", "<%= tbArchivedBox.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="ArchivedBox"></span>
                 </td>            
             </tr>                                                                        
@@ -197,23 +196,23 @@
                 <td class="InfoFieldName">Location:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbLocation" runat="server"></asp:TextBox>
-                    <a id="LocationButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Location", "<%= tbLocation.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="LocationButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Location", "<%= tbLocation.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Location"></span>
                 </td>
                 <td class="InfoFieldName">Position:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbPosition" runat="server"></asp:TextBox>
-                    <a id="PositionButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Position", "<%= tbPosition.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="PositionButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Position", "<%= tbPosition.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Position"></span>
                 </td>            
             </tr>     
             <tr><td colspan="4"></td></tr>
             <tr>
-                <td class="InfoFieldName">Comments:&nbsp;</td>
+                <td class="InfoFieldName">Comments&nbsp;(Public Viewable):&nbsp;</td>
                 <td class="InfoFieldValue" colspan="3">
                     <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
                         Width="338px"></asp:TextBox>
-                    <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Comment", "<%= tbComments.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Comment", "<%= tbComments.ClientID %>", "Order");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Comment"></span>
                 </td>
             </tr>       

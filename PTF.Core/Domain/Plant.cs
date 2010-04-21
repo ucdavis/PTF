@@ -21,7 +21,7 @@ namespace CAESDO.PTF.Core.Domain
         [NotNullValidator]
         public virtual bool Rooting { get; set; }
         [IgnoreNulls]
-        public virtual string Comment { get; set; }
+        public virtual string Comments { get; set; }
         [IgnoreNulls]
         public virtual DateTime? DateDelivered { get; set; }
 

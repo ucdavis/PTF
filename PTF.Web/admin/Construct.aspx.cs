@@ -77,6 +77,8 @@ public partial class admin_Construct : System.Web.UI.Page
             litRecharge.Text = construct.RechargeAmount.ToString("c");
             litStatus.Text = construct.Status.Name;
 
+            tbComments.Text = construct.Comments;
+
             lvExperiments.DataSource = construct.Experiments;
             lvExperiments.DataBind();
 

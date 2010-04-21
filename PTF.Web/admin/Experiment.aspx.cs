@@ -78,6 +78,8 @@ public partial class admin_Experiment : System.Web.UI.Page
             litPICode.Text = experiment.Construct.Order.PICode;
             litContactEmail.Text = experiment.Construct.Order.ContactEmail;
 
+            tbComments.Text = experiment.Comments;
+
             lvInduction.DataSource = experiment.GetNotesbyType(Note.ExpNoteTypes.Induction);
             lvInduction.DataBind();
 

@@ -31,7 +31,7 @@
         <ItemTemplate>
             <tr class="group">
                 <td class="first">
-                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>', 'orders');" /> 
+                    <img src="../images/minus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>', 'orders');" /> 
                 </td>
                 <td colspan="4">
                     <div style="float:left;">
@@ -47,7 +47,7 @@
                     <tr runat="server" id="itemPlaceholder"></tr>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <tr id="row" runat="server" class="item hidden">
+                    <tr id="row" runat="server" class="item">
                         <td class="first"></td>
                         <td><%# Eval("NumberOfPlants") %></td>
                         <td><%# Eval("Crop.Name") %></td>

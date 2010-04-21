@@ -19,6 +19,9 @@
 <body>
     <form id="form1" runat="server">
     <asp:ScriptManager runat="server" id="scriptmanager1" EnablePageMethods="true">
+        <Services>
+            <asp:ServiceReference Path="~/WS/ScriptServices.asmx" />
+        </Services>
         <Scripts>
             <asp:ScriptReference Assembly="AjaxControlToolkit" Name="AjaxControlToolkit.Animation.Animations.js" />
         </Scripts>

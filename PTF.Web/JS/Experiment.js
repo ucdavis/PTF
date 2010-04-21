@@ -97,3 +97,10 @@ function OnFail(result, context)
     context.FailImg.style.display = STR_Inline;
     context.LoadImg.style.display = STR_None;
 }
+
+function EditPlantComments(plantID, plantIDBox, modal, commentTextBox, commentText)
+{
+    $get(plantIDBox).value = plantID;
+    $find(modal).show();
+    $get(commentTextBox).value = commentText;    
+}
