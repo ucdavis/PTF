@@ -9,6 +9,7 @@ Begin DataProject = "PTF.SQL"
    Begin Folder = "Change Scripts"
    End
    Begin Folder = "Create Scripts"
+      Script = "GenerateExperimentCodeInfo.sql"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "boxy.PTF.dbo"

@@ -32,6 +32,11 @@
 		<property name="InvoiceDate" column="InvoiceDate" />
 		<property name="RechargeAmount" column="RechargeAmount" />
 		<property name="ContractExecuted" column="ContractExecuted" />
-		
+
+		<bag name="Experiments" table="Experiments">
+			<key column="CID" />
+			<one-to-many class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core"/>
+		</bag>
+
 	</class>
 </hibernate-mapping>

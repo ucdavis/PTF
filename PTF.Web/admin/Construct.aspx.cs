@@ -16,18 +16,33 @@ public partial class admin_Construct : System.Web.UI.Page
 {
     private const string STR_OrderIDQueryString = "OID";
 
+    private int OrderID
+    {
+        get 
+        {
+            if (Request.QueryString[STR_OrderIDQueryString] != null)
+            {
+                return Convert.ToInt32(Request.QueryString[STR_OrderIDQueryString]);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             // if an order id is provided then show only those constructs for that order
-            if (Request.QueryString[STR_OrderIDQueryString] != null)
+            if (OrderID > 0)
             {
                 lvConstructs.DataSourceID = "odsConstructsByOrder";
                 lvConstructs.DataBind();
 
                 // get the order information and display it
-                PopulateOrderPanel(Convert.ToInt32(Request.QueryString[STR_OrderIDQueryString]));
+                PopulateOrderPanel(OrderID);
             }
         }
     }
@@ -79,20 +94,30 @@ public partial class admin_Construct : System.Web.UI.Page
             // recharge number has been provided
             lblRechargeNumber.Text = order.RechargeNumber;
 
-            lblContact.Text = "No contract necessary.";
-            lblContact.Visible = false;
+            lblContract.Text = "No contract necessary.";
+            lbContractExecuted.Visible = false;
         }
         else
         {
             // no recharge number provided
             lblRechargeNumber.Text = "----------";
 
-            lblContact.Text = order.ContractExecuted ? "Yes" : "No";
+            lblContract.Text = order.ContractExecuted ? "Yes" : "No";
 
-            if (order.ContractExecuted)
+            if (!order.ContractExecuted)
             {
-                lblContact.Visible = true;
+                lbContractExecuted.Visible = true;
             }
+            else
+            {
+                lbContractExecuted.Visible = false;
+            }
+        }
+
+        // hide the data pager when no constructs are available
+        if (order.Constructs.Count <= 0)
+        {
+            DataPager1.Visible = false;
         }
     }
     protected void lbHoldPendingContract_Command(object sender, CommandEventArgs e)
@@ -110,5 +135,9 @@ public partial class admin_Construct : System.Web.UI.Page
         ConstructBLL.Update(construct);
 
         lvConstructs.DataBind();
+    }
+    protected void lbContractExecuted_Click(object sender, EventArgs e)
+    {
+
     }
 }

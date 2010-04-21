@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.Operator, CAESDO.PTF.Core" table="Operators" >
+		<id name="id" access="field" column="OperatorID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<property name="Name" column="Operator" />
+		<property name="OperatorCode" column="OperatorCode" />
+		<property name="IsStudent" column="IsStudent" />
+		<property name="IsSelectable" column="IsSelectable" />
+		<property name="EffectiveID" column="EffectiveID" update="false" insert="false" />
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core" table="Experiments" >
+		<id name="id" access="field" column="EID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<property name="ExperimentCode" column="ExperimentCode" update="false" insert="false" />
+		<property name="DateStarted" column="DateStarted" />
+		<property name="SeedLotNumber" column="SeedLotNumber" />
+		<property name="AgroSelection" column="AgroSelection" />
+		<property name="Explant" column="Explant" />
+		<property name="Trait" column="Trait" />
+		<property name="Comments" column="Comments" />
+		<property name="TargetNumPlants" column="TargetNumPlants" />
+		<property name="OpticalDensity" column="OpticalDensity" />
+
+		<many-to-one name="Operator" class="CAESDO.PTF.Core.Domain.Operator, CAESDO.PTF.Core" column="OperatorID" cascade="none" />
+		<many-to-one name="Construct" class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core" column="EID" cascade="none" />
+		
+	</class>
+</hibernate-mapping>

@@ -50,6 +50,8 @@ namespace CAESDO.PTF.Core.Domain
         public virtual DateTime DateReceived { get; set; }
         public virtual DateTime? InvoiceDate { get; set; }
         public virtual decimal RechargeAmount { get; set; }
-        public virtual bool ContractExecuted { get; set; }
+        public virtual bool ContractExecuted { get; set; }  
+
+        public virtual IList<Experiment> Experiments { get; set; }
     }
 }

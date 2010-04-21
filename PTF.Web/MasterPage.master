@@ -14,8 +14,18 @@
     <form id="form1" runat="server">
     <div>
         <div style="float:right">
-            <asp:LoginStatus ID="LoginStatus1" runat="server" 
-                onloggingout="LoginStatus1_LoggingOut" />
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                    <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                </AnonymousTemplate>
+                <LoggedInTemplate>                
+                    <asp:LoginName ID="LoginName1" runat="server" />
+                    (
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" 
+                        onloggingout="LoginStatus1_LoggingOut" />
+                    )                
+                </LoggedInTemplate>
+            </asp:LoginView>
         </div>
         <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </cc1:ToolkitScriptManager>
