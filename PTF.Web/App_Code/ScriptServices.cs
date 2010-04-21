@@ -43,6 +43,8 @@ public class ScriptServices : System.Web.Services.WebService
                 break;
             case "Plant": SaveProperty(PlantBLL.GetByID(objID), property, value);
                 break;
+            case "Suborder": SaveProperty(SubOrderBLL.GetByID(objID), property, value);
+                break;
         }      
     }
 
@@ -74,6 +76,19 @@ public class ScriptServices : System.Web.Services.WebService
         };
 
         OrderBLL.Update(order);
+    }
+
+    protected void SaveProperty(SubOrder suborder, string property, string value)
+    {
+        switch (property)
+        {
+            case "PlantSelection": suborder.PlantSelection = PlantSelectionBLL.GetByID(Convert.ToInt32(value));
+                break;
+            case "Genotype": suborder.GenoType = GenoTypeBLL.GetByID(Convert.ToInt32(value));
+                break;
+        };
+
+        SubOrderBLL.Update(suborder);
     }
 
     protected void SaveProperty(Construct construct, string property, string value)

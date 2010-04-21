@@ -382,6 +382,7 @@
         </tr>
         <tr>
             <td colspan="2">     
+               <i>* If you select the "Other" option for genotype or plant selection someone from the PTF will be calling you to discuss your order.</i>
                 <asp:UpdatePanel ID="upPlantInformation" runat="server">
                     <ContentTemplate>
                         <asp:PlaceHolder ID="phPlantInformation" runat="server">

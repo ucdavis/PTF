@@ -3,6 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript" src="../JS/Order.js"></script>
     <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
+    
+    <script type="text/javascript">
+        
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">
@@ -224,7 +229,8 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>    
     <asp:Button ID="btnNewConstruct" runat="server" Text="" />
-    <asp:ListView ID="lvSuborders" runat="server">
+    <asp:ListView ID="lvSuborders" runat="server" 
+        onitemdatabound="lvSuborders_ItemDataBound">
         <LayoutTemplate>
             <div class="grid">
                 <table id="suborders" cellpadding="10" cellspacing="0">
@@ -246,8 +252,23 @@
                 </td>
                 <td><%# Eval("NumberOfPlants") %></td>
                 <td><%# Eval("Crop.Name") %></td>
-                <td><%# Eval("PlantSelection.Name") %></td>
-                <td><%# Eval("GenoType.Name") %></td>
+                <td>
+                    <div>
+                        <asp:Literal ID="litPlantSelection" runat="server"></asp:Literal>
+                        <asp:Panel runat="server" ID="pnlPlantSelection" Visible="false">
+                        <asp:DropDownList ID="ddlPlantSelection" runat="server" DataValueField="id" DataTextField="Name">
+                        </asp:DropDownList>
+                        <a id="PlantSelectionButton" onclick='SaveSuborderProperty("<%# Eval("id") %>", this, "PlantSelection");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                        </asp:Panel>
+                    </div>
+                </td>
+                <td>
+                    <asp:Literal ID="litGenotype" runat="server"></asp:Literal>
+                    <asp:Panel runat="server" id="pnlGenotype" Visible="false">
+                    <asp:DropDownList ID="ddlGenotype" runat="server" DataValueField="id" DataTextField="Name"></asp:DropDownList>
+                    <a id="GenotypeButton" onclick='SaveSuborderProperty("<%# Eval("id") %>", this, "Genotype");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    </asp:Panel>
+                </td>
             </tr>
             <tr id="row" class="item">
                 <td class="first"></td>
@@ -286,7 +307,7 @@
         
         <br /><br />
         <asp:GridView ID="gvSuborder" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="id" onselectedindexchanged="gvSuborder_SelectedIndexChanged">
+            DataKeyNames="id" onselectedindexchanged="gvSuborder_SelectedIndexChanged" Width="375px" OnRowDataBound="gvSuborder_RowDataBound">
             <Columns>
                 
                 <asp:CommandField ShowSelectButton="True" ButtonType="Image" SelectImageUrl="~/Images/btn_select.png" />
@@ -322,6 +343,8 @@
                 
         if (isReader == "True")
         {
+            $get("ContractNumberButton").style.display = "none";
+        
             $get("WorkingBoxButton").style.display = "none";
             $get("ArchivedBoxbutton").style.display = "none";
             $get("LocationButton").style.display = "none";

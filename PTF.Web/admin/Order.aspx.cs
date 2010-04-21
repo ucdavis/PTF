@@ -19,6 +19,7 @@ using System.Web.Services;
 public partial class admin_Order : System.Web.UI.Page
 {
     private const string STR_OrderIDQueryString = "oid";
+    private const string STR_Other = "Other";
 
     private int OrderID
     {
@@ -191,8 +192,80 @@ public partial class admin_Order : System.Web.UI.Page
         lvSuborders.DataBind();
     }
 
+    protected void gvSuborder_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var suborder = (SubOrder)e.Row.DataItem;
+
+            if (suborder.PlantSelection.Name == STR_Other || suborder.GenoType.Name == STR_Other)
+            {
+                e.Row.Cells[0].Text = string.Empty;
+            }
+        }
+    }
+
     protected void lbBack_Click(object sender, EventArgs e)
     {
         Response.Redirect("Orders.aspx", true);
+    }
+    protected void lvSuborders_ItemDataBound(object sender, ListViewItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListViewItemType.DataItem)
+        {
+            var suborder = (SubOrder)((ListViewDataItem)e.Item).DataItem;
+
+            // plant selection is other, show the drop down list
+            if (suborder.PlantSelection.Name == STR_Other && (User.IsInRole("Admin") || User.IsInRole("User")))
+            {
+                var ddlPlantSelection = (DropDownList)e.Item.FindControl("ddlPlantSelection");
+
+                // remove the "Other" option
+                var plantSelectionList = suborder.Crop.PlantSelections;
+                plantSelectionList.Remove(PlantSelectionBLL.GetByName(STR_Other));
+
+                // populate the drop down based on the crop
+                ddlPlantSelection.DataSource = plantSelectionList;
+                ddlPlantSelection.DataBind();
+
+                var pnlPlantSelection = (Panel)e.Item.FindControl("pnlPlantSelection");
+
+                // make it visible
+                pnlPlantSelection.Visible = true;
+            }
+            // plant selection is set
+            else
+            {
+                var litPlantSelection = (Literal)e.Item.FindControl("litPlantSelection");
+
+                litPlantSelection.Text = suborder.PlantSelection.Name;
+            }
+
+            // genotype is other, show the drop down
+            if (suborder.GenoType.Name == STR_Other && (User.IsInRole("Admin") || User.IsInRole("User")))
+            {
+                var ddlGenotype = (DropDownList)e.Item.FindControl("ddlGenotype");
+
+                // Remove the Other Option
+                var genotypeList = suborder.Crop.GenoTypes;
+                genotypeList.Remove(GenoTypeBLL.GetByName(STR_Other));
+
+                // populate the drop down based on the crop
+                ddlGenotype.DataSource = genotypeList;
+                ddlGenotype.DataBind();
+
+                var pnlGenotype = (Panel)e.Item.FindControl("pnlGenotype");
+
+                // make it visible
+                pnlGenotype.Visible = true;
+            }
+            // genotype is set
+            else
+            {
+                var litGenotype = (Literal)e.Item.FindControl("litGenotype");
+
+                litGenotype.Text = suborder.GenoType.Name;
+            }
+        }
     }
 }

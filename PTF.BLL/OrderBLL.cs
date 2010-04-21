@@ -61,6 +61,8 @@ namespace CAESDO.PTF.BLL
 
         #region Modify Methods
         [PrincipalPermission(SecurityAction.Demand, Authenticated = true)]
+        [PrincipalPermission(SecurityAction.Deny, Role="User")]
+        [PrincipalPermission(SecurityAction.Deny, Role="Reader")]
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static void Insert(Order newOrder)
         {
@@ -87,6 +89,7 @@ namespace CAESDO.PTF.BLL
         }
 
         [PrincipalPermission(SecurityAction.Demand, Authenticated = true)]
+        [PrincipalPermission(SecurityAction.Deny, Role = "Reader")]
         public static void Update(Order order)
         {
             using (var ts = new TransactionScope())
