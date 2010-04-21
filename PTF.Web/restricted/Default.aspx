@@ -62,7 +62,7 @@
         OldValuesParameterFormatString="original_{0}" onselecting="odsOrders_Selecting" 
         SelectMethod="GetByUser" TypeName="CAESDO.PTF.BLL.OrderBLL">
         <SelectParameters>
-            <asp:Parameter DbType="Guid" Name="currentUser" />
+            <asp:Parameter Name="currentUser" />
         </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>

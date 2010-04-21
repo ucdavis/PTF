@@ -608,6 +608,100 @@ insert into genotypes (genotype, isactive) values ('PX-1', 1)
 	select @genotypeid = genotypeid from genotypes where genotype = 'Other'
 	insert into CropXGenotypes (CropID, GenotypeID) values (@cropid, @genotypeid)
 
+-- == Plant Selections == --
+declare @plantSelectionID int
+
+insert into plantselections (plantselection, isactive) values ('kanamycin', 1)
+
+	select @plantSelectionID = plantselectionid from plantselections where plantselection = 'kanamycin'
+	
+	select @cropid = cropid from crops where crop = 'Alfalfa'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Canola'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)	
+	
+	select @cropid = cropid from crops where crop = 'Carrot'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)	
+	
+	select @cropid = cropid from crops where crop = 'Citrus'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Cucumber'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Lettuce'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Melon'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Mimulus'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+
+	select @cropid = cropid from crops where crop = 'Petunia'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Potato'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Tobacco'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Tomato'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)		
+	
+	select @cropid = cropid from crops where crop = 'Walnut'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)		
+
+insert into plantselections (plantselection, isactive) values ('glufosinate', 1)
+
+	select @plantSelectionID = plantselectionid from plantselections where plantselection = 'glufosinate'
+	
+	select @cropid = cropid from crops where crop = 'Alfalfa'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Pepper'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Potato'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Tobacco'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Tomato'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Truncatula'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+
+insert into plantselections (plantselection, isactive) values ('hygromycin', 1)
+
+	select @plantSelectionID = plantselectionid from plantselections where plantselection = 'hygromycin'
+	
+	select @cropid = cropid from crops where crop = 'Canola'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Grape'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Lettuce'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)	
+
+	select @cropid = cropid from crops where crop = 'Petunia'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)	
+
+	select @cropid = cropid from crops where crop = 'Rice'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)	
+
+	select @cropid = cropid from crops where crop = 'Tobacco'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
+	select @cropid = cropid from crops where crop = 'Tomato'
+	insert into CropXPlantSelection (cropid, plantselectionid) values (@cropid, @plantselectionid)
+	
 -- == Agrostrains == --
 insert into agrostrains (agrostrain, isactive) values ('ABI', 1)
 insert into agrostrains (agrostrain, isactive) values ('AGL0', 1)
