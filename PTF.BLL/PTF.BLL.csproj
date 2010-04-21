@@ -8,8 +8,8 @@
     <ProjectGuid>{803AB19A-B148-487D-99A8-E3FF8BE222F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PTF.BLL</RootNamespace>
-    <AssemblyName>PTF.BLL</AssemblyName>
+    <RootNamespace>CAESDO.PTF.BLL</RootNamespace>
+    <AssemblyName>CAESDO.PTF.BLL</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenericBLL.cs" />
+    <Compile Include="LookupsBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
