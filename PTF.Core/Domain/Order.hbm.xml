@@ -30,6 +30,7 @@
 
 
 		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
+		<property name="Cultivar" column="Cultivar" />
 		<property name="NumberOfPlants" column="NumberOfPlants" />
 		<property name="Plasmid" column="Plasmid" />
 		<property name="BacterialSelection" column="BacterialSelection" />
@@ -53,5 +54,7 @@
 		<property name="ContractNumber" column="ContractNumber" />
 		<property name="ShippingPermit" column="ShippingPermit" />
 
+		<property name="OtherUCResearch" column="OtherUCResearch" />
+		
 	</class>
 </hibernate-mapping>

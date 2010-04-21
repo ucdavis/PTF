@@ -51,6 +51,8 @@ namespace CAESDO.PTF.Core.Domain
         
         
         public virtual Crop Crop { get; set; }
+        [StringLengthValidator(50)]
+        public virtual string Cultivar { get; set; }
         [RangeValidator(0, RangeBoundaryType.Exclusive, 99999, RangeBoundaryType.Inclusive)]
         public virtual int NumberOfPlants { get; set; }
         [StringLengthValidator(50)]
@@ -98,5 +100,7 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string ContractNumber { get; set; }
         //[RegexValidator("^\d{2}-\d{3}-\d{3}[nm]$")]
         public virtual string ShippingPermit { get; set; }
+        [NotNullValidator]
+        public virtual bool OtherUCResearch { get; set; }
     }
 }

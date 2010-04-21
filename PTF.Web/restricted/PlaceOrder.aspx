@@ -75,9 +75,8 @@
                         <ContentTemplate>
                             State/Province/Region<br />
                             <asp:TextBox ID="tbMailingState" runat="server" Width="160px" Visible="false" MaxLength="50"></asp:TextBox>                        
-                            <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" AppendDataBoundItems='true'
-                                DataTextField="Name" DataValueField="ID">
-                                <asp:ListItem Text="--Please Select State--" Value="-1" />
+                            <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
+                                <asp:ListItem Text="--Select a State--" Value="-1" />
                             </asp:DropDownList>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -95,10 +94,12 @@
             <td>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
+                        Country: 
                         <asp:DropDownList ID="ddlMailingCountry" runat="server" 
                             DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" AutoPostBack='true' 
                             AppendDataBoundItems="True" 
                             onselectedindexchanged="ddlMailingCountry_SelectedIndexChanged" >
+                            <asp:ListItem Text="--Select a Country--" Value="-1" />
                         </asp:DropDownList>                    
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -139,11 +140,11 @@
                     State/Province/Region<br />
                     <asp:UpdatePanel ID="upShippingState" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
-                            <asp:TextBox ID="tbShippingState" runat="server" Visible=false Width="160px" MaxLength="50"></asp:TextBox>
-                            <asp:DropDownList ID="ddlShippingState" runat="server" DataSourceID="odsState" 
-                                DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
-                                <asp:ListItem Text="--Please Select State--" Value="-1" />
-                            </asp:DropDownList>
+                            <asp:TextBox ID="tbShippingState" runat="server" Visible="false" Width="160px" MaxLength="50"></asp:TextBox>
+                            <asp:DropDownList ID="ddlShippingState" runat="server" DataSourceID="odsState" Width="160px" 
+                                DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True" Enabled=false>
+                                <asp:ListItem Text="--Select a State--" Value="-1" />
+                             </asp:DropDownList>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                     
@@ -160,10 +161,12 @@
             <td>
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
+                        Country: 
                         <asp:DropDownList ID="ddlShippingCountry" runat="server" 
                             DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" 
-                            onselectedindexchanged="ddlShippingCountry_SelectedIndexChanged" 
+                            onselectedindexchanged="ddlShippingCountry_SelectedIndexChanged" AppendDataBoundItems=true
                             AutoPostBack="True">
+                            <asp:ListItem Text="--Select a Country--" Value="-1" />
                         </asp:DropDownList>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -183,6 +186,7 @@
             <td>
                 <asp:TextBox ID="tbContactEmail" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvContactEmail" runat="server" ControlToValidate="tbContactEmail" ErrorMessage="E-mail is required." ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="revContactEmail" runat="server" ControlToValidate="tbContactEmail" Text="*" ErrorMessage="E-mail is not in the correct format." ValidationGroup="NewOrder" ValidationExpression="^((([a-z]|[0-9]|!|#|$|%|&|'|\*|\+|\-|/|=|\?|\^|_|`|\{|\||\}|~)+(\.([a-z]|[0-9]|!|#|$|%|&|'|\*|\+|\-|/|=|\?|\^|_|`|\{|\||\}|~)+)*)@((((([a-z]|[0-9])([a-z]|[0-9]|\-){0,61}([a-z]|[0-9])\.))*([a-z]|[0-9])([a-z]|[0-9]|\-){0,61}([a-z]|[0-9])\.(af|ax|al|dz|as|ad|ao|ai|aq|ag|ar|am|aw|au|at|az|bs|bh|bd|bb|by|be|bz|bj|bm|bt|bo|ba|bw|bv|br|io|bn|bg|bf|bi|kh|cm|ca|cv|ky|cf|td|cl|cn|cx|cc|co|km|cg|cd|ck|cr|ci|hr|cu|cy|cz|dk|dj|dm|do|ec|eg|sv|gq|er|ee|et|fk|fo|fj|fi|fr|gf|pf|tf|ga|gm|ge|de|gh|gi|gr|gl|gd|gp|gu|gt| gg|gn|gw|gy|ht|hm|va|hn|hk|hu|is|in|id|ir|iq|ie|im|il|it|jm|jp|je|jo|kz|ke|ki|kp|kr|kw|kg|la|lv|lb|ls|lr|ly|li|lt|lu|mo|mk|mg|mw|my|mv|ml|mt|mh|mq|mr|mu|yt|mx|fm|md|mc|mn|ms|ma|mz|mm|na|nr|np|nl|an|nc|nz|ni|ne|ng|nu|nf|mp|no|om|pk|pw|ps|pa|pg|py|pe|ph|pn|pl|pt|pr|qa|re|ro|ru|rw|sh|kn|lc|pm|vc|ws|sm|st|sa|sn|cs|sc|sl|sg|sk|si|sb|so|za|gs|es|lk|sd|sr|sj|sz|se|ch|sy|tw|tj|tz|th|tl|tg|tk|to|tt|tn|tr|tm|tc|tv|ug|ua|ae|gb|us|um|uy|uz|vu|ve|vn|vg|vi|wf|eh|ye|zm|zw|com|edu|gov|int|mil|net|org|biz|info|name|pro|aero|coop|museum|arpa))|(((([0-9]){1,3}\.){3}([0-9]){1,3}))|(\[((([0-9]){1,3}\.){3}([0-9]){1,3})\])))$" ></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
@@ -235,6 +239,9 @@
                 Number of Plants:</td>
             <td>
                 <asp:TextBox ID="tbNumberofPlants" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                    ControlToValidate="tbNumberofPlants" ErrorMessage="Number of Plants is not a number." Text="*" ValidationExpression="\d*"
+                    ValidationGroup="NewOrder">*</asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
@@ -306,7 +313,7 @@
             <td>
                 <asp:DropDownList ID="ddlTransGene" runat="server" DataSourceID="odsTransGene" 
                     DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
-                        <asp:ListItem Text="--Please Select Transgene--" Value="-1" />
+                        <asp:ListItem Text="--Select Transgene--" Value="-1" />
                 </asp:DropDownList>
             </td>
         </tr>
