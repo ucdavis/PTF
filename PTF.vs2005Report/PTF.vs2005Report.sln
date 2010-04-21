@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PTF.vs2005Report", "PTF.vs2005Report.rptproj", "{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://cubert:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PTF.vs2005Report.rptproj
+		SccLocalPath1 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+		Test|Default = Test|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Debug|Default.ActiveCfg = Debug
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Debug|Default.Build.0 = DebugLocal
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Debug|Default.Deploy.0 = DebugLocal
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.DebugLocal|Default.Build.0 = DebugLocal
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Production|Default.ActiveCfg = Production
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Production|Default.Build.0 = Production
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Production|Default.Deploy.0 = Production
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Test|Default.ActiveCfg = Test
+		{4E15BDE6-C6E1-4E81-AFD8-411CB6D0EF3E}.Test|Default.Deploy.0 = Test
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
