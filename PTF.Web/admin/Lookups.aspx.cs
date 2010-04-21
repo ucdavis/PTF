@@ -139,13 +139,13 @@ public partial class Lookups : System.Web.UI.Page
                 {
                     crop.GenoTypes.Add(gt);
                 }
-                else // not selected, make sure it isn't in the list
+            }
+            else // not selected, make sure it isn't in the list
+            {
+                // contained, remove it from the list
+                if (crop.GenoTypes.Contains(gt))
                 {
-                    // contained, remove it from the list
-                    if (crop.GenoTypes.Contains(gt))
-                    {
-                        crop.GenoTypes.Remove(gt);
-                    }
+                    crop.GenoTypes.Remove(gt);
                 }
             }
         }

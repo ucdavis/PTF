@@ -57,7 +57,10 @@ public class PTFWS : System.Web.Services.WebService
 
         foreach (PlantSelection ps in CropBLL.GetByID(cropID).PlantSelections)
         {
-            values.Add(new CascadingDropDownNameValue(ps.Name, ps.ID.ToString()));
+            if (ps.IsActive)
+            {
+                values.Add(new CascadingDropDownNameValue(ps.Name, ps.ID.ToString()));
+            }
         }
 
         return values.ToArray();
@@ -77,7 +80,10 @@ public class PTFWS : System.Web.Services.WebService
 
         foreach (GenoType gt in CropBLL.GetByID(cropID).GenoTypes)
         {
-            values.Add(new CascadingDropDownNameValue(gt.Name, gt.ID.ToString()));
+            if (gt.IsActive)
+            {
+                values.Add(new CascadingDropDownNameValue(gt.Name, gt.ID.ToString()));
+            }
         }
 
         return values.ToArray();

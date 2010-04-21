@@ -728,6 +728,7 @@ insert into agrostrains (agrostrain, isactive) values ('GV3101', 1)
 insert into agrostrains (agrostrain, isactive) values ('GV3101pMP90RK', 1)
 insert into agrostrains (agrostrain, isactive) values ('GV2260', 1)
 insert into agrostrains (agrostrain, isactive) values ('LBA4404', 1)
+insert into agrostrains (agrostrain, isactive) values ('Other', 1)
 
 -- == Membership == --
 insert into aspnet_SchemaVersions (Feature, CompatibleSchemaVersion, IsCurrentVersion) values ('common', '1', 1)

@@ -228,7 +228,7 @@ public partial class admin_Order : System.Web.UI.Page
                 plantSelectionList.Remove(PlantSelectionBLL.GetByName(STR_Other));
 
                 // populate the drop down based on the crop
-                ddlPlantSelection.DataSource = plantSelectionList;
+                ddlPlantSelection.DataSource = plantSelectionList.Where(pl => pl.IsActive == true);
                 ddlPlantSelection.DataBind();
 
                 var pnlPlantSelection = (Panel)e.Item.FindControl("pnlPlantSelection");
@@ -254,7 +254,7 @@ public partial class admin_Order : System.Web.UI.Page
                 genotypeList.Remove(GenoTypeBLL.GetByName(STR_Other));
 
                 // populate the drop down based on the crop
-                ddlGenotype.DataSource = genotypeList;
+                ddlGenotype.DataSource = genotypeList.Where(gt => gt.IsActive == true);
                 ddlGenotype.DataBind();
 
                 var pnlGenotype = (Panel)e.Item.FindControl("pnlGenotype");

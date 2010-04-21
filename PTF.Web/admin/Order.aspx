@@ -305,32 +305,7 @@
             <asp:ImageButton ID="btnCancel" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
     <h2>New Construct</h2>
-        
-<%--        <asp:GridView ID="gvSuborder" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="id" onselectedindexchanged="gvSuborder_SelectedIndexChanged" Width="375px" OnRowDataBound="gvSuborder_RowDataBound">
-            <Columns>
-                
-                <asp:CommandField ShowSelectButton="True" ButtonType="Image" SelectImageUrl="~/Images/btn_select.png" />
-                
-                <asp:BoundField DataField="NumberOfPlants" HeaderText="# Plants" SortExpression="NumberOfPlants" />
-                <asp:TemplateField HeaderText="Crop">
-                    <ItemTemplate>
-                        <%# Eval("Crop.Name") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Plant Selection">
-                    <ItemTemplate>
-                        <%# Eval("PlantSelection.Name") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Genotype">
-                    <ItemTemplate>
-                        <%# Eval("GenoType.Name") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>--%>
-        
+               
         <asp:ListView ID="lvSubOrder" runat="server" DataKeyNames="id" >
             <LayoutTemplate>
             <div class="grid">
