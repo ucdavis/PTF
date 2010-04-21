@@ -10,7 +10,7 @@
     <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders">
         <LayoutTemplate>
             <div class="grid">
-                <table id="orders" cellpadding="20" cellspacing="0">
+                <table id="orders" cellpadding="15" cellspacing="0">
                     <tr class="head">
                         <th class="first"></th>
                         <th>Order ID</th>
@@ -24,20 +24,20 @@
                         <th>Status</th>
                     </tr>
                     <tr id="ItemPlaceHolder" runat="server"></tr>
-                </table>
-                <table id="pager" cellpadding="20" cellspacing="0">
+<%--                </table>
+                <table id="pager" cellpadding="20" cellspacing="0">--%>
                     <tr class="pager">
                         <asp:DataPager ID="pager" runat="server" PageSize="10">
                             <Fields>
                                 <asp:TemplatePagerField OnPagerCommand="PagerCommand">
                                     <PagerTemplate>
-                                        <td class="commands">
+                                        <td class="commands" colspan="7">
                                             <asp:ImageButton ID="btnFirst" runat="server" CommandName="First" ImageUrl="~/Images/first.gif" AlternateText="First Page" ToolTip="First Page" />
                                             <asp:ImageButton ID="btnPrevious" runat="server" CommandName="Previous" ImageUrl="~/Images/prev.gif" AlternateText="Previous Page" ToolTip="Previous Page" />    
                                             <asp:ImageButton ID="btnNext" runat="server" CommandName="Next" ImageUrl="~/Images/next.gif" AlternateText="Next Page" ToolTip="Next Page" />
                                             <asp:ImageButton ID="btnLast" runat="server" CommandName="Last" ImageUrl="~/Images/last.gif" AlternateText="Last Page" ToolTip="Last Page" />                                                                                                           
                                         </td>
-                                        <td class="info">
+                                        <td class="info" colspan="3">
                                             Page 
                                             <b>
                                                 <%# Container.TotalRowCount > 0 ? Math.Ceiling(((double)(Container.StartRowIndex + Container.MaximumRows) / Container.MaximumRows)) : 0 %>

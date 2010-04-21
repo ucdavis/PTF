@@ -22,11 +22,11 @@
 
     <table class="InfoTable">
         <tr>
-            <td class="InfoFieldName">Order:&nbsp;</td>
-            <td class="InfoFieldValue">
+            <td class="InfoFieldName col1">Order:&nbsp;</td>
+            <td class="InfoFieldValue col2">
                 <asp:Literal ID="litOrderID" runat="server"></asp:Literal></td>
-            <td class="InfoFieldName">Date Requested:&nbsp;</td>
-            <td class="InfoFieldValue">
+            <td class="InfoFieldName col3">Date Requested:&nbsp;</td>
+            <td class="InfoFieldValue col4">
                 <asp:Literal ID="litDateRequested" runat="server"></asp:Literal></td>            
         </tr>
     </table>
@@ -45,11 +45,11 @@
     <asp:Panel ID="pnlCustomerInfoBody" runat="server" class="CollapsiblePanelBody">
        <table class="InfoTable">
             <tr>
-                <td class="InfoFieldName">PI:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="InfoFieldName col1">PI:&nbsp;</td>
+                <td class="InfoFieldValue col2">
                     <asp:Literal ID="litPI" runat="server"></asp:Literal></td>
-                <td class="InfoFieldName">Contact Phone:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="InfoFieldName col3">Contact Phone:&nbsp;</td>
+                <td class="InfoFieldValue col4">
                     <asp:Literal ID="litContactPhone" runat="server"></asp:Literal></td>            
             </tr>
             <tr>
@@ -125,11 +125,11 @@
     <asp:Panel ID="pnlOrderInfoBody" runat="server" class="CollapsiblePanelBody">
         <table class="InfoTable">
             <tr>
-                <td class="InfoFieldName">PI Code:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="InfoFieldName col1">PI Code:&nbsp;</td>
+                <td class="InfoFieldValue col2">
                     <asp:Literal ID="litPICode" runat="server"></asp:Literal></td>
-                <td class="InfoFieldName">Construct Name:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="InfoFieldName col3">Construct Name:&nbsp;</td>
+                <td class="InfoFieldValue col4">
                     <asp:Literal ID="litConstructName" runat="server"></asp:Literal></td>            
             </tr>        
             <tr>

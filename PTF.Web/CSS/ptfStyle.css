@@ -1,0 +1,117 @@
+﻿
+/* -------------------------------------------- */
+/*   layout styles                              */
+/* -------------------------------------------- */
+
+body 
+{
+  min-width: 1040px;
+  margin: 0 auto; 
+  background: url(../Images/bg_body.jpg) repeat-x;
+  text-align: left;
+}
+
+#all {height: 147px; text-align: center; background: url(../Images/bg_header.jpg) repeat-x;}
+#header {width: 1160px; margin: 0px auto; text-align: left;}
+#logo {text-align: left; width: 430px;}
+#login {float: right; width: 300px;}
+#content {width: 1040px; margin: 6em auto; padding-bottom: 3em; text-align: left;}
+
+.clear {clear: both;}
+#portal-footer {margin-top: 0px; background: transparent; border: 0px;}
+
+
+
+/* -------------------------------------------- */
+/*   nav styles                                 */
+/* -------------------------------------------- */
+
+#login {color: White; text-transform: uppercase; font-size: .7em; letter-spacing: 2px; font-weight: bold; line-height: 3em; margin-top: 2px; text-align: right;}
+#login a:hover {color: white; border-bottom: 1px;}
+
+
+
+/* -------------------------------------------- */
+/*   general styles                             */
+/* -------------------------------------------- */
+
+body {font-family: Trebuchet MS, Futura, Arial, Univers, Helvetica, Verdana, Sans-Serif; font-size: 14px;}
+
+a, a:visited {text-decoration: none; color: #d67129;}
+a:link {color: #d67129}
+a:hover, a:active {color: #660066}
+a img, a:visited img {border: 0px none;}
+
+p {line-height: 20px; margin: 1em 0 1.5em;}
+ul {list-style-image: none;}
+
+h1, h2, h3, h4, h5, h6 {border: 0px; color: #4f2056; font-family: inherit;}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: #d67129 !important}
+h1 a:hover, h2 a:hover, h3 a:hover, 
+h4 a:hover, h5 a:hover, h6 a:hover {color: #4f2056 !important; border-bottom: 1px #4f2056 solid;}
+h2 {font-weight: bold; font-size: 1.2em; color: #4f2056}
+h3 {font-size: 1em; font-weight: bold; color: #4f2056; line-height: 1.5em;}
+h4 {color: #4f2056}
+
+h1 {color: #D67129; height: 33px; padding-left: 10px; padding-top: 8px;}
+
+blockquote {
+ float: right; width: 200px;
+ border: 0px;
+ border-bottom: 1px solid #ccc;
+ border-top: 3px solid #ccc;
+ margin: 5px 0px 5px 20px;
+ padding: 1em 0px; 
+ color: #000;
+ font-size: 1.4em;
+ font-style: italic;
+ line-height: 1.1em;
+}
+
+cite {
+ display: block;
+ font-size: .7em;
+ font-style: normal;
+ line-height: 1em;
+ padding: 1em 0 0;}
+
+
+
+/* -------------------------------------------- */
+/*   table styles                               */
+/* -------------------------------------------- */
+
+.grid {border: 0px none;}
+table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 910px; padding-bottom: 40px;}
+tbody {background: url(../Images/table_mid.png) repeat-y top center;}
+tr {background: url(../Images/table_row.png) repeat-y top center;}
+tr.head {background: url(../Images/table_top.png) no-repeat top center;
+  color: #fff; font-size: .9em;
+  vertical-align: bottom;
+  text-transform: uppercase;         
+}
+td {vertical-align: top; font-size: 0.9em; color: #747474;}
+td p {margin-top: 0px;}
+tr#footer {url(../Images/table_btm.png) no-repeat bottom left;}
+
+tr.pager td.info {text-align: right;}
+
+table#orders td a {font-size: 1.5em; font-weight: bold;}
+table#suborders td {font-size: 1.3em;}
+
+table.InfoTable, table.InfoTable tbody, table.InfoTable tr, table.InfoTable tr.head {background: transparent;}
+
+table.InfoTable {}
+table.InfoTable td {padding-bottom: 0.5em; }
+td.InfoFieldName {text-align: left; color: #000; font-size: 0.9em; /*padding-top: 6px;*/}
+td.InfoFieldValue {}
+td.col1, td.col3 {width: 28%;}
+td.col2, td.col4 {width: 22%;}
+
+div.CollapsiblePanelHeader div {}
+div.CollapsiblePanelHeader div span {color: #d67129}
+
+
+/* -------------------------------------------- */
+/*   page specific styles                       */
+/* -------------------------------------------- */

@@ -11,6 +11,7 @@
     </asp:ContentPlaceHolder>
     
     <link href="CSS/Main.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/ptfStyle.css" rel="stylesheet" type="text/css" />
 
     <link rel="SHORTCUT ICON" href="Images/ptf.ico" />
 
@@ -31,28 +32,30 @@
         </asp:UpdateProgress>
     </div>
     
-    <div>
-        <div style="float:right">
-            <a href="Default.aspx">Home</a> &nbsp;|&nbsp;
+    <div id="all">
+    <div id="header">
+        <div id="logo">
+        <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx"><asp:Image ID="Logo" ImageUrl="~/Images/logo.jpg" runat="server" alt="Plant Transformation Facility" /></asp:HyperLink>
+        </div>
+        <div id="login">
+            <%--<a href="Default.aspx">Home</a> &nbsp;|&nbsp; --%>
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
                     <asp:LoginStatus ID="LoginStatus2" runat="server" />
                 </AnonymousTemplate>
                 <LoggedInTemplate>                
                     <asp:LoginName ID="LoginName1" runat="server" />
-                    (
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" 
-                        onloggingout="LoginStatus1_LoggingOut" />
-                    )                
+                    (<asp:LoginStatus ID="LoginStatus1" runat="server" 
+                        onloggingout="LoginStatus1_LoggingOut" />)                
                 </LoggedInTemplate>
             </asp:LoginView>
         </div>
-
-        <div style="float:left">
+    </div>
+    <div id="content">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             
             </asp:ContentPlaceHolder>
-        </div>
+    </div>
     </div>
     </form>
 </body>

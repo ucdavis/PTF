@@ -28,11 +28,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <table class="InfoTable">
         <tr>
-            <td class="InfoFieldName">Construct Code:&nbsp;</td>
-            <td class="InfoFieldValue">
+            <td class="InfoFieldName col1">Construct Code:&nbsp;</td>
+            <td class="InfoFieldValue col2">
                 <asp:Literal ID="litConstructCode" runat="server"></asp:Literal></td>
-            <td class="InfoFieldName">Plant Selection:&nbsp;</td>
-            <td class="InfoFieldValue">
+            <td class="InfoFieldName col3">Plant Selection:&nbsp;</td>
+            <td class="InfoFieldValue col4">
                 <asp:Literal ID="litPlantSelection" runat="server"></asp:Literal></td>
         </tr>
         <tr>
