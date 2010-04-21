@@ -5,9 +5,9 @@ var regular = "";
 // var mouseOver = "#85b33c";
 // var highLightedMouseOver = "#b85813";
 var highLighted = "orange";
-var mouseOver = "green";
-var highLightedMouseOver = "red";
-var error = "blue";
+var mouseOver = "yellowgreen";
+var highLightedMouseOver = "gold"; 
+var error = "mediumturquoise";
 
 function ChangeHighlight(row)
 {

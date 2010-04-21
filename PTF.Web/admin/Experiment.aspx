@@ -52,7 +52,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="6"></td>
+            <td colspan="6"><br /></td>
         </tr>
         <tr>
             <td class="InfoFieldName">Trait:&nbsp;</td>
@@ -180,7 +180,7 @@
         </EmptyDataTemplate>  
     </asp:ListView>
     
-    <AjaxControlToolkit:ModalPopupExtender ID="mpeMakeNote" runat="server" TargetControlID="btnMakeNote" PopupControlID="pnlMakeNote" CancelControlID="btnCancelMakeNote">
+    <AjaxControlToolkit:ModalPopupExtender ID="mpeMakeNote" BackgroundCssClass="popup_shadow" runat="server" TargetControlID="btnMakeNote" PopupControlID="pnlMakeNote" CancelControlID="btnCancelMakeNote">
     </AjaxControlToolkit:ModalPopupExtender>
     <asp:Panel ID="pnlMakeNote" runat="server" style="display:none;">
     <div class="popup">
@@ -285,7 +285,7 @@
     </asp:ListView>
     
     <asp:Button runat="server" ID="btnDummyPlantNote" Text="DUmmy" style="display:none;" />
-    <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
+    <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" BackgroundCssClass="popup_shadow" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
     </AjaxControlToolkit:ModalPopupExtender>
     <asp:Panel ID="pnlPlantNote" runat="server" style="display: none;">
     <div class="popup">
@@ -296,7 +296,7 @@
         <asp:TextBox runat='server' ID="tbPlantID" style="display:none;" ></asp:TextBox>
         
         
-        <asp:TextBox ID="tbPlantComment" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
+        <asp:TextBox ID="tbPlantComment" runat="server" TextMode="MultiLine" Height="138px" Width="328px"></asp:TextBox>
         <a id="SavePlantComments" onclick='SavePlantComments("<%= tbPlantID.ClientID %>", "PlantComment", "<%= tbPlantComment.ClientID %>", "Plant");'><img src="../Images/save.png" width="20px" alt="save" /></a>
         <span id="PlantComment"></span>
     </div>

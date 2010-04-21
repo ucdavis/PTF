@@ -79,8 +79,8 @@
                     <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
                 <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:TextBox ID="tbContractNumber" runat="server" Width="75px"></asp:TextBox>&nbsp;
-                    <a id="ContractNumberButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");'><img src="../Images/save.png" width="20px" alt="save" /></a>
+                    <asp:TextBox ID="tbContractNumber" runat="server" Width="75px" class="disabled"></asp:TextBox>&nbsp;
+                    <a id="ContractNumberButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ContractNumber", "<%= tbContractNumber.ClientID %>", "Order");' class="hidden"><img src="../Images/save.png" width="20px" alt="save" /></a>
                     <span id="ContractNumber"></span>
                 </td>            
             </tr>
@@ -287,7 +287,7 @@
                         </LayoutTemplate>
                         <ItemTemplate>
                             <tr id="row2" runat="server" class="item">
-                                <td><a href='<%# "Construct.aspx?cid=" + Eval("id") %>'><%# Eval("ConstructCode") %></a></td>
+                                <td class="firstnum"><a href='<%# "Construct.aspx?cid=" + Eval("id") %>'><%# Eval("ConstructCode") %></a></td>
                                 <td><%# Eval("DateCreated", "{0:d}") %></td>
                                 <td><%# Eval("RechargeAmount") %></td>
                                 <td><%# Eval("Status.Name") %></td>
@@ -333,7 +333,7 @@
     </div>
     <p class="popup_bottom">&nbsp;</p>
     </asp:Panel>
-    <AjaxControlToolkit:ModalPopupExtender ID="mpeNewConstruct" runat="server" TargetControlID="btnNewConstruct" CancelControlID="btnCancel" PopupControlID="pnlNewConstruct">
+    <AjaxControlToolkit:ModalPopupExtender ID="mpeNewConstruct" runat="server" BackgroundCssClass="popup_shadow" TargetControlID="btnNewConstruct" CancelControlID="btnCancel" PopupControlID="pnlNewConstruct">
     </AjaxControlToolkit:ModalPopupExtender>
 </ContentTemplate>
 </asp:UpdatePanel> 

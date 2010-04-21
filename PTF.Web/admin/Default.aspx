@@ -50,15 +50,12 @@
     <li><a href=Labels.aspx><img src="../Images/menu_labels.png" title="Labels" /></a></li>
     <li><a href=ExistingData/Default.aspx><img src="../Images/menu_archive.png" title="Archived Data" /></a></li>
     </ul>
-    <br /><br />
-    Construct Lookup:
-    <asp:TextBox ID="tbConstructLookup" runat="server"></asp:TextBox>
-    <asp:LinkButton ID="lbConstructLookup" runat="server" OnClientClick="ValidateConstruct(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
-    <br />
-    <br />
-    Experiment Lookup:
-    <asp:TextBox ID="tbExperimentLookup" runat="server"></asp:TextBox>
-    <asp:LinkButton ID="lbExperimentLookup" runat="server" OnClientClick="ValidateExperiment(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
+    <asp:Panel ID="pnlEmulation" runat="server" Visible="false" class="menu">
+        <asp:TextBox ID="tbUserToEmulate" runat="server"></asp:TextBox>
+        <asp:ImageButton ID="btnEmulate" runat="server" Text="Emulate User" onclick="btnEmulate_Click" ImageUrl="../Images/btn_emulateuser.png" />
+        <asp:Literal ID="litCurrentEmulation" runat="server" Visible="false"></asp:Literal>
+        <asp:Button ID="btnExitEmulation" runat="server" Text="Exit Emulation" onclick="btnExitEmulation_Click" Visible="false" />
+        </asp:Panel>
     </div>
     <ul class="menu">
     <li><a href=Orders.aspx><img src="../Images/menu_orders.png" title="Orders" /></a></li>
@@ -70,12 +67,15 @@
     <li><a href=Billing.aspx><img src="../Images/menu_billing.png" title="Billing" /></a></li>
     <li><a href=Labels.aspx><img src="../Images/menu_labels.png" title="Labels" /></a></li>--%>
     </ul>
-    <br /><br />
-    <asp:Panel ID="pnlEmulation" runat="server" Visible="false">
-        <asp:TextBox ID="tbUserToEmulate" runat="server"></asp:TextBox>
-        <asp:Button ID="btnEmulate" runat="server" Text="Emulate User" onclick="btnEmulate_Click" />
-        <asp:Literal ID="litCurrentEmulation" runat="server" Visible="false"></asp:Literal>
-        <asp:Button ID="btnExitEmulation" runat="server" Text="Exit Emulation" onclick="btnExitEmulation_Click" Visible="false" />
-    </asp:Panel>
+    <div class="menu clookup">
+    <%--Construct Lookup:--%>
+    <asp:TextBox ID="tbConstructLookup" runat="server"></asp:TextBox>
+    <asp:LinkButton ID="lbConstructLookup" runat="server" OnClientClick="ValidateConstruct(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
+    </div>
+    <div class="menu elookup">
+    <%--Experiment Lookup:--%>
+    <asp:TextBox ID="tbExperimentLookup" runat="server"></asp:TextBox>
+    <asp:LinkButton ID="lbExperimentLookup" runat="server" OnClientClick="ValidateExperiment(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
+    </div>
 </asp:Content>
 

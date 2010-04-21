@@ -98,14 +98,14 @@
     <asp:ListView ID="lvExperiments" runat="server">
         <LayoutTemplate>
             <div class="grid">
-                <table cellpadding="10" cellspacing="0" class="experiments">
+                <table cellpadding="10" cellspacing="0" class="construct">
                     <tr class="head">
-                        <th class="first"></th>
-                        <th>Experiment Code</th>
-                        <th>Operator</th>
-                        <th>Explant</th>
-                        <th>Optical Density</th>
-                        <th>Comments</th>
+                        <th class="first col1"></th>
+                        <th class="col2">Experiment Code</th>
+                        <th class="col3">Operator</th>
+                        <th class="col4">Explant</th>
+                        <th class="col5">Optical Density</th>
+                        <th class="col6">Comments</th>
                     </tr>
                     <tr runat='server' id="itemplaceholder"></tr>
                 </table>
@@ -114,7 +114,7 @@
         <ItemTemplate>  
             <tr id="row" runat='server' class="group">
                 <td class="first"></td>
-                <td><a href='<%# "Experiment.aspx?eid=" + Eval("id") %>'><%# Eval("ExperimentCode") %></a></td>
+                <td class="firstnum"><a href='<%# "Experiment.aspx?eid=" + Eval("id") %>'><%# Eval("ExperimentCode") %></a></td>
                 <td><%# Eval("Operator.OperatorName") %></td>
                 <td><%# Eval("Explant") %></td>
                 <td><%# Eval("OpticalDensity")%></td>
@@ -172,7 +172,7 @@
     </div>
     <p class="popup_bottom">&nbsp;</p>
     </asp:Panel>
-    <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
+    <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" BackgroundCssClass="popup_shadow" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
     </AjaxControlToolkit:ModalPopupExtender>
        
     <asp:ObjectDataSource ID="odsOperators" runat="server" 

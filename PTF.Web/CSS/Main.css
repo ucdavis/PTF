@@ -63,8 +63,8 @@ body {
 .grid
 {
  	border:solid 2px #a5a4bd;        	
-	/*font-family:Tahoma;*/
-	font-size:12px;
+	/*font-family:Tahoma;
+	font-size:12px;*/
 }
 .grid H2
  {
@@ -116,8 +116,8 @@ body {
  .grid #orders .item TD
  {
  	/*padding:3px 0px 3px 6px; 
- 	border-bottom:solid 1px #eae9e1; */
- 	color:#222222;       	
+ 	border-bottom:solid 1px #eae9e1;
+ 	color:#222222;       	 */
  } 
  
  /* pager */    

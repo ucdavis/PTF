@@ -28,7 +28,14 @@ body
 
 ul.menu {padding: 0px; margin: 0px; list-style: none;}
 ul.menu li {padding: 8px 0px;}
+div.menu {background: url(../Images/menu_bg.png) no-repeat center center; height: 65px; width: 327px; padding: 10px 0px 0px 20px; margin: 8px 0px;}
+div.menu.elookup {background: url(../Images/menu_explookup.png) no-repeat center center; height: 52px; width: 147px; padding: 23px 0px 0px 200px;}
+div.menu.clookup {background: url(../Images/menu_constructlookup.png) no-repeat center center; height: 52px; width: 147px; padding: 23px 0px 0px 200px;}
+div.menu.elookup input, div.menu.clookup input {width: 100px;}
+div.menu.elookup img, div.menu.clookup img {position: relative; top: 5px;}
 div.lookups {float: right; width: 500px; /* margin-top: 20px; */}
+
+div.menu input[type="image"] {position: relative; top: 14px;}
 
 #footer {margin: 100px auto; padding-bottom: 2em; font-size: 0.9em; background: url(../Images/roots.png) no-repeat 0px 38px; width: 519px; height: 100px;}
 
@@ -114,6 +121,8 @@ span.right {float: right;}
 /*.dropdown a:link, .dropdown a:visited {color: #d67129}
 .dropdown a:hover, .dropdown a:active {color: #638C24}*/
 
+input.disabled {background: transparent; border: none;}
+
 
 
 /* -------------------------------------------- */
@@ -128,7 +137,7 @@ table {background: url(../Images/table_btm.png) no-repeat bottom center; width: 
 tbody {background: url(../Images/table_mid.png) repeat-y 1px top;}
 tr {background: url(../Images/table_row.png) repeat-y top center; width: 64px}
 tr.head {background: url(../Images/table_top.png) no-repeat top center;
-  color: #fff; font-size: .9em;
+  color: #fff; font-size: .8em;
   vertical-align: bottom;
   text-transform: uppercase;
   height: 60px;         
@@ -141,17 +150,19 @@ tr.pager td.info {text-align: right;}
 td.first {padding-left: 20px;}
 
 td a {font-weight: bold;}
-table#suborders td.firstnum, table.experiments td.firstnum, table#dataTable td.firstnum {font-size: 1.5em; font-weight: bold;}
+table#suborders td.firstnum, table.construct td.firstnum, table#dataTable td.firstnum {font-size: 1.5em; font-weight: bold;}
+table#suborders table td.firstnum {font-size: 1.25em;}
 
 
 /* --- subtables --- */
 table table, table table tbody, table table tr, table table tr.head {background: transparent; width: inherit;}
-table table {width: 785px; padding-bottom: 0px;}
-table table td {font-size: 1.1em;}
+table table {width: 869px; padding-bottom: 0px;}
+table table th {color: #222;}
+table table td {color: #545454; font-size: 1em;}
 tr#row {background: transparent;}
 tr#row td {}
 tr#row table th {font-weight: bold;}
-tr#row table tr.head {height: auto; color: #000; 
+tr#row table tr.head {height: auto; color: #000;                      
     /* border-bottom: 1px solid #222; background: url(../Images/subtable_top.png); height: 25px */
 }
 
@@ -163,13 +174,27 @@ tr#row table th.col5 {width: 19%;}
 tr#row table th.col6 {width: 103px;}*/
 
 
+#suborders .col1 {width: 8.5%;}
+#suborders .col2 {width: 28.5%;}
+#suborders .col3 {width: 33%;}
+#suborders .col4 {width: 25%;}
+#suborders .col5 {width: 5%;}
+
+
 
 /* --- data tables --- */
 table#orders td a {font-size: 1.5em; font-weight: bold;}
-table#suborders td, table.experiments td, table#dataTable td {font-size: 1.3em;} 
+/*table#suborders td, */
+table#dataTable td {font-size: 1.3em;} 
 table#dataTable td {line-height: 2em;}
 table#suborders td td {font-size: 1em;}
 
+table.construct td {} 
+table.construct .col6 {width: 40%}
+table.construct tr {background-repeat: no-repeat; background-position: center bottom}
+table.construct tr.head {background-position: center top}
+
+table.experiment td {vertical-align: middle}
 table.experiment tr.head th, table.dataTable tr.head th {padding-bottom: 1em;}
 
 
@@ -181,9 +206,9 @@ table.InfoTable tr.head {height: auto; color: #000; font-size: 1.2em; letter-spa
 table.InfoTable tr.head td {font-size: 1.1em; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 0px;}
 td.InfoFieldName {text-align: left; color: #000; font-size: 0.9em; /*padding-top: 6px;*/}
 td.InfoFieldValue {}
-td.col1, td.col3 {width: 20%;}
-td.col2 {width: 35%;}
-td.col4 {width: 25%;}
+.InfoTable .col1, .InfoTable .col3 {width: 20%;}
+.InfoTable .col2 {width: 35%;}
+.InfoTable .col4 {width: 25%;}
 
 td.c3.col1, td.c3.col3, td.c3.col5 {width: 15%}
 td.c3.col2, td.c3.col4, td.c3.col6 {width: 18%}

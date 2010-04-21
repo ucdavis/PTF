@@ -91,17 +91,17 @@
             </tr>
             <tr id="row" class="item hidden">
                 <td class="first"></td>
-                <td colspan="9">
+                <td colspan="8">
                     <asp:ListView ID="lvSubOrders" runat="server" DataSource='<%# Eval("SubOrders") %>'>
                         <LayoutTemplate>
-                            <table cellpadding="0" cellspacing="0">
+                            <table cellpadding="0" cellspacing="0" id="suborders">
                                 <tr class="head">
                                     <%--<th class="first col1"></th>--%>
-                                    <th class="col2"># Plants</th>
-                                    <th class="col3">Crop</th>
-                                    <th class="col4">Plant Selection</th>
-                                    <th class="col5">Genotype</th>
-                                    <th class="col6">Constructs</th>
+                                    <th class="col1"># Plants</th>
+                                    <th class="col2">Crop</th>
+                                    <th class="col3">Plant Selection</th>
+                                    <th class="col4">Genotype</th>
+                                    <th class="col5">Constructs</th>
                                 </tr>
                                 <tr runat="server" id="itemplaceholder"></tr>
                             </table>
@@ -121,6 +121,7 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </td>
+                <td>&nbsp;</td>
             </tr>
         </ItemTemplate>
     </asp:ListView>
