@@ -10,5 +10,16 @@ namespace CAESDO.PTF.BLL
     [DataObject]
     public class ExperimentBLL : GenericBLL<Experiment, int>
     {
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Experiment> GetByConstruct(int constructID)
+        {
+            return GetByConstruct(ConstructBLL.GetByID(constructID));
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Experiment> GetByConstruct(Construct construct)
+        {
+            return ExperimentBLL.GetByConstruct(construct);
+        }
     }
 }

@@ -22,12 +22,18 @@ public partial class admin_Construct : System.Web.UI.Page
         {
             if (Request.QueryString[STR_OrderIDQueryString] != null)
             {
-                return Convert.ToInt32(Request.QueryString[STR_OrderIDQueryString]);
+                try
+                {
+                    return Convert.ToInt32(Request.QueryString[STR_OrderIDQueryString]);
+                }
+                catch
+                {
+                    // catch invalid query strings
+                    Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
+                }
             }
-            else
-            {
-                return -1;
-            }
+
+            return -1;
         }
     }
 

@@ -136,7 +136,7 @@
             </LayoutTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><%# Eval("ConstructCode") %></td>
+                    <td><a href='<%# "Experiments.aspx?cid=" + Eval("ID") %>'><%# Eval("ConstructCode") %></a></td>
                     <td><%# Eval("DateCreated", "{0:MM/dd/yyyy}")%></td>
                     <td><%# Eval("TransformationInitiated", "{0:MM/dd/yyyy}")%></td>
                     <th><%# Eval("Experiments.Count") %></th>

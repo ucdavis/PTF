@@ -8,6 +8,7 @@
 <a href="admin/Default.aspx">Administrators</a>
 <br /><br />
 <a href="restricted/Default.aspx">Clients</a>
-
+<br /><br />
+<a href="Register.aspx">Register for an Account</a>
 </asp:Content>
 

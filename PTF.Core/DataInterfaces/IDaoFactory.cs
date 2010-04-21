@@ -11,8 +11,9 @@ namespace CAESDO.PTF.Core.DataInterfaces
         IGenericDao<T, IdT> GetGenericDao<T, IdT>();
 
         IConstructDao GetConstructDao();
-
+        IExperimentDao GetExperimentDao();
     }
+
 
     // There's no need to declare each of the DAO interfaces in its own file, so just add them inline here.
     // But you're certainly welcome to put each declaration into its own file.
@@ -23,6 +24,11 @@ namespace CAESDO.PTF.Core.DataInterfaces
     public interface IConstructDao : IDao<Construct, int> 
     {
         List<Construct> GetByOrder(Order Order);
+    }
+
+    public interface IExperimentDao : IDao<Experiment, int>
+    {
+        List<Experiment> GetByConstruct(Construct Construct);
     }
 
     #endregion

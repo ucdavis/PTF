@@ -26,6 +26,11 @@ namespace CAESDO.PTF.Data
             return new ConstructDao();
         }
 
+        public IExperimentDao GetExperimentDao()
+        {
+            return new ExperimentDao();
+        }
+
         #endregion
 
         #region Inline DAO implementations
@@ -40,6 +45,18 @@ namespace CAESDO.PTF.Data
                     .Add(Expression.Eq("Order", Order));
 
                 return criteria.List<Construct>() as List<Construct>;
+            }
+        }
+
+        public class ExperimentDao : AbstractNHibernateDao<Experiment, int>, IExperimentDao
+        {
+            public List<Experiment> GetByConstruct(Construct Construct)
+            {
+                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Experiment))
+                    .Add(Expression.Eq("Construct", Construct));
+
+                return criteria.List<Experiment>() as List<Experiment>;
+   
             }
         }
 
