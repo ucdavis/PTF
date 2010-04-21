@@ -7,7 +7,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <AjaxControlToolkit:TabContainer ID="TabContainer1" runat="server" Height="500px" ActiveTabIndex="0">
+    <AjaxControlToolkit:TabContainer ID="TabContainer1" runat="server" 
+        Height="500px" ActiveTabIndex="0">
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Note Types" ID="TabPanel1">
             <ContentTemplate>
                 
@@ -55,6 +56,13 @@
             
                 <CAESDO:Lookups runat="server" ID="lookTransGene" TypeName="CAESDO.PTF.BLL.TransGeneBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.TransGene" />
                 
+            </ContentTemplate>
+        </AjaxControlToolkit:TabPanel>
+        <AjaxControlToolkit:TabPanel ID="TabPanel8" runat="server" HeaderText="Countries">
+            <ContentTemplate>
+            
+                <CAESDO:Lookups runat="server" ID="lookCountry" TypeName="CAESDO.PTF.BLL.CountryBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Country" />
+            
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
     </AjaxControlToolkit:TabContainer>

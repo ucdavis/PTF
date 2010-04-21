@@ -73,4 +73,13 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
+	<class name="CAESDO.PTF.Core.Domain.State, CAESDO.PTF.Core" table="States" >
+		<id name="id" access="field" column="StateID" unsaved-value="0">
+			<generator class="assigned" />
+		</id>
+
+		<property name="Name" column="Name" />
+		<property name="IsActive" column="IsActive" />
+	</class>
+
 </hibernate-mapping>

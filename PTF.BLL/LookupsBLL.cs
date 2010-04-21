@@ -76,4 +76,6 @@ namespace CAESDO.PTF.BLL
     public class TransGeneBLL : LookupBLLBase<TransGene, int> { }
     [DataObject]
     public class CountryBLL : LookupBLLBase<Country, string> { }
+    [DataObject]
+    public class StateBLL : LookupBLLBase<State, string> { }
 }

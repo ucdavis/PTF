@@ -8,11 +8,22 @@
         }
         .style2
         {
-        	
+            background-color: #0066CC;
         }
         .style3
         {
             width: 349px;
+        }
+        .addressFields
+        {
+            width: 175px;
+            float: left;
+        }
+        .watermark
+        {
+            font-weight: lighter;
+            font-style: italic;
+            color: #C0C0C0;
         }
     </style>
 </asp:Content>
@@ -24,16 +35,19 @@
             <td class="style3">
                 Principal Investigator: </td>
             <td>
-                <asp:TextBox ID="tbPI" runat="server"></asp:TextBox></td>
+                <asp:TextBox ID="tbPI" runat="server" MaxLength="100"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvPI" runat="server" ErrorMessage="PI name is required." Text="*"
+                    ControlToValidate="tbPI" ValidationGroup="NewOrder" ></asp:RequiredFieldValidator>
+            </td>
         </tr>
         <tr>
             <td class="style3">
                 Mailing Address:</td>
             <td>
                 Address Line 1<br />
-                <asp:TextBox ID="tbMailing1" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbMailing1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
                 <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing1_TextBoxWatermarkExtender" 
-                    runat="server" Enabled="True" TargetControlID="tbMailing1" WatermarkText="Street Address, P.O. Box, Comapny Name">
+                    runat="server" Enabled="True" TargetControlID="tbMailing1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
                 </AjaxControlToolkit:TextBoxWatermarkExtender>
             </td>
         </tr>
@@ -42,9 +56,9 @@
                 &nbsp;</td>
             <td>
                 Address Line 2<br />
-                <asp:TextBox ID="tbMailing2" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbMailing2" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
                 <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbMailing2_TextBoxWatermarkExtender" 
-                    runat="server" Enabled="True" TargetControlID="tbMailing2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc.">
+                    runat="server" Enabled="True" TargetControlID="tbMailing2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc." WatermarkCssClass="watermark">
                 </AjaxControlToolkit:TextBoxWatermarkExtender>
             </td>
         </tr>
@@ -52,81 +66,137 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                State/Province/Region&nbsp;&nbsp;&nbsp; Zip / Postal Code<br />
-                <asp:TextBox ID="tbMailingCity" runat="server"></asp:TextBox>
-                <asp:TextBox ID="tbMailingState" runat="server"></asp:TextBox>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="tbMailingZip" runat="server"></asp:TextBox>
+                <div class="addressFields">
+                City<br />
+                <asp:TextBox ID="tbMailingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
+                </div>
+                <div class="addressFields">
+                    <asp:UpdatePanel ID="upMailingState" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            State/Province/Region<br />
+                            <asp:TextBox ID="tbMailingState" runat="server" Width="160px" Visible="false" MaxLength="50"></asp:TextBox>                        
+                            <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" AppendDataBoundItems='true'
+                                DataTextField="Name" DataValueField="ID">
+                                <asp:ListItem Text="--Please Select State--" Value="-1" />
+                            </asp:DropDownList>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
+                </div>
+                <div class="addressFields">
+                Zip/Postal Code<br />
+                <asp:TextBox ID="tbMailingZip" runat="server" Width="160px" MaxLength="12"></asp:TextBox>
+                </div>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:DropDownList ID="ddlMailingCountry" runat="server" 
-                    DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" >
-                </asp:DropDownList>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:DropDownList ID="ddlMailingCountry" runat="server" 
+                            DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" AutoPostBack='true' 
+                            AppendDataBoundItems="True" 
+                            onselectedindexchanged="ddlMailingCountry_SelectedIndexChanged" >
+                        </asp:DropDownList>                    
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Shipping Address:</td>
             <td>
-                <asp:TextBox ID="tbShipping1" runat="server"></asp:TextBox>
+                Address Line 1 <br />
+                <asp:TextBox ID="tbShipping1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>                
+                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping1_TextBoxWatermarkExtender" 
+                    runat="server" Enabled="True" TargetControlID="tbShipping1" WatermarkText="Street Address, P.O. Box, Comapny Name" WatermarkCssClass="watermark">
+                </AjaxControlToolkit:TextBoxWatermarkExtender>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:TextBox ID="tbShipping2" runat="server"></asp:TextBox>
+                Address Line 2 <br />
+                <asp:TextBox ID="tbShipping2" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
+                <AjaxControlToolkit:TextBoxWatermarkExtender ID="tbShipping2_TextBoxWatermarkExtender" 
+                    runat="server" Enabled="True" TargetControlID="tbShipping2" WatermarkText="Apartment, Suite, Unit, Building, Floor, etc." WatermarkCssClass="watermark">
+                </AjaxControlToolkit:TextBoxWatermarkExtender>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:TextBox ID="tbShippingCity" runat="server"></asp:TextBox>
-                <asp:TextBox ID="tbShippingState" runat="server"></asp:TextBox>
-                <asp:TextBox ID="tbShippingZip" runat="server"></asp:TextBox>
+                <div class="addressFields">
+                    City<br />
+                    <asp:TextBox ID="tbShippingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
+                </div>
+                <div class="addressFields">
+                    State/Province/Region<br />
+                    <asp:UpdatePanel ID="upShippingState" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:TextBox ID="tbShippingState" runat="server" Visible=false Width="160px" MaxLength="50"></asp:TextBox>
+                            <asp:DropDownList ID="ddlShippingState" runat="server" DataSourceID="odsState" 
+                                DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
+                                <asp:ListItem Text="--Please Select State--" Value="-1" />
+                            </asp:DropDownList>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    
+                </div>
+                <div class="addressFields">
+                    Zip/Postal Code<br />
+                    <asp:TextBox ID="tbShippingZip" runat="server" Width="160px" MaxLength="12"></asp:TextBox>
+                </div>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:DropDownList ID="ddlShippingCountry" runat="server" 
-                    DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID">
-                </asp:DropDownList>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <asp:DropDownList ID="ddlShippingCountry" runat="server" 
+                            DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" 
+                            onselectedindexchanged="ddlShippingCountry_SelectedIndexChanged" 
+                            AutoPostBack="True">
+                        </asp:DropDownList>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Contact:</td>
             <td>
-                <asp:TextBox ID="tbContact" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbContact" runat="server" MaxLength="100"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Contact E-mail:</td>
             <td>
-                <asp:TextBox ID="tbContactEmail" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbContactEmail" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvContactEmail" runat="server" ControlToValidate="tbContactEmail" ErrorMessage="E-mail is required." ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Contact Phone:</td>
             <td>
-                <asp:TextBox ID="tbContactPhone" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbContactPhone" runat="server" MaxLength="20"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Recharge Number:</td>
             <td>
-                <asp:TextBox ID="tbRecharge" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbRecharge" runat="server" MaxLength="20"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -145,15 +215,19 @@
                 Crop:</td>
             <td>
                 <asp:DropDownList ID="ddlCrop" runat="server" DataSourceID="odsCrop" 
-                    DataTextField="Name" DataValueField="ID">
+                    DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
+                        <asp:ListItem Text="--Select a Crop--" Value="-1" />
                 </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvCrop" runat="server" 
+                    ErrorMessage="You are required to select a crop." 
+                    ControlToValidate="ddlCrop" InitialValue="-1" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Cultivar:</td>
             <td>
-                <asp:TextBox ID="tbCultivar" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbCultivar" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -177,42 +251,42 @@
             <td class="style3">
                 Plasmid:</td>
             <td>
-                <asp:TextBox ID="tbPlasmid" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbPlasmid" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Bacterial Selection:</td>
             <td>
-                <asp:TextBox ID="tbBacterialSelection" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbBacterialSelection" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Agrobacterium Strain:</td>
             <td>
-                <asp:TextBox ID="tbAgrobacteriumStrain" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAgrobacteriumStrain" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Plant Selection:</td>
             <td>
-                <asp:TextBox ID="tbPlantSelection" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbPlantSelection" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Construct:</td>
             <td>
-                <asp:TextBox ID="tbConstruct" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbConstruct" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Name of Your Construct:</td>
             <td>
-                <asp:TextBox ID="tbNameOfYourConstruct" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbNameOfYourConstruct" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -231,7 +305,8 @@
                 Category of Transgene:</td>
             <td>
                 <asp:DropDownList ID="ddlTransGene" runat="server" DataSourceID="odsTransGene" 
-                    DataTextField="Name" DataValueField="ID">
+                    DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
+                        <asp:ListItem Text="--Please Select Transgene--" Value="-1" />
                 </asp:DropDownList>
             </td>
         </tr>
@@ -250,21 +325,21 @@
             <td class="style3">
                 Promoter:</td>
             <td>
-                <asp:TextBox ID="tbGeneOfInterestPromoter" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGeneOfInterestPromoter" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Gene:</td>
             <td>
-                <asp:TextBox ID="tbGeneOfInterestGene" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGeneOfInterestGene" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Terminator:</td>
             <td>
-                <asp:TextBox ID="tbGeneOfInterestTerminator" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGeneOfInterestTerminator" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -281,21 +356,27 @@
             <td class="style3">
                 Promoter:</td>
             <td>
-                <asp:TextBox ID="tbSelectableMarkerPromoter" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbSelectableMarkerPromoter" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvSelectableMarkerPromoter" runat="server" 
+                    ErrorMessage="Selectable Marker Promoter is required." 
+                    ControlToValidate="tbSelectableMarkerPromoter" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Gene:</td>
             <td>
-                <asp:TextBox ID="tbSelectableMarkerGene" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbSelectableMarkerGene" runat="server" MaxLength="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvSelectableMarkerGene" runat="server" 
+                    ErrorMessage="Selectable Marker Gene is required." 
+                    ControlToValidate="tbSelectableMarkerGene" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Terminator:</td>
             <td>
-                <asp:TextBox ID="tbSelectableMarkerTerminator" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbSelectableMarkerTerminator" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -312,21 +393,21 @@
             <td class="style3">
                 Promoter:</td>
             <td>
-                <asp:TextBox ID="tbScorableMarkerPromoter" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbScorableMarkerPromoter" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Gene:</td>
             <td>
-                <asp:TextBox ID="tbScorableMarkerGene" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbScorableMarkerGene" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 Terminator:</td>
             <td>
-                <asp:TextBox ID="tbScorableMarkerTerminator" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbScorableMarkerTerminator" runat="server" MaxLength="50"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -343,7 +424,8 @@
             <td class="style3">
                 Please include any additional information here:</td>
             <td>
-                <asp:TextBox ID="TextBox33" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAdditionalInfo" runat="server" TextMode="MultiLine" 
+                    Height="138px" Width="408px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -363,19 +445,32 @@
                     other Univeristy of California researchers?
             </td>
             <td>
-                <asp:CheckBox ID="CheckBox1" runat="server" />
+                <asp:RadioButtonList ID="rblOtherUse" runat="server">
+                    <asp:ListItem Text="Yes" Value="True" />
+                    <asp:ListItem Text="No" Value="False" />
+                </asp:RadioButtonList>
+                <asp:RequiredFieldValidator ID="rfvOtherUse" runat="server" 
+                    ErrorMessage="Archive disclaimer is required." ControlToValidate="rblOtherUse" 
+                    ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 &nbsp;</td>
             <td>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
+                    ValidationGroup="NewOrder" />
+            </td>
+        </tr>
+        <tr>
+            <td class="style3">
                 &nbsp;</td>
+            <td>
+                <asp:Button ID="btnPlaceOrder" runat="server" Text="Submit Order" 
+                    ValidationGroup="NewOrder" onclick="btnPlaceOrder_Click" />
+            </td>
         </tr>
     </table>
-
-
-
 
     <br />
     <asp:ObjectDataSource ID="odsCountry" runat="server" 
@@ -390,9 +485,8 @@
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.TransGeneBLL">
     </asp:ObjectDataSource>
-
-
-
-
+    <asp:ObjectDataSource ID="odsState" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+        TypeName="CAESDO.PTF.BLL.StateBLL"></asp:ObjectDataSource>
 </asp:Content>
 

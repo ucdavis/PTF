@@ -95,4 +95,5 @@ namespace CAESDO.PTF.Core.Domain
     public class GenoType : LookupBase<GenoType, int> { }
     public class TransGene : LookupBase<TransGene, int> { }
     public class Country : LookupBase<Country, string> { }
+    public class State : LookupBase<State, string> { }
 }

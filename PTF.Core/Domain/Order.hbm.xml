@@ -11,6 +11,24 @@
 		<property name="Contact" column="Contact" />
 		<property name="ContactPhone" column="ContactPhone" />
 		<property name="ContactEmail" column="ContactEmail" />
+
+		<property name="MailingAddress1" column="MailingAddress1" />
+		<property name="MailingAddress2" column="MailingAddress2" />
+		<property name="MailingCity" column="MailingCity" />
+		<property name="MailingInternationalState" column="MailingInternationalState" />
+		<many-to-one name="MailingState" class="CAESDO.PTF.Core.Domain.State, CAESDO.PTF.Core" column="MailingState" cascade="none" />
+		<property name="MailingZip" column="MailingZip" />
+		<many-to-one name="MailingCountry" class="CAESDO.PTF.Core.Domain.Country, CAESDO.PTF.Core" column="MailingCountry" cascade="none" />
+
+		<property name="ShippingAddress1" column="ShippingAddress1" />
+		<property name="ShippingAddress2" column="ShippingAddress2" />
+		<property name="ShippingCity" column="ShippingCity" />
+		<property name="ShippingInternationalState" column="ShippingInternationalState" />
+		<many-to-one name="ShippingState" class="CAESDO.PTF.Core.Domain.State, CAESDO.PTF.Core" column="ShippingState" cascade="none" />
+		<property name="ShippingZip" column="ShippingZip" />
+		<many-to-one name="ShippingCountry" class="CAESDO.PTF.Core.Domain.Country, CAESDO.PTF.Core" column="ShippingCountry" cascade="none" />
+
+
 		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
 		<property name="NumberOfPlants" column="NumberOfPlants" />
 		<property name="Plasmid" column="Plasmid" />
