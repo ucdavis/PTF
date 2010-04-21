@@ -87,7 +87,7 @@ namespace CAESDO.PTF.BLL
     [DataObject]
     public class StatusBLL : LookupBLLBase<Status, int> { }
     [DataObject]
-    public class SelectableMarkerBLL : LookupBLLBase<SelectableMarker, int> { }
+    public class PlantSelectionBLL : LookupBLLBase<PlantSelection, int> { }
     [DataObject]
     public class GenoTypeBLL : LookupBLLBase<GenoType, int> { }
     [DataObject]

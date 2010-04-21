@@ -9,29 +9,16 @@
 		<property name="ConstructCode" column="ConstructCode" update="false" insert="false" />
 		<property name="DateCreated" column="DateCreated" />
 		<many-to-one name="Order" class="CAESDO.PTF.Core.Domain.Order, CAESDO.PTF.Core" column="OrderID" cascade="none" />
-		<property name="PlantsRequested" column="PlantsRequested" />
 		<property name="PlantsDelivered" column="PlantsDelivered" />
 		<property name="TransformationInitiated" column="TransformationInitiated" />
-		<property name="PIConstructName" column="PIConstructName" />
-		<property name="PICode" column="PICode" />
 		<many-to-one name="AgroStrain" class="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" column="AgroStrainID" cascade="none" />
-		<property name="BacterialSelection" column="BacterialSelection" />
-		<property name="Plasmid" column="Plasmid" />
-		<property name="Trait" column="Trait" />
-		<property name="GeneOfInterest" column="GeneOfInterest" />
-		<many-to-one name="SelectableMarker" class="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" column="SelectableMarkerID" cascade="none" />
-		<property name="ArchivedBox" column="ArchivedBox" />
-		<property name="Position" column="Position" />
-		<property name="WorkingBox" column="WorkingBox" />
-		<property name="Location" column="Location" />
+
 		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
 		<many-to-one name="Genotype" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" column="GenotypeID" cascade="none" />
 		<property name="Comments" column="Comment" />
-		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
-		<property name="DateReceived" column="DateReceived" />
+
 		<property name="InvoiceDate" column="InvoiceDate" />
 		<property name="RechargeAmount" column="RechargeAmount" />
-		<property name="ContractExecuted" column="ContractExecuted" />
 
 		<bag name="Experiments" table="Experiments">
 			<key column="CID" />

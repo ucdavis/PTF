@@ -28,12 +28,10 @@
 		<property name="ShippingZip" column="ShippingZip" />
 		<many-to-one name="ShippingCountry" class="CAESDO.PTF.Core.Domain.Country, CAESDO.PTF.Core" column="ShippingCountry" cascade="none" />
 
-
-		<many-to-one name="Crop" class="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" column="CropID" cascade="none" />
 		<property name="Cultivar" column="Cultivar" />
-		<property name="NumberOfPlants" column="NumberOfPlants" />
 		<property name="Plasmid" column="Plasmid" />
 		<property name="BacterialSelection" column="BacterialSelection" />
+		<many-to-one name="AgroStrain" class="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" column="AgroStrainID" cascade="none" />
 		<property name="AgroBacteriumStrain" column="AgroBacteriumStrain" />
 		<property name="PlantSelection" column="PlantSelection" />
 		<property name="Construct" column="Construct" />
@@ -56,6 +54,13 @@
 
 		<property name="OtherUCResearch" column="OtherUCResearch" />
 
+		<property name="Comments" column="Comments" />
+		<property name="ArchiveBox" column="ArchivedBox" />
+		<property name="Position" column="Position" />
+		<property name="WorkingBox" column="WorkingBox" />
+		<property name="Location" column="Location" />
+		
+		
 		<bag name="Constructs" table="Constructs">
 			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>

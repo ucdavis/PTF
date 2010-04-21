@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using CAESDO.PTF.BLL;
 
 public partial class admin_Experiments : System.Web.UI.Page
 {
@@ -42,7 +43,16 @@ public partial class admin_Experiments : System.Web.UI.Page
             {
                 lvExperiments.DataSourceID = "odsExperimentsByConstruct";
                 lvExperiments.DataBind();
+
+                PopulateConstructPanel(ConstructID);
             }
         }
+    }
+
+    protected void PopulateConstructPanel(int ConstructID)
+    {
+        pnlConstructInfo.Visible = true;
+
+        var construct = ConstructBLL.GetByID(ConstructID);
     }
 }

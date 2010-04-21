@@ -37,8 +37,8 @@
 		<property name="IsActive" column="IsActive" />
 	</class>
 
-	<class name="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" table="SelectableMarkers" >
-		<id name="id" access="field" column="SelectableMarkerID" unsaved-value="0">
+	<class name="CAESDO.PTF.Core.Domain.PlantSelection, CAESDO.PTF.Core" table="PlantSelections" >
+		<id name="id" access="field" column="PlantSelectionID" unsaved-value="0">
 			<generator class="identity" />
 		</id>
 

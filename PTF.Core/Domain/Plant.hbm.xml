@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+	<class name="CAESDO.PTF.Core.Domain.Plant, CAESDO.PTF.Core" table="Plants" >
+		<id name="id" access="field" column="PID" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<property name="Pedigree" column="Pedigree" update="false" insert="false" />
+		<property name="SequenceNumber" column="SequenceNumber" />
+		<many-to-one name="Experiment" class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core" column="EID" cascade="none" />
+		<property name="DateEntered" column="DateEntered" />
+		<property name="ReCallusingAssay" column="ReCallusingAssay" />
+		<property name="Rooting" column="Rooting" />
+		<property name="Comment" column="Comment" />
+		<property name="DateDelivered" column="DateDelivered" />
+		
+	</class>
+</hibernate-mapping>

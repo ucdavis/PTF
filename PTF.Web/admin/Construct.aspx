@@ -2,66 +2,55 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
-        .OrderInfoFieldName
-        {
-            text-align: right;
-            width: 375px;
-            font-weight: bold;
-        }
-        .OrderInfoFieldValue
-        {
-            text-align: left;
-            width: 300px;
-        }
+
         .style1
         {
             width: 705px;
         }
-    </style>
-    
+    </style>   
   </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Panel ID="pnlOrderDetails" runat="server" Visible="false">    
     <table class="style1">
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 OrderID:&nbsp;
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label>
             </td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Contact:&nbsp;</td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblContact" runat="server" Text=""></asp:Label>
                 ( <asp:Label ID="lblContactEmail" runat="server" Text=""></asp:Label> )  
             </td>
         </tr>
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 PI:&nbsp;
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblPI" runat="server" Text=""></asp:Label>
             </td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Contact Phone:&nbsp;
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblContactPhone" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Bacterial Selection:&nbsp; 
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblBacterialSelection" runat="server" Text=""></asp:Label>
             </td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Address:&nbsp;
             </td>
-            <td class="OrderInfoFieldValue" rowspan="3">
+            <td class="InfoFieldValue" rowspan="3">
                 <asp:Label ID="lblAddress1" runat="server" Text=""></asp:Label><br />
                 <asp:Label ID="lblAddress2" runat="server" Text=""></asp:Label><br />
                 <asp:Label ID="lblCity" runat="server" Text=""></asp:Label>
@@ -72,45 +61,45 @@
             </td>
         </tr>
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Agro Bacterium Strain:&nbsp; 
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblAgroBacteriumStrain" runat="server" Text=""></asp:Label>
             </td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Plant Selection:&nbsp; 
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblPlantSelection" runat="server" Text=""></asp:Label>
             </td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 &nbsp;</td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 &nbsp;</td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Recharge Number:&nbsp; 
             </td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblRechargeNumber" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         <tr>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 &nbsp;</td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Button ID="btnDummy" runat="server" Text="Create Construct" /></td>
-            <td class="OrderInfoFieldName">
+            <td class="InfoFieldName">
                 Contract Executed:&nbsp;</td>
-            <td class="OrderInfoFieldValue">
+            <td class="InfoFieldValue">
                 <asp:Label ID="lblContract" runat="server" Text=""></asp:Label>
                 <asp:LinkButton ID="lbContractExecuted" runat="server" Visible="false">[Contract Executed]</asp:LinkButton>
             </td>

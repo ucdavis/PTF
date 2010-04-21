@@ -30,3 +30,15 @@ body {
     font-style: italic;
     color: #C0C0C0;
 }
+
+.InfoFieldName
+{
+    text-align: right;
+    width: 375px;
+    font-weight: bold;
+}
+.InfoFieldValue
+{
+    text-align: left;
+    width: 300px;
+}

@@ -16,8 +16,5 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        var construct = ConstructBLL.GetByID(1478);
-        var list = ExperimentBLL.daoFactory.GetExperimentDao().GetByConstruct(construct);
     }
 }

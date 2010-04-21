@@ -62,13 +62,9 @@ namespace CAESDO.PTF.Core.Domain
         public virtual Country ShippingCountry { get; set; }
         
         
-        public virtual Crop Crop { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string Cultivar { get; set; }
-        [IgnoreNulls]
-        [RangeValidator(0, RangeBoundaryType.Exclusive, 99999, RangeBoundaryType.Inclusive)]
-        public virtual int? NumberOfPlants { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string Plasmid { get; set; }
@@ -77,10 +73,7 @@ namespace CAESDO.PTF.Core.Domain
         public virtual string BacterialSelection { get; set; }
         [NotNullValidator]
         [StringLengthValidator(50)]
-        public virtual string AgroBacteriumStrain { get; set; }
-        [NotNullValidator]
-        [StringLengthValidator(50)]
-        public virtual string PlantSelection { get; set; }
+        public virtual AgroStrain AgroStrain { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string Construct { get; set; }
@@ -88,30 +81,13 @@ namespace CAESDO.PTF.Core.Domain
         [StringLengthValidator(50)]
         public virtual string NameOfYourConstruct { get; set; }
         public virtual TransGene TransGene { get; set; }
-        [IgnoreNulls]
-        [StringLengthValidator(50)]
-        public virtual string GeneOfInterestPromoter { get; set; }
-        [IgnoreNulls]
-        [StringLengthValidator(50)]
-        public virtual string GeneOfInterestGene { get; set; }
-        [IgnoreNulls]
-        [StringLengthValidator(50)]
-        public virtual string GeneOfInterestTerminator { get; set; }
+
         [NotNullValidator]
         [StringLengthValidator(50)]
         public virtual string SelectableMarkerPromoter { get; set; }
         [NotNullValidator]
         [StringLengthValidator(50)]
         public virtual string SelectableMarkerGene { get; set; }
-        [IgnoreNulls]
-        [StringLengthValidator(50)]
-        public virtual string SelectableMarkerTerminator { get; set; }
-        [IgnoreNulls]
-        [StringLengthValidator(50)]
-        public virtual string ScorableMarkerPromoter { get; set; }
-        [IgnoreNulls]
-        [StringLengthValidator(50)]
-        public virtual string ScorableMarkerGene { get; set; }
         [IgnoreNulls]
         [StringLengthValidator(50)]
         public virtual string ScorableMarkerTerminator { get; set; }
@@ -130,6 +106,24 @@ namespace CAESDO.PTF.Core.Domain
         public virtual bool OtherUCResearch { get; set; }
 
         public virtual IList<Construct> Constructs { get; set; }
+
+        public virtual string Comments { get; set; }
+        [IgnoreNulls]
+        [StringLengthValidator(10)]
+        public virtual string ArchiveBox { get; set; }
+        [IgnoreNulls]
+        [StringLengthValidator(10)]
+        public virtual string Position { get; set; }
+        [IgnoreNulls]
+        [StringLengthValidator(10)]
+        public virtual string WorkingBox { get; set; }
+        [IgnoreNulls]
+        [StringLengthValidator(10)]
+        public virtual string Location { get; set; }
+        [IgnoreNulls]
+        [StringLengthValidator(50)]
+        public virtual string Trait { get; set; }
+        public virtual DateTime? DateReceived { get; set; }
 
         public virtual string Status { 
             get {

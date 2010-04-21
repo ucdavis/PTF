@@ -91,7 +91,7 @@ namespace CAESDO.PTF.Core.Domain
     public class Crop : LookupBase<Crop, int> { }
     public class AgroStrain : LookupBase<AgroStrain, int> { }
     public class Status : LookupBase<Status, int> { }
-    public class SelectableMarker : LookupBase<SelectableMarker, int> { }
+    public class PlantSelection : LookupBase<PlantSelection, int> { }
     public class GenoType : LookupBase<GenoType, int> { }
     public class TransGene : LookupBase<TransGene, int> { }
     public class Country : LookupBase<Country, string> { }

@@ -36,10 +36,10 @@
                 
             </ContentTemplate>       
         </AjaxControlToolkit:TabPanel>
-        <AjaxControlToolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="Selectable Marker">
+        <AjaxControlToolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="Plant Selection">
             <ContentTemplate>
             
-                <CAESDO:Lookups runat="server" ID="lookSelectableMarker" TypeName="CAESDO.PTF.BLL.SelectableMarkerBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.SelectableMarker" ValidationGroup="SelectableMarkers" />
+                <CAESDO:Lookups runat="server" ID="lookPlantSelection" TypeName="CAESDO.PTF.BLL.PlantSelectionBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.PlantSelection" ValidationGroup="PlantSelection" />
                 
             </ContentTemplate>        
         </AjaxControlToolkit:TabPanel>

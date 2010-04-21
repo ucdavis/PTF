@@ -159,7 +159,7 @@ public partial class admin_Construct : System.Web.UI.Page
             Plasmid = tbPlasmid.Text,
             Trait = tbTrait.Text,
             GeneOfInterest = tbGeneofInterest.Text,
-            SelectableMarker = SelectableMarkerBLL.GetByID(Convert.ToInt32(ddlSelectableMarker.SelectedValue)),
+            SelectableMarker = PlantSelectionBLL.GetByID(Convert.ToInt32(ddlSelectableMarker.SelectedValue)),
             Crop = CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)),
             Genotype = GenoTypeBLL.GetByID(Convert.ToInt32(ddlGenotype.SelectedValue)),
             DateReceived = DateTime.Parse(tbDateReceived.Text),
