@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <AjaxControlToolkit:TabContainer ID="TabContainer1" runat="server" 
-        ActiveTabIndex="0">
+        ActiveTabIndex="1">
         <AjaxControlToolkit:TabPanel runat="server" HeaderText="Staff Users" ID="TabPanel1">
             <HeaderTemplate>
                 Staff Users
@@ -16,7 +16,7 @@
             <asp:LinkButton ID="lbNewUser" runat="server"><img src="../Images/btn_newuser.png" /></asp:LinkButton>
             <AjaxControlToolkit:ModalPopupExtender ID="mpeNewUser" runat="server" CancelControlID="btnAddUserCancel" 
                 TargetControlID="lbNewUser" PopupControlID="pnlNewUser" DynamicServicePath="" 
-                Enabled="True">
+                Enabled="True" BackgroundCssClass="popup_shadow">
             </AjaxControlToolkit:ModalPopupExtender>
             <asp:Panel ID="pnlNewUser" runat="server" style="display:none;">
             <div class="popup wide">
@@ -145,7 +145,7 @@
             </asp:ListView>  
             
             <asp:Button ID="btnDummyUpdateUserInfo" runat="server" Text="Button" style="display:none;" />
-            <AjaxControlToolkit:ModalPopupExtender ID="mpeUpdateUserInfo" runat="server" TargetControlID="btnDummyUpdateUserInfo" PopupControlID="pnlUpdateUserInfo" CancelControlID="lbCloseUserInfo">
+            <AjaxControlToolkit:ModalPopupExtender ID="mpeUpdateUserInfo" runat="server" TargetControlID="btnDummyUpdateUserInfo" BackgroundCssClass="popup_shadow" PopupControlID="pnlUpdateUserInfo" CancelControlID="lbCloseUserInfo">
             </AjaxControlToolkit:ModalPopupExtender>
             <asp:Panel ID="pnlUpdateUserInfo" runat="server" style="display:none;">
             <div class="popup userinfo">
@@ -234,29 +234,31 @@
         </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Clients">
         <ContentTemplate>
+        <br />
             <asp:GridView ID="gvClients" runat="server" AutoGenerateColumns="False" 
-                DataSourceID="odsClients">
+                DataSourceID="odsClients" CssClass="InfoTable" BorderStyle="None" GridLines="None">
                 <Columns>
-                    <asp:BoundField DataField="UserName" HeaderText="UserName" ReadOnly="True" 
+                    <asp:BoundField DataField="UserName" HeaderText="User Name" ReadOnly="True" 
                         SortExpression="UserName" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:CheckBoxField DataField="IsLockedOut" HeaderText="IsLockedOut" 
+                    <asp:CheckBoxField DataField="IsLockedOut" HeaderText="Lock'd Out" 
                         ReadOnly="True" SortExpression="IsLockedOut" />
-                    <asp:BoundField DataField="CreationDate" HeaderText="CreationDate" 
-                        ReadOnly="True" SortExpression="CreationDate" />
-                    <asp:BoundField DataField="LastLoginDate" HeaderText="LastLoginDate" 
-                        SortExpression="LastLoginDate" />
-                    <asp:BoundField DataField="LastActivityDate" HeaderText="LastActivityDate" 
-                        SortExpression="LastActivityDate" />
+                    <asp:BoundField DataField="CreationDate" HeaderText="Created" 
+                        ReadOnly="True" SortExpression="CreationDate" DataFormatString="{0:M/d/yy h:mm tt}" />
+                    <asp:BoundField DataField="LastLoginDate" HeaderText="Last Login" 
+                        SortExpression="LastLoginDate" DataFormatString="{0:M/d/yy h:mm tt}" />
+                    <asp:BoundField DataField="LastActivityDate" HeaderText="Last Activity" 
+                        SortExpression="LastActivityDate" DataFormatString="{0:M/d/yy h:mm tt}" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Image ID="imgDropDown" ImageUrl="~/Images/dropdowntrigger.png" runat="server" />
-                            <AjaxControlToolkit:DropDownExtender ID="ddeClients" runat="server" TargetControlID="imgDropDown" DropDownControlID="pnlClients" >
+                            <asp:Image ID="imgDropDown" ImageUrl="~/Images/dropdown.png" Width="24px" CssClass="dropdownimg" runat="server" />
+                            <AjaxControlToolkit:DropDownExtender ID="ddeClients" runat="server" TargetControlID="imgDropDown" DropDownControlID="pnlClients">
                             </AjaxControlToolkit:DropDownExtender>
-                            <asp:Panel style="display:none; background:gray;" ID="pnlClients" runat="server">
-                                <asp:LinkButton ID="lbReset" runat="server" CommandArgument='<%# Eval("ProviderUserKey") %>' oncommand="lbReset_Command">Reset Password</asp:LinkButton>
-                                <br />
-                                <asp:LinkButton ID="lbUnlock" runat="server" CommandArgument='<%# Eval("ProviderUserKey") %>' oncommand="lbUnlock_Command">Unlock</asp:LinkButton>
+                            <asp:Panel style="display:none;" CssClass="dropdown" ID="pnlClients" runat="server">
+                                <ul><li><asp:LinkButton ID="lbReset" runat="server" CommandArgument='<%# Eval("ProviderUserKey") %>' oncommand="lbReset_Command">Reset Password</asp:LinkButton>
+                                </li>
+                                <li><asp:LinkButton ID="lbUnlock" runat="server" CommandArgument='<%# Eval("ProviderUserKey") %>' oncommand="lbUnlock_Command">Unlock</asp:LinkButton>
+                                </li></ul>
                             </asp:Panel>
                         </ItemTemplate>
                     </asp:TemplateField>

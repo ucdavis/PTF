@@ -8,9 +8,11 @@
         <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../../Images/back.png" alt="" /> [Back to Admin Home]</asp:LinkButton>
     </div>
 
-    <a href="Constructs.aspx">Constructs</a><br />
-    <a href="Experiments.aspx">Experiments</a><br />
-    <a href="PlantInventory.aspx">Plant Inventory</a>
-
+    <ul class="menu">
+    <li><a href="Constructs.aspx"><img src="../../Images/menu_constructs.png" title="Constructs" /></a></li>
+    <li><a href="Experiments.aspx"><img src="../../Images/menu_experiments.png" title="Experiments" /></a></li>
+    <li><a href="PlantInventory.aspx"><img src="../../Images/menu_plantinventory.png" title="Plant Inventory" /></a></li>
+    </ul>
+    
 </asp:Content>
 

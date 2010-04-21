@@ -299,13 +299,13 @@
         </ItemTemplate>
     </asp:ListView>
  
-    <asp:Panel ID="pnlNewConstruct" runat="server" CssClass="popup newconstruct" style="display:none;">
+    <asp:Panel ID="pnlNewConstruct" runat="server" style="display:none;">
+    <div class="popup">
         <div class="close">
             <asp:ImageButton ID="btnCancel" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
     <h2>New Construct</h2>
         
-        <br /><br />
 <%--        <asp:GridView ID="gvSuborder" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="id" onselectedindexchanged="gvSuborder_SelectedIndexChanged" Width="375px" OnRowDataBound="gvSuborder_RowDataBound">
             <Columns>
@@ -334,7 +334,7 @@
         <asp:ListView ID="lvSubOrder" runat="server" DataKeyNames="id" >
             <LayoutTemplate>
             <div class="grid">
-                <table cellpadding="15" cellspacing="0">
+                <table cellpadding="15" cellspacing="0" class="InfoTable">
                     <tr class="head">
                         <th></th>
                         <th>Crop</th>
@@ -348,14 +348,15 @@
             <ItemTemplate>
                 <tr>
                     <td>
-                        <asp:LinkButton ID="lbSelect" OnCommand="lbSelectOnCommand" CommandArgument='<%# Eval("id") %>' runat="server">Select</asp:LinkButton></td>
+                        <asp:LinkButton ID="lbSelect" OnCommand="lbSelectOnCommand" CommandArgument='<%# Eval("id") %>' runat="server"><img src="../Images/btn_select.png" alt="Select" /></asp:LinkButton></td>
                     <td><%# Eval("Crop.Name") %></td>
                     <td><%# Eval("PlantSelection.Name") %></td>
                     <td><%# Eval("GenoType.Name") %></td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>
-
+    </div>
+    <p class="popup_bottom">&nbsp;</p>
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewConstruct" runat="server" TargetControlID="btnNewConstruct" CancelControlID="btnCancel" PopupControlID="pnlNewConstruct">
     </AjaxControlToolkit:ModalPopupExtender>

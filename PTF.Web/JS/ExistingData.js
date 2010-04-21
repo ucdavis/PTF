@@ -1,9 +1,12 @@
 ﻿/// <reference name="MicrosoftAjax.js"/>
 
 var regular = "";
-var highLighted = "red";
+// var highLighted = "#d67129";
+// var mouseOver = "#85b33c";
+// var highLightedMouseOver = "#b85813";
+var highLighted = "orange";
 var mouseOver = "green";
-var highLightedMouseOver = "orange";
+var highLightedMouseOver = "red";
 var error = "blue";
 
 function ChangeHighlight(row)
