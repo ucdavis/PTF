@@ -43,7 +43,7 @@
                 <td><%# Eval("ContactEmail") %></td>
                 <td><%# Eval("DateRequested", "{0:MM/dd/yyyy}") %></td>
                 <td><%# Eval("Constructs.Count") %></td>
-                <td></td>
+                <td><%# Eval("Status") %></td>
                 <td>
                     <asp:Image ID="imgDropDown" runat="server" ImageUrl="~/Images/dropdowntrigger.png" />
                     <AjaxControlToolkit:DropDownExtender ID="ddeDropDown" runat="server" TargetControlID="imgDropDown" DropDownControlID="pnlDropDown">

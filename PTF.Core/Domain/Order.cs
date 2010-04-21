@@ -131,5 +131,30 @@ namespace CAESDO.PTF.Core.Domain
         public virtual bool OtherUCResearch { get; set; }
 
         public virtual IList<Construct> Constructs { get; set; }
+
+        public virtual string Status { 
+            get {
+                return this.HasPendingConstruct() ? "Pending" : "Complete";
+            } 
+        }
+
+        private bool HasPendingConstruct()
+        {
+            if (Constructs.Count == 0)
+            {
+                return true;
+            }
+
+            foreach (Construct c in Constructs)
+            {
+                if (c.Status.Name != "Complete")
+                {
+                    return true;
+                }
+            }
+
+            // all of the constructs are marked complete
+            return false;
+        }
     }
 }
