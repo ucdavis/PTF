@@ -61,7 +61,7 @@
                                     ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                             </td>
                         </tr>
-<%--                        <tr>
+                        <tr>
                             <td align="right">
                                 <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Security Question:</asp:Label></td>
                             <td>
@@ -80,7 +80,7 @@
                                     ErrorMessage="Security answer is required." ToolTip="Security answer is required."
                                     ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                             </td>
-                        </tr>--%>
+                        </tr>
                         <tr>
                             <td align="center" colspan="2">
                                 <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password"

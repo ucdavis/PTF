@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 
 public partial class admin_Users : System.Web.UI.Page
@@ -22,12 +13,26 @@ public partial class admin_Users : System.Web.UI.Page
     #region Clients
     protected void lbReset_Command(object sender, CommandEventArgs e)
     {
-        //Guid key = new Guid(e.CommandArgument.ToString());
+        Guid key = new Guid(e.CommandArgument.ToString());
 
-        //var user = Membership.GetUser(key);
-        //var newPassword = user.ResetPassword(
+        var u = Membership.GetUser(key);
+        
+        // generate the new password
+        string guidResult = System.Guid.NewGuid().ToString();
+        guidResult = guidResult.Replace("-", string.Empty);
 
-        //EmailBLL.ResetPasswordEmail(key, newPassword);
+        var user = Membership.Providers["AspNetSqlMembershipProviderOther"].GetUser(u.UserName, false);
+        //user.ChangePassword(user.ResetPassword(), )
+
+        var password = user.ResetPassword();
+
+
+        ////var newPassword = user.ResetPassword(
+       
+        //var newPassword = user.ResetPassword();
+        //user.
+
+        EmailBLL.ResetPasswordEmail(key, password);
     }
     protected void lbUnlock_Command(object sender, CommandEventArgs e)
     {

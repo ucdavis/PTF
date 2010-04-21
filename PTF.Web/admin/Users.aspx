@@ -103,7 +103,7 @@
                 <p class="popup_bottom wide">&nbsp;</p>
             </asp:Panel>
         
-            <asp:ListView ID="lvStaffUsers" runat="server" DataSourceID="odsStaffUsers" DataKeyNames="Login" 
+            <asp:ListView ID="lvStaffUsers" runat="server" DataSourceID="" DataKeyNames="Login" 
                 onselectedindexchanged="lvStaffUsers_SelectedIndexChanged">
                 <ItemTemplate>
                     <tr>
