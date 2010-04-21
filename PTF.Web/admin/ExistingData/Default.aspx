@@ -9,9 +9,9 @@
     </div>
 
     <ul class="menu">
-    <li><a href="Constructs.aspx"><img src="../../Images/menu_constructs.png" title="Constructs" /></a></li>
-    <li><a href="Experiments.aspx"><img src="../../Images/menu_experiments.png" title="Experiments" /></a></li>
-    <li><a href="PlantInventory.aspx"><img src="../../Images/menu_plantinventory.png" title="Plant Inventory" /></a></li>
+    <li><a href="ArchivedConstructs.aspx"><img src="../../Images/menu_constructs.png" title="Constructs" /></a></li>
+    <li><a href="ArchivedExperiments.aspx"><img src="../../Images/menu_experiments.png" title="Experiments" /></a></li>
+    <li><a href="ArchivedPlantInventory.aspx"><img src="../../Images/menu_plantinventory.png" title="Plant Inventory" /></a></li>
     </ul>
     
 </asp:Content>
