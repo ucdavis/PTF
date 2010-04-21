@@ -20,6 +20,8 @@
     {
         // Code that runs when an unhandled error occurs
 
+#if debug
+#else     
         Exception ex = HttpContext.Current.Error;
 
         if (ex.GetType() == typeof(HttpException))
@@ -40,6 +42,7 @@
 
             Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.UNKNOWN), true);
         }
+#endif
 
     }
 

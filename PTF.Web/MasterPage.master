@@ -59,6 +59,18 @@
             
             </asp:ContentPlaceHolder>
     </div>
+    
+    <div id="footer">
+		    <script language="JavaScript" type="text/javascript">
+		    <!--
+		    linkname=('Questions or comments?');
+		    emailaddress=( 'app' + 'requests'  +  '@' + 'caes.' + 'ucda' + 'vis.edu' );
+		    document.write( '<a href="mailto:' + emailaddress + '">' + linkname + '</a>' );
+		    -->
+		    </script>
+        Version: <%= System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() %>
+    </div>
+    
     </div>
     </form>
 </body>
