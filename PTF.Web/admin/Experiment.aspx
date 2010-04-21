@@ -172,7 +172,7 @@
             <asp:Button ID="btnCancelMakeNote" runat="server" Text="X" />
         </div>
         
-        <table class="notes">
+        <table class="dataTable">
             <tr>
                 <td style="text-align:right; width:125px;">Note Type:&nbsp;</td>
                 <td>
