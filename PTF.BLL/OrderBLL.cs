@@ -36,5 +36,18 @@ namespace CAESDO.PTF.BLL
         {
             return OrderBLL.GetByInclusionExample(new Order() { UserID = currentUser }, "UserID");
         }
+
+        /// <summary>
+        /// Check to see if the user provided is the proper owner of the order
+        /// </summary>
+        /// <param name="orderID"></param>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public static bool ValidateOwner(int orderID, Guid userID)
+        {
+            var order = OrderBLL.GetByID(orderID);
+
+            return (order.UserID == userID);
+        }
     }
 }

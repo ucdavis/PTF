@@ -35,6 +35,7 @@
 
 		<property name="Name" column="Status" />
 		<property name="IsActive" column="IsActive" />
+		<property name="IsComplete" column="IsComplete" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.PlantSelection, CAESDO.PTF.Core" table="PlantSelections" >

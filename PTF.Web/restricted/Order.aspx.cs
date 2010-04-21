@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using CAESDO.PTF.BLL;
 
 public partial class restricted_Order : System.Web.UI.Page
 {
@@ -40,6 +41,37 @@ public partial class restricted_Order : System.Web.UI.Page
     }
 
     protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            // make sure the current logged in user is the actual owner of the order.  if not redirect to error page with unknown error
+            if (!this.ValidateOwner(OrderID))
+            {
+                Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.UNKNOWN));
+            }
+            else // validated owner
+            {
+                PopulateInfoFields();
+            }
+        }
+    }
+
+    protected bool ValidateOwner(int orderID)
+    {
+        try
+        {
+            return OrderBLL.ValidateOwner(orderID, (Guid)Membership.GetUser().ProviderUserKey);
+        }
+        catch (NHibernate.ObjectNotFoundException)
+        {
+            // order id is not valid
+            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
+        }
+
+        return false;
+    }
+
+    protected void PopulateInfoFields()
     {
 
     }

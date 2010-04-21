@@ -233,6 +233,7 @@
                         <td><a href='<%# "Construct.aspx?cid=" + Eval("id") %>'><%# Eval("ConstructCode") %></a></td>
                         <td><%# Eval("DateCreated", "{0:d}") %></td>
                         <td><%# Eval("RechargeAmount") %></td>
+                        <td><%# Eval("Status.Name") %></td>
                     </tr>
                 </ItemTemplate>
             </asp:ListView>

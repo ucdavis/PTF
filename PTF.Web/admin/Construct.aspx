@@ -81,8 +81,14 @@
                 </span>    
                 <asp:LinkButton ID="lbChangeRechargeAmount" runat="server">[Change]</asp:LinkButton>
             </td>
-            <td class="InfoFieldName"></td>
-            <td class="InfoFieldValue"></td>
+            <td class="InfoFieldName">Status:&nbsp;</td>
+            <td class="InfoFieldValue">
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <asp:Literal ID="litStatus" runat="server"></asp:Literal>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
         </tr>  
         <tr>
             <td colspan="4">
@@ -108,6 +114,7 @@
                         <th>Operator</th>
                         <th>Explant</th>
                         <th>Optical Density</th>
+                        <th>Status</th>
                         <th>Comments</th>
                     </tr>
                     <tr runat='server' id="itemplaceholder"></tr>
@@ -121,6 +128,7 @@
                 <td><%# Eval("Operator.OperatorName") %></td>
                 <td><%# Eval("Explant") %></td>
                 <td><%# Eval("OpticalDensity")%></td>
+                <td><%# Eval("Status.Name") %></td>
                 <td></td>
             </tr>
         </ItemTemplate>
@@ -181,7 +189,7 @@
 </ContentTemplate>
 </asp:UpdatePanel>
 
-    <asp:Panel ID="pnlChangeRechargeAmount" runat="server" Width="250px" style="border:solid 1px black; background-color:oldlace;">
+    <asp:Panel ID="pnlChangeRechargeAmount" runat="server" Width="250px" style="border:solid 1px black; display:none; background-color:oldlace;">
         <div style="float:right;">
             <asp:Button ID="btnCancelChangeRechargeAmount" runat="server" Text="X" />
         </div>

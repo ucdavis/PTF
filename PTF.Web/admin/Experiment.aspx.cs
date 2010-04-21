@@ -67,6 +67,7 @@ public partial class admin_Experiment : System.Web.UI.Page
             litExplant.Text = experiment.Explant;
             litOpticalDensity.Text = experiment.OpticalDensity.ToString();
             litCrop.Text = experiment.Construct.SubOrder.Crop.Name;
+            litStatus.Text = experiment.Status.Name;
 
             litPIName.Text = experiment.Construct.Order.PI;
             litPICode.Text = experiment.Construct.Order.PICode;
@@ -143,21 +144,34 @@ public partial class admin_Experiment : System.Web.UI.Page
         Experiment experiment = ExperimentBLL.GetByID(ExperimentID);
         lvPlants.DataSource = experiment.Plants;
         lvPlants.DataBind();
+
+        // update the experiment status
+        litStatus.Text = experiment.Status.Name;
     }
 
 
     [WebMethod]
-    public static string SaveChangeStatus(int plantID, int statusID)
+    public static ChangeStatusReturn SaveChangeStatus(int plantID, int statusID)
     {
         PlantBLL.ChangeStatus(PlantBLL.GetByID(plantID), StatusBLL.GetByID(statusID));
 
+        // shipped status
         if (StatusBLL.GetByID(statusID).Name == StatusText.STR_Shipped)
         {
-            return DateTime.Now.ToString("d");
+            return new ChangeStatusReturn { IsComplete = true, ReturnText = DateTime.Now.ToString("d"), Status = PlantBLL.GetByID(plantID).Experiment.Status.Name };
+            //return DateTime.Now.ToString("d");
         }
+        // any completed status
+        else if (StatusBLL.GetByID(statusID).IsComplete)
+        {
+            return new ChangeStatusReturn { IsComplete = true, ReturnText = string.Empty, Status = PlantBLL.GetByID(plantID).Experiment.Status.Name };
+            //return "complete";
+        }
+        // any not complete status
         else
         {
-            return string.Empty;
+            return new ChangeStatusReturn { IsComplete = false, ReturnText = string.Empty, Status = PlantBLL.GetByID(plantID).Experiment.Status.Name };
+            //return string.Empty;
         }
     }
 
@@ -207,4 +221,11 @@ public partial class admin_Experiment : System.Web.UI.Page
             }
         }
     }
+}
+
+public class ChangeStatusReturn
+{
+    public bool IsComplete { get; set; }
+    public string ReturnText { get; set; }
+    public string Status { get; set; }
 }

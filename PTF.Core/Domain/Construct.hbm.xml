@@ -18,6 +18,8 @@
 		<property name="InvoiceDate" column="InvoiceDate" />
 		<property name="RechargeAmount" column="RechargeAmount" />
 
+		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
+
 		<bag name="Experiments" table="Experiments">
 			<key column="CID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core"/>

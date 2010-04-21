@@ -70,8 +70,16 @@
             <td class="InfoFieldValue">
                 <asp:Literal ID="litCrop" runat="server"></asp:Literal>
             </td>
-            <td class="InfoFieldName"></td>
-            <td class="InfoFieldValue"></td>
+            <td class="InfoFieldName">Status:&nbsp;</td>
+            <td class="InfoFieldValue">
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <div id="Status">
+                            <asp:Literal ID="litStatus" runat="server"></asp:Literal>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
             <td class="InfoFieldName">PI Code:&nbsp;</td>
             <td class="InfoFieldValue">
                 <asp:Literal ID="litPICode" runat="server"></asp:Literal>

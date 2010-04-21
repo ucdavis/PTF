@@ -72,11 +72,6 @@
     <Compile Include="OrderBLL.cs" />
     <Compile Include="PlantBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusText.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StatusText.resx</DependentUpon>
-    </Compile>
     <Compile Include="SubOrderBLL.cs" />
     <Compile Include="UserProfileBLL.cs" />
   </ItemGroup>
@@ -97,11 +92,6 @@
     <EmbeddedResource Include="EmailText.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailText.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StatusText.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StatusText.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

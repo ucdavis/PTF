@@ -10,15 +10,32 @@ var STR_None = "none";
 var STR_Rooting = "Rooting";
 var STR_Recallusing = "Recallusing";
 
+var STR_ConfirmText = "Changing to this status will not be reversible.  Are you sure you would like to change the status to ";
+
+var STR_Shipped = "Shipped";
+var STR_Dead = "Dead";
+var STR_Initiated = "Initiated";
+
 function ChangeStatus(dropDown)
 {       
     // one level up is the tr, two levels up is the tr which has the id
     var plantID = dropDown.parentNode.parentNode.id;
     var selectedIndex = dropDown.selectedIndex;
     var value = dropDown.options[selectedIndex].value;
+    var text = dropDown.options[selectedIndex].text;    
     
-    if (dropDown.options[selectedIndex].text == "Shipped" && !confirm("Are you sure plant is shipping?"))
+    if ((text == STR_Shipped || text == STR_Dead) && !confirm(STR_ConfirmText + text + "?"))
     {
+        // set the drop down back to initiated
+        for (i = 0; i < dropDown.length; i++)
+        {
+            if (dropDown.options[i].text == STR_Initiated)
+            {
+                dropDown.selectedIndex = i;
+                break;
+            }
+        }
+        
         return;
     }
     
@@ -65,10 +82,30 @@ function ChangeCheckBox(checkBox, type)
 // successful complete of save
 function OnComplete(result, context)
 {        
-    if (result != "")
+//    if (result != "")
+//    {
+//        context.Control.disabled = true;
+//        
+//        if (result != "complete")
+//        {
+//            $get(context.PlantID + "DateDelivered").innerHTML = result;
+//        }
+//    }    
+       
+    // a final status was set
+    if (result.IsComplete)
     {
         context.Control.disabled = true;
+        
+        // a shipping date was returned
+        if (result.ReturnText != "")
+        {
+            $get(context.PlantID + "DateDelivered").innerHTML = result.ReturnText;
+        }
     }
+
+    // update the status of the experiment
+    $get("Status").innerHTML = result.Status;
        
     context.LoadImg.style.display = STR_None;
     context.ConfirmImg.style.display = STR_Inline;

@@ -14,7 +14,10 @@ namespace CAESDO.PTF.BLL
         public static void Insert(Construct obj)
         {
             obj.DateCreated = DateTime.Now;
-            
+
+            // set the status to pending
+            obj.Status = StatusBLL.GetByName(StatusText.STR_Pending);
+
             using (var ts = new TransactionScope())
             {
                 EnsurePersistent(ref obj);
@@ -57,6 +60,41 @@ namespace CAESDO.PTF.BLL
         {
             Construct construct = ConstructBLL.GetByID(constructID);
             construct.RechargeAmount = rechargeAmount;
+
+            ConstructBLL.Update(construct);
+        }
+
+        public static void UpdateStatus(Construct construct)
+        {
+            // no experiments exist
+            if (construct.Experiments.Count == 0)
+            {
+                construct.Status = StatusBLL.GetByName(StatusText.STR_Pending);
+            }
+            // experiments exist
+            else
+            {
+                bool complete = true;
+
+                foreach (Experiment e in construct.Experiments)
+                {
+                    if (!e.Status.IsComplete)
+                    {
+                        complete = false;
+                        break;
+                    }
+                }
+
+                // all experiments are complete
+                if (complete)
+                {
+                    construct.Status = StatusBLL.GetByName(StatusText.STR_Complete);
+                }
+                else
+                {
+                    construct.Status = StatusBLL.GetByName(StatusText.STR_Initiated);
+                }
+            }
 
             ConstructBLL.Update(construct);
         }

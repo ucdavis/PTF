@@ -15,6 +15,7 @@
 
 		<many-to-one name="Operator" class="CAESDO.PTF.Core.Domain.Operator, CAESDO.PTF.Core" column="OperatorID" cascade="none" />
 		<many-to-one name="Construct" class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core" column="CID" cascade="none" />
+		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
 
 		<bag name="Plants" table="Plants">
 			<key column="EID" />

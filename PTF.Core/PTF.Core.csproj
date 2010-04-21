@@ -68,6 +68,11 @@
     <Compile Include="Domain\Operator.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\Plant.cs" />
+    <Compile Include="Domain\StatusText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatusText.resx</DependentUpon>
+    </Compile>
     <Compile Include="Domain\SubOrder.cs" />
     <Compile Include="Domain\UserProfile.cs" />
     <Compile Include="Domain\ValidateBO.cs" />
@@ -107,6 +112,11 @@
     <EmbeddedResource Include="Domain\Note.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Domain\StatusText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StatusText.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Domain\UserProfile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -69,6 +69,7 @@ public partial class admin_Construct : System.Web.UI.Page
             litPICode.Text = construct.Order.PICode;
             litInvoiceDate.Text = construct.InvoiceDate != null ? ((DateTime)construct.InvoiceDate).ToString("d") : string.Empty;
             litRecharge.Text = construct.RechargeAmount.ToString("c");
+            litStatus.Text = construct.Status.Name;
 
             lvExperiments.DataSource = construct.Experiments;
             lvExperiments.DataBind();
@@ -105,6 +106,9 @@ public partial class admin_Construct : System.Web.UI.Page
         tbSeedLotNumber.Text = string.Empty;
         tbExplant.Text = string.Empty;
         tbOpticalDensity.Text = string.Empty;
+
+        // update the status in case something changes
+        litStatus.Text = ConstructBLL.GetByID(ConstructID).Status.Name;
     }
 
     [WebMethod]

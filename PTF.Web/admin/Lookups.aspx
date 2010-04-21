@@ -35,15 +35,6 @@
                 </asp:UpdatePanel>                
             </ContentTemplate>
         </AjaxControlToolkit:TabPanel>
-        <AjaxControlToolkit:TabPanel ID="TabPanel4" runat="server" HeaderText="Status">
-            <ContentTemplate>
-                <asp:UpdatePanel ID="upStatus" runat="server">
-                    <ContentTemplate>
-                        <CAESDO:Lookups runat="server" ID="lookStatus" TypeName="CAESDO.PTF.BLL.StatusBLL" DataObjectTypeName="CAESDO.PTF.Core.Domain.Status" ValidationGroup="Status" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>                
-            </ContentTemplate>       
-        </AjaxControlToolkit:TabPanel>
         <AjaxControlToolkit:TabPanel ID="TabPanel5" runat="server" HeaderText="Plant Selection">
             <ContentTemplate>
                 <asp:UpdatePanel ID="upPlantSelection" runat="server">
