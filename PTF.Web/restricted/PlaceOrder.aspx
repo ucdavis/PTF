@@ -26,6 +26,53 @@
             color: #C0C0C0;
         }
     </style>
+    
+    <script type="text/javascript" src="../JS/PlaceOrder.js" ></script>
+    <script type="text/javascript">
+          
+        function test(ddl)
+        {      
+            var index = ddl.selectedIndex;
+            var value = ddl.options[index].value;
+            
+            var ctrl = ddl.id;
+            
+            // handle a change in the mailing address
+            if (ctrl.toLowerCase().indexOf("mailing") > 0)
+            {       
+                ChangeCountry(value, $get("<%= ddlMailingState.ClientID %>"), $get("<%= tbMailingState.ClientID %>"));
+            }
+            // handle a change in the shipping address
+            else if (ctrl.toLowerCase().indexOf("shipping") > 0)
+            {
+                ChangeCountry(value, $get("<%= ddlShippingState.ClientID %>"), $get("<%= tbShippingState.ClientID %>"));
+            }
+            else
+            {
+                // do nothing
+            }
+        }
+       function ChangeCountry (countryCode, stateDropDown, internationalStateBox)
+        {
+            if (countryCode == "USA")
+            {
+                stateDropDown.style.display = "inline";
+                stateDropDown.disabled = false;
+                internationalStateBox.style.display = "none";
+            }
+            else if (countryCode == "-1")
+            {
+                stateDropDown.style.display = "inline";
+                stateDropDown.disabled = true;
+                internationalStateBox.style.display = "none";        
+            }
+            else
+            {
+                stateDropDown.style.display = "none";
+                internationalStateBox.style.display = "inline";    
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
@@ -70,15 +117,15 @@
                 <asp:TextBox ID="tbMailingCity" runat="server" Width="160px" MaxLength="50"></asp:TextBox>
                 </div>
                 <div class="addressFields">
-                    <asp:UpdatePanel ID="upMailingState" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
+                    <%--<asp:UpdatePanel ID="upMailingState" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>--%>
                             State/Province/Region<br />
-                            <asp:TextBox ID="tbMailingState" runat="server" Width="160px" Visible="false" MaxLength="50"></asp:TextBox>                        
+                            <asp:TextBox ID="tbMailingState" runat="server" style="display:none;" Width="160px" MaxLength="50" ></asp:TextBox>  
                             <asp:DropDownList ID="ddlMailingState" runat="server" DataSourceID="odsState" DataTextField="Name" DataValueField="ID" Width="160px" AppendDataBoundItems="true" Enabled=false>
                                 <asp:ListItem Text="--Select a State--" Value="-1" />
                             </asp:DropDownList>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                        <%--</ContentTemplate>
+                    </asp:UpdatePanel>--%>
 
                 </div>
                 <div class="addressFields">
@@ -91,17 +138,16 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+                <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>--%>
                         Country: 
                         <asp:DropDownList ID="ddlMailingCountry" runat="server" 
-                            DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" AutoPostBack='true' 
-                            AppendDataBoundItems="True" 
-                            onselectedindexchanged="ddlMailingCountry_SelectedIndexChanged" >
+                            DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID"  
+                            AppendDataBoundItems="True" onChange="javascript:test(this);"  >
                             <asp:ListItem Text="--Select a Country--" Value="-1" />
                         </asp:DropDownList>                    
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                    <%--</ContentTemplate>
+                </asp:UpdatePanel>--%>
 
             </td>
         </tr>
@@ -137,15 +183,15 @@
                 </div>
                 <div class="addressFields">
                     State/Province/Region<br />
-                    <asp:UpdatePanel ID="upShippingState" runat="server" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:TextBox ID="tbShippingState" runat="server" Visible="false" Width="160px" MaxLength="50"></asp:TextBox>
+                    <%--<asp:UpdatePanel ID="upShippingState" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>--%>
+                            <asp:TextBox ID="tbShippingState" runat="server" style="display:none;" Width="160px" MaxLength="50"></asp:TextBox>
                             <asp:DropDownList ID="ddlShippingState" runat="server" DataSourceID="odsState" Width="160px" 
                                 DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True" Enabled=false>
                                 <asp:ListItem Text="--Select a State--" Value="-1" />
                              </asp:DropDownList>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                        <%--</ContentTemplate>
+                    </asp:UpdatePanel>--%>
                     
                 </div>
                 <div class="addressFields">
@@ -158,17 +204,16 @@
             <td class="style3">
                 &nbsp;</td>
             <td>
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>
+                <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>--%>
                         Country: 
                         <asp:DropDownList ID="ddlShippingCountry" runat="server" 
                             DataSourceID="odsCountry" DataTextField="Name" DataValueField="ID" 
-                            onselectedindexchanged="ddlShippingCountry_SelectedIndexChanged" AppendDataBoundItems=true
-                            AutoPostBack="True">
+                            onChange="test(this);" AppendDataBoundItems=true >
                             <asp:ListItem Text="--Select a Country--" Value="-1" />
                         </asp:DropDownList>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                    <%--</ContentTemplate>
+                </asp:UpdatePanel>--%>
 
             </td>
         </tr>
