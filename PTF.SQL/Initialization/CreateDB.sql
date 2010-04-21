@@ -1,6 +1,6 @@
-﻿ USE [PTF]
+﻿USE [PTF]
 GO
-/****** Object:  Table [dbo].[PlantSelections]    Script Date: 09/02/2008 14:25:36 ******/
+/****** Object:  Table [dbo].[PlantSelections]    Script Date: 09/05/2008 11:01:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[PlantSelections](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[TransGenes]    Script Date: 09/02/2008 14:25:39 ******/
+/****** Object:  Table [dbo].[TransGenes]    Script Date: 09/05/2008 11:01:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -36,7 +36,7 @@ CREATE TABLE [dbo].[TransGenes](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[AgroStrains]    Script Date: 09/02/2008 14:24:46 ******/
+/****** Object:  Table [dbo].[AgroStrains]    Script Date: 09/05/2008 11:00:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -54,7 +54,7 @@ CREATE TABLE [dbo].[AgroStrains](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[NoteTypes]    Script Date: 09/02/2008 14:25:13 ******/
+/****** Object:  Table [dbo].[NoteTypes]    Script Date: 09/05/2008 11:01:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -72,28 +72,7 @@ CREATE TABLE [dbo].[NoteTypes](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Operators]    Script Date: 09/02/2008 14:25:15 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Operators](
-	[OperatorID] [int] IDENTITY(1,1) NOT NULL,
-	[Operator] [varchar](100) NOT NULL,
-	[OperatorCode] [varchar](5) NULL,
-	[IsStudent] [bit] NOT NULL CONSTRAINT [DF_Operators_IsStudent]  DEFAULT ((0)),
-	[IsSelectable] [bit] NOT NULL CONSTRAINT [DF_Operators_IsSelectable]  DEFAULT ((0)),
- CONSTRAINT [PK_Operators] PRIMARY KEY CLUSTERED 
-(
-	[OperatorID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Status]    Script Date: 09/02/2008 14:25:37 ******/
+/****** Object:  Table [dbo].[Status]    Script Date: 09/05/2008 11:01:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -111,25 +90,29 @@ CREATE TABLE [dbo].[Status](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Cultivars]    Script Date: 09/02/2008 14:25:01 ******/
+/****** Object:  Table [dbo].[Operators]    Script Date: 09/05/2008 11:01:03 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_PADDING ON
 GO
-CREATE TABLE [dbo].[Cultivars](
-	[CultivarID] [int] IDENTITY(1,1) NOT NULL,
-	[Cultivar] [varchar](50) NOT NULL,
- CONSTRAINT [PK_Cultivatars] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[Operators](
+	[OperatorID] [int] IDENTITY(1,1) NOT NULL,
+	[Operator] [varchar](100) NOT NULL,
+	[OperatorCode] [varchar](5) NULL,
+	[IsStudent] [bit] NOT NULL CONSTRAINT [DF_Operators_IsStudent]  DEFAULT ((0)),
+	[IsSelectable] [bit] NOT NULL CONSTRAINT [DF_Operators_IsSelectable]  DEFAULT ((0)),
+	[EffectiveID]  AS (case when [operatorcode] IS NULL then [operatorid] else [operatorcode] end),
+ CONSTRAINT [PK_Operators] PRIMARY KEY CLUSTERED 
 (
-	[CultivarID] ASC
+	[OperatorID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Genotypes]    Script Date: 09/02/2008 14:25:08 ******/
+/****** Object:  Table [dbo].[Genotypes]    Script Date: 09/05/2008 11:00:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +130,7 @@ CREATE TABLE [dbo].[Genotypes](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Crops]    Script Date: 09/02/2008 14:25:00 ******/
+/****** Object:  Table [dbo].[Crops]    Script Date: 09/05/2008 11:00:48 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +148,7 @@ CREATE TABLE [dbo].[Crops](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Constructs]    Script Date: 09/02/2008 14:24:58 ******/
+/****** Object:  Table [dbo].[Constructs]    Script Date: 09/05/2008 11:00:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,33 +157,35 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Constructs](
 	[CID] [int] IDENTITY(1,1) NOT NULL,
-	[ConstructID] [varchar](50) NULL,
-	[SequenceNumber] [int] NULL,
+	[ConstructID] [nvarchar](50) NULL,
+	[YearCode] [int] NOT NULL,
+	[SequenceNumber] [int] NOT NULL,
+	[SubSequenceNumber] [int] NULL CONSTRAINT [DF_Constructs_SubSequenceNumber]  DEFAULT ((-1)),
 	[DateCreated] [datetime] NOT NULL CONSTRAINT [DF_Constructs_DateCreated]  DEFAULT (getdate()),
 	[OrderID] [int] NULL,
-	[PlantsRequested] [int] NULL,
+	[PlantsRequested] [varchar](10) NULL,
 	[PlantsDelivered] [int] NULL,
 	[TransformationInitiated] [datetime] NULL,
 	[PIConstructName] [varchar](50) NULL,
 	[AgroStrainID] [int] NULL,
-	[PICode] [varchar](50) NULL,
+	[PICode] [varchar](100) NULL,
 	[BacterialSelection] [varchar](50) NULL,
 	[Plasmid] [varchar](50) NULL,
-	[Trait] [varchar](50) NULL,
-	[GeneOfInterest] [varchar](50) NULL,
+	[Trait] [varchar](100) NULL,
+	[GeneOfInterest] [varchar](200) NULL,
 	[PlantSelectionID] [int] NULL,
-	[ArchivedBox] [varchar](10) NULL,
-	[Position] [varchar](10) NULL,
-	[WorkingBox] [varchar](10) NULL,
-	[Location] [varchar](10) NULL,
+	[ArchivedBox] [int] NULL,
+	[Position] [int] NULL,
+	[WorkingBox] [int] NULL,
+	[Location] [varchar](50) NULL,
 	[CropID] [int] NULL,
-	[CultivarID] [int] NULL,
+	[GenotypeID] [int] NULL,
 	[UCResearch] [bit] NULL,
 	[Comment] [varchar](max) NULL,
 	[StatusID] [int] NULL,
 	[DateReceived] [datetime] NULL,
 	[InvoiceDate] [datetime] NULL,
-	[RechargeAmount] [varchar](10) NULL,
+	[RechargeAmount] [varchar](50) NULL,
 	[ContractExecuted] [varchar](50) NULL,
  CONSTRAINT [PK_Constructs] PRIMARY KEY CLUSTERED 
 (
@@ -210,35 +195,7 @@ CREATE TABLE [dbo].[Constructs](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Plants]    Script Date: 09/02/2008 14:25:34 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[Plants](
-	[PID] [int] IDENTITY(1,1) NOT NULL,
-	[Pedigree] [varchar](50) NULL,
-	[SequenceNumber] [int] NULL,
-	[EID] [int] NULL,
-	[DateInitiated] [datetime] NULL,
-	[DateEntered] [datetime] NOT NULL CONSTRAINT [DF_Plants_DateEntered]  DEFAULT (getdate()),
-	[GenoTypeID] [int] NULL,
-	[ReCallusingAssay] [bit] NOT NULL CONSTRAINT [DF_Plants_ReCallusingAssay]  DEFAULT ((0)),
-	[Rooting] [bit] NOT NULL CONSTRAINT [DF_Plants_Rooting]  DEFAULT ((0)),
-	[Comment] [varchar](max) NULL,
-	[DateDelivered] [datetime] NULL,
-	[PlantSelectionID] [int] NULL,
- CONSTRAINT [PK_Plants] PRIMARY KEY CLUSTERED 
-(
-	[PID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 09/02/2008 14:25:28 ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 09/05/2008 11:01:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -284,7 +241,7 @@ CREATE TABLE [dbo].[Orders](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Notes]    Script Date: 09/02/2008 14:25:11 ******/
+/****** Object:  Table [dbo].[Notes]    Script Date: 09/05/2008 11:00:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -305,7 +262,34 @@ CREATE TABLE [dbo].[Notes](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[Experiments]    Script Date: 09/02/2008 14:25:07 ******/
+/****** Object:  UserDefinedFunction [dbo].[udf_GetEffectiveID]    Script Date: 09/05/2008 11:01:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+CREATE FUNCTION [dbo].[udf_GetEffectiveID]
+(
+	@OperatorID int
+)
+RETURNS int
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @effective int
+
+	select @effective = effectiveid from operators where operatorid = @operatorid
+
+	-- Return the result of the function
+	RETURN @effective
+
+END
+GO
+/****** Object:  Table [dbo].[Experiments]    Script Date: 09/05/2008 11:00:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -314,17 +298,19 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Experiments](
 	[EID] [int] IDENTITY(1,1) NOT NULL,
-	[ExperimentCode] [varchar](50) NULL,
+	[ExperimentCode]  AS ([dbo].[udf_ExperimentCode]([YearCode],[dbo].[udf_GetEffectiveID]([OperatorID]),[OperatorExperimentNum])),
 	[DateStarted] [datetime] NULL,
-	[OperatorID] [int] NOT NULL,
+	[YearCode] [int] NULL,
+	[OperatorExperimentNum] [int] NULL,
+	[OperatorID] [int] NULL,
 	[SeedLotNumber] [varchar](15) NULL,
-	[CID] [int] NOT NULL,
+	[CID] [int] NULL,
 	[AgroSelection] [varchar](50) NULL,
 	[Explant] [varchar](50) NULL,
 	[Trait] [varchar](50) NULL,
 	[Comments] [varchar](max) NULL,
 	[TargetNumPlants] [int] NULL,
-	[OpticalDensity] [varchar](15) NULL,
+	[OpticalDensity] [float] NULL,
  CONSTRAINT [PK_Experiments] PRIMARY KEY CLUSTERED 
 (
 	[EID] ASC
@@ -333,85 +319,134 @@ CREATE TABLE [dbo].[Experiments](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  ForeignKey [FK_Constructs_AgroStrains]    Script Date: 09/02/2008 14:24:58 ******/
+/****** Object:  UserDefinedFunction [dbo].[udf_GetExperimentCode]    Script Date: 09/05/2008 11:01:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date, ,>
+-- Description:	<Description, ,>
+-- =============================================
+CREATE FUNCTION [dbo].[udf_GetExperimentCode]
+(
+	@eid int
+)
+RETURNS varchar(20)
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @experimentCode varchar(20)
+
+	SELECT @experimentCode = experimentCode from Experiments where EID = @EID
+
+	-- Return the result of the function
+	RETURN @experimentCode
+
+END
+GO
+/****** Object:  Table [dbo].[Plants]    Script Date: 09/05/2008 11:01:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Plants](
+	[PID] [int] IDENTITY(1,1) NOT NULL,
+	[Pedigree]  AS (case when [eid] IS NOT NULL then ([dbo].[udf_GetExperimentCode]([eid])+'-')+[SequenceNumber] else [SequenceNumber] end),
+	[SequenceNumber] [varchar](15) NULL,
+	[EID] [int] NULL,
+	[DateInitiated] [datetime] NULL,
+	[DateEntered] [datetime] NOT NULL CONSTRAINT [DF_Plants_DateEntered]  DEFAULT (getdate()),
+	[GenoTypeID] [int] NULL,
+	[ReCallusingAssay] [bit] NOT NULL CONSTRAINT [DF_Plants_ReCallusingAssay]  DEFAULT ((0)),
+	[Rooting] [bit] NOT NULL CONSTRAINT [DF_Plants_Rooting]  DEFAULT ((0)),
+	[Comment] [varchar](max) NULL,
+	[DateDelivered] [datetime] NULL,
+	[PlantSelectionID] [int] NULL,
+ CONSTRAINT [PK_Plants] PRIMARY KEY CLUSTERED 
+(
+	[PID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  ForeignKey [FK_Constructs_AgroStrains]    Script Date: 09/05/2008 11:00:46 ******/
 ALTER TABLE [dbo].[Constructs]  WITH CHECK ADD  CONSTRAINT [FK_Constructs_AgroStrains] FOREIGN KEY([AgroStrainID])
 REFERENCES [dbo].[AgroStrains] ([AgroStrainID])
 GO
 ALTER TABLE [dbo].[Constructs] CHECK CONSTRAINT [FK_Constructs_AgroStrains]
 GO
-/****** Object:  ForeignKey [FK_Constructs_Crops]    Script Date: 09/02/2008 14:24:58 ******/
+/****** Object:  ForeignKey [FK_Constructs_Crops]    Script Date: 09/05/2008 11:00:46 ******/
 ALTER TABLE [dbo].[Constructs]  WITH CHECK ADD  CONSTRAINT [FK_Constructs_Crops] FOREIGN KEY([CropID])
 REFERENCES [dbo].[Crops] ([CropID])
 GO
 ALTER TABLE [dbo].[Constructs] CHECK CONSTRAINT [FK_Constructs_Crops]
 GO
-/****** Object:  ForeignKey [FK_Constructs_Cultivar]    Script Date: 09/02/2008 14:24:58 ******/
-ALTER TABLE [dbo].[Constructs]  WITH CHECK ADD  CONSTRAINT [FK_Constructs_Cultivar] FOREIGN KEY([CultivarID])
-REFERENCES [dbo].[Cultivars] ([CultivarID])
+/****** Object:  ForeignKey [FK_Constructs_Genotypes]    Script Date: 09/05/2008 11:00:46 ******/
+ALTER TABLE [dbo].[Constructs]  WITH CHECK ADD  CONSTRAINT [FK_Constructs_Genotypes] FOREIGN KEY([GenotypeID])
+REFERENCES [dbo].[Genotypes] ([GenotypeID])
 GO
-ALTER TABLE [dbo].[Constructs] CHECK CONSTRAINT [FK_Constructs_Cultivar]
+ALTER TABLE [dbo].[Constructs] CHECK CONSTRAINT [FK_Constructs_Genotypes]
 GO
-/****** Object:  ForeignKey [FK_Constructs_PlantSelections]    Script Date: 09/02/2008 14:24:59 ******/
+/****** Object:  ForeignKey [FK_Constructs_PlantSelections]    Script Date: 09/05/2008 11:00:46 ******/
 ALTER TABLE [dbo].[Constructs]  WITH CHECK ADD  CONSTRAINT [FK_Constructs_PlantSelections] FOREIGN KEY([PlantSelectionID])
 REFERENCES [dbo].[PlantSelections] ([PlantSelectionID])
 GO
 ALTER TABLE [dbo].[Constructs] CHECK CONSTRAINT [FK_Constructs_PlantSelections]
 GO
-/****** Object:  ForeignKey [FK_Constructs_Status]    Script Date: 09/02/2008 14:24:59 ******/
+/****** Object:  ForeignKey [FK_Constructs_Status]    Script Date: 09/05/2008 11:00:46 ******/
 ALTER TABLE [dbo].[Constructs]  WITH CHECK ADD  CONSTRAINT [FK_Constructs_Status] FOREIGN KEY([StatusID])
 REFERENCES [dbo].[Status] ([StatusID])
 GO
 ALTER TABLE [dbo].[Constructs] CHECK CONSTRAINT [FK_Constructs_Status]
 GO
-/****** Object:  ForeignKey [FK_Experiments_Constructs]    Script Date: 09/02/2008 14:25:07 ******/
-ALTER TABLE [dbo].[Experiments]  WITH CHECK ADD  CONSTRAINT [FK_Experiments_Constructs] FOREIGN KEY([CID])
-REFERENCES [dbo].[Constructs] ([CID])
-GO
-ALTER TABLE [dbo].[Experiments] CHECK CONSTRAINT [FK_Experiments_Constructs]
-GO
-/****** Object:  ForeignKey [FK_Experiments_Operators]    Script Date: 09/02/2008 14:25:07 ******/
+/****** Object:  ForeignKey [FK_Experiments_Operators]    Script Date: 09/05/2008 11:00:54 ******/
 ALTER TABLE [dbo].[Experiments]  WITH CHECK ADD  CONSTRAINT [FK_Experiments_Operators] FOREIGN KEY([OperatorID])
 REFERENCES [dbo].[Operators] ([OperatorID])
 GO
 ALTER TABLE [dbo].[Experiments] CHECK CONSTRAINT [FK_Experiments_Operators]
 GO
-/****** Object:  ForeignKey [FK_Notes_Experiments]    Script Date: 09/02/2008 14:25:11 ******/
+/****** Object:  ForeignKey [FK_Notes_Experiments]    Script Date: 09/05/2008 11:00:58 ******/
 ALTER TABLE [dbo].[Notes]  WITH CHECK ADD  CONSTRAINT [FK_Notes_Experiments] FOREIGN KEY([EID])
 REFERENCES [dbo].[Experiments] ([EID])
 GO
 ALTER TABLE [dbo].[Notes] CHECK CONSTRAINT [FK_Notes_Experiments]
 GO
-/****** Object:  ForeignKey [FK_Notes_NoteTypes]    Script Date: 09/02/2008 14:25:11 ******/
+/****** Object:  ForeignKey [FK_Notes_NoteTypes]    Script Date: 09/05/2008 11:00:58 ******/
 ALTER TABLE [dbo].[Notes]  WITH CHECK ADD  CONSTRAINT [FK_Notes_NoteTypes] FOREIGN KEY([NoteTypeID])
 REFERENCES [dbo].[NoteTypes] ([NoteTypeID])
 GO
 ALTER TABLE [dbo].[Notes] CHECK CONSTRAINT [FK_Notes_NoteTypes]
 GO
-/****** Object:  ForeignKey [FK_Orders_Crops]    Script Date: 09/02/2008 14:25:28 ******/
+/****** Object:  ForeignKey [FK_Orders_Crops]    Script Date: 09/05/2008 11:01:16 ******/
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Crops] FOREIGN KEY([CropID])
 REFERENCES [dbo].[Crops] ([CropID])
 GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Crops]
 GO
-/****** Object:  ForeignKey [FK_Orders_TransGenes]    Script Date: 09/02/2008 14:25:29 ******/
+/****** Object:  ForeignKey [FK_Orders_TransGenes]    Script Date: 09/05/2008 11:01:16 ******/
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_TransGenes] FOREIGN KEY([TransGeneID])
 REFERENCES [dbo].[TransGenes] ([TransGeneID])
 GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_TransGenes]
 GO
-/****** Object:  ForeignKey [FK_Plants_Experiments]    Script Date: 09/02/2008 14:25:35 ******/
+/****** Object:  ForeignKey [FK_Plants_Experiments]    Script Date: 09/05/2008 11:01:22 ******/
 ALTER TABLE [dbo].[Plants]  WITH CHECK ADD  CONSTRAINT [FK_Plants_Experiments] FOREIGN KEY([EID])
 REFERENCES [dbo].[Experiments] ([EID])
 GO
 ALTER TABLE [dbo].[Plants] CHECK CONSTRAINT [FK_Plants_Experiments]
 GO
-/****** Object:  ForeignKey [FK_Plants_Genotypes]    Script Date: 09/02/2008 14:25:35 ******/
+/****** Object:  ForeignKey [FK_Plants_Genotypes]    Script Date: 09/05/2008 11:01:22 ******/
 ALTER TABLE [dbo].[Plants]  WITH CHECK ADD  CONSTRAINT [FK_Plants_Genotypes] FOREIGN KEY([GenoTypeID])
 REFERENCES [dbo].[Genotypes] ([GenotypeID])
 GO
 ALTER TABLE [dbo].[Plants] CHECK CONSTRAINT [FK_Plants_Genotypes]
 GO
-/****** Object:  ForeignKey [FK_Plants_PlantSelections]    Script Date: 09/02/2008 14:25:35 ******/
+/****** Object:  ForeignKey [FK_Plants_PlantSelections]    Script Date: 09/05/2008 11:01:22 ******/
 ALTER TABLE [dbo].[Plants]  WITH CHECK ADD  CONSTRAINT [FK_Plants_PlantSelections] FOREIGN KEY([PlantSelectionID])
 REFERENCES [dbo].[PlantSelections] ([PlantSelectionID])
 GO
