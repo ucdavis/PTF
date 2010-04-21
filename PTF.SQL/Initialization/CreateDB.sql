@@ -4359,6 +4359,7 @@ CREATE TABLE [dbo].[Constructs](
 	[InvoiceDate] [datetime] NULL,
 	[RechargeAmount] [decimal](18, 2) NULL,
 	[StatusID] [int] NULL,
+	[IsLocked] [bit] NOT NULL DEFAULT((0))
  CONSTRAINT [PK_Constructs] PRIMARY KEY CLUSTERED 
 (
 	[CID] ASC
