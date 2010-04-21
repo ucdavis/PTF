@@ -41,6 +41,14 @@
       <Project>{803AB19A-B148-487D-99A8-E3FF8BE222F4}</Project>
       <Name>PTF.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PTF.Core\PTF.Core.csproj">
+      <Project>{96C16422-3827-4D04-B34E-BA27EA3F3D8B}</Project>
+      <Name>PTF.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PTF.Data\PTF.Data.csproj">
+      <Project>{031EECA0-481E-444A-B4DE-A3977607DA5F}</Project>
+      <Name>PTF.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v9.0\Microsoft.WebDeployment.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
