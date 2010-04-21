@@ -418,6 +418,8 @@
                 Contact:</td>
             <td>
                 <asp:TextBox ID="tbContact" runat="server" MaxLength="100"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvContact" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbContact"
+                    ErrorMessage="Contact Name is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -434,6 +436,8 @@
                 Contact Phone:</td>
             <td>
                 <asp:TextBox ID="tbContactPhone" runat="server" MaxLength="20"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvContactPhone" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbContactPhone"
+                    ErrorMessage="Contact Phone number is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -484,6 +488,8 @@
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="tbNumberofPlants" ErrorMessage="Number of Plants is not a number." Text="*" ValidationExpression="\d*"
                     ValidationGroup="NewOrder">*</asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="rfvNumberofPlants" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbNumberofPlants"
+                    ErrorMessage="Number of plants is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
