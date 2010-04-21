@@ -143,6 +143,7 @@ tr#row table th.col6 {width: 103px;}*/
 /* --- data tables --- */
 table#orders td a {font-size: 1.5em; font-weight: bold;}
 table#suborders td, table.experiments td, table#dataTable td {font-size: 1.3em;}
+table#suborders td td {font-size: 1em;}
 
 
 /* --- info tables --- */
@@ -160,7 +161,7 @@ td.c3.col1, td.c3.col3, td.c3.col5 {width: 15%}
 td.c3.col2, td.c3.col4, td.c3.col6 {width: 18%}
 
 div.CollapsiblePanelHeader div {}
-div.CollapsiblePanelHeader div span {color: #d67129; font-size: 0.9em;}
+div.CollapsiblePanelHeader div span {color: #d67129; font-size: 0.9em; cursor: pointer;}
 
 td.InfoFieldValue input[type="text"] {width: 75%;} /* to make space for the save btns */
 
@@ -181,9 +182,9 @@ table.notes tr.head {background: url(../Images/notes_top.png) no-repeat top cent
 /*   btn styles                                 */
 /* -------------------------------------------- */
 
-img[alt="save"] {position: relative; top: 4px;}
+img[alt="save"] {position: relative; top: 4px; cursor: pointer;}
 
-input[type="submit"] {background: transparent; border: 0px none; padding: 0px; margin: 0px;}
+input[type="submit"] {background: transparent; border: 0px none; padding: 0px; margin: 0px; cursor: pointer;}
 /*
 input[id*="btn"] {background: url(../Images/btn_left.png) no-repeat top left; height: 33px;}
 input[id*="btn"] {background: url(../Images/btn_createexp.png) no-repeat top left; height: 33px;}
