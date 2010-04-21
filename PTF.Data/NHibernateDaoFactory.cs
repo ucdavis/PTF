@@ -21,36 +21,10 @@ namespace CAESDO.PTF.Data
             return new GenericDao<T, IdT>();
         }
 
-        #region Lookups
-        //public INoteTypeDao GetNoteTypeDao()
-        //{
-        //    return new NoteTypeDao();
-        //}
-        //public ICropDao GetCropDao()
-        //{
-        //    return new CropDao();
-        //}
-        //public IAgroStrainDao GetAgroStrainDao()
-        //{
-        //    return new AgroStrainDao();
-        //}
-        //public IStatusDao GetStatusDao()
-        //{
-        //    return new StatusDao();
-        //}
-        //public ISelectableMarkerDao GetSelectableMarkerDao()
-        //{
-        //    return new SelectableMarkerDao();
-        //}
-        //public IGenoTypeDao GetGenoTypeDao()
-        //{
-        //    return new GenoTypeDao();
-        //}
-        //public ITransGeneDao GetTransGeneDao()
-        //{
-        //    return new TransGeneDao();
-        //}
-        #endregion
+        public IConstructDao GetConstructDao()
+        {
+            return new ConstructDao();
+        }
 
         #endregion
 
@@ -58,15 +32,16 @@ namespace CAESDO.PTF.Data
 
         public class GenericDao<T, IdT> : AbstractNHibernateDao<T, IdT>, IGenericDao<T, IdT> { }
 
-        #region Lookups
-        //public class NoteTypeDao : AbstractNHibernateDao<NoteType, int>, INoteTypeDao { }
-        //public class CropDao : AbstractNHibernateDao<Crop, int>, ICropDao { }
-        //public class AgroStrainDao : AbstractNHibernateDao<AgroStrain, int>, IAgroStrainDao { }
-        //public class StatusDao : AbstractNHibernateDao<Status, int>, IStatusDao { }
-        //public class SelectableMarkerDao : AbstractNHibernateDao<SelectableMarker, int>, ISelectableMarkerDao { }
-        //public class GenoTypeDao : AbstractNHibernateDao<GenoType, int>, IGenoTypeDao { }
-        //public class TransGeneDao : AbstractNHibernateDao<TransGene, int>, ITransGeneDao { }
-        #endregion
+        public class ConstructDao : AbstractNHibernateDao<Construct, int>, IConstructDao 
+        {
+            public List<Construct> GetByOrder(CAESDO.PTF.Core.Domain.Order Order)
+            {
+                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Construct))
+                    .Add(Expression.Eq("Order", Order));
+
+                return criteria.List<Construct>() as List<Construct>;
+            }
+        }
 
         #endregion
 

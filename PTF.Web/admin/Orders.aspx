@@ -35,7 +35,7 @@
         <ItemTemplate>
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbSelect" runat="server">Select</asp:LinkButton>
+                    <a href='<%# "Construct.aspx?oid=" + Eval("ID")%>'>Details</a>
                 </td>
                 <td><%# Eval("ID") %></td>
                 <td><%# Eval("PI") %></td>

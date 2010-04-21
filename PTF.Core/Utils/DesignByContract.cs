@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace CAESDO.Recruitment.Core.Utils
+namespace CAESDO.PTF.Core.Utils
 {
     /// <summary>
     /// Design By Contract Checks.

@@ -69,6 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StatusNames.resx</DependentUpon>
     </Compile>
+    <Compile Include="StatusText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatusText.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="caesdo.snk" />
@@ -92,6 +97,11 @@
     <EmbeddedResource Include="StatusNames.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StatusNames.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StatusText.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

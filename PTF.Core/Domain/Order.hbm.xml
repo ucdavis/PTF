@@ -51,7 +51,7 @@
 		<property name="AdditionalInformation" column="AdditionalInformation" />
 		<property name="UserID" column="UserID" />
 		<property name="RechargeNumber" column="RechargeNumber" />
-		<property name="ContractNumber" column="ContractNumber" />
+		<property name="ContractExecuted" column="ContractExecuted" />
 		<property name="ShippingPermit" column="ShippingPermit" />
 
 		<property name="OtherUCResearch" column="OtherUCResearch" />
