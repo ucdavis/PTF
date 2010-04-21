@@ -88,9 +88,18 @@ public partial class admin_Construct : System.Web.UI.Page
             }
 
             // disable the create experiment
-            if (construct.IsBilled)
+            if (construct.IsLocked)
             {
                 btnNewExperiment.Enabled = false;
+            }
+
+            if (construct.IsLocked)
+            {
+                ibtnLock.ImageUrl = "../Images/locked.png";
+            }
+            else
+            {
+                ibtnLock.ImageUrl = "../Images/unlocked.png";
             }
         }
         catch 

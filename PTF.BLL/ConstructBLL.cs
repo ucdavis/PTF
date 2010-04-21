@@ -73,9 +73,9 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Construct construct)
         {
-            if (construct.IsBilled)
+            if (construct.IsLocked)
             {
-                throw new Exception("Construct (" + construct.ConstructCode + ") has been billed and cannot be changed.");
+                throw new Exception("Construct (" + construct.ConstructCode + ") has been locked and cannot be changed.");
             }
 
             using (var ts = new TransactionScope())
@@ -155,8 +155,36 @@ namespace CAESDO.PTF.BLL
         public static void Bill(Construct construct)
         {
             construct.InvoiceDate = DateTime.Now;
+            construct.IsLocked = true;
 
             ConstructBLL.Update(construct);
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        public static void UnLock(Construct construct)
+        {
+            construct.IsLocked = false;
+
+            using (var ts = new TransactionScope())
+            {
+                EnsurePersistent(ref construct);
+
+                ts.CommittTransaction();
+            }
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        public static void Lock(Construct construct)
+        {
+            construct.IsLocked = true;
+
+            using (var ts = new TransactionScope())
+            {
+                EnsurePersistent(ref construct);
+
+                ts.CommittTransaction();
+            }
         }
         #endregion
 

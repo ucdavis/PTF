@@ -108,7 +108,7 @@ public partial class admin_Experiment : System.Web.UI.Page
             }
 
             // disable changes if construct has been billed
-            if (experiment.Construct.IsBilled)
+            if (experiment.Construct.IsLocked)
             {
                 btnAddPlant.Enabled = false;
                 btnMakeNote.Enabled = false;

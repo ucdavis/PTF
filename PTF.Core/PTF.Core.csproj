@@ -69,6 +69,7 @@
     <Compile Include="Domain\Experiment.cs" />
     <Compile Include="Domain\ITrackable.cs" />
     <Compile Include="Domain\Lookups.cs" />
+    <Compile Include="Domain\MessageException.cs" />
     <Compile Include="Domain\Note.cs" />
     <Compile Include="Domain\NoteTypes.Designer.cs">
       <AutoGen>True</AutoGen>

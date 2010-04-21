@@ -25,6 +25,8 @@ namespace CAESDO.PTF.Core.Domain
 
         public virtual IList<Experiment> Experiments { get; set; }
 
+        public virtual bool IsLocked { get; set; }
+
         public virtual bool IsBilled
         {
             get

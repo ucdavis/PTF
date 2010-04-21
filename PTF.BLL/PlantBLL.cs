@@ -69,9 +69,9 @@ namespace CAESDO.PTF.BLL
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static void Update(Plant plant)
         {
-            if (plant.Experiment.Construct.IsBilled)
+            if (plant.Experiment.Construct.IsLocked)
             {
-                throw new Exception("Construct (" + plant.Experiment.Construct.ConstructCode + ") has been billed and cannot be changed.");
+                throw (MessageException) new Exception("Construct (" + plant.Experiment.Construct.ConstructCode + ") has been locked and cannot be changed.");
             }
 
             using (var ts = new TransactionScope())

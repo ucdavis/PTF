@@ -113,6 +113,19 @@ public class ScriptServices : System.Web.Services.WebService
                 break;
             case "Recharge": construct.RechargeAmount = decimal.Parse(value);
                 break;
+            case "IsLocked":
+                if (construct.IsLocked)
+                {
+                    //construct.IsLocked = false;
+                    ConstructBLL.UnLock(construct);
+                }
+                else
+                {
+                    //construct.IsLocked = true;
+                    ConstructBLL.Lock(construct);
+                }
+
+                return;
         };
 
         ConstructBLL.Update(construct);

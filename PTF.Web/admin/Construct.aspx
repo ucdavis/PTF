@@ -5,6 +5,44 @@
     <span class="ContractWarning">
         <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
     </span>
+    
+    <script type="text/javascript">
+        function ChangeLock(lockButton)
+        {
+            debugger;
+        
+            var constructID = '<%= Request.QueryString["cid"] %>';
+        
+            var context = new Object;
+            context.button = lockButton;
+            
+            var newValue = false;
+            
+            if (lockButton.src.match("unlocked.png") == null)
+            {
+                // locked is the current image
+                //lockButton.src = "../Images/unlocked.png";
+                
+                context.image = "../Images/unlocked.png";
+                newValue = false;
+            }
+            else
+            {
+                // unlocked is the current image
+                //lockButton.src = "../Images/locked.png";
+                
+                context.image = "../Images/locked.png";
+                newValue = true;
+            }
+           
+            ScriptServices.SaveProperty(constructID, "IsLocked", newValue, "Construct", ChangeLockOnComplete, null, context);
+        }
+        
+        function ChangeLockOnComplete(result, context)
+        {
+            context.button.src = context.image;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">
@@ -13,7 +51,9 @@
      <table class="InfoTable">
         <tr class="head">
             <td colspan="3" style="vertical-align: bottom">Construct Information</td>
-            <td style="text-align: right;"><asp:ImageButton ID="lbGenerateInvoice" ImageUrl="../Images/btn_invoice.png" AlternateText="Invoice" runat="server" onclick="lbGenerateInvoice_Click" />
+            <td style="text-align: right;">
+                <asp:ImageButton ID="ibtnLock" runat="server" OnClientClick="ChangeLock(this); return false;" />
+                <asp:ImageButton ID="lbGenerateInvoice" ImageUrl="../Images/btn_invoice.png" AlternateText="Invoice" runat="server" onclick="lbGenerateInvoice_Click" />                
             </td>
         </tr>
         <tr>
