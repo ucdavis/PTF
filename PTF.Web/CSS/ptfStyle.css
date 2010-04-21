@@ -215,7 +215,7 @@ td.InfoFieldValue input[type="text"] {width: 75%;} /* to make space for the save
 
 
 /* --- notes tables --- */
-table.notes {background: url(../Images/notes_btm.png) no-repeat bottom center; width: 431px; margin-bottom: 30px;}
+table.notes {background: url(../Images/notes_btm.png) no-repeat bottom center; width: 496px; margin-bottom: 30px;}
 table.notes tr {background: url(../Images/notes_mid.png) repeat-y top center;}
 table.notes tbody {background-image: none;}
 table.notes tr.head {background: url(../Images/notes_top.png) no-repeat top center;
@@ -228,15 +228,15 @@ table.notes td {padding-left: 20px;}
 span.notes.empty {display: block; margin-bottom: 0.5em; clear: both;}
 
 table.notes.left {float: left; clear: both;}
-table.notes.right {float: left; margin-left: 50px;}
+table.notes.right {float: left; margin-left: 48px;}
 span.notes.empty+table.notes.right {margin-left: 0px;}
-table.notes td.date {width: 100px;}
+table.notes td.date {width: 120px; font-size: 1.3em;}
 table.notes td.date+td {padding-left: 0px; padding-right: 20px;}
 
 
 /* --- popup tables --- */
 
-.popup table {width: inherit; padding-bottom: 0px;}
+.popup table {width: inherit; padding-bottom: 0px; margin-bottom: 20px;}
 .popup table, .popup tbody, .popup tr, .popup td {background: transparent;}
 div.popup {
     background: transparent url(../Images/popup_bg.png) top center no-repeat; 
@@ -250,8 +250,23 @@ div.popup {
     display: block;
     height: 10px;
 }
+div.popup.wide {
+    background: transparent url(../Images/popupwide_bg.png) top center no-repeat; 
+    width: 590px; margin-top: 0px; 
+    padding: 28px 75px 0px;
+}
+.popup_bottom.wide {
+    background: transparent url(../Images/popupwide_btm.png) bottom center no-repeat; 
+    margin: 0px; 
+    padding: 30px; 
+    display: block;
+    height: 10px;
+}
 .popup h2 {color: #fff; padding-left: 0px;}
+.popup.wide h2 {color: #fff; padding-left: 0px; margin-top: 0px;}
 .popup .close, .popup .button {float: right; padding-right: 0px;}
+
+.popup.wide table {max-width: 590px}
 
 .newconstruct table, .newconstruct td, .newconstruct th, .newconstruct tr {border: 0px none;}
 .newconstruct td, .newconstruct th {padding: .5em; vertical-align: bottom}
@@ -270,6 +285,10 @@ table.field {background: url(../Images/field_btm.png) bottom center no-repeat; m
 #ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_tcCrops_body table {background: none;}
 
 #ctl00_ContentPlaceHolder1_TabContainer1 {overflow-x: hidden; overflow-y: auto;}
+
+
+/* --- user info popup table --- */
+.userinfo select {width: 250px; margin-right: 10px;}
 
 
 

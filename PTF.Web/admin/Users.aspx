@@ -18,14 +18,18 @@
                 TargetControlID="lbNewUser" PopupControlID="pnlNewUser" DynamicServicePath="" 
                 Enabled="True">
             </AjaxControlToolkit:ModalPopupExtender>
-            <asp:Panel ID="pnlNewUser" CssClass="popup" runat="server" style="display:none;">
+            <asp:Panel ID="pnlNewUser" runat="server" style="display:none;">
+            <div class="popup wide">
+            <div class="close">
+                <asp:ImageButton ID="btnAddUserCancel" runat="server" Text="Close" ImageUrl="~/Images/btn_close.png" />
+            </div>
             <h2>Search For New User:</h2><br /><br />
-                 Login ID:
-                 <asp:TextBox ID="txtAddUserLoginID" runat="server"></asp:TextBox><br />
-                 <br />
+                 <strong>Login ID:</strong>
+                 <asp:TextBox ID="txtAddUserLoginID" runat="server"></asp:TextBox>
+                 
                  <asp:ImageButton ID="btnAddUserSearch" runat="server" OnClick="btnAddUserSearch_Click"
                      Text="Search" ImageUrl="~/Images/btn_lookup.png" />
-                 <asp:ImageButton ID="btnAddUserCancel" runat="server" Text="Close" ImageUrl="~/Images/btn_close.png" />
+                 
                  <br />
                  <asp:Label ID="lblAddUserStatus" runat="server" ForeColor="Green" EnableViewState="False"></asp:Label><br />
                  
@@ -95,13 +99,15 @@
                             PropertyName="Text" Type="String" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
+                </div>
+                <p class="popup_bottom wide">&nbsp;</p>
             </asp:Panel>
         
             <asp:ListView ID="lvStaffUsers" runat="server" DataSourceID="odsStaffUsers" DataKeyNames="Login" 
                 onselectedindexchanged="lvStaffUsers_SelectedIndexChanged">
                 <ItemTemplate>
                     <tr>
-                        <td>
+                        <td class="first">
                             <asp:LinkButton ID="lbSelect" CommandName="Select" runat="server"><img src="../Images/btn_select.png" title="select" /></asp:LinkButton></td>
                         <td><%# Eval("Login") %></td>
                         <td><%# Eval("Role") %></td>
@@ -112,6 +118,10 @@
                 </ItemTemplate>
                 <LayoutTemplate>
                     <table class="dataTable" cellpadding="0" cellspacing="0">
+                        <colgroup>
+                            <col width="130px" />
+                            <col span="5" />
+                        </colgroup>
                         <tr class="head">
                             <th>
                             </th>
@@ -137,18 +147,22 @@
             <asp:Button ID="btnDummyUpdateUserInfo" runat="server" Text="Button" style="display:none;" />
             <AjaxControlToolkit:ModalPopupExtender ID="mpeUpdateUserInfo" runat="server" TargetControlID="btnDummyUpdateUserInfo" PopupControlID="pnlUpdateUserInfo" CancelControlID="lbCloseUserInfo">
             </AjaxControlToolkit:ModalPopupExtender>
-            <asp:Panel ID="pnlUpdateUserInfo" runat="server" CssClass="popup" style="display:none;">
-                <span class="ModalTitle">User Information for <asp:Label ID="lblUserInfoName" runat="server" Text=""></asp:Label> </span>
+            <asp:Panel ID="pnlUpdateUserInfo" runat="server" style="display:none;">
+            <div class="popup userinfo">
+            <div class="close">
+                <asp:ImageButton ID="lbCloseUserInfo" runat="server" Text="Close" ImageUrl="~/Images/btn_close.png" />
+            </div>
+                <h2>User Information for <asp:Label ID="lblUserInfoName" runat="server" Text=""></asp:Label> </h2>
                 
                 <br />
-                LoginID: <asp:Label ID="lblUserInfoLoginID" runat="server" Text="Label"></asp:Label><br />
-                EmployeeID: <asp:Label ID="lblUserInfoEmployeeID" runat="server" Text="Label"></asp:Label><br /><br />
+                <strong>LoginID:</strong> <asp:Label ID="lblUserInfoLoginID" runat="server" Text="Label"></asp:Label><br />
+                <strong>EmployeeID:</strong> <asp:Label ID="lblUserInfoEmployeeID" runat="server" Text="Label"></asp:Label><br /><br />
                 
                 <asp:ListView ID="lvUserUnits" runat="server" DataKeyNames="UnitID" 
                     onitemdeleting="lvUserUnits_ItemDeleting">
                     <LayoutTemplate>
-                        <table class="dataTable" cellpadding="0" cellspacing="0">
-                            <tr class="head">
+                        <table class="InfoTable" cellpadding="0" cellspacing="0">
+                            <tr>
                                 <th>Unit</th>
                                 <th>FIS Code</th>
                                 <th>Remove</th>
@@ -161,7 +175,7 @@
                             <td><%# Eval("FullName") %></td>
                             <td><%# Eval("FISCode") %></td>
                             <td>
-                                <asp:LinkButton ID="lbDeleteUserRole" CommandName="Delete" runat="server"><img src="../Images/delete-x.png" alt="Delete" /></asp:LinkButton>
+                                <asp:LinkButton ID="lbDeleteUserRole" CommandName="Delete" runat="server"><img src="../Images/delete-x.png" alt="Delete" style="width: 20px;" /></asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -170,14 +184,14 @@
                 
                 <asp:DropDownList ID="ddlUnits" DataTextField="Unit" DataValueField="UnitID" runat="server" DataSourceID="odsUnits">
                 </asp:DropDownList>
-                <asp:Button ID="btnAddUserUnit" runat="server" OnClick="btnAddUserUnit_Click" Text="Add Unit" />
+                <asp:ImageButton ID="btnAddUserUnit" runat="server" OnClick="btnAddUserUnit_Click" ImageUrl="../Images/btn_addunit.png" AlternateText="Add Unit" />
                 <br /><br />
                                                                 
                 <asp:ListView ID="lvUserRoles" runat="server" DataKeyNames="RoleID" 
                     onitemdeleting="lvUserRoles_ItemDeleting">
                     <LayoutTemplate>
-                        <table class="dataTable" cellpadding="0" cellspacing="0">
-                            <tr class="head">
+                        <table class="InfoTable" cellpadding="0" cellspacing="0">
+                            <tr>
                                 <th>Role</th>
                                 <th>Remove</th>
                             </tr>
@@ -188,7 +202,7 @@
                         <tr>
                             <td><%# Eval("Role") %></td>
                             <td>
-                                <asp:LinkButton ID="lbDeleteUserUnit" CommandName="Delete" runat="server"><img src="../Images/delete-x.png" alt="Delete" /></asp:LinkButton>
+                                <asp:LinkButton ID="lbDeleteUserUnit" CommandName="Delete" runat="server"><img src="../Images/delete-x.png" alt="Delete" style="width: 20px;" /></asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -196,11 +210,12 @@
                 
                 <asp:DropDownList ID="ddlRoles" runat="server" DataSourceID="odsRoles" DataTextField="Role" DataValueField="RoleID">
                 </asp:DropDownList>
-                <asp:Button ID="btnAddUserRole" runat="server" OnClick="btnAddUserRole_Click" Text="Add Role" />
+                <asp:ImageButton ID="btnAddUserRole" runat="server" OnClick="btnAddUserRole_Click" ImageUrl="../Images/btn_addrole.png" AlternateText="Add Role" />
                 
                 <br /><br />
-                <asp:LinkButton ID="lbSaveUserInfo" runat="server"><img src="../Images/save.png" alt="Save" /></asp:LinkButton>
-                <asp:LinkButton ID="lbCloseUserInfo" runat="server">[Close]</asp:LinkButton>
+                <span class="button"><asp:LinkButton ID="lbSaveUserInfo" runat="server"><img src="../Images/save.png" alt="Save" style="width: 20px;" /></asp:LinkButton></span>
+                </div>
+                <p class="popup_bottom">&nbsp;</p>
             </asp:Panel>
             
             <asp:ObjectDataSource ID="odsStaffUsers" runat="server" 
