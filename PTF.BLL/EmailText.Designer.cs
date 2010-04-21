@@ -68,5 +68,14 @@ namespace CAESDO.PTF.BLL {
                 return ResourceManager.GetString("ResetPasswordMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new order has been placed..
+        /// </summary>
+        internal static string STR_NewOrder {
+            get {
+                return ResourceManager.GetString("STR_NewOrder", resourceCulture);
+            }
+        }
     }
 }

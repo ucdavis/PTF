@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResetPasswordMessage" xml:space="preserve">
-    <value>&lt;p&gt;Your password has been reset by the administrator.  Please log in using the password below to log in and proceed to the account page to reset your password.&lt;/p&gt;&lt;p&gt;New Password:&amp;nbsp;{password}&lt;/p&gt;Plant Transformation System Administrator</value>
+  <data name="STR_ContractNotExecutedWarning" xml:space="preserve">
+    <value>Warning! No contract has been executed yet for this order. You will not be allowed to proceed to creating a plant.</value>
   </data>
-  <data name="STR_NewOrder" xml:space="preserve">
-    <value>A new order has been placed.</value>
+  <data name="STR_NotAvailable" xml:space="preserve">
+    <value>n/a</value>
   </data>
 </root>

@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using System.Text;
 using CAESDO.PTF.Core.Domain;
+using Resources;
 
 public partial class admin_Order : System.Web.UI.Page
 {
@@ -69,9 +70,28 @@ public partial class admin_Order : System.Web.UI.Page
             litMailing.Text = this.GenerateAddress(order.MailingAddress1, order.MailingAddress2, order.MailingCity, order.MailingState, order.MailingInternationalState, order.MailingZip, order.MailingCountry);
             litShipping.Text = this.GenerateAddress(order.ShippingAddress1, order.ShippingAddress2, order.ShippingCity, order.ShippingState, order.ShippingInternationalState, order.ShippingZip, order.ShippingCountry);
 
-            litRechargeNumber.Text = order.RechargeNumber;
-            litContractExecuted.Text = order.ContractExecuted.ToString();
-            litShippingPermit.Text = order.ShippingPermit;
+            if (!order.RequiresContract)
+            {
+                // this order has a recharge number no need for a contract
+                litRechargeNumber.Text = order.RechargeNumber;
+                litContractExecuted.Text = CommonStrings.STR_NotAvailable;
+            }
+            else
+            {
+                // contract is required
+                litContractExecuted.Text = order.ContractExecuted.ToString();
+                litRechargeNumber.Text = CommonStrings.STR_NotAvailable;
+            }
+            if (order.RequiresShippingPermit)
+            {
+                // display information regarding shipping permits
+                litShippingPermit.Text = !string.IsNullOrEmpty(order.ShippingPermit) ? order.ShippingPermit : "Awaiting Client";
+            }
+            else
+            {
+                // shipping permit is not required
+                litShippingPermit.Text = CommonStrings.STR_NotAvailable;
+            }
 
             // order information
             litPICode.Text = order.PICode;

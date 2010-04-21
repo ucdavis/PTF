@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using CAESDO.PTF.Core.Domain;
+using Resources;
 
 public partial class admin_Experiment : System.Web.UI.Page
 {
@@ -84,6 +85,15 @@ public partial class admin_Experiment : System.Web.UI.Page
 
             lvPlants.DataSource = experiment.Plants;
             lvPlants.DataBind();
+
+            // place the contract warning
+            if (!experiment.Construct.Order.ContractExecuted && experiment.Construct.Order.RequiresContract)
+            {
+                litContractNotExecuted.Text = CommonStrings.STR_ContractNotExecutedWarning;
+
+                // disable the add plant option
+                btnAddPlant.Enabled = false;
+            }
         }
         catch (NHibernate.ObjectNotFoundException onfe)
         {

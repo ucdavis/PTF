@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Construct.aspx.cs" Inherits="admin_Construct" Title="PTF | Construct" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<script type="text/javascript" language="javascript">
+
+    <script type="text/javascript" language="javascript">
     function ChangeRechargeAmount()
     {      
         var constructID = '<%= Request.QueryString["cid"] %>';
@@ -19,6 +20,9 @@
     }
 </script>
 
+    <span class="ContractWarning">
+        <asp:Literal ID="litContractNotExecuted" runat="server"></asp:Literal>
+    </span>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

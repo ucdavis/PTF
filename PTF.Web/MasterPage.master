@@ -35,8 +35,6 @@
                 </LoggedInTemplate>
             </asp:LoginView>
         </div>
-       <%-- <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="true">
-        </cc1:ToolkitScriptManager>--%>
 
         <div style="float:left">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">

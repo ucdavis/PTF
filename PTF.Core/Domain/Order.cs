@@ -121,5 +121,42 @@ namespace CAESDO.PTF.Core.Domain
 
         public virtual IList<Construct> Constructs { get; set; }
         public virtual IList<SubOrder> SubOrders { get; set; }
+
+        /// <summary>
+        /// Determines whether a contract is needed, based on whether or not a recharge number is provided.
+        /// </summary>
+        public virtual bool RequiresContract {
+            get
+            {
+                if (RechargeNumber == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        /// <summary>
+        /// Determines whether a shipping permit is required, based on shipping address, country and state.
+        /// </summary>
+        public virtual bool RequiresShippingPermit {
+            get
+            {
+                if (ShippingCountry.ID == "USA" && ShippingState.ID != "CA")
+                {
+                    return true;
+                }
+                else if (ShippingCountry.ID != "USA")
+                {
+                    return true;
+                }
+                else
+                {   // this should be USA inside california
+                    return false;
+                }
+            }
+        }
     }
 }

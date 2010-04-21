@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using CAESDO.PTF.Core.Domain;
 using System.Web.Services;
+using Resources;
 
 public partial class admin_Construct : System.Web.UI.Page
 {
@@ -71,6 +72,12 @@ public partial class admin_Construct : System.Web.UI.Page
 
             lvExperiments.DataSource = construct.Experiments;
             lvExperiments.DataBind();
+
+            // add a warning if the contract has not been executed yet.
+            if (!construct.Order.ContractExecuted && construct.Order.RequiresContract)
+            {
+                litContractNotExecuted.Text = CommonStrings.STR_ContractNotExecutedWarning;
+            }
         }
         catch (NHibernate.ObjectNotFoundException onfe)
         {

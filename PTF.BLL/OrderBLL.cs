@@ -6,13 +6,14 @@ using CAESDO.PTF.Core.Domain;
 using CAESDO.PTF.Data;
 using System.ComponentModel;
 
+
 namespace CAESDO.PTF.BLL
 {
     [DataObject]
     public class OrderBLL : GenericBLL<Order, int>
     {
         [DataObjectMethod(DataObjectMethodType.Insert)]
-        public static void Insert(Order newOrder)
+        public static void Insert(Order newOrder, string mailFromAddress, string mailToAddress)
         {
             if (newOrder.RechargeNumber == null)
             {
@@ -26,7 +27,8 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction(); //commit the transaction
             }
 
-            //TODO: Email admin once the order is created
+            // notify the administrator
+            EmailBLL.OrderCreated(newOrder, mailFromAddress, mailToAddress);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]

@@ -143,7 +143,8 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             }
         }
 
-        OrderBLL.Insert(newOrder);
+        // insert the order and email the admin
+        OrderBLL.Insert(newOrder, ConfigurationManager.AppSettings["EmailFrom"], ConfigurationManager.AppSettings["OrderPlacedEmail"]);
 
         Response.Redirect("default.aspx");
     }
