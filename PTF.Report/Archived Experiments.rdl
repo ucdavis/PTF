@@ -2258,7 +2258,7 @@ FROM            ExistingExperimentInventory</CommandText>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Targeted of Plants</Value>
+                            <Value>Targeted of # Plants</Value>
                             <Style>
                               <FontFamily>Times New Roman</FontFamily>
                               <FontSize>11pt</FontSize>
@@ -2285,6 +2285,7 @@ FROM            ExistingExperimentInventory</CommandText>
                       <PaddingBottom>2pt</PaddingBottom>
                     </Style>
                   </Textbox>
+                  <rd:Selected>true</rd:Selected>
                 </CellContents>
               </TablixHeader>
               <TablixMembers>

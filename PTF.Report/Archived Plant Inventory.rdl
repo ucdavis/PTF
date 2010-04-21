@@ -1182,7 +1182,7 @@ FROM            ExistingPlantInventory</CommandText>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>ID Plants Requested</Value>
+                            <Value># Plants Requested</Value>
                             <Style>
                               <FontFamily>Times New Roman</FontFamily>
                               <FontSize>11pt</FontSize>

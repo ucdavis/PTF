@@ -1208,7 +1208,7 @@ FROM            ExistingConstructInventory</CommandText>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>ID of Plants Requested</Value>
+                            <Value># of Plants Requested</Value>
                             <Style>
                               <FontFamily>Times New Roman</FontFamily>
                               <FontSize>11pt</FontSize>
@@ -1250,7 +1250,21 @@ FROM            ExistingConstructInventory</CommandText>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>ID Plants Delivered</Value>
+                            <Value>#</Value>
+                            <Style>
+                              <FontFamily>Times New Roman</FontFamily>
+                              <FontSize>11pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value> Plants Delivered</Value>
                             <Style>
                               <FontFamily>Times New Roman</FontFamily>
                               <FontSize>11pt</FontSize>
