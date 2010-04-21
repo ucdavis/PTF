@@ -1,12 +1,21 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Constructs.aspx.cs" Inherits="admin_ExistingData_Constructs" Title="PTF | Archived Constructs" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Constructs.aspx.cs" Inherits="admin_Constructs" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
 <script type="text/javascript" src="../../JS/ExistingData.js"></script>
+<script type="text/javascript" src="../../JS/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="../../JS/flexigrid.js"></script>
+<script type="text/javascript" src="../../JS/flexigrid.pack.js"></script>
+
+<script type="text/javascript">
+    $(document).ready()
+    {
+        $('.constructs').flexigrid({height:'auto',striped:true});
+    };
+</script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
 
     <asp:ListView ID="lvConstructs" runat="server" DataSourceID="odsConstructs">
         <LayoutTemplate>
@@ -117,9 +126,6 @@
         <SelectParameters>
         </SelectParameters>
     </asp:ObjectDataSource>
-    
-    <script type="text/javascript">
-        FreezeGridViewHeader('constructs','WrapperDiv');
-    </script>
+
 </asp:Content>
 

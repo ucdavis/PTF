@@ -133,8 +133,11 @@ public partial class admin_Order : System.Web.UI.Page
             lvSuborders.DataSource = order.SubOrders;
             lvSuborders.DataBind();
 
-            gvSuborder.DataSource = order.SubOrders;
-            gvSuborder.DataBind();
+            //gvSuborder.DataSource = order.SubOrders;
+            //gvSuborder.DataBind();
+
+            lvSubOrder.DataSource = order.SubOrders;
+            lvSubOrder.DataBind();
         }
         catch 
         {
@@ -174,36 +177,36 @@ public partial class admin_Order : System.Web.UI.Page
 
         return address.ToString();
     }
-    protected void gvSuborder_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        // create a new construct for this suborder
-        var suborder = SubOrderBLL.GetByID(Convert.ToInt32(gvSuborder.SelectedDataKey.Value));
+    //protected void gvSuborder_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    // create a new construct for this suborder
+    //    var suborder = SubOrderBLL.GetByID(Convert.ToInt32(gvSuborder.SelectedDataKey.Value));
 
-        Construct newConstruct = new Construct()
-            {
-                Order = suborder.Order,
-                SubOrder = suborder
-            };
+    //    Construct newConstruct = new Construct()
+    //        {
+    //            Order = suborder.Order,
+    //            SubOrder = suborder
+    //        };
 
-        ConstructBLL.Insert(newConstruct);
+    //    ConstructBLL.Insert(newConstruct);
 
-        // update the list view with all sub orders
-        lvSuborders.DataSource = suborder.Order.SubOrders;
-        lvSuborders.DataBind();
-    }
+    //    // update the list view with all sub orders
+    //    lvSuborders.DataSource = suborder.Order.SubOrders;
+    //    lvSuborders.DataBind();
+    //}
 
-    protected void gvSuborder_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            var suborder = (SubOrder)e.Row.DataItem;
+    //protected void gvSuborder_RowDataBound(object sender, GridViewRowEventArgs e)
+    //{
+    //    if (e.Row.RowType == DataControlRowType.DataRow)
+    //    {
+    //        var suborder = (SubOrder)e.Row.DataItem;
 
-            if (suborder.PlantSelection.Name == STR_Other || suborder.GenoType.Name == STR_Other)
-            {
-                e.Row.Cells[0].Text = string.Empty;
-            }
-        }
-    }
+    //        if (suborder.PlantSelection.Name == STR_Other || suborder.GenoType.Name == STR_Other)
+    //        {
+    //            e.Row.Cells[0].Text = string.Empty;
+    //        }
+    //    }
+    //}
 
     protected void lbBack_Click(object sender, EventArgs e)
     {
@@ -267,5 +270,23 @@ public partial class admin_Order : System.Web.UI.Page
                 litGenotype.Text = suborder.GenoType.Name;
             }
         }
+    }
+    protected void lbSelectOnCommand(object sender, CommandEventArgs e)
+    {
+        int id = Convert.ToInt32(e.CommandArgument);
+
+        var suborder = SubOrderBLL.GetByID(id);
+
+        Construct newConstruct = new Construct()
+        {
+            Order = suborder.Order,
+            SubOrder = suborder
+        };
+
+        ConstructBLL.Insert(newConstruct);
+
+        // update the list view with all sub orders
+        lvSuborders.DataSource = suborder.Order.SubOrders;
+        lvSuborders.DataBind();
     }
 }

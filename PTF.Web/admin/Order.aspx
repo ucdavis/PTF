@@ -227,7 +227,7 @@
  <br />
  
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-<ContentTemplate>    
+<ContentTemplate> 
     <asp:Button ID="btnNewConstruct" runat="server" Text="" />
     <asp:ListView ID="lvSuborders" runat="server" 
         onitemdatabound="lvSuborders_ItemDataBound">
@@ -258,16 +258,14 @@
                         <asp:Panel runat="server" ID="pnlPlantSelection" Visible="false">
                         <asp:DropDownList ID="ddlPlantSelection" runat="server" DataValueField="id" DataTextField="Name">
                         </asp:DropDownList>
-                        <a id="PlantSelectionButton" onclick='SaveSuborderProperty("<%# Eval("id") %>", this, "PlantSelection");'><img src="../Images/save.png" width="20px" alt="save" /></a>
-                        </asp:Panel>
+                        <a id="PlantSelectionButton" onclick='SaveSuborderProperty("<%# Eval("id") %>", this, "PlantSelection");'><img src="../Images/save.png" width="20px" alt="save" /></a></asp:Panel>
                     </div>
                 </td>
                 <td>
                     <asp:Literal ID="litGenotype" runat="server"></asp:Literal>
                     <asp:Panel runat="server" id="pnlGenotype" Visible="false">
                     <asp:DropDownList ID="ddlGenotype" runat="server" DataValueField="id" DataTextField="Name"></asp:DropDownList>
-                    <a id="GenotypeButton" onclick='SaveSuborderProperty("<%# Eval("id") %>", this, "Genotype");'><img src="../Images/save.png" width="20px" alt="save" /></a>
-                    </asp:Panel>
+                    <a id="GenotypeButton" onclick='SaveSuborderProperty("<%# Eval("id") %>", this, "Genotype");'><img src="../Images/save.png" width="20px" alt="save" /></a></asp:Panel>
                 </td>
             </tr>
             <tr id="row" class="item">
@@ -306,7 +304,7 @@
     <h2>New Construct</h2>
         
         <br /><br />
-        <asp:GridView ID="gvSuborder" runat="server" AutoGenerateColumns="False" 
+<%--        <asp:GridView ID="gvSuborder" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="id" onselectedindexchanged="gvSuborder_SelectedIndexChanged" Width="375px" OnRowDataBound="gvSuborder_RowDataBound">
             <Columns>
                 
@@ -329,13 +327,38 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
-        </asp:GridView>
+        </asp:GridView>--%>
+        
+        <asp:ListView ID="lvSubOrder" runat="server" DataKeyNames="id" >
+            <LayoutTemplate>
+            <div class="grid">
+                <table cellpadding="15" cellspacing="0">
+                    <tr class="head">
+                        <th></th>
+                        <th>Crop</th>
+                        <th>Plant Selection</th>
+                        <th>Genotype</th>
+                    </tr>
+                    <tr runat="server" id="ItemPlaceHolder"></tr>
+                </table>
+            </div>
+            </LayoutTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td>
+                        <asp:LinkButton ID="lbSelect" OnCommand="lbSelectOnCommand" CommandArgument='<%# Eval("id") %>' runat="server">Select</asp:LinkButton></td>
+                    <td><%# Eval("Crop.Name") %></td>
+                    <td><%# Eval("PlantSelection.Name") %></td>
+                    <td><%# Eval("GenoType.Name") %></td>
+                </tr>
+            </ItemTemplate>
+        </asp:ListView>
+
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewConstruct" runat="server" TargetControlID="btnNewConstruct" CancelControlID="btnCancel" PopupControlID="pnlNewConstruct">
     </AjaxControlToolkit:ModalPopupExtender>
 </ContentTemplate>
-</asp:UpdatePanel>    
-
+</asp:UpdatePanel> 
 
     <script type="text/javascript">
     

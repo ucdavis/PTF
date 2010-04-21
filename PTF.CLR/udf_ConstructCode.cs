@@ -8,32 +8,23 @@ using System.Text;
 public partial class UserDefinedFunctions
 {
     [Microsoft.SqlServer.Server.SqlFunction]
-    public static SqlString udf_ConstructCode(int yearCode, int sequenceNumber, int subSequenceNumber)
+    public static SqlString udf_ConstructCode(string yearCode, string sequenceNumber, string subSequenceNumber)
     {
-        StringBuilder constructCode = new StringBuilder("AT");
-        constructCode.Append(yearCode.ToString("d2"));
-        constructCode.Append(sequenceNumber.ToString("d3"));
+        int year, sequence, subSequence;
 
-        //string constructCode = "AT";
-
-        //constructCode += yearCode.ToString("d2");
-
-        //constructCode += sequenceNumber.ToString("d3");
-
-        if (subSequenceNumber > 0)
+        if (!int.TryParse(yearCode, out year) || !int.TryParse(sequenceNumber, out sequence) || !int.TryParse(subSequenceNumber, out subSequence))
         {
-            //constructCode += "-";
-            constructCode.Append("-");
-            constructCode.Append(subSequenceNumber.ToString("d2"));
+            return "n/a";
+        }
 
-            //if (subSequenceNumber < 10)
-            //{
-            //    constructCode += "0" + subSequenceNumber.ToString();
-            //}
-            //else
-            //{
-            //    constructCode += subSequenceNumber.ToString();
-            //}
+        StringBuilder constructCode = new StringBuilder("AT");
+        constructCode.Append(year.ToString("d2"));
+        constructCode.Append(sequence.ToString("d3"));
+
+        if (subSequence > 0)
+        {
+            constructCode.Append("-");
+            constructCode.Append(subSequence.ToString("d2"));
         }
 
         return new SqlString(constructCode.ToString());

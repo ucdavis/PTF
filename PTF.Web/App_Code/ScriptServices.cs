@@ -10,6 +10,7 @@ using CAESDO.PTF.Core.Domain;
 using System.Web.Script.Services;
 using System.Web.Security;
 using System.Collections.Generic;
+using System.Xml;
 
 /// <summary>
 /// Summary description for ScriptServices
