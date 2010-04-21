@@ -58,7 +58,7 @@
                     <asp:TextBox ID="tbInsertName" runat="server" Text='<%# Bind("OperatorName") %>'></asp:TextBox>
                 </td>
                 <td>
-                    <asp:CheckBox ID="cbInsertStudent" runat="server" Text='<%# Bind("IsStudent") %>' />
+                    <asp:CheckBox ID="cbInsertStudent" runat="server" Checked='<%# Bind("IsStudent") %>' />
                 </td>
                 <td>
                     <asp:TextBox ID="tbInsertEffectiveID" runat="server" Text='<%# Bind("OperatorCode") %>'></asp:TextBox>

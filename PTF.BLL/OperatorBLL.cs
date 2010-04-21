@@ -41,6 +41,8 @@ namespace CAESDO.PTF.BLL
 
                 ts.CommittTransaction(); //commit the transaction
             }
+
+            NHibernateSessionManager.Instance.EvictObject(obj);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
