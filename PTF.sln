@@ -39,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTFConvert", "PTFConvert\PT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.CLR", "PTF.CLR\PTF.CLR.csproj", "{CB0A6E20-587C-4BCD-AD3D-71D2B2F65EE9}"
 EndProject
-Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "PTF.Deploy", "PTF.Deployt\PTF.Deploy.wdproj", "{9931B892-5ECE-49FF-9356-C06CFC8318E7}"
+Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "PTF.Deploy", "PTF.Deploy\PTF.Deploy.wdproj", "{9931B892-5ECE-49FF-9356-C06CFC8318E7}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -61,6 +61,7 @@ Global
 		SccLocalPath4 = PTF.SQL
 		SccWebProject5 = true
 		SccProjectUniqueName5 = PTF.Web
+		SccProjectName5 = PTF.Web
 		SccLocalPath5 = .
 		SccProjectFilePathRelativizedFromConnection5 = PTF.Web\\
 		SccProjectEnlistmentChoice5 = 2
@@ -70,9 +71,9 @@ Global
 		SccProjectUniqueName7 = PTF.CLR\\PTF.CLR.csproj
 		SccProjectName7 = PTF.CLR
 		SccLocalPath7 = PTF.CLR
-		SccProjectUniqueName8 = PTF.Deployt\\PTF.Deploy.wdproj
-		SccProjectName8 = PTF.Deployt
-		SccLocalPath8 = PTF.Deployt
+		SccProjectUniqueName8 = PTF.Deploy\\PTF.Deploy.wdproj
+		SccProjectName8 = PTF.Deploy
+		SccLocalPath8 = PTF.Deploy
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
