@@ -41,20 +41,20 @@ namespace CAESDO.PTF.BLL
             #if DEBUG
             // email the client that their order has been placed
             MailMessage cmessage = new MailMessage(fromEmail, "anlai@ucdavis.edu");
-            message.Body = EmailText.STR_ClientConfirmationMessage;
-            message.Subject = "PTF Order Submitted";
-            message.IsBodyHtml = true;
+            cmessage.Body = EmailText.STR_ClientConfirmationMessage;
+            cmessage.Subject = "PTF Order Submitted";
+            cmessage.IsBodyHtml = true;
 
             client.Send(cmessage);
             #else
             // email the client that their order has been placed
             MailMessage cmessage = new MailMessage(fromEmail, order.ContactEmail);
-            message.Body = EmailText.STR_ClientConfirmationMessage;
-            message.Subject = "PTF Order Submitted";
-            message.IsBodyHtml = true;
+            cmessage.Body = EmailText.STR_ClientConfirmationMessage;
+            cmessage.Subject = "PTF Order Submitted";
+            cmessage.IsBodyHtml = true;
 
             client.Send(cmessage);
-            #endif
+#endif
         }
 
         public static void ConstructComplete(Construct construct)

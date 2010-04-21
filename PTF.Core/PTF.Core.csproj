@@ -74,6 +74,7 @@
       <DependentUpon>StatusText.resx</DependentUpon>
     </Compile>
     <Compile Include="Domain\SubOrder.cs" />
+    <Compile Include="Domain\CatbertClasses.cs" />
     <Compile Include="Domain\UserProfile.cs" />
     <Compile Include="Domain\ValidateBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +119,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Domain\UserProfile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\CatbertClasses.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

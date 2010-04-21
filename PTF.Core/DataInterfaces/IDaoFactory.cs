@@ -12,6 +12,8 @@ namespace CAESDO.PTF.Core.DataInterfaces
 
         IConstructDao GetConstructDao();
         IExperimentDao GetExperimentDao();
+
+        IUserDao GetUserDao();
     }
 
 
@@ -31,5 +33,10 @@ namespace CAESDO.PTF.Core.DataInterfaces
         List<Experiment> GetByConstruct(Construct Construct);
     }
 
+    public interface IUserDao : IDao<User, int>
+    {
+        User GetUserByLogin(string LoginID);
+        User GetUserBySID(string SID);
+    }
     #endregion
 }

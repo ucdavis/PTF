@@ -41,30 +41,45 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
     }
     private enum ControlNames { ddlCrop = 0, ddlGenotype, tbNumPlants, ddlPlantSelection, ccdCrop, ccdPlantSelection }
 
+    protected override void OnInit(EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            Session[STR_PlantInformationControls] = null;
+            //AddControls();
+        }
+
+        AddControls();
+
+        AddPlantInformationControls();
+
+        base.OnInit(e);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             // null out the session variable so we start fresh on a new load
-            Session[STR_PlantInformationControls] = null;
+            //Session[STR_PlantInformationControls] = null;
             // add the first set of controls
-            AddControls();
+            //AddControls();
 
             // populate profile information as necessary
             PopulateProfile();
         }
         
         // need to recreate the controls every time
-        AddPlantInformationControls();
+        //AddPlantInformationControls();
 
-        if (!Page.IsPostBack)
-        {
-            // need to insert another one so the next time we post back it will create the extra set
-            // the page load runs before the event for the button, so this will add the next est on the load
-            // and the button even will add a new set for the next time around.
-            // need to keep the control set count 1 more than what we want
-            AddControls();
-        }
+        //if (!Page.IsPostBack)
+        //{
+        //    // need to insert another one so the next time we post back it will create the extra set
+        //    // the page load runs before the event for the button, so this will add the next est on the load
+        //    // and the button even will add a new set for the next time around.
+        //    // need to keep the control set count 1 more than what we want
+        //    AddControls();
+        //}
     }
     protected void btnPlaceOrder_Click(object sender, EventArgs e)
     {
@@ -182,8 +197,8 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             DropDownList cropDDL = new DropDownList();
             cropDDL.ID = controlNames[(int)ControlNames.ddlCrop];
             //cropDDL.DataSourceID = "odsCrop";
-            cropDDL.DataTextField = "Name";
-            cropDDL.DataValueField = "id";
+            //cropDDL.DataTextField = "Name";
+            //cropDDL.DataValueField = "id";
             //cropDDL.AppendDataBoundItems = true;
             //cropDDL.Items.Add(new ListItem("--Select a Crop--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(cropDDL);
@@ -191,8 +206,8 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             DropDownList plantSelectionDDL = new DropDownList();
             plantSelectionDDL.ID = controlNames[(int)ControlNames.ddlPlantSelection];
             //plantSelectionDDL.DataSourceID = "odsPlantSelection";
-            plantSelectionDDL.DataTextField = "Name";
-            plantSelectionDDL.DataValueField = "id";
+            //plantSelectionDDL.DataTextField = "Name";
+            //plantSelectionDDL.DataValueField = "id";
             //plantSelectionDDL.AppendDataBoundItems = true;
             //plantSelectionDDL.Items.Add(new ListItem("--Select a Plant Selection--", STR_DDLUnselected));
             phPlantInformation.Controls.Add(plantSelectionDDL);
@@ -296,6 +311,6 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
     protected void lbAddPlantInformationFields_Click(object sender, EventArgs e)
     {
-        AddControls();
+        //AddControls();
     }
 }

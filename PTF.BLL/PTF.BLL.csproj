@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatbertClassesBLL.cs" />
     <Compile Include="ClientBLL.cs" />
     <Compile Include="ConstructBLL.cs" />
     <Compile Include="EmailBLL.cs" />

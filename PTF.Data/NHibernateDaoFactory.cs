@@ -31,6 +31,11 @@ namespace CAESDO.PTF.Data
             return new ExperimentDao();
         }
 
+        public IUserDao GetUserDao()
+        {
+            return new UserDao();
+        }
+
         #endregion
 
         #region Inline DAO implementations
@@ -57,6 +62,30 @@ namespace CAESDO.PTF.Data
 
                 return criteria.List<Experiment>() as List<Experiment>;
    
+            }
+        }
+
+        public class UserDao : AbstractNHibernateDao<User, int>, IUserDao
+        {
+            public User GetUserByLogin(string LoginID)
+            {
+                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Login))
+                    .Add(Expression.Eq("id", LoginID));
+
+                Login login = criteria.UniqueResult<Login>();
+
+                if (login == null)
+                    return null;
+
+                return login.User;
+            }
+
+            public User GetUserBySID(string SID)
+            {
+                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(User))
+                    .Add(Expression.Eq("SID", SID));
+
+                return criteria.UniqueResult<User>();
             }
         }
 
