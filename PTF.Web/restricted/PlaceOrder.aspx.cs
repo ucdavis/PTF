@@ -39,7 +39,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             Session[STR_PlantInformationControls] = value;
         }
     }
-    private enum ControlNames { ddlCrop = 0, ddlGenotype, tbNumPlants, ddlPlantSelection, ccdCrop, ccdPlantSelection, ccdGenoType }
+    private enum ControlNames { ddlCrop = 0, ddlGenotype, ddlPlantSelection, tbNumPlants, ccdCrop, ccdPlantSelection, ccdGenoType }
 
     protected override void OnInit(EventArgs e)
     {
@@ -207,6 +207,11 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             DropDownList genotypeDDL = new DropDownList();
             genotypeDDL.ID = controlNames[(int)ControlNames.ddlGenotype];
             phPlantInformation.Controls.Add(genotypeDDL);
+            
+            TextBox tbNumPlants = new TextBox();
+            tbNumPlants.ID = controlNames[(int)ControlNames.tbNumPlants];
+            tbNumPlants.Text = string.Empty;
+            phPlantInformation.Controls.Add(tbNumPlants);
 
             // add in the ajax extenders
             CascadingDropDown ccdCrop = new CascadingDropDown()
@@ -243,10 +248,6 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
                     ServiceMethod = "GetGenotypeForCrops"
                 };
             phPlantInformation.Controls.Add(ccdGenotype);
-
-            TextBox tbNumPlants = new TextBox();
-            tbNumPlants.ID = controlNames[(int)ControlNames.tbNumPlants];
-            phPlantInformation.Controls.Add(tbNumPlants);
         }
     }
 

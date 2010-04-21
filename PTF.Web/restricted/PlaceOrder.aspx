@@ -120,6 +120,17 @@
                 }
             }
         
+            // validate the suborders        
+            if (!ValidateSubOrders()) // false means it failed validation
+            {
+                warningString += "<li>At least one Plant Information entry is not complete.</li>";
+                $get("PlantInformationValidation").innerHTML = "*";
+            }   
+            else
+            {
+                $get("PlantInformationValidation").innerHTML = "";
+            }     
+        
             if (warningString != str_empty)
             {
                 var warningsBox = $get("ValidationWarnings");
@@ -199,6 +210,58 @@
             }
             
             return fields;
+        }
+        
+        function ValidateSubOrders()
+        {
+            var placeholder2 = $get("<%= upPlantInformation.ClientID %>");
+
+            var valid = true;           // determines if there is a partially completed plant information section
+            var atleastOne = false;     // checks to see that there is atleast one selected
+            var counter = 0;
+                                   
+            // iterate through the list of children to find the controls.
+            for (i = 0; i < placeholder2.childNodes.length; i++)
+            {
+                var obj = placeholder2.childNodes[i];
+                
+                var plantSelectionDropDown = null;
+                var genotypeDropDown = null;
+                var numPlantsTxt = null;
+                
+                // get the crop drop down and make sure it's the select object and not client state information (for cascading drop down)
+                if (obj.tagName == "SELECT" && obj.id.match("ddlCrop") != null)
+                {
+                    counter++; // increment the counter
+                    
+                    plantSelectionDropDown = obj.nextSibling;
+                    genotypeDropDown = plantSelectionDropDown.nextSibling;
+                    numPlantsTxt = genotypeDropDown.nextSibling;
+                                                           
+                    // check the case that all information is populated
+                    if (obj.selectedIndex > 0 && plantSelectionDropDown.selectedIndex > 0 && genotypeDropDown.selectedIndex > 0 && !isNaN(parseInt(numPlantsTxt.value)))
+                    {
+                        atleastOne = true;
+                    }
+                    else if (obj.selectedIndex == 0 && numPlantsTxt.value == "") // nothing was selected
+                    {
+                        // do nothing
+                    }
+                    else    // partially completed information
+                    {                      
+                        valid = false;
+                    }
+                }
+            }
+                                          
+            // check to see if there was atleast one selected                       
+            if (!atleastOne)
+            {
+                return false;
+            }
+            
+            // return on the condition that there isn't atleast one that is not valid
+            return valid;
         }
     </script>
 </asp:Content>
@@ -377,7 +440,7 @@
         </tr>
         <tr>
             <td class="style2" colspan="2">
-                <strong>Plant Information</strong>
+                <strong>Plant Information<span style="color: Red;" id="PlantInformationValidation"></span></strong>
             </td>
         </tr>
         <tr>
@@ -393,7 +456,6 @@
                         </asp:LinkButton>
                     </ContentTemplate>
                 </asp:UpdatePanel>    
-
             </td>
         </tr>
         <tr>
