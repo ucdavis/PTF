@@ -19,7 +19,7 @@ FOR INSERT
 	set @yearCode = cast(@year as int)
 
 	-- get the operator experiment number
-	select @experimentnum = max(operatorexperimentnum) from Experiments where effectiveoperatorid = dbo.udf_geteffectiveid(@operator)
+	select @experimentnum = max(operatorexperimentnum) from Experiments where effectiveoperatorid = dbo.udf_geteffectiveid(@operator) and yearcode = @yearcode
 
 	if (@experimentnum is null)
 		set @experimentnum = 1
