@@ -48,7 +48,7 @@
       <Name>Release</Name>
       <Platform>Win32</Platform>
       <Options>
-        <TargetServerURL>http://lou/reportserver</TargetServerURL>
+        <TargetServerURL>http://guenter/reportserver</TargetServerURL>
         <TargetFolder>PTF</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
       </Options>
