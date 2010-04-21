@@ -554,7 +554,7 @@
                 <br />** Many other cultivars can be transformed, contact the Facility for details.<br /></td>
             </tr>
         </table>
-        <asp:ImageButton ID="btnCancelPrices2" ToolTip="Close" ImageUrl="~/Images/btn_cancel.png" runat="server" Text="X" />
+        <%--<asp:ImageButton ID="btnCancelPrices2" ToolTip="Close" ImageUrl="~/Images/btn_cancel.png" runat="server" Text="X" />--%>
         
     </div>
     <p class="popup_bottom wide">&nbsp;</p>
