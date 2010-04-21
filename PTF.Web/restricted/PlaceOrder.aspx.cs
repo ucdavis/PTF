@@ -39,7 +39,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
             Session[STR_PlantInformationControls] = value;
         }
     }
-    private enum ControlNames { ddlCrop = 0, ddlGenotype, ddlPlantSelection, tbNumPlants, ccdCrop, ccdPlantSelection, ccdGenoType }
+    private enum ControlNames { ddlCrop = 0, ddlGenotype, ddlPlantSelection, tbNumPlants, ccdCrop, ccdPlantSelection, ccdGenoType, tbwNumPlants }
 
     protected override void OnInit(EventArgs e)
     {
@@ -248,6 +248,15 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
                     ServiceMethod = "GetGenotypeForCrops"
                 };
             phPlantInformation.Controls.Add(ccdGenotype);
+
+            TextBoxWatermarkExtender tbwNumPlants = new TextBoxWatermarkExtender() 
+                {
+                    ID = controlNames[(int)ControlNames.tbwNumPlants],
+                    TargetControlID = controlNames[(int)ControlNames.tbNumPlants],
+                    WatermarkText = "# of Plants",
+                    WatermarkCssClass = "watermark"
+                };
+            phPlantInformation.Controls.Add(tbwNumPlants);
         }
     }
 
@@ -260,6 +269,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         string ccdCrop = "cddCrop" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdPlantSelection = "ccdPlantSelection" + ((int)PlantInformationControls.Count + 1).ToString();
         string ccdGenotype = "ccdGenotype" + ((int)PlantInformationControls.Count + 1).ToString();
+        string tbwNumPlants = "tbwNumPlants" + ((int)PlantInformationControls.Count + 1).ToString();
 
         List<string> controlNames = new List<string>();
         controlNames.Add(cropDLLId);
@@ -269,6 +279,7 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
         controlNames.Add(ccdCrop);
         controlNames.Add(ccdPlantSelection);
         controlNames.Add(ccdGenotype);
+        controlNames.Add(tbwNumPlants);
 
         List<List<string>> masterList = PlantInformationControls;
         masterList.Add(controlNames);

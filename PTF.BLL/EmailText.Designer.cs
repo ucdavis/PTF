@@ -70,7 +70,7 @@ namespace CAESDO.PTF.BLL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This message is to inform you that your message has been successfully been submitted.  Please check the ordering system for up to date status of your order at https://website.ucdavis.edu/ptf. - Plant Transformation Facility Administrator.
+        ///   Looks up a localized string similar to This message is to inform you that your order has been successfully submitted.  Please check the ordering system for up to date status of your order at https://website.ucdavis.edu/ptf. - Plant Transformation Facility Administrator.
         /// </summary>
         internal static string STR_ClientConfirmationMessage {
             get {

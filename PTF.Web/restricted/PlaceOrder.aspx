@@ -237,13 +237,13 @@
                     plantSelectionDropDown = obj.nextSibling;
                     genotypeDropDown = plantSelectionDropDown.nextSibling;
                     numPlantsTxt = genotypeDropDown.nextSibling;
-                                                           
+                                    
                     // check the case that all information is populated
                     if (obj.selectedIndex > 0 && plantSelectionDropDown.selectedIndex > 0 && genotypeDropDown.selectedIndex > 0 && !isNaN(parseInt(numPlantsTxt.value)))
                     {
                         atleastOne = true;
                     }
-                    else if (obj.selectedIndex == 0 && numPlantsTxt.value == "") // nothing was selected
+                    else if (obj.selectedIndex == 0 && numPlantsTxt.value == "# of Plants") // nothing was selected
                     {
                         // do nothing
                     }
