@@ -15,10 +15,25 @@ public partial class LookupsView : System.Web.UI.UserControl
 {
     public string TypeName { get; set; }
     public string DataObjectTypeName { get; set; }
+    public string ValidationGroup { get; set; }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         odsLookups.TypeName = TypeName;
         odsLookups.DataObjectTypeName = DataObjectTypeName;
+    }
+
+    /// <summary>
+    /// Checked when items are created in the list view so we can assign the validation groups for the validators on insert.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void lvLookups_OnItemCreated(object sender, ListViewItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListViewItemType.InsertItem)
+        {
+            ((RequiredFieldValidator)e.Item.FindControl("rfvNewName")).ValidationGroup = this.ValidationGroup;
+            ((ImageButton)e.Item.FindControl("ibtnInsert")).ValidationGroup = this.ValidationGroup;
+        }
     }
 }

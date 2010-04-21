@@ -1,7 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="LookupsView.ascx.cs" Inherits="LookupsView" %>
 
   
-    <asp:ListView ID="lvNoteTypes" runat="server" InsertItemPosition="FirstItem" DataKeyNames="Identifier" DataSourceID="odsLookups">
+    <asp:ListView ID="lvNoteTypes" runat="server" 
+    InsertItemPosition="FirstItem" DataKeyNames="Identifier" 
+    DataSourceID="odsLookups" onitemcreated="lvLookups_OnItemCreated">
         <EditItemTemplate>
             <li>
                 <asp:Panel runat="server" ID="pnlEdit" class="itemPanel">
@@ -15,8 +17,8 @@
         <InsertItemTemplate>
             <li>
                 <asp:TextBox ID="tbNewName" Text='<%# Bind("Name") %>' MaxLength="50" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfvNewName" runat="server" ErrorMessage="*" ControlToValidate="tbNewName" ValidationGroup="NewLookup"></asp:RequiredFieldValidator>                      
-                <asp:ImageButton runat="server" ID="ibtnInsert" ImageUrl="~/Images/add.png" ToolTip="Add New" CssClass="icon" CommandName="Insert" ValidationGroup="NewLookup" />
+                <asp:RequiredFieldValidator ID="rfvNewName" runat="server" ErrorMessage="*" ControlToValidate="tbNewName" ValidationGroup='<%# Eval("ValidationGroup") %>'> <%--ValidationGroup="NewLookup">--%></asp:RequiredFieldValidator>                      
+                <asp:ImageButton runat="server" ID="ibtnInsert" ImageUrl="~/Images/add.png" ToolTip="Add New" CssClass="icon" CommandName="Insert" ValidationGroup='<%# Eval("ValidationGroup") %>' /> <%--ValidationGroup="NewLookup" />--%>
             </li>
         </InsertItemTemplate>
         <ItemTemplate>
