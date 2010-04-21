@@ -455,7 +455,7 @@
                   
                <i>* If you select the "Other" option for genotype or plant selection someone from the PTF will be calling you to discuss your order.</i>
                <br />
-               <i>** If you wish to request more than one crop/plant selection/genotype combination use the "plus" button for more rows.  Place one combination in each row.</i>
+               <i>** If you wish to place another transformation order for this same construct in another crop or genotype, use the plus button to provide more space to do so.</i>
                 <br /><br />
                 <span class="btnPrices">
                 <asp:ImageButton ID="btnPrices" runat="server" ImageUrl="~/Images/btn_prices.png" />
@@ -566,7 +566,7 @@
                         <asp:PlaceHolder ID="phPlantInformation" runat="server">
                         </asp:PlaceHolder>
                         <asp:LinkButton ID="lbAddPlantInformationFields" runat="server" 
-                                style="text-decoration:none;" onclick="lbAddPlantInformationFields_Click" ToolTip="Click here for another row to enter more plant information.">
+                                style="text-decoration:none;" onclick="lbAddPlantInformationFields_Click" ToolTip="Click here to place another transformation order for this SAME construct in another crop or genotype.">
                             <img src="../Images/add.png" style="height:16px; width:16px; border:none;" />
                         </asp:LinkButton>
                     </ContentTemplate>
