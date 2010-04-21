@@ -10,7 +10,7 @@ var STR_None = "none";
 var STR_Rooting = "Rooting";
 var STR_Recallusing = "Recallusing";
 
-var STR_ConfirmText = "Changing to this status will not be reversible.  Are you sure you would like to change the status to ";
+var STR_ConfirmText = "Are you sure you want to change the status to ";
 
 var STR_Shipped = "Shipped";
 var STR_Dead = "Dead";
@@ -82,28 +82,8 @@ function ChangeCheckBox(checkBox, type)
 // successful complete of save
 function OnComplete(result, context)
 {        
-//    if (result != "")
-//    {
-//        context.Control.disabled = true;
-//        
-//        if (result != "complete")
-//        {
-//            $get(context.PlantID + "DateDelivered").innerHTML = result;
-//        }
-//    }    
+    $get(context.PlantID + "DateDelivered").innerHTML = result.ReturnText;
        
-    // a final status was set
-    if (result.IsComplete)
-    {
-        context.Control.disabled = true;
-        
-        // a shipping date was returned
-        if (result.ReturnText != "")
-        {
-            $get(context.PlantID + "DateDelivered").innerHTML = result.ReturnText;
-        }
-    }
-
     // update the status of the experiment
     $get("Status").innerHTML = result.Status;
        
@@ -118,5 +98,5 @@ function OnComplete(result, context)
 function OnFail(result, context)
 {   
     context.FailImg.style.display = STR_Inline;
-    context.LoadImg.style.display = STR_Inline;
+    context.LoadImg.style.display = STR_None;
 }

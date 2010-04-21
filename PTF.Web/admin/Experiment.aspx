@@ -264,7 +264,7 @@
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
         TypeName="CAESDO.PTF.BLL.NoteTypeBLL"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsStatus" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetActive" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetPlantStatus" 
         TypeName="CAESDO.PTF.BLL.StatusBLL"></asp:ObjectDataSource>    
         
 </ContentTemplate>

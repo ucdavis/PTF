@@ -92,6 +92,7 @@ namespace CAESDO.PTF.Core.Domain
     public class AgroStrain : LookupBase<AgroStrain, int> { }
     public class Status : LookupBase<Status, int> {
         public virtual bool IsComplete { get; set; }
+        public virtual bool IsPlant { get; set; }
     }
     public class PlantSelection : LookupBase<PlantSelection, int> { }
     public class GenoType : LookupBase<GenoType, int> { }

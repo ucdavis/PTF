@@ -56,6 +56,10 @@ namespace CAESDO.PTF.BLL
             {
                 plant.DateDelivered = DateTime.Now;
             }
+            else
+            {
+                plant.DateDelivered = null;
+            }
 
             plant.Status = status;
 

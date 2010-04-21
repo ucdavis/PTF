@@ -215,12 +215,6 @@ public partial class admin_Experiment : System.Web.UI.Page
             {
                 // deal with the situation where it is in the drop down
                 ddl.SelectedValue = plant.Status.ID.ToString();
-
-                // if it's shipped don't allow it to be changed
-                if (plant.Status.Name == StatusText.STR_Shipped)
-                {
-                    ddl.Enabled = false;
-                }
             }
         }
     }

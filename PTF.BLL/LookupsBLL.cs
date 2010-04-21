@@ -85,7 +85,20 @@ namespace CAESDO.PTF.BLL
     [DataObject]
     public class AgroStrainBLL : LookupBLLBase<AgroStrain, int> { }
     [DataObject]
-    public class StatusBLL : LookupBLLBase<Status, int> { }
+    public class StatusBLL : LookupBLLBase<Status, int> 
+    { 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Status> GetPlantStatus()
+        {
+            Status status = new Status()
+            {
+                IsPlant = true,
+                IsActive = true
+            };
+
+            return StatusBLL.GetByInclusionExample(status, "IsPlant", "IsActive");
+        }
+    }
     [DataObject]
     public class PlantSelectionBLL : LookupBLLBase<PlantSelection, int> { }
     [DataObject]
