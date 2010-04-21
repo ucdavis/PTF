@@ -29,7 +29,7 @@
         <ItemTemplate>
             <tr class="group">
                 <td class="first">
-                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>');" /> 
+                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>', 'orders');" /> 
                 </td>
                 <td colspan="4">
                     <div style="float:left;">

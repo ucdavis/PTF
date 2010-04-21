@@ -30,7 +30,7 @@
         <ItemTemplate>
             <tr id="row" runat="server" class="group">
                 <td class="first">
-                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>');" />
+                    <img src="../images/plus.png" onclick="toggleGroup(this, '<%# Eval("SubOrders.Count") %>', 'orders');" />
                 </td>
                 <td><a href='<%# "Order.aspx?oid=" + Eval("ID") %>'><%# Eval("ID") %></a></td>
                 <td><%# Eval("PI") %></td>

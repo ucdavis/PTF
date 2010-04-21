@@ -31,6 +31,11 @@ body {
     color: #C0C0C0;
 }
 
+/*----- Top Information Tables -----*/
+.InfoTable
+{
+	width: 750px;
+}
 .InfoFieldName
 {
     text-align: right;
@@ -40,7 +45,18 @@ body {
 .InfoFieldValue
 {
     text-align: left;
-    width: 300px;
+    width: 375px;
+}
+
+/*----- Collapsible Panel -----*/
+.CollapsiblePanelHeader
+{
+	width: 750px; 
+	font-weight:bold;
+}
+.CollapsiblePanelBody
+{
+	width: 750px;
 }
 
 /*----- Expandable Listview Styles -----*/

@@ -1,9 +1,9 @@
 ﻿/// <reference name="MicrosoftAjax.js"/>
 
-function toggleGroup(img, numberOfRows){
+function toggleGroup(img, numberOfRows, tableID){
     //  get a reference to the row and table
     var tr = img.parentNode.parentNode;
-    var table = $get('orders');
+    var table = $get(tableID);
     var src = img.src;
     
     //  do some simple math to determine how many

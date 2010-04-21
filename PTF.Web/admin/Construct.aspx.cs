@@ -11,20 +11,21 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using CAESDO.PTF.BLL;
+using CAESDO.PTF.Core.Domain;
 
 public partial class admin_Construct : System.Web.UI.Page
 {
-    private const string STR_OrderIDQueryString = "OID";
+    private const string STR_ConstructIDQueryString = "cid";
 
-    private int OrderID
+    private int ConstructID
     {
-        get 
+        get
         {
-            if (Request.QueryString[STR_OrderIDQueryString] != null)
+            if (Request.QueryString[STR_ConstructIDQueryString] != null)
             {
                 try
                 {
-                    return Convert.ToInt32(Request.QueryString[STR_OrderIDQueryString]);
+                    return Convert.ToInt32(Request.QueryString[STR_ConstructIDQueryString]);
                 }
                 catch
                 {
@@ -32,6 +33,9 @@ public partial class admin_Construct : System.Web.UI.Page
                     Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
                 }
             }
+
+            // a valid order id is required for this page
+            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
 
             return -1;
         }
@@ -41,151 +45,50 @@ public partial class admin_Construct : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            // if an order id is provided then show only those constructs for that order
-            if (OrderID > 0)
-            {
-                lvConstructs.DataSourceID = "odsConstructsByOrder";
-                lvConstructs.DataBind();
-
-                // get the order information and display it
-                PopulateOrderPanel(OrderID);
-            }
+            PopulateInfoFields();
         }
     }
 
-    /// <summary>
-    /// Populates and makes the order panel visible
-    /// </summary>
-    /// <param name="OrderID"></param>
-    protected void PopulateOrderPanel(int OrderID)
+    protected void PopulateInfoFields()
     {
-        // show the panel
-        pnlOrderDetails.Visible = true;
-
-        var order = OrderBLL.GetByID(OrderID);
-
-        //left column
-        lblOrderID.Text = order.ID.ToString();
-        lblPI.Text = order.PI;
-
-        lblBacterialSelection.Text = order.BacterialSelection;
-        //lblAgroBacteriumStrain.Text = order.AgroBacteriumStrain;
-        //lblPlantSelection.Text = order.PlantSelection;
-
-        //right column
-        lblContact.Text = order.Contact;
-        lblContactEmail.Text = order.ContactEmail;
-        lblContactPhone.Text = order.ContactPhone;
-
-        lblAddress1.Text = order.MailingAddress1 != null ? order.MailingAddress1 : string.Empty;
-        lblAddress2.Text = order.MailingAddress2 != null ? order.MailingAddress2 : string.Empty;
-        lblCity.Text = order.MailingCity != null ? order.MailingCity : string.Empty;
-        lblZip.Text = order.MailingZip != null ? order.MailingZip : string.Empty;
-
-        // united states state value
-        if (order.MailingState != null)
+        try
         {
-            lblState.Text = order.MailingState.Name;
+            var construct = ConstructBLL.GetByID(ConstructID);
+
+            litConstructCode.Text = construct.ConstructCode;
+            litDateCreated.Text = construct.DateCreated.ToString("d");
+
+            litCrop.Text = construct.SubOrder.Crop.Name;
+            litGenotype.Text = construct.SubOrder.GenoType.Name;
+            litPlantSelection.Text = construct.SubOrder.PlantSelection.Name;
+            litAgroStrain.Text = construct.Order.AgroStrain.Name;
+            litPlasmid.Text = construct.Order.Plasmid;
+            litPICode.Text = construct.Order.PICode;
+            litInvoiceDate.Text = construct.InvoiceDate != null ? ((DateTime)construct.InvoiceDate).ToString("d") : string.Empty;
+            litRecharge.Text = construct.RechargeAmount.ToString("c");
+
+            lvExperiments.DataSource = construct.Experiments;
+            lvExperiments.DataBind();
         }
-        else if (order.MailingInternationalState != null) // international state entered
+        catch (NHibernate.ObjectNotFoundException onfe)
         {
-            lblState.Text = order.MailingInternationalState;
-            // show the state only if we have an international country
-            lblCountry.Text = order.MailingCountry.Name != null ? order.MailingCountry.Name : string.Empty;
-        }
-
-        // handle the recharge/contract information
-        if (!string.IsNullOrEmpty(order.RechargeNumber))
-        {
-            // recharge number has been provided
-            lblRechargeNumber.Text = order.RechargeNumber;
-
-            lblContract.Text = "No contract necessary.";
-            lbContractExecuted.Visible = false;
-        }
-        else
-        {
-            // no recharge number provided
-            lblRechargeNumber.Text = "----------";
-
-            lblContract.Text = order.ContractExecuted ? "Yes" : "No";
-
-            if (!order.ContractExecuted)
-            {
-                lbContractExecuted.Visible = true;
-            }
-            else
-            {
-                lbContractExecuted.Visible = false;
-            }
-        }
-
-        // hide the data pager when no constructs are available
-        if (order.Constructs.Count < 20)
-        {
-            DataPager1.Visible = false;
+            Response.Redirect(PTFConfiguration.ErrorPage(PTFConfiguration.ErrorType.QUERY));
         }
     }
-    protected void lbHoldPendingContract_Command(object sender, CommandEventArgs e)
-    {
-        var construct = ConstructBLL.SetHoldPendingContract(ConstructBLL.GetByID(Convert.ToInt32(e.CommandArgument)));
-
-        ConstructBLL.Update(construct);
-
-        lvConstructs.DataBind();
-    }
-    protected void lbSetPending_Command(object sender, CommandEventArgs e)
-    {
-        var construct = ConstructBLL.SetPending(ConstructBLL.GetByID(Convert.ToInt32(e.CommandArgument)));
-
-        ConstructBLL.Update(construct);
-
-        lvConstructs.DataBind();
-    }
-    protected void lbContractExecuted_Click(object sender, EventArgs e)
-    {
-
-    }
-
     protected void btnCreate_Click(object sender, EventArgs e)
     {
-        CAESDO.PTF.Core.Domain.Construct construct = new CAESDO.PTF.Core.Domain.Construct()
-        {
-            //PlantsRequested = tbPlantsRequested.Text,
-            //PIConstructName = tbPIConstructName.Text,
-            //PICode = tbPICode.Text,
-            //AgroStrain = AgroStrainBLL.GetByID(Convert.ToInt32(ddlAgroStrain.SelectedValue)),
-            //BacterialSelection = tbBacterialSelection.Text,
-            //Plasmid = tbPlasmid.Text,
-            //Trait = tbTrait.Text,
-            //GeneOfInterest = tbGeneofInterest.Text,
-            //SelectableMarker = PlantSelectionBLL.GetByID(Convert.ToInt32(ddlSelectableMarker.SelectedValue)),
-            //Crop = CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)),
-            //Genotype = GenoTypeBLL.GetByID(Convert.ToInt32(ddlGenotype.SelectedValue)),
-            //DateReceived = DateTime.Parse(tbDateReceived.Text),
-            //Comments = !string.IsNullOrEmpty(tbComment.Text) ? tbComment.Text : null,
-            Order = OrderBLL.GetByID(OrderID)
-        };
+        Experiment exp = new Experiment()
+            {
+                Operator = OperatorBLL.GetByID(Convert.ToInt32(ddlOperators.SelectedValue)),
+                SeedLotNumber = tbSeedLotNumber.Text,
+                Explant = tbExplant.Text,
+                OpticalDensity = float.Parse(tbOpticalDensity.Text),
+                Construct = ConstructBLL.GetByID(ConstructID)
+            };
 
-        decimal parsedRecharge;
+        ExperimentBLL.Insert(exp);
 
-        if (decimal.TryParse(tbRechargeAmount.Text, out parsedRecharge))
-        {
-            construct.RechargeAmount = parsedRecharge;
-        }
-
-        // Save the object
-        ConstructBLL.Insert(construct);
-
-        // update the list view to reflect the new construct
-        lvConstructs.DataBind();
-
-        if (lvConstructs.Items.Count >= 20)
-        {
-            DataPager1.Visible = true;
-        }
-
-        // reset the boxes in the popup.
-
+        lvExperiments.DataSource = ConstructBLL.GetByID(ConstructID).Experiments;
+        lvExperiments.DataBind();
     }
 }
