@@ -65,6 +65,7 @@
                                     <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" ImageUrl="Images/btn_login.png" Text="Log In" 
                                         ValidationGroup="Login1" />
     <a href="ResetPassword.aspx" title="Forgot your password?"><img src="Images/btn_forgotpassword.png" /></a>
+    <a href="Register.aspx" title="Register">[Register]</a>
                                 </td>
                             </tr>
                         </table>
