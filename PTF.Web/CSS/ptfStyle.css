@@ -22,6 +22,12 @@ body
 
 #updateImage {position: absolute; margin: auto auto; left: 50%; top: 50%;}
 
+#pages {text-align: right; width: 900px; font-weight: bold;}
+.clear {clear: both;}
+
+ul.menu {padding: 0px; margin: 0px;}
+div.lookups {float: right; width: 500px; margin-top: 20px;}
+
 
 
 /* -------------------------------------------- */
@@ -60,6 +66,8 @@ a, a:visited {text-decoration: none; color: #d67129;}
 a:link {color: #d67129}
 a:hover, a:active {color: #660066}
 a img, a:visited img {border: 0px none;}
+tr.head a:link, tr.head a:visited {color: #fff;}
+tr.head a:hover, tr.head a:active {color: #660066;}
 
 p {line-height: 20px; margin: 1em 0 1.5em;}
 ul {list-style-image: none;}
@@ -113,11 +121,13 @@ tr.head {background: url(../Images/table_top.png) no-repeat top center;
   text-transform: uppercase;
   height: 60px;         
 }
-td {vertical-align: top; font-size: 0.9em; color: #747474;}
+td {vertical-align: top; font-size: 0.9em; color: #545454;}
 td p {margin-top: 0px;}
-tr#footer {url(../Images/table_btm.png) no-repeat bottom left;}
+tr#footer {background: url(../Images/table_btm.png) no-repeat bottom left;}
 
 tr.pager td.info {text-align: right;}
+
+td a {font-weight: bold;}
 
 
 /* --- subtables --- */
@@ -145,12 +155,14 @@ table#orders td a {font-size: 1.5em; font-weight: bold;}
 table#suborders td, table.experiments td, table#dataTable td {font-size: 1.3em;}
 table#suborders td td {font-size: 1em;}
 
+table.experiment tr.head th {padding-bottom: 1em;}
+
 
 /* --- info tables --- */
 table.InfoTable, table.InfoTable tbody, table.InfoTable tr, table.InfoTable tr.head {background: transparent;}
 
 table.InfoTable td {padding-bottom: 0.5em; }
-table.InfoTable tr.head {height: auto; color: #000;}
+table.InfoTable tr.head {height: auto; color: #000; font-size: 1.2em; letter-spacing: 1px;}
 table.InfoTable tr.head td {font-size: 1.1em; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 0px;}
 td.InfoFieldName {text-align: left; color: #000; font-size: 0.9em; /*padding-top: 6px;*/}
 td.InfoFieldValue {}
@@ -174,7 +186,30 @@ table.notes tr.head {background: url(../Images/notes_top.png) no-repeat top cent
   vertical-align: bottom;
   text-transform: uppercase;         
 }
+span.notes.empty {display: block; margin-bottom: 0.5em;}
 
+
+/* --- popup tables --- */
+
+.popup table {width: inherit;}
+.popup table, .popup tbody, .popup tr, .popup td {background: transparent;}
+div.popup {
+    background: transparent url(../Images/popup_top.png) top center no-repeat; 
+    width: 380px; margin-top: 0px; 
+    padding: 58px 75px 20px;
+}
+.popup .bottom {
+    background: transparent url(../Images/popup_btm.png) bottom center no-repeat; 
+    /* margin-top: 0px; 
+    padding: 0px 0px 0px; 
+    display: block; */
+}
+.popup h2 {color: #fff; padding-left: 0px;}
+.popup .close {float: right; padding-right: 0px;}
+
+.newconstruct table, .newconstruct td, .newconstruct th, .newconstruct tr {border: 0px none;}
+.newconstruct td, .newconstruct th {padding: .5em; vertical-align: bottom}
+.newconstruct td {vertical-align: middle;}
 
 
 
@@ -198,3 +233,4 @@ input[id*="btnNewConstruct"]
     margin-left: 20px;
 }
 
+a img {cursor: pointer}

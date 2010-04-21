@@ -62,7 +62,7 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:LinkButton ID="lbSelectUser" CommandName="Select" runat="server">[Select]</asp:LinkButton></td>
+                                <asp:LinkButton ID="lbSelectUser" CommandName="Select" runat="server"><img src="../Images/btn_select.png" title="select" /></asp:LinkButton></td>
                             <td><%# Eval("Login") %></td>
                             <td><%# Eval("LastName") %></td>
                             <td><%# Eval("FirstName") %></td>
@@ -102,7 +102,7 @@
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <asp:LinkButton ID="lbSelect" CommandName="Select" runat="server">[Select]</asp:LinkButton></td>
+                            <asp:LinkButton ID="lbSelect" CommandName="Select" runat="server"><img src="../Images/btn_select.png" title="select" /></asp:LinkButton></td>
                         <td><%# Eval("Login") %></td>
                         <td><%# Eval("Role") %></td>
                         <td><%# Eval("LastName") %></td>

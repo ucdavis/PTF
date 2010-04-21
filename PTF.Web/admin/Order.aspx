@@ -278,17 +278,18 @@
         </ItemTemplate>
     </asp:ListView>
  
-    <asp:Panel ID="pnlNewConstruct" runat="server" Width="400px" BorderWidth="1px" BorderStyle="Solid" BackColor="OldLace" style="display:none;">
-        <div style="float:right;">
-            <asp:Button ID="btnCancel" runat="server" Text="X" />
+    <asp:Panel ID="pnlNewConstruct" runat="server" CssClass="popup newconstruct" style="display:none;">
+        <div class="close">
+            <asp:ImageButton ID="btnCancel" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
+    <h2>New Construct</h2>
         
         <br /><br />
         <asp:GridView ID="gvSuborder" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="id" onselectedindexchanged="gvSuborder_SelectedIndexChanged">
             <Columns>
                 
-                <asp:CommandField ShowSelectButton="True" />
+                <asp:CommandField ShowSelectButton="True" ButtonType="Image" SelectImageUrl="~/Images/btn_select.png" />
                 
                 <asp:BoundField DataField="NumberOfPlants" HeaderText="# Plants" SortExpression="NumberOfPlants" />
                 <asp:TemplateField HeaderText="Crop">

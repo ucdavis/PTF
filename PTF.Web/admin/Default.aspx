@@ -43,21 +43,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <ul style="list-style-type:none;">
-    <li><a href=Orders.aspx>Orders</a></li>
-    <li><a href=Lookups.aspx>Lookups</a></li>
-    <li><a href=Operators.aspx>Operators</a></li>
-    <li><a href=Users.aspx>Users</a></li>
-    <li><a href=Reports.aspx>Reports</a></li>
-    </ul>
-    
+    <div class="lookups">
     Construct Lookup:
     <asp:TextBox ID="tbConstructLookup" runat="server"></asp:TextBox>
-    <asp:LinkButton ID="lbConstructLookup" runat="server" OnClientClick="ValidateConstruct(); return false;" >[Lookup]</asp:LinkButton>
+    <asp:LinkButton ID="lbConstructLookup" runat="server" OnClientClick="ValidateConstruct(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
     <br />
     <br />
     Experiment Lookup:
     <asp:TextBox ID="tbExperimentLookup" runat="server"></asp:TextBox>
-    <asp:LinkButton ID="lbExperimentLookup" runat="server" OnClientClick="ValidateExperiment(); return false;" >[Lookup]</asp:LinkButton>
+    <asp:LinkButton ID="lbExperimentLookup" runat="server" OnClientClick="ValidateExperiment(); return false;" ><img src="../Images/btn_lookup.png" title="Look up" /></asp:LinkButton>
+</div>
+    <ul style="list-style-type:none;" class="menu">
+    <li><a href=Orders.aspx><img src="../Images/menu_orders.png" title="Orders" /></a></li>
+    <li><a href=Lookups.aspx><img src="../Images/menu_lookups.png" title="Lookups" /></a></li>
+    <li><a href=Operators.aspx><img src="../Images/menu_operators.png" title="Operators" /></a></li>
+    <li><a href=Users.aspx><img src="../Images/menu_users.png" title="Users" /></a></li>
+    <li><a href=Reports.aspx><img src="../Images/menu_reports.png" title="Reports" /></a></li>
+    </ul>
 </asp:Content>
 

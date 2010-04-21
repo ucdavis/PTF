@@ -109,7 +109,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>
    
-    <asp:Button ID="btnMakeNote" runat="server" Text="Make Note" />
+    <asp:ImageButton ID="btnMakeNote" ImageUrl="~/Images/btn_addnote.png" runat="server" Text="Make Note" />
     
     <asp:ListView ID="lvInduction" runat="server">
         <LayoutTemplate>
@@ -182,12 +182,13 @@
     
     <AjaxControlToolkit:ModalPopupExtender ID="mpeMakeNote" runat="server" TargetControlID="btnMakeNote" PopupControlID="pnlMakeNote" CancelControlID="btnCancelMakeNote">
     </AjaxControlToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlMakeNote" runat="server" Width="500px" style="border:solid 1px black; background-color:oldlace; display:none;">
-        <div style="float:right;">
-            <asp:Button ID="btnCancelMakeNote" runat="server" Text="X" />
+    <asp:Panel ID="pnlMakeNote" CssClass="popup" runat="server" style="display:none;">
+        <div class="close">
+            <asp:ImageButton ID="btnCancelMakeNote" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
+    <h2>Add Note</h2>
         
-        <table class="dataTable">
+        <table>
             <tr>
                 <td style="text-align:right; width:125px;">Note Type:&nbsp;</td>
                 <td>
@@ -201,29 +202,32 @@
                 <td style="text-align:right; width:125px;">Note:&nbsp;</td>
                 <td>
                     <asp:TextBox ID="tbNote" runat="server" Height="146px" TextMode="MultiLine" 
-                        Width="387px"></asp:TextBox>
+                        Width="287px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="btnCreate" runat="server" Text="Create" 
+                    <asp:ImageButton ID="btnCreate" ImageUrl="~/Images/btn_create.png" runat="server" Text="Create" 
                         onclick="btnCreate_Click" /></td>
             </tr>
         </table>
+<%--    <span class="bottom">&nbsp;
+    </span>--%>
     </asp:Panel>
-    
-    <asp:Button ID="btnAddPlant" runat="server" Text="Add Plant" 
-        onclick="btnAddPlant_Click" />
+    <br /><br />
+    <asp:ImageButton ID="btnAddPlant" runat="server" Text="Add Plant" 
+        onclick="btnAddPlant_Click" ImageUrl="~/Images/btn_addplant.png" />
     
     <asp:ListView ID="lvPlants" runat="server" 
         onitemdatabound="lvPlants_ItemDataBound">
         <LayoutTemplate>
-            <table id="dataTable" cellpadding="0" cellspacing="0">
+            <table id="dataTable" cellpadding="0" cellspacing="0" class="grid experiment">
                 <tr class="head">
+                    <th class="first" style="width: 25px;">&nbsp;</th>
                     <th>Pedigree</th>
                     <th>Date Entered</th>
-                    <th>Re-Callusing Assay</th>
+                    <th>Re-Callusing<br />Assay</th>
                     <th>Rooting</th>
                     <th>Date Delivered</th>
                     <th>Status</th>
@@ -234,6 +238,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr id='<%# Eval("id") %>'>
+                <td>&nbsp;</td>
                 <td><%# Eval("Pedigree") %></td>
                 <td><%# Eval("DateEntered", "{0:MM/dd/yyyy}")%></td>
                 <td>
@@ -272,7 +277,7 @@
                 <td>
                     <span id='<%# Eval("id") + "CommentText" %>' style="display:none;"><%# Eval("Comments") %></span>
                                                       
-                    <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'>[Edit]</a>
+                    <a onclick='EditPlantComments(<%# Eval("id") %>, "<%= tbPlantID.ClientID %>", "<%= mpePlantNote.BehaviorID %>", "<%= tbPlantComment.ClientID %>", "<%# Eval("Comments") %>")'><img src="../Images/edit.png" alt="Edit" title="Click to Edit" /></a>
                 </td>
             </tr>
         </ItemTemplate>
@@ -281,9 +286,14 @@
     <asp:Button runat="server" ID="btnDummyPlantNote" Text="DUmmy" style="display:none;" />
     <AjaxControlToolkit:ModalPopupExtender ID="mpePlantNote" BehaviorID="mpePlantNote" runat="server" TargetControlID="btnDummyPlantNote" PopupControlID="pnlPlantNote" CancelControlID="lbCancelPlantNote">
     </AjaxControlToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlPlantNote" runat="server" style="border:solid 1px black; background-color:oldlace;" Width="400px">
+    <asp:Panel ID="pnlPlantNote" CssClass="popup" runat="server" style="display: none;">
+        <h2>Plant Comments</h2>
         <asp:TextBox runat='server' ID="tbPlantID" style="display:none;" ></asp:TextBox>
-        <asp:LinkButton ID="lbCancelPlantNote" runat="server">[Close]</asp:LinkButton>
+        
+        <div class="close">
+            <asp:ImageButton ID="lbCancelPlantNote" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
+        </div>
+        
         <asp:TextBox ID="tbPlantComment" runat="server" TextMode="MultiLine" Height="138px" Width="338px"></asp:TextBox>
         <a id="SavePlantComments" onclick='SavePlantComments("<%= tbPlantID.ClientID %>", "PlantComment", "<%= tbPlantComment.ClientID %>", "Plant");'><img src="../Images/save.png" width="15px" alt="save" /></a>
         <span id="PlantComment"></span>

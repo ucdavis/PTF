@@ -5,10 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 <br /><br /><br />
-<a href="admin/Default.aspx">Administrators</a>
+<a href="admin/Default.aspx" title="Administrators"><img src="Images/menu_admin.png" alt="Administrators" /></a>
 <br /><br />
-<a href="restricted/Default.aspx">Clients</a>
+<a href="restricted/Default.aspx" title="Clients"><img src="Images/menu_clients.png" alt="Clients" /></a>
 <br /><br />
-<a href="Register.aspx">Register for an Account</a>
+<a href="Register.aspx" title="Register for an Account"><img src="Images/menu_register.png" alt="Register for an Account" /></a>
 </asp:Content>
 

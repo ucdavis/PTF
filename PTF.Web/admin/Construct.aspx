@@ -92,8 +92,7 @@
     
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>   
-
-    <asp:Button ID="btnNewExperiment" runat="server" Text="Create Experiment" CssClass="btnCreateexp" /><br />
+    <asp:ImageButton ID="btnNewExperiment" runat="server" ImageUrl="~/Images/btn_createexp.png" Text="Create Experiment" CssClass="btnCreateexp" /><br />
     <asp:ListView ID="lvExperiments" runat="server">
         <LayoutTemplate>
             <div class="grid">
@@ -125,10 +124,11 @@
         </EmptyDataTemplate>
     </asp:ListView>
     
-    <asp:Panel ID="pnlNewExperiment" runat="server" Width="300px" BackColor="OldLace" style="display:none;">
-        <div style="float:right;">
-            <asp:Button ID="btnCancelNewExperiment" runat="server" Text="X" />
+    <asp:Panel ID="pnlNewExperiment" runat="server" CssClass="popup" style="display:none;">
+        <div class="close">
+            <asp:ImageButton ID="btnCancelNewExperiment" ToolTip="Close" ImageUrl="~/Images/btn_close.png" runat="server" Text="X" />
         </div>
+        <h2>New Experiment</h2>
         <br /><br />
         <table id="dataTable"> 
             <tr>
@@ -164,7 +164,7 @@
                 </td>
             </tr>
         </table>
-        <asp:Button ID="btnCreate" runat="server" Text="Create" 
+        <asp:ImageButton ID="btnCreate" ImageUrl="~/Images/btn_create.png" runat="server" Text="Create" 
             onclick="btnCreate_Click" ValidationGroup="NewExperiment" />
     </asp:Panel>
     <AjaxControlToolkit:ModalPopupExtender ID="mpeNewExperiment" runat="server" TargetControlID="btnNewExperiment" PopupControlID="pnlNewExperiment" CancelControlID="btnCancelNewExperiment">
