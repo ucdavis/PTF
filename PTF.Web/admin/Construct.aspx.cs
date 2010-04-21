@@ -115,7 +115,7 @@ public partial class admin_Construct : System.Web.UI.Page
         }
 
         // hide the data pager when no constructs are available
-        if (order.Constructs.Count <= 0)
+        if (order.Constructs.Count < 20)
         {
             DataPager1.Visible = false;
         }
@@ -138,6 +138,48 @@ public partial class admin_Construct : System.Web.UI.Page
     }
     protected void lbContractExecuted_Click(object sender, EventArgs e)
     {
+
+    }
+
+    protected void btnCreate_Click(object sender, EventArgs e)
+    {
+        CAESDO.PTF.Core.Domain.Construct construct = new CAESDO.PTF.Core.Domain.Construct()
+        {
+            PlantsRequested = tbPlantsRequested.Text,
+            PIConstructName = tbPIConstructName.Text,
+            PICode = tbPICode.Text,
+            AgroStrain = AgroStrainBLL.GetByID(Convert.ToInt32(ddlAgroStrain.SelectedValue)),
+            BacterialSelection = tbBacterialSelection.Text,
+            Plasmid = tbPlasmid.Text,
+            Trait = tbTrait.Text,
+            GeneOfInterest = tbGeneofInterest.Text,
+            SelectableMarker = SelectableMarkerBLL.GetByID(Convert.ToInt32(ddlSelectableMarker.SelectedValue)),
+            Crop = CropBLL.GetByID(Convert.ToInt32(ddlCrop.SelectedValue)),
+            Genotype = GenoTypeBLL.GetByID(Convert.ToInt32(ddlGenotype.SelectedValue)),
+            DateReceived = DateTime.Parse(tbDateReceived.Text),
+            Comments = !string.IsNullOrEmpty(tbComment.Text) ? tbComment.Text : null,
+            Order = OrderBLL.GetByID(OrderID)
+        };
+
+        decimal parsedRecharge;
+
+        if (decimal.TryParse(tbRechargeAmount.Text, out parsedRecharge))
+        {
+            construct.RechargeAmount = parsedRecharge;
+        }
+
+        // Save the object
+        ConstructBLL.Insert(construct);
+
+        // update the list view to reflect the new construct
+        lvConstructs.DataBind();
+
+        if (lvConstructs.Items.Count >= 20)
+        {
+            DataPager1.Visible = true;
+        }
+
+        // reset the boxes in the popup.
 
     }
 }
