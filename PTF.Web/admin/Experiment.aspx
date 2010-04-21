@@ -160,7 +160,7 @@
     
     <AjaxControlToolkit:ModalPopupExtender ID="mpeMakeNote" runat="server" TargetControlID="btnMakeNote" PopupControlID="pnlMakeNote" CancelControlID="btnCancelMakeNote">
     </AjaxControlToolkit:ModalPopupExtender>
-    <asp:Panel ID="pnlMakeNote" runat="server" Width="500px" style="border:solid 1px black; background-color:oldlace;">
+    <asp:Panel ID="pnlMakeNote" runat="server" Width="500px" style="border:solid 1px black; background-color:oldlace; display:none;">
         <div style="float:right;">
             <asp:Button ID="btnCancelMakeNote" runat="server" Text="X" />
         </div>

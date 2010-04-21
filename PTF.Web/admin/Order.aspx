@@ -183,13 +183,13 @@
                 <td class="InfoFieldName">Working Box:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbWorkingBox" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "WorkingBox", "<%= tbWorkingBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="WorkingBoxButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "WorkingBox", "<%= tbWorkingBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="WorkingBox"></span>
                 </td>
                 <td class="InfoFieldName">Archived Box:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbArchivedBox" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ArchivedBox", "<%= tbArchivedBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="ArchivedBoxbutton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "ArchivedBox", "<%= tbArchivedBox.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="ArchivedBox"></span>
                 </td>            
             </tr>                                                                        
@@ -197,13 +197,13 @@
                 <td class="InfoFieldName">Location:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbLocation" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Location", "<%= tbLocation.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="LocationButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Location", "<%= tbLocation.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Location"></span>
                 </td>
                 <td class="InfoFieldName">Position:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbPosition" runat="server"></asp:TextBox>
-                    <a onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Position", "<%= tbPosition.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="PositionButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Position", "<%= tbPosition.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Position"></span>
                 </td>            
             </tr>     
@@ -213,7 +213,7 @@
                 <td class="InfoFieldValue" colspan="3">
                     <asp:TextBox ID="tbComments" runat="server" TextMode="MultiLine" Height="138px" 
                         Width="338px"></asp:TextBox>
-                    <a onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Comment", "<%= tbComments.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
+                    <a id="CommentsButton" onclick='SaveProperty("<%= Request.QueryString["oid"] %>", "Comment", "<%= tbComments.ClientID %>");'><img src="../Images/save.png" width="15px" alt="save" /></a>
                     <span id="Comment"></span>
                 </td>
             </tr>       
@@ -324,5 +324,23 @@
     </AjaxControlToolkit:ModalPopupExtender>
 </ContentTemplate>
 </asp:UpdatePanel>    
+
+
+    <script type="text/javascript">
+    
+        var isReader = '<%= User.IsInRole("Reader") %>';
+        
+        if (isReader)
+        {
+            $get("WorkingBoxButton").style.display = "none";
+            $get("ArchivedBoxbutton").style.display = "none";
+            $get("LocationButton").style.display = "none";
+            $get("PositionButton").style.display = "none";
+            $get("CommentsButton").style.display = "none";
+        }
+    
+    
+    </script>
+
 </asp:Content>
 

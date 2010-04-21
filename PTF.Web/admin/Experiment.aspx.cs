@@ -48,6 +48,12 @@ public partial class admin_Experiment : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             PopulateInfoFields();
+
+            if (User.IsInRole("Reader"))
+            {
+                btnAddPlant.Visible = false;
+                btnMakeNote.Visible = false;
+            }
         }
     }
 
@@ -211,6 +217,16 @@ public partial class admin_Experiment : System.Web.UI.Page
             {
                 // deal with the situation where it is in the drop down
                 ddl.SelectedValue = plant.Status.ID.ToString();
+            }
+
+            // disable the controls
+            if (User.IsInRole("Reader"))
+            {
+                ddl.Enabled = false;
+                var recallusing = (CheckBox)e.Item.FindControl("cbRecallusingAssay");
+                recallusing.Enabled = false;
+                var rooting = (CheckBox)e.Item.FindControl("cbRooting");
+                rooting.Enabled = false;
             }
         }
     }

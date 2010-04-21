@@ -50,7 +50,29 @@ public partial class admin_Order : System.Web.UI.Page
         {
             // populate the fields but also validates that we have a valid order
             PopulateInfoFields();
-        }
+
+            // deal with the permissions on the changable objects
+            if (User.IsInRole("Reader"))
+            {
+                tbWorkingBox.Enabled = false;
+                tbLocation.Enabled = false;
+                tbArchivedBox.Enabled = false;
+                tbPosition.Enabled = false;
+
+                tbComments.Enabled = false;
+
+                btnNewConstruct.Visible = false;
+
+                if (tbContractNumber.Visible)
+                {
+                    tbContractNumber.Visible = false;
+                    lbContractNumber.Visible = false;
+
+                    litContractExecuted.Text = string.Empty;
+                    litContractExecuted.Visible = true;
+                }
+            }
+       }
     }
 
     protected void PopulateInfoFields()
@@ -80,7 +102,7 @@ public partial class admin_Order : System.Web.UI.Page
             else
             {
                 // contract is required
-                if (string.IsNullOrEmpty(order.ContractNumber))
+                if (string.IsNullOrEmpty(order.ContractNumber) && !User.IsInRole("Reader"))
                 {
                     // make the button visible
                     lbContractNumber.Visible = true;
@@ -116,19 +138,12 @@ public partial class admin_Order : System.Web.UI.Page
             litSelectableMarkerGene.Text = order.SelectableMarkerGene;
             litAdditionalInformation.Text = order.AdditionalInformation;
 
-            //litWorkingBox.Text = order.WorkingBox;
-            //litLocation.Text = order.Location;
-            //litArchivedBox.Text = order.ArchiveBox;
-            //litPosition.Text = order.Position;
-
             tbWorkingBox.Text = order.WorkingBox;
             tbLocation.Text = order.Location;
             tbArchivedBox.Text = order.ArchiveBox;
             tbPosition.Text = order.Position;
 
             tbComments.Text = order.Comments;
-
-            //litComments.Text = order.Comments;
 
             lvSuborders.DataSource = order.SubOrders;
             lvSuborders.DataBind();

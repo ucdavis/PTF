@@ -48,6 +48,12 @@ public partial class admin_Construct : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             PopulateInfoFields();
+
+            if (User.IsInRole("Reader"))
+            {
+                btnNewExperiment.Visible = false;
+                lbChangeRechargeAmount.Visible = false;
+            }
         }
     }
 
