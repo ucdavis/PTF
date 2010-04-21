@@ -9,10 +9,6 @@
   </DataSources>
   <Reports>
     <ProjectItem>
-      <Name>Invoice.rdl</Name>
-      <FullPath>Invoice.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>Archived Constructs.rdl</Name>
       <FullPath>Archived Constructs.rdl</FullPath>
     </ProjectItem>
@@ -23,6 +19,10 @@
     <ProjectItem>
       <Name>Archived Plant Inventory.rdl</Name>
       <FullPath>Archived Plant Inventory.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Invoice.rdl</Name>
+      <FullPath>Invoice.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
