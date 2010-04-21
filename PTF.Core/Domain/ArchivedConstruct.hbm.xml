@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="CAESDO.PTF.Core.Domain.ArchivedConstruct, CAESDO.PTF.Core" table="ExistingConstructInventory" >
+    <id name="id" access="field" column="[Construct Code]" unsaved-value="0">
+      <generator class="assigned" />
+    </id>
+
+    <property name="NumPlantsRequested" column="[# of Plants Requested]" />
+    <property name="NumPlantsDelivered" column="[# Plants Delivered]" />
+    <property name="TransformationInitiated" column="[Transformation Initiated]" />
+    <property name="PIConstructName" column="[PI Construct name]" />
+    <property name="AgroStrains" column="[Agro Strains]" />
+    <property name="PICode" column="[PI Code]" />
+    <property name="BacterialSelection" column="[Bacterial Selection]" />
+    <property name="Plasmid" column="[Plasmid]" />
+    <property name="Trait" column="[Trait]" />
+    <property name="GeneOfInterest" column="[Gene of interest]" />
+    <property name="PlantSelection" column="[Plant Selection]" />
+    <property name="PI" column="[PI]" />
+    <property name="Client" column="[Client]" />
+    <property name="ArchivedBox" column="[Archived Box]" />
+    <property name="Position" column="[Position]" />
+    <property name="WorkingBox" column="[Working Box]" />
+    <property name="Location" column="[Location]" />
+    <property name="TargetCrop" column="[Target Crop]" />
+    <property name="Cultivar" column="[Cultivar]" />
+    <property name="AvailableForUCResearch" column="[Available for UC researchers]" />
+    <property name="Comment" column="[Comment]" />
+    <property name="RechargeNumber" column="[Recharge Number]" />
+    <property name="RechargeAmount" column="[Recharge Amount]" />
+    <property name="ContractExecuted" column="[Contract Executed]" />
+    <property name="Status" column="[Status]" />
+    <property name="InvoiceSent" column="[Invoice sent]" />
+    <property name="DateReceived" column="[Date Received]" />
+
+  </class>
+</hibernate-mapping>

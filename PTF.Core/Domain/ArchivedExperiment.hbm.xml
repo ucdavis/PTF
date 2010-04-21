@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="CAESDO.PTF.Core.Domain.ArchivedExperiment, CAESDO.PTF.Core" table="ExistingExperimentInventory" >
+    <id name="id" access="field" column="Experiment" unsaved-value="0">
+      <generator class="assigned" />
+    </id>
+
+    <property name="Date" column="Date" />
+    <property name="PI" column="PI" />
+    <property name="Client" column="Client" />
+    <property name="Operator" column="Operator" />
+    <property name="CropSpecies" column="[Crop species]" />
+    <property name="Cultivar" column="Cultivar" />
+    <property name="SeedLotNumber" column="[Seed Lot Number]" />
+    <property name="AgroStrain" column="[Agro Strain]" />
+    <property name="AgroCode" column="[Agro Code]" />
+    <property name="AgroSelection" column="[Agro Selection]" />
+    <property name="PlantSelection" column="[Plant Selection]" />
+    <property name="Explant" column="Explant" />
+    <property name="Precondition" column="Precondition" />
+    <property name="CoCulture" column="[Co-Culture]" />
+    <property name="Induction" column="Induction" />
+    <property name="InductionII" column="[Induction II]" />
+    <property name="InductionIII" column="[Induction III]" />
+    <property name="ElongationGermination" column="[Elongation/Germination]" />
+    <property name="Recallusing" column="[Recallusing]" />
+    <property name="Rooting" column="Rooting" />
+    <property name="Trait" column="Trait" />
+    <property name="Comment" column="Comment" />
+    <property name="InvoiceSent" column="[Invoice Sent]" />
+    <property name="TargetedNumPlants" column="[Targeted # of Plants]" />
+    <property name="OpticalDensity" column="[Optical Density]" />
+
+  </class>
+</hibernate-mapping>

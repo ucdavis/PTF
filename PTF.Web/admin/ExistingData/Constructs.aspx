@@ -45,77 +45,74 @@
             </table>
         </LayoutTemplate>
         <ItemTemplate>
-            <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("Construct_Code") %>'>
-                <td><%# Eval("Construct_Code")%></td>
-                <td><%# Eval("__of_Plants_Requested")%></td>
-                <td><%# Eval("__Plants_Delivered")%></td>
-                <td><%# Eval("Transformation_Initiated")%></td>
-                <td><%# Eval("PI_Construct_name")%></td>
-                <td><%# Eval("Agro_Strains")%></td>
-                <td><%# Eval("PI_Code")%></td>
-                <td><%# Eval("Bacterial_Selection")%></td>
+            <tr class="ExistingDataRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("id") %>'>
+                <td><%# Eval("id")%></td>
+                <td><%# Eval("NumPlantsRequested")%></td>
+                <td><%# Eval("NumPlantsDelivered")%></td>
+                <td><%# Eval("TransformationInitiated")%></td>
+                <td><%# Eval("PIConstructName")%></td>
+                <td><%# Eval("AgroStrains")%></td>
+                <td><%# Eval("PICode")%></td>
+                <td><%# Eval("BacterialSelection")%></td>
                 <td><%# Eval("Plasmid")%></td>
                 <td><%# Eval("Trait")%></td>
-                <td><%# Eval("Gene_of_interest")%></td>
-                <td><%# Eval("Plant_Selection")%></td>
+                <td><%# Eval("GeneOfInterest")%></td>
+                <td><%# Eval("PlantSelection")%></td>
                 <td><%# Eval("PI")%></td>
                 <td><%# Eval("Client")%></td>
-                <td><%# Eval("Archived_Box")%></td>
+                <td><%# Eval("ArchivedBox")%></td>
                 <td><%# Eval("Position")%></td>
-                <td><%# Eval("Working_Box")%></td>
+                <td><%# Eval("WorkingBox")%></td>
                 <td><%# Eval("Location")%></td>
-                <td><%# Eval("Target_Crop")%></td>
+                <td><%# Eval("TargetCrop")%></td>
                 <td><%# Eval("Cultivar")%></td>
-                <td><%# Eval("Available_for_UC_researchers")%></td>
+                <td><%# Eval("AvailableForUCResearch")%></td>
                 <td><%# Eval("Comment")%></td>
-                <td><%# Eval("Recharge_Number")%></td>
-                <td><%# Eval("Recharge_Amount")%></td>
-                <td><%# Eval("Contract_Executed") %></td>
+                <td><%# Eval("RechargeNumber")%></td>
+                <td><%# Eval("RechargeAmount")%></td>
+                <td><%# Eval("ContractExecuted") %></td>
                 <td><%# Eval("Status") %></td>
-                <td><%# Eval("Invoice_sent", "{0:M/d/yy h:mm tt}") %></td>
-                <td class="last"><%# Eval("Date_Received", "{0:M/d/yy h:mm tt}") %></td>
+                <td><%# Eval("InvoiceSent", "{0:M/d/yy h:mm tt}") %></td>
+                <td class="last"><%# Eval("DateReceived", "{0:M/d/yy h:mm tt}") %></td>
             </tr>
         </ItemTemplate>
         <AlternatingItemTemplate>
-            <tr class="ExistingDataAltRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("Construct_Code") %>'>
-                <td><%# Eval("Construct_Code")%></td>
-                <td><%# Eval("__of_Plants_Requested")%></td>
-                <td><%# Eval("__Plants_Delivered")%></td>
-                <td><%# Eval("Transformation_Initiated")%></td>
-                <td><%# Eval("PI_Construct_name")%></td>
-                <td><%# Eval("Agro_Strains")%></td>
-                <td><%# Eval("PI_Code")%></td>
-                <td><%# Eval("Bacterial_Selection")%></td>
+            <tr class="ExistingDataAltRow" onclick="ChangeHighlight(this)" onmouseover="OnMouseOver(this)" onmouseout="OnMouseOut(this)" id='<%# Eval("id") %>'>
+                <td><%# Eval("id")%></td>
+                <td><%# Eval("NumPlantsRequested")%></td>
+                <td><%# Eval("NumPlantsDelivered")%></td>
+                <td><%# Eval("TransformationInitiated")%></td>
+                <td><%# Eval("PIConstructName")%></td>
+                <td><%# Eval("AgroStrains")%></td>
+                <td><%# Eval("PICode")%></td>
+                <td><%# Eval("BacterialSelection")%></td>
                 <td><%# Eval("Plasmid")%></td>
                 <td><%# Eval("Trait")%></td>
-                <td><%# Eval("Gene_of_interest")%></td>
-                <td><%# Eval("Plant_Selection")%></td>
+                <td><%# Eval("GeneOfInterest")%></td>
+                <td><%# Eval("PlantSelection")%></td>
                 <td><%# Eval("PI")%></td>
                 <td><%# Eval("Client")%></td>
-                <td><%# Eval("Archived_Box")%></td>
+                <td><%# Eval("ArchivedBox")%></td>
                 <td><%# Eval("Position")%></td>
-                <td><%# Eval("Working_Box")%></td>
+                <td><%# Eval("WorkingBox")%></td>
                 <td><%# Eval("Location")%></td>
-                <td><%# Eval("Target_Crop")%></td>
+                <td><%# Eval("TargetCrop")%></td>
                 <td><%# Eval("Cultivar")%></td>
-                <td><%# Eval("Available_for_UC_researchers")%></td>
+                <td><%# Eval("AvailableForUCResearch")%></td>
                 <td><%# Eval("Comment")%></td>
-                <td><%# Eval("Recharge_Number")%></td>
-                <td><%# Eval("Recharge_Amount")%></td>
-                <td><%# Eval("Contract_Executed") %></td>
+                <td><%# Eval("RechargeNumber")%></td>
+                <td><%# Eval("RechargeAmount")%></td>
+                <td><%# Eval("ContractExecuted") %></td>
                 <td><%# Eval("Status") %></td>
-                <td><%# Eval("Invoice_sent", "{0:M/d/yy h:mm tt}") %></td>
-                <td class="last"><%# Eval("Date_Received", "{0:M/d/yy h:mm tt}") %></td>
+                <td><%# Eval("InvoiceSent", "{0:M/d/yy h:mm tt}") %></td>
+                <td class="last"><%# Eval("DateReceived", "{0:M/d/yy h:mm tt}") %></td>
             </tr>
         </AlternatingItemTemplate>
     </asp:ListView>
 
     <asp:ObjectDataSource ID="odsConstructs" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAllConstructs" 
-        SortParameterName="sortExp"
-        TypeName="CAESDO.PTF.BLL.ExistingBLL">
-        <SelectParameters>
-        </SelectParameters>
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetAll"
+        TypeName="CAESDO.PTF.BLL.ArchivedConstructBLL">
     </asp:ObjectDataSource>
     
     <script type="text/javascript">

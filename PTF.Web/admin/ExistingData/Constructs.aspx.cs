@@ -10,11 +10,12 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using CAESDO.PTF.BLL;
 
 public partial class admin_ExistingData_Constructs : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        var results = ArchivedConstructBLL.GetAll();
     }
 }
