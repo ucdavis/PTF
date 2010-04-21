@@ -66,6 +66,7 @@
     <Compile Include="DataInterfaces\IDaoFactory.cs" />
     <Compile Include="Domain\ArchivedConstruct.cs" />
     <Compile Include="Domain\ArchivedExperiment.cs" />
+    <Compile Include="Domain\ArchivedPlantInventory.cs" />
     <Compile Include="Domain\Construct.cs" />
     <Compile Include="Domain\DomainObject.cs" />
     <Compile Include="Domain\Experiment.cs" />
@@ -141,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Domain\ArchivedExperiment.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domain\ArchivedPlantInventory.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

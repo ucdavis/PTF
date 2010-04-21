@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="CAESDO.PTF.Core.Domain.ArchivedPlantInventory, CAESDO.PTF.Core" table="ExistingPlantInventory" >
+    <id name="id" access="field" column="Pedigree" unsaved-value="0">
+      <generator class="assigned" />
+    </id>
+
+    <property name="TransformationCode" column="[Transformation Code]" />
+    <property name="Crop" column="[Crop]" />
+    <property name="DateInitiated" column="[Date Initiated]" />
+    <property name="DateEntered" column="[Date entered]" />
+    <property name="Genotype" column="[Genotype]" />
+    <property name="PI" column="[PI]" />
+    <property name="Client" column="[Client]" />
+    <property name="NumPlantsRequested" column="[# Plants Requested]" />
+    <property name="AgroStrains" column="[Agro Strains]" />
+    <property name="ConstructCode" column="[Construct code]" />
+    <property name="PIConstructCode" column="[PI Construct Code]" />
+    <property name="GeneOfInterest" column="[Gene of Interest]" />
+    <property name="Selection" column="[Selection]" />
+    <property name="Plasmid" column="[Plasmid]" />
+    <property name="Trait" column="[Trait]" />
+    <property name="ReCallusingAssay" column="[Re-callusing Assay]" />
+    <property name="Rooting" column="[Rooting]" />
+    <property name="Comment" column="[Comment]" />
+    <property name="DateDelivered" column="[Date delivered]" />
+  </class>
+</hibernate-mapping>

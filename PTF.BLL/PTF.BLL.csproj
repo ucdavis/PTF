@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="ArchivedConstructBLL.cs" />
     <Compile Include="ArchivedExperimentBLL.cs" />
+    <Compile Include="ArchivedPlantInventoryBLL.cs" />
     <Compile Include="CatbertClassesBLL.cs" />
     <Compile Include="ClientBLL.cs" />
     <Compile Include="ConstructBLL.cs" />
