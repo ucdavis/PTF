@@ -6,7 +6,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="NoteType" />
+		<property name="Name" column="NoteType" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.Crop, CAESDO.PTF.Core" table="Crops">
@@ -14,7 +14,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="Crop" />
+		<property name="Name" column="Crop" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.AgroStrain, CAESDO.PTF.Core" table="AgroStrains">
@@ -22,7 +22,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="AgroStrain" />
+		<property name="Name" column="AgroStrain" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" table="Status">
@@ -30,7 +30,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="Status" />
+		<property name="Name" column="Status" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.SelectableMarker, CAESDO.PTF.Core" table="SelectableMarkers">
@@ -38,7 +38,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="SelectableMarker" />
+		<property name="Name" column="SelectableMarker" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" table="GenoTypes">
@@ -46,7 +46,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="GenoType" />
+		<property name="Name" column="GenoType" />
 	</class>
 
 	<class name="CAESDO.PTF.Core.Domain.TransGene, CAESDO.PTF.Core" table="TransGenes">
@@ -54,7 +54,7 @@
 			<generator class="identity" />
 		</id>
 
-		<property Name="Name" Column="TransGene" />
+		<property name="Name" column="TransGene" />
 	</class>
 	
 </hibernate-mapping>

@@ -1,0 +1,15 @@
+﻿body {
+}
+.Lookups li
+{
+	list-style-type: none;
+	display: inline;
+	float: left;
+	margin-top: 30px;
+	margin-left: 25px;
+}
+.itemPanel
+{
+	width: 175px;
+	height: 30px;
+}
