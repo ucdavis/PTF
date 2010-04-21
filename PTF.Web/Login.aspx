@@ -14,20 +14,21 @@
     OR<br />
     <br />
     </asp:Panel>
-    <asp:Login ID="Login1" runat="server">
+    <asp:Login ID="Login1" runat="server" CssClass="noStyle">
         <LayoutTemplate>
             <table border="0" cellpadding="1" cellspacing="0" 
-                style="border-collapse:collapse;">
+                style="border-collapse:collapse;" class="noStyle">
                 <tr>
                     <td>
-                        <table border="0" cellpadding="0">
+                        <table border="0" cellpadding="0" class="noStyle">
                             <tr>
-                                <td align="center" colspan="2">
-                                    Log In</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <h2>Log In</h2></td>
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">E-mail:</asp:Label>
+                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">E-mail: </asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
@@ -38,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
+                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password: </asp:Label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
@@ -48,7 +49,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>&nbsp;</td>
+                                <td>
                                     <asp:CheckBox ID="RememberMe" runat="server" Text="Remember me next time." />
                                 </td>
                             </tr>
@@ -58,9 +60,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right" colspan="2">
-                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
+                                <td>&nbsp;</td>
+                                <td>
+                                    <asp:ImageButton ID="LoginButton" runat="server" CommandName="Login" ImageUrl="Images/btn_login.png" Text="Log In" 
                                         ValidationGroup="Login1" />
+    <a href="ResetPassword.aspx" title="Forgot your password?"><img src="Images/btn_forgotpassword.png" /></a>
                                 </td>
                             </tr>
                         </table>
@@ -69,7 +73,6 @@
             </table>
         </LayoutTemplate>
     </asp:Login>
-    <a href="ResetPassword.aspx">Forgot Password?</a>
     
 
 </asp:Content>

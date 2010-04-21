@@ -221,6 +221,8 @@ div.popup {
 
 li.newItem {display: block; float: none;}
 
+table.noStyle, table.noStyle tbody, table.noStyle tr, table.noStyle th, table.noStyle td {background: none transparent; width: auto;}
+
 
 
 

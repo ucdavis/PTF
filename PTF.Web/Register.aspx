@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <span class="boxTitle"><img src="../Images/profile_sm.gif" style="vertical-align:middle;" alt="" /> Create Account</span>
+    <span class="boxTitle"><img src="../Images/profile_sm.gif" style="vertical-align:middle;" alt="" /><h2>Create Account</h2></span>
        
        <AjaxControlToolkit:NoBot ID="noBotNewUser" runat="server" />
        
@@ -94,7 +94,7 @@
         <FinishNavigationTemplate>
             <asp:Button ID="FinishPreviousButton" runat="server" CausesValidation="False" CommandName="MovePrevious"
                 Text="Previous" Visible="false" />
-            <asp:Button ID="FinishButton" runat="server" CommandName="MoveComplete" Text="Finish" ValidationGroup="CreateAccount" />
+            <asp:ImageButton ID="FinishButton" ImageUrl="Images/btn_finish.png" runat="server" CommandName="MoveComplete" Text="Finish" ValidationGroup="CreateAccount" />
             <br /><br />
         </FinishNavigationTemplate>
     </asp:Wizard>
