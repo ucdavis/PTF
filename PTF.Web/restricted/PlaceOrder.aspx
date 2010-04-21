@@ -268,18 +268,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" class="noStyle">
 
 
-    <table class="style1 noStyle">
+    <table class="style1 noStyle orderform">
         <tr>
-            <td class="style3">
-                Principal Investigator: </td>
-            <td>
+            <td colspan="2">
+            <h1 class="orderform">Client Information </h2>
+            <i>* Bold indicates required field</i>
+            </td>
+        </tr>
+        <tr>
+            <td class="style3" style="width: 400px;"><strong>Principal Investigator:</strong> </td>
+            <td style="width: 600px;">
                 <asp:TextBox ID="tbPI" runat="server" MaxLength="100"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvPI" runat="server" ErrorMessage="PI name is required." Text="*" ControlToValidate="tbPI" ValidationGroup="NewOrder" ></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
-                Mailing Address:</td>
+                <strong>Mailing Address:</strong></td>
             <td>
                 Address Line 1<br />
                 <asp:TextBox ID="tbMailing1" runat="server" Width="300px" MaxLength="100"></asp:TextBox>
@@ -335,9 +340,10 @@
                     ErrorMessage="Mailing Country is required."></asp:RequiredFieldValidator>
             </td>
         </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
         <tr>
             <td class="style3">
-                Shipping Address:</td>
+                <strong>Shipping Address:</strong></td>
             <td>
                 <asp:CheckBox ID="cbShippingSame" Text="Shipping Address is the same as mailing." runat="server" onClick="onShippingAddressSame(this)" />
 
@@ -398,9 +404,10 @@
                 <span id="ShippingCountryWarning" style="color:Red; display:none;">*</span>
             </td>
         </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
         <tr>
             <td class="style3">
-                Contact:</td>
+                <strong>Contact Name:</strong></td>
             <td>
                 <asp:TextBox ID="tbContact" runat="server" MaxLength="100"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvContact" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbContact"
@@ -409,7 +416,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Contact E-mail:</td>
+                <strong>Contact E-mail:</strong></td>
             <td>
                 <asp:TextBox ID="tbContactEmail" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvContactEmail" runat="server" ControlToValidate="tbContactEmail" ErrorMessage="E-mail is required." ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
@@ -418,7 +425,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Contact Phone:</td>
+                <strong>Contact Phone:</strong></td>
             <td>
                 <asp:TextBox ID="tbContactPhone" runat="server" MaxLength="20"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvContactPhone" runat="server" Text="*" ValidationGroup="NewOrder" ControlToValidate="tbContactPhone"
@@ -440,11 +447,12 @@
         </tr>
         <tr>
             <td class="style2" colspan="2">
-                <strong>Plant Information<span style="color: Red;" id="PlantInformationValidation"></span></strong>
+                <h1 class="orderform">Plant Information <span style="color: Red;" id="PlantInformationValidation"></span></h1>
             </td>
         </tr>
         <tr>
-            <td colspan="2">     
+            <td colspan="2">  
+                  
                <i>* If you select the "Other" option for genotype or plant selection someone from the PTF will be calling you to discuss your order.</i>
                 <asp:UpdatePanel ID="upPlantInformation" runat="server">
                     <ContentTemplate>
@@ -466,7 +474,7 @@
         </tr>
         <tr>
             <td class="style2" colspan="2">
-                Molecular Information</td>
+                <h1 class="orderform">Molecular Information</h1></td>
         </tr>
         <tr>
             <td class="style3">
@@ -477,7 +485,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Bacterial Selection:</td>
+                <strong>Bacterial Selection:</strong></td>
             <td>
                 <asp:TextBox ID="tbBacterialSelection" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvBacterialSelection" runat="server" ControlToValidate="tbBacterialSelection"
@@ -487,7 +495,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Agrobacterium Strain:</td>
+                <strong>Agrobacterium Strain:</strong></td>
             <td>
                 <asp:DropDownList ID="ddlAgroStrain" runat="server" AppendDataBoundItems=True 
                     DataSourceID="odsAgroStrain" DataTextField="Name" DataValueField="ID">
@@ -506,7 +514,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Name of Your Construct:</td>
+                <strong>Name of Your Construct:</strong></td>
             <td>
                 <asp:TextBox ID="tbNameOfYourConstruct" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvYourconstruct" runat="server" Text="*" ControlToValidate="tbNameOfYourConstruct" ValidationGroup="NewOrder"
@@ -521,12 +529,12 @@
         </tr>
         <tr>
             <td class="style2" colspan="2">
-                <strong>Detailed Construct Description</strong>
+                <h2>Detailed Construct Description</h2>
             </td>
         </tr>
         <tr>
             <td class="style3">
-                Category of Transgene:</td>
+                <strong>Category of Transgene:</strong></td>
             <td>
                 <asp:DropDownList ID="ddlTransGene" runat="server" DataSourceID="odsTransGene" 
                     DataTextField="Name" DataValueField="ID" AppendDataBoundItems="True">
@@ -550,11 +558,11 @@
         </tr>  
         <tr>
             <td class="style2" colspan="2">
-                <strong>Construct: Selectable Marker</strong></td>
+                <h2>Construct: Selectable Marker</h2></td>
         </tr>
         <tr>
             <td class="style3">
-                Promoter:</td>
+                <strong>Promoter:</strong></td>
             <td>
                 <asp:TextBox ID="tbSelectableMarkerPromoter" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvSelectableMarkerPromoter" runat="server" 
@@ -564,7 +572,7 @@
         </tr>
         <tr>
             <td class="style3">
-                Gene:</td>
+                <strong>Gene:</strong></td>
             <td>
                 <asp:TextBox ID="tbSelectableMarkerGene" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvSelectableMarkerGene" runat="server" 
@@ -580,7 +588,7 @@
         </tr>
         <tr>
             <td class="style2" colspan="2">
-                <strong>Additonal Information</strong></td>
+                <h2>Additonal Information</h2></td>
         </tr>
         <tr>
             <td class="style3">

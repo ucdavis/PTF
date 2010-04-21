@@ -342,6 +342,11 @@ table.login .register a:hover {background-position: -120px 0px;}
 .registerWizard tr.head td {height: 73px;}
 .registerWizard input[type=image] {margin-right: 70px;}
 
+h2.orderform, h1.orderform {background: url(../Images/menu_bg.png) no-repeat; width: 317px; height: 33px; padding: 20px 15px 10px; display: block;}
+.orderform img {vertical-align: middle;}
+.orderform td.labels {width: 400px;}
+.orderform strong {color: #000;}
+
 
 
 /* --- crops lookup table --- */

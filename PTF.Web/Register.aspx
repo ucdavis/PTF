@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <span class="boxTitle"><img src="../Images/profile_sm.gif" style="vertical-align:middle;" alt="" /><h2>Create Account</h2></span>
+    <span class="boxTitle"><img src="../Images/profile_sm.gif" style="vertical-align:middle;" alt="" /></span>
        
        <AjaxControlToolkit:NoBot ID="noBotNewUser" runat="server" />
     
@@ -17,7 +17,7 @@
             BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
             
         <WizardSteps>
-            <asp:WizardStep ID="WizardStep1" runat="server" StepType="finish" Title="">
+            <asp:WizardStep ID="WizardStep1" runat="server" StepType="finish" Title="Create Account">
               <table border="0" cellpadding="5" style="font-weight:bold;" class="noStyle">
                         <tr class="head">
                             <td rowspan="8" style="width: 30px">&nbsp;</td>
