@@ -191,5 +191,8 @@ public partial class admin_Order : System.Web.UI.Page
         lvSuborders.DataBind();
     }
 
-
+    protected void lbBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Orders.aspx", true);
+    }
 }

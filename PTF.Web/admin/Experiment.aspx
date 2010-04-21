@@ -17,10 +17,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BackButton">
-        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click">[Back to Construct]</asp:LinkButton>
+        <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../Images/back.png" alt="" /> [Back to Construct]</asp:LinkButton>
     </div>
 
     <table class="InfoTable">
+        <tr class="head">
+            <td colspan="6">Experiment Information</td>
+        </tr>
         <tr>
             <td class="InfoFieldName c3 col1">Experiment Code:&nbsp;</td>
             <td class="InfoFieldValue c3 col2">
