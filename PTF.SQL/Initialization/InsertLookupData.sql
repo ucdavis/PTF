@@ -12,7 +12,7 @@ Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Shipped'
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Exempt', 1, 1, 0)
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Pending', 1, 0, 0)
 Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Complete', 1, 1, 0)
-Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Cancelled', 1, 1, 0)
+Insert Into [Status] ([Status], IsActive, IsComplete, IsPlant) values ('Cancelled', 1, 1, 1)
 
 -- == States == --
 insert into states (stateid, [name], isactive) values ('AK', 'Alaska', 1 )
