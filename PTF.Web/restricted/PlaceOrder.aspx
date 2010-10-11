@@ -442,7 +442,7 @@
                     ControlToValidate="tbSelectableMarkerGene" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
-            <asp:Panel ID="pnlNonUcdBua" runat="server">
+<%--            <asp:Panel ID="pnlNonUcdBua" runat="server">
                 <tr>
                 <td class="style3"></td>
                 <td>Please contact your campus Biosafety Office with questions concerning BUA.</td>
@@ -485,7 +485,7 @@
                     <asp:RegularExpressionValidator ID="revBuaExp" ValidationExpression="^(01|02|03|04|05|06|07|08|09|10|11|12)\/20[0123456789]{2}$" runat="server" ErrorMessage="Bua Expiration must match the following format MM/YYYY" ControlToValidate="tbBuaExp" ValidationGroup="NewOrder"></asp:RegularExpressionValidator>
                 </td>
                 </tr>
-            </asp:Panel>
+            </asp:Panel>--%>
         <tr>
             <td class="style3">
                 &nbsp;</td>

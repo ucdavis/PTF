@@ -58,6 +58,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{2FCBC86B-3A3
 		bin\Elmah.dll = bin\Elmah.dll
 		bin\Elmah.pdb = bin\Elmah.pdb
 		bin\Elmah.xml = bin\Elmah.xml
+		bin\HibernatingRhinos.Profiler.Appender.dll = bin\HibernatingRhinos.Profiler.Appender.dll
 		bin\Iesi.Collections.dll = bin\Iesi.Collections.dll
 		bin\Iesi.Collections.xml = bin\Iesi.Collections.xml
 		bin\log4net.dll = bin\log4net.dll

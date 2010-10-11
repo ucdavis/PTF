@@ -21,5 +21,17 @@ namespace CAESDO.PTF.BLL
                 ts.CommittTransaction();
             }
         }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        public static void Delete(SubOrder suborder)
+        {
+            using (var ts = new TransactionScope())
+            {
+                Remove(suborder);
+
+                ts.CommittTransaction();
+            }
+        }
     }
 }

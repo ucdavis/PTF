@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 using CAESDO.PTF.BLL;
 using System.Text;
 using CAESDO.PTF.Core.Domain;
 using Resources;
-using System.Web.Services;
 
 public partial class admin_Order : System.Web.UI.Page
 {
@@ -115,28 +106,28 @@ public partial class admin_Order : System.Web.UI.Page
             // deal with the BUA number stuff
             var user = Membership.GetUser(order.UserID).UserName;
 
-            if (user.EndsWith(CampusList.STR_Davis))
-            {
-                pnlUcdBua.Visible = true;
-                pnlNonUcdBua.Visible = false;
+            //if (user.EndsWith(CampusList.STR_Davis))
+            //{
+            //    pnlUcdBua.Visible = true;
+            //    pnlNonUcdBua.Visible = false;
 
-                litBua.Text = order.BUA ?? "n/a";
-                litBuaExpiration.Text = order.BUAExpiration ?? "n/a";
-            }
-            else
-            {
-                pnlUcdBua.Visible = false;
-                pnlNonUcdBua.Visible = true;
+            //    litBua.Text = order.BUA ?? "n/a";
+            //    litBuaExpiration.Text = order.BUAExpiration ?? "n/a";
+            //}
+            //else
+            //{
+            //    pnlUcdBua.Visible = false;
+            //    pnlNonUcdBua.Visible = true;
 
-                if (order.HasBua.HasValue)
-                {
-                    litHasBua.Text = order.HasBua.Value ? "Yes" : "No";
-                }
-                else
-                {
-                    litHasBua.Text = "n/a";
-                }
-            }
+            //    if (order.HasBua.HasValue)
+            //    {
+            //        litHasBua.Text = order.HasBua.Value ? "Yes" : "No";
+            //    }
+            //    else
+            //    {
+            //        litHasBua.Text = "n/a";
+            //    }
+            //}
 
             // order information
             litPICode.Text = order.PICode;
@@ -343,5 +334,13 @@ public partial class admin_Order : System.Web.UI.Page
     protected void btnAddSuborder_Click(object sender, EventArgs e)
     {
         Response.Redirect("AddSubOrder.aspx?oid=" + OrderID);
+    }
+
+    protected void btnDeleteOrder_Click(object sender, EventArgs e)
+    {
+        var order = OrderBLL.GetByID(OrderID);
+        OrderBLL.Delete(order);
+
+        Response.Redirect("Orders.aspx");
     }
 }

@@ -8,8 +8,8 @@
 
 		<property name="ConstructCode" column="ConstructCode" update="false" insert="false" />
 		<property name="DateCreated" column="DateCreated" />
-		<many-to-one name="Order" class="CAESDO.PTF.Core.Domain.Order, CAESDO.PTF.Core" column="OrderID" cascade="none" />
-		<many-to-one name="SubOrder" class="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core" column="SubOrderID" cascade="none" />
+		<many-to-one name="Order" class="CAESDO.PTF.Core.Domain.Order, CAESDO.PTF.Core" column="OrderID" />
+		<many-to-one name="SubOrder" class="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core" column="SubOrderID" />
 		
 		<property name="PlantsDelivered" column="PlantsDelivered" />
 		<property name="TransformationInitiated" column="TransformationInitiated" />
@@ -20,7 +20,7 @@
 
 		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
 	
-		<bag name="Experiments" table="Experiments">
+		<bag name="Experiments" table="Experiments" cascade="all-delete-orphan" inverse="true">
 			<key column="CID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Experiment, CAESDO.PTF.Core"/>
 		</bag>

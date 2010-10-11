@@ -166,5 +166,19 @@ namespace CAESDO.PTF.BLL
             OrderBLL.Update(order);
         }
         #endregion
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        public static void Delete(Order order)
+        {
+            using (var ts = new TransactionScope())
+            {
+                //ConstructBLL.Remove(order.Constructs.ToList());
+
+                Remove(order);
+
+                ts.CommittTransaction();
+            }
+        }
     }
 }

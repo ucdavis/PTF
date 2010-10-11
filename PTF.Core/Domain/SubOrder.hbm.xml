@@ -12,7 +12,7 @@
 		<many-to-one name="PlantSelection" class="CAESDO.PTF.Core.Domain.PlantSelection, CAESDO.PTF.Core" column="PlantSelectionID" cascade="none" />
 		<many-to-one name="GenoType" class="CAESDO.PTF.Core.Domain.GenoType, CAESDO.PTF.Core" column="GenoTypeID" cascade="none" />
 
-		<bag name="Constructs" table="Constructs">
+		<bag name="Constructs" table="Constructs" cascade="all-delete-orphan" inverse="true">
 			<key column="SubOrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>
 		</bag>

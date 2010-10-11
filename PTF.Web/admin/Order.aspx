@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="admin_Order" Title="PTF | Order" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     
     <script type="text/javascript" src="../JS/CollapsibleTable.js"></script>
@@ -19,6 +21,7 @@
 
         return false;
     }
+    
     </script>
 
 </asp:Content>
@@ -27,6 +30,8 @@
         <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../Images/back.png" alt="" /> [Back to Orders]</asp:LinkButton>
     </div>
 
+    <asp:Button ID="btnDeleteOrder" runat="server" Text="Delete" onclick="btnDeleteOrder_Click" />    
+    <cc1:ConfirmButtonExtender ID="btnDeleteOrderExtender" runat="server" TargetControlID="btnDeleteOrder" ConfirmText="Are you sure you want to delete this order?"></cc1:ConfirmButtonExtender>
 
     <table class="InfoTable">
         <tr class="head">
@@ -105,7 +110,7 @@
                 <td class="InfoFieldValue">
                     <asp:Literal ID="litShippingPermit" runat="server"></asp:Literal></td>            
             </tr>
-           <asp:Panel ID="pnlUcdBua" runat="server">
+<%--           <asp:Panel ID="pnlUcdBua" runat="server">
            <tr>
                 <td class="InfoFieldName">Bua Number:</td>
                 <td class="InfoFieldValue">
@@ -123,7 +128,7 @@
                     <td class="InfoFieldName"></td>
                     <td class="InfoFieldValue"></td>            
                 </tr>
-           </asp:Panel>
+           </asp:Panel>--%>
             <tr>
                 <td class="InfoFieldName"></td>
                 <td class="InfoFieldValue"></td>
@@ -268,8 +273,7 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate> 
     <asp:Button ID="btnNewConstruct" runat="server" Text="" />
-    <asp:Button ID="btnAddSuborder" runat="server" Text="Add Suborder" 
-        onclick="btnAddSuborder_Click" />
+    <asp:Button ID="btnAddSuborder" runat="server" Text="Add Suborder" onclick="btnAddSuborder_Click" />
     <asp:ListView ID="lvSuborders" runat="server" 
         onitemdatabound="lvSuborders_ItemDataBound">
         <LayoutTemplate>

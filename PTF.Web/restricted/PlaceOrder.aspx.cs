@@ -83,16 +83,16 @@ public partial class restricted_PlaceOrder : System.Web.UI.Page
 
             var user = Membership.GetUser().UserName;
 
-            if (user.EndsWith(CampusList.STR_Davis))
-            {
-                pnlUcdBua.Visible = true;
-                pnlNonUcdBua.Visible = false;
-            }
-            else
-            {
-                pnlUcdBua.Visible = false;
-                pnlNonUcdBua.Visible = true;
-            }
+            //if (user.EndsWith(CampusList.STR_Davis))
+            //{
+            //    pnlUcdBua.Visible = true;
+            //    pnlNonUcdBua.Visible = false;
+            //}
+            //else
+            //{
+            //    pnlUcdBua.Visible = false;
+            //    pnlNonUcdBua.Visible = true;
+            //}
         }
         
         // need to recreate the controls every time

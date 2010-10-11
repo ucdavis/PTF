@@ -189,6 +189,16 @@ namespace CAESDO.PTF.BLL
         }
         #endregion
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        public static void Delete(Construct construct)
+        {
+            using (var ts = new TransactionScope())
+            {
+                Remove(construct);
 
+                ts.CommittTransaction();
+            }
+        }
     }
 }

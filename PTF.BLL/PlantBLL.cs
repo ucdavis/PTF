@@ -122,5 +122,17 @@ namespace CAESDO.PTF.BLL
             PlantBLL.Update(plant);
         }
         #endregion
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        public static void Delete(Plant plant)
+        {
+            using (var ts = new TransactionScope())
+            {
+                Remove(plant);
+
+                ts.CommittTransaction();
+            }
+        }
     }
 }

@@ -55,16 +55,16 @@
 
 		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
 
-    <property name="BUA" column="BUA" />
+    <!--<property name="BUA" column="BUA" />
     <property name="BUAExpiration" column="BUAExpiration" />
-    <property name="HasBua" column="HasBua" />
+    <property name="HasBua" column="HasBua" />-->
     
-		<bag name="Constructs" table="Constructs">
+		<bag name="Constructs" table="Constructs" cascade="all-delete-orphan" inverse="true">
 			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.Construct, CAESDO.PTF.Core"/>
 		</bag>
 
-		<bag name="SubOrders" table="SubOrders" cascade="all-delete-orphan">
+		<bag name="SubOrders" table="SubOrders" cascade="all-delete-orphan" inverse="true">
 			<key column="OrderID" />
 			<one-to-many class="CAESDO.PTF.Core.Domain.SubOrder, CAESDO.PTF.Core"/>
 		</bag>

@@ -76,7 +76,17 @@ namespace CAESDO.PTF.BLL
         }
         #endregion
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        public static void Delete(Experiment experiment)
+        {
+            using (var ts = new TransactionScope())
+            {
+                Remove(experiment);
 
+                ts.CommittTransaction();
+            }
+        }
 
 
     }
