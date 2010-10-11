@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Net.Mail;
@@ -13,6 +14,7 @@ namespace CAESDO.PTF.BLL
     {
         public static string adminEmail = ConfigurationManager.AppSettings["AdminEmail"].ToString();
         public static string fromEmail = ConfigurationManager.AppSettings["FromEmail"].ToString();
+        public static string billingEmail = ConfigurationManager.AppSettings["BillingEmail"].ToString();
 
         public static void ResetPasswordEmail(Guid userKey, string newPassword)
         {
@@ -66,6 +68,13 @@ namespace CAESDO.PTF.BLL
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
+        }
+
+        public static void Billing(Construct construct)
+        {
+
+
+            throw new NotImplementedException();
         }
     }
 }

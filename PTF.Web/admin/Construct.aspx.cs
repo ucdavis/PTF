@@ -190,15 +190,24 @@ public partial class admin_Construct : System.Web.UI.Page
     }
     protected void lbGenerateInvoice_Click(object sender, EventArgs e)
     {
-        string report = "/PTF/Invoice";
+        var construct = ConstructBLL.GetByID(ConstructID);
 
-        ArrayList parameters = new ArrayList();
-        ArrayList parameter = new ArrayList();
-        parameter.Add("ConstructCode");
-        parameter.Add(ConstructBLL.GetByID(ConstructID).ConstructCode);
-        parameters.Add(parameter);
+        if (construct.Status.IsComplete)
+        {
+            string report = "/PTF/Invoice";
 
-        this.ExportReport(report, parameters);
+            ArrayList parameters = new ArrayList();
+            ArrayList parameter = new ArrayList();
+            parameter.Add("ConstructCode");
+            parameter.Add(construct.ConstructCode);
+            parameters.Add(parameter);
+
+            this.ExportReport(report, parameters);
+        }
+        else
+        {
+            Response.Write("Construct is not complete yet, you cannot invoice.");
+        }
     }
 
     protected void lbDelete_Click(object sender, EventArgs e)

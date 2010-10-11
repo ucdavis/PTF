@@ -155,6 +155,8 @@ namespace CAESDO.PTF.BLL
                 {
                     // order is complete
                     order.Status = StatusBLL.GetByName(StatusText.STR_Complete);
+
+                    // send email to the billing person
                 }
                 else
                 {
