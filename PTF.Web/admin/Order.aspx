@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="admin_Order" Title="PTF | Order" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     
@@ -30,13 +30,16 @@
         <asp:LinkButton runat="server" id="lbBack" onclick="lbBack_Click"><img src="../Images/back.png" alt="" /> [Back to Orders]</asp:LinkButton>
     </div>
 
-    <asp:Button ID="btnDeleteOrder" runat="server" Text="Delete" onclick="btnDeleteOrder_Click" />    
-    <cc1:ConfirmButtonExtender ID="btnDeleteOrderExtender" runat="server" TargetControlID="btnDeleteOrder" ConfirmText="Are you sure you want to delete this order?"></cc1:ConfirmButtonExtender>
+    
 
     <table class="InfoTable">
         <tr class="head">
-            <td colspan="4">
+            <td colspan="3" style="vertical-align: bottom">
                 Order Information
+            </td>
+            <td style="text-align: right;">
+                <asp:ImageButton ID="lbDelete" ImageUrl="../Images/btn_delete.png" AlternateText="Delete" runat="server" OnClick="lbDelete_Click" />
+                <AjaxControlToolkit:ConfirmButtonExtender ID="lbDeleteConfirm" runat="server" TargetControlID="lbDelete" ConfirmText="Are you sure you want to delete this order?"></AjaxControlToolkit:ConfirmButtonExtender>
             </td>
         </tr>
         <tr>

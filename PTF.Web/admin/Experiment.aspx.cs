@@ -18,6 +18,7 @@ using System.Web.Services;
 public partial class admin_Experiment : System.Web.UI.Page
 {
     private const string STR_ExperimentIDQueryString = "eid";
+    private const string STR_ConstructLink = "Construct.aspx?cid={0}";
 
     private int ExperimentID
     {
@@ -168,7 +169,8 @@ public partial class admin_Experiment : System.Web.UI.Page
     }
     protected void lbBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Construct.aspx?cid=" + ExperimentBLL.GetByID(ExperimentID).Construct.ID.ToString(), true);
+        //Response.Redirect("Construct.aspx?cid=" + ExperimentBLL.GetByID(ExperimentID).Construct.ID.ToString(), true);
+        Response.Redirect(string.Format(STR_ConstructLink, ExperimentBLL.GetByID(ExperimentID).Construct.ID.ToString()), true);
     }
 
     protected void lvPlants_ItemDataBound(object sender, ListViewItemEventArgs e)
@@ -204,6 +206,16 @@ public partial class admin_Experiment : System.Web.UI.Page
                 rooting.Enabled = false;
             }
         }
+    }
+
+    protected void lbDelete_Click(object sender, EventArgs e)
+    {
+        var experiment = ExperimentBLL.GetByID(ExperimentID);
+        var constructId = experiment.Construct.ID;
+
+        ExperimentBLL.Delete(experiment);
+
+        Response.Redirect(string.Format(STR_ConstructLink, constructId));
     }
 }
 

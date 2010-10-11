@@ -132,7 +132,7 @@ namespace CAESDO.PTF.BLL
                 }
 
                 // all experiments are complete
-                if (count >= construct.SubOrder.NumberOfPlants)
+                if (count == construct.SubOrder.NumberOfPlants)
                 {
                     construct.Status = StatusBLL.GetByName(StatusText.STR_Complete);
 

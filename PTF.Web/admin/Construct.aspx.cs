@@ -18,6 +18,7 @@ using Resources;
 public partial class admin_Construct : System.Web.UI.Page
 {
     private const string STR_ConstructIDQueryString = "cid";
+    private const string STR_OrderLink = "Order.aspx?oid={0}";
 
     private int ConstructID
     {
@@ -135,7 +136,7 @@ public partial class admin_Construct : System.Web.UI.Page
     }
     protected void lbBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Order.aspx?oid=" + ConstructBLL.GetByID(ConstructID).Order.ID.ToString(), true);
+        Response.Redirect(string.Format(STR_OrderLink, ConstructBLL.GetByID(ConstructID).Order.ID));
     }
 
     protected void ExportReport(string reportName, ArrayList parameters)
@@ -198,5 +199,15 @@ public partial class admin_Construct : System.Web.UI.Page
         parameters.Add(parameter);
 
         this.ExportReport(report, parameters);
+    }
+
+    protected void lbDelete_Click(object sender, EventArgs e)
+    {
+        var construct = ConstructBLL.GetByID(ConstructID);
+        var orderId = construct.Order.ID;
+        
+        ConstructBLL.Delete(construct);
+
+        Response.Redirect(string.Format(STR_OrderLink, orderId));
     }
 }

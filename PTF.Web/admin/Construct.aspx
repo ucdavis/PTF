@@ -53,7 +53,9 @@
             <td colspan="3" style="vertical-align: bottom">Construct Information</td>
             <td style="text-align: right;">
                 <asp:ImageButton ID="ibtnLock" runat="server" OnClientClick="ChangeLock(this); return false;" />
-                <asp:ImageButton ID="lbGenerateInvoice" ImageUrl="../Images/btn_invoice.png" AlternateText="Invoice" runat="server" onclick="lbGenerateInvoice_Click" />                
+                <asp:ImageButton ID="lbGenerateInvoice" ImageUrl="../Images/btn_invoice.png" AlternateText="Invoice" runat="server" onclick="lbGenerateInvoice_Click" />      
+                <asp:ImageButton ID="lbDelete" ImageUrl="../Images/btn_delete.png" AlternateText="Delete" runat="server" OnClick="lbDelete_Click" />
+                <AjaxControlToolkit:ConfirmButtonExtender ID="lbDeleteConfirm" runat="server" TargetControlID="lbDelete" ConfirmText="Are you sure you want to delete this construct?"></AjaxControlToolkit:ConfirmButtonExtender>
             </td>
         </tr>
         <tr>

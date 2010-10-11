@@ -336,7 +336,7 @@ public partial class admin_Order : System.Web.UI.Page
         Response.Redirect("AddSubOrder.aspx?oid=" + OrderID);
     }
 
-    protected void btnDeleteOrder_Click(object sender, EventArgs e)
+    protected void lbDelete_Click(object sender, EventArgs e)
     {
         var order = OrderBLL.GetByID(OrderID);
         OrderBLL.Delete(order);

@@ -24,7 +24,11 @@
 
     <table class="InfoTable">
         <tr class="head">
-            <td colspan="6">Experiment Information</td>
+            <td colspan="5" style="vertical-align: bottom">Experiment Information</td>
+            <td style="text-align: right;">
+                <asp:ImageButton ID="lbDelete" ImageUrl="../Images/btn_delete.png" AlternateText="Delete" runat="server" OnClick="lbDelete_Click" />
+                <AjaxControlToolkit:ConfirmButtonExtender ID="lbDeleteConfirm" runat="server" TargetControlID="lbDelete" ConfirmText="Are you sure you want to delete this order?"></AjaxControlToolkit:ConfirmButtonExtender>
+            </td>
         </tr>
         <tr>
             <td class="InfoFieldName c3 col1">Experiment Code:&nbsp;</td>
