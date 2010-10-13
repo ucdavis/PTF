@@ -1,132 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
-  <DataSources>
-    <DataSource Name="PTF">
-      <DataSourceReference>PTF</DataSourceReference>
-      <rd:DataSourceID>e8da10b4-e3b3-41c9-b04f-0d66d663fafc</rd:DataSourceID>
-    </DataSource>
-  </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet1">
-      <Fields>
-        <Field Name="pedigree">
-          <DataField>pedigree</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="dateentered">
-          <DataField>dateentered</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="datedelivered">
-          <DataField>datedelivered</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="status">
-          <DataField>status</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ExperimentCode">
-          <DataField>experimentcode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ConstructCode">
-          <DataField>ConstructCode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="OrderID">
-          <DataField>OrderID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="crop">
-          <DataField>crop</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="plantselection">
-          <DataField>plantselection</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="genotype">
-          <DataField>genotype</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PICode">
-          <DataField>PICode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Contact">
-          <DataField>Contact</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PIConstructName">
-          <DataField>PIConstructName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingAddress1">
-          <DataField>ShippingAddress1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingAddress2">
-          <DataField>ShippingAddress2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingCity">
-          <DataField>ShippingCity</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingCountry">
-          <DataField>ShippingCountry</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingInternationalState">
-          <DataField>ShippingInternationalState</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingState">
-          <DataField>ShippingState</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ShippingZip">
-          <DataField>ShippingZip</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Comments">
-          <DataField>Comments</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="RechargeAmount">
-          <DataField>RechargeAmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>PTF</DataSourceName>
-        <CommandText>select pedigree, dateentered, datedelivered, pstatus.[status]
-	, experiments.experimentcode
-	, constructs.ConstructCode, crops.crop, plantselections.plantselection, genotypes.genotype
-	, orders.OrderID, Orders.PIConstructName, Orders.PICode
-	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount
-from plants
-	inner join [status] pstatus on pstatus.statusid = plants.statusid
-	inner join experiments on experiments.eid = plants.eid
-	inner join constructs on constructs.cid = experiments.cid
-	inner join [status] cstatus on cstatus.statusid = constructs.statusid
-inner join suborders on suborders.suborderid = constructs.suborderid
-inner join crops on crops.cropid = suborders.cropid
-inner join plantselections on plantselections.plantselectionid = suborders.plantselectionid
-inner join genotypes on genotypes.genotypeid = suborders.genotypeid
-	inner join [orders] on [orders].orderid = constructs.orderid
-where cstatus.[status] = 'Complete'
-	and pstatus.[status] = 'Shipped'
-and constructs.constructcode = @ConstructCode</CommandText>
-        <QueryParameters>
-          <QueryParameter Name="@ConstructCode">
-            <Value>=Parameters!ConstructCode.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-      </Query>
-    </DataSet>
-  </DataSets>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
       <Tablix Name="table1">
@@ -399,7 +272,6 @@ and constructs.constructcode = @ConstructCode</CommandText>
                       </Style>
                     </Textbox>
                     <ColSpan>3</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -773,16 +645,40 @@ and constructs.constructcode = @ConstructCode</CommandText>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=IIf(IsNothing(First(Fields!ContractNumber.Value, "DataSet1")), "", "Contract: " &amp; First(Fields!ContractNumber.Value, "DataSet1"))</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>3.58208in</Top>
+        <Left>0.23958in</Left>
+        <Height>0.25in</Height>
+        <Width>2.73958in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>4.43792in</Height>
+    <Height>4.00042in</Height>
     <Style />
   </Body>
-  <ReportParameters>
-    <ReportParameter Name="ConstructCode">
-      <DataType>String</DataType>
-      <Prompt>Construct Code</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <Width>8in</Width>
   <Page>
     <PageFooter>
@@ -801,6 +697,145 @@ and constructs.constructcode = @ConstructCode</CommandText>
     <BottomMargin>0.5in</BottomMargin>
     <Style />
   </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="PTF">
+      <DataSourceReference>PTF</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>e8da10b4-e3b3-41c9-b04f-0d66d663fafc</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>PTF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@ConstructCode">
+            <Value>=Parameters!ConstructCode.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>select pedigree, dateentered, datedelivered, pstatus.[status]
+	, experiments.experimentcode
+	, constructs.ConstructCode, crops.crop, plantselections.plantselection, genotypes.genotype
+	, orders.OrderID, Orders.PIConstructName, Orders.PICode
+	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber
+from plants
+	inner join [status] pstatus on pstatus.statusid = plants.statusid
+	inner join experiments on experiments.eid = plants.eid
+	inner join constructs on constructs.cid = experiments.cid
+	inner join [status] cstatus on cstatus.statusid = constructs.statusid
+inner join suborders on suborders.suborderid = constructs.suborderid
+inner join crops on crops.cropid = suborders.cropid
+inner join plantselections on plantselections.plantselectionid = suborders.plantselectionid
+inner join genotypes on genotypes.genotypeid = suborders.genotypeid
+	inner join [orders] on [orders].orderid = constructs.orderid
+where cstatus.[status] = 'Complete'
+	and pstatus.[status] = 'Shipped'
+and constructs.constructcode = @ConstructCode</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="pedigree">
+          <DataField>pedigree</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dateentered">
+          <DataField>dateentered</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="datedelivered">
+          <DataField>datedelivered</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="status">
+          <DataField>status</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExperimentCode">
+          <DataField>experimentcode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ConstructCode">
+          <DataField>ConstructCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderID">
+          <DataField>OrderID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="crop">
+          <DataField>crop</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="plantselection">
+          <DataField>plantselection</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="genotype">
+          <DataField>genotype</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PICode">
+          <DataField>PICode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Contact">
+          <DataField>Contact</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PIConstructName">
+          <DataField>PIConstructName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingAddress1">
+          <DataField>ShippingAddress1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingAddress2">
+          <DataField>ShippingAddress2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingCity">
+          <DataField>ShippingCity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingCountry">
+          <DataField>ShippingCountry</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingInternationalState">
+          <DataField>ShippingInternationalState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingState">
+          <DataField>ShippingState</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingZip">
+          <DataField>ShippingZip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Comments">
+          <DataField>Comments</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RechargeAmount">
+          <DataField>RechargeAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ContractNumber">
+          <DataField>ContractNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="ConstructCode">
+      <DataType>String</DataType>
+      <Prompt>Construct Code</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <EmbeddedImages>
     <EmbeddedImage Name="logo">
       <MIMEType>image/png</MIMEType>
@@ -844,6 +879,6 @@ qxtBJq1DJTC6YrsdcBfm67qmzWgC6cityuZut0JYo5Ovlo6baiqLx7TNikkGqsGeU6m50EHtFnIyRWe8
   </EmbeddedImages>
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportID>b6a3a798-08e7-4b87-9f1e-f62938aedf7a</rd:ReportID>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>b6a3a798-08e7-4b87-9f1e-f62938aedf7a</rd:ReportID>
 </Report>

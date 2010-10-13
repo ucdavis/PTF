@@ -281,7 +281,6 @@ Global
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Debug|Any CPU.ActiveCfg = DebugLocal
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Debug|Any CPU.Build.0 = DebugLocal
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Debug|Mixed Platforms.ActiveCfg = DebugLocal
-		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Debug|Mixed Platforms.Build.0 = DebugLocal
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.DebugLocal|.NET.ActiveCfg = DebugLocal
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.DebugLocal|.NET.Build.0 = DebugLocal
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
