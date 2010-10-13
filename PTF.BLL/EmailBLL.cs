@@ -63,7 +63,11 @@ namespace CAESDO.PTF.BLL
 
         public static void ConstructComplete(Construct construct)
         {
-            MailMessage message = new MailMessage(fromEmail, adminEmail);
+            var admin = adminEmail.Split(';');
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromEmail);                              // add in all the to emails
+            if (admin.Count() > 0) foreach(var a in admin) {message.To.Add(a);}     // add in all from from emails
             message.Body = EmailText.STR_OrderCompleted + "<br/>Construct Code:" + construct.ConstructCode;
             message.Subject = "PTF Order Completed.";
             message.IsBodyHtml = true;
