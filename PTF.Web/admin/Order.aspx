@@ -21,6 +21,15 @@
 
         return false;
     }
+    function SaveNumberOfPlants(button, subOrderId) {
+        
+        var txtBox = button.previousElementSibling;
+        var numPlants = txtBox.value;
+        
+        if (isNaN(numPlants)) { alert("Please enter a valid number."); return false; }
+        
+        SaveSuborderNumberOfPlants(subOrderId, numPlants, button);
+    }
     
     </script>
 
@@ -298,7 +307,11 @@
                 <td class="first">
                     <img src="../images/minus.png" onclick="toggleGroup(this, 1, 'suborders');" />
                 </td>
-                <td><%# Eval("NumberOfPlants") %></td>
+                <td>
+                    <%--<%# Eval("NumberOfPlants") %>--%>
+                    <asp:TextBox ID='NumberOfPlants' runat="server" Text='<%# Eval("NumberOfPlants") %>' Width="30px"></asp:TextBox>
+                    <a onclick='SaveNumberOfPlants(this, <%# Eval("id") %>)'><img src="../Images/save.png" alt="Save" title="Click to Save" style="width: 20px" /></a>
+                </td>
                 <td><%# Eval("Crop.Name") %></td>
                 <td>
                     <div>

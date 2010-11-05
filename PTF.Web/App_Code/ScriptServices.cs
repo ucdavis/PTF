@@ -100,6 +100,8 @@ public class ScriptServices : System.Web.Services.WebService
                 break;
             case "Genotype": suborder.GenoType = GenoTypeBLL.GetByID(Convert.ToInt32(value));
                 break;
+            case "NumberOfPlants": suborder.NumberOfPlants = Convert.ToInt32(value);
+                break;
         };
 
         SubOrderBLL.Update(suborder);

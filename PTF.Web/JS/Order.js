@@ -113,3 +113,11 @@ function SaveSuborderPropertyOnFail(result, context)
             
     context.parentNode.appendChild(fail);
 }
+
+function SaveSuborderNumberOfPlants(subOrderId, numberOfPlants, button) {
+    ScriptServices.SaveProperty(subOrderId, "NumberOfPlants", numberOfPlants, "Suborder", SaveSuborderNumberOfPlantsOnComplete, SaveSuborderPropertyOnFail, button);
+}
+
+function SaveSuborderNumberOfPlantsOnComplete(result, context) {
+    alert("Save was successful.");
+}
