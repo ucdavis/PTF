@@ -104,7 +104,7 @@ namespace CAESDO.PTF.BLL
             PlantBLL.Update(plant);
 
             // update the construct
-            ConstructBLL.UpdateStatus(plant.Experiment.Construct, true);
+            ConstructBLL.UpdateStatus(plant.Experiment.Construct, finishing);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
