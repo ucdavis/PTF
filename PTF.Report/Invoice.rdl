@@ -311,7 +311,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.73625in</Top>
+        <Top>2.86125in</Top>
         <Left>0.23958in</Left>
         <Height>0.66in</Height>
         <Width>6.98958in</Width>
@@ -442,7 +442,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>= "Order ID: " &amp; First(Fields!OrderID.Value, "DataSet1")</Value>
+                <Value>= "Invoice #: " &amp; First(Fields!OrderID.Value, "DataSet1")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -451,7 +451,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>0.71542in</Top>
-        <Left>4.5in</Left>
+        <Left>4.49999in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
         <ZIndex>5</ZIndex>
@@ -472,7 +472,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Construct Name:" &amp; First(Fields!PIConstructName.Value, "DataSet1")</Value>
+                <Value>="Construct Name: " &amp; First(Fields!PIConstructName.Value, "DataSet1")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -480,8 +480,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>0.97931in</Top>
-        <Left>4.5in</Left>
+        <Top>1.25709in</Top>
+        <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
         <ZIndex>6</ZIndex>
@@ -502,7 +502,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Construct Code:" &amp; First(Fields!PICode.Value, "DataSet1")</Value>
+                <Value>="Construct Code: " &amp; First(Fields!PICode.Value, "DataSet1")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -510,8 +510,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.24319in</Top>
-        <Left>4.5in</Left>
+        <Top>1.52097in</Top>
+        <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
         <ZIndex>7</ZIndex>
@@ -532,7 +532,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Crop:" &amp; First(Fields!crop.Value, "DataSet1")</Value>
+                <Value>="Crop: " &amp; First(Fields!crop.Value, "DataSet1")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -540,8 +540,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>1.52097in</Top>
-        <Left>4.5in</Left>
+        <Top>1.79875in</Top>
+        <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>1.17708in</Width>
         <ZIndex>8</ZIndex>
@@ -562,7 +562,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Genotype:" &amp; First(Fields!genotype.Value, "DataSet1")</Value>
+                <Value>="Genotype: " &amp; First(Fields!genotype.Value, "DataSet1")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -570,8 +570,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.49319in</Top>
-        <Left>5.89583in</Left>
+        <Top>1.77097in</Top>
+        <Left>5.89584in</Left>
         <Height>0.25in</Height>
         <Width>1.33333in</Width>
         <ZIndex>9</ZIndex>
@@ -592,7 +592,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Plant Selection:" &amp; First(Fields!plantselection.Value, "DataSet1")</Value>
+                <Value>="Plant Selection: " &amp; First(Fields!plantselection.Value, "DataSet1")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -600,8 +600,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.77097in</Top>
-        <Left>4.5in</Left>
+        <Top>2.04875in</Top>
+        <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
         <ZIndex>10</ZIndex>
@@ -622,7 +622,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>= "Total:" &amp; FormatCurrency(First(Fields!RechargeAmount.Value, "DataSet1"))</Value>
+                <Value>= "Total: " &amp; FormatCurrency(First(Fields!RechargeAmount.Value, "DataSet1"))</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -630,8 +630,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>2.21542in</Top>
-        <Left>4.5in</Left>
+        <Top>2.29875in</Top>
+        <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
         <ZIndex>11</ZIndex>
@@ -660,7 +660,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>3.58208in</Top>
+        <Top>3.70708in</Top>
         <Left>0.23958in</Left>
         <Height>0.25in</Height>
         <Width>2.73958in</Width>
@@ -675,8 +675,38 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox12">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="PI: " &amp; First(Fields!PI.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox12</rd:DefaultName>
+        <Top>0.9932in</Top>
+        <Left>4.5in</Left>
+        <Height>0.25in</Height>
+        <Width>2.72916in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>4.00042in</Height>
+    <Height>4.08208in</Height>
     <Style />
   </Body>
   <Width>8in</Width>
@@ -718,7 +748,7 @@
 	, experiments.experimentcode
 	, constructs.ConstructCode, crops.crop, plantselections.plantselection, genotypes.genotype
 	, orders.OrderID, Orders.PIConstructName, Orders.PICode
-	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber
+	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber, Orders.PI
 from plants
 	inner join [status] pstatus on pstatus.statusid = plants.statusid
 	inner join experiments on experiments.eid = plants.eid
@@ -825,6 +855,10 @@ and constructs.constructcode = @ConstructCode</CommandText>
         </Field>
         <Field Name="ContractNumber">
           <DataField>ContractNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PI">
+          <DataField>PI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
