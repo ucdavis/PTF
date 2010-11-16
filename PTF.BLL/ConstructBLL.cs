@@ -104,7 +104,7 @@ namespace CAESDO.PTF.BLL
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         [PrincipalPermission(SecurityAction.Demand, Role = "User")]
-        public static void UpdateStatus(Construct construct)
+        public static void UpdateStatus(Construct construct, bool finishingPlant)
         {
             // no experiments exist
             if (construct.Experiments.Count == 0)
@@ -133,7 +133,7 @@ namespace CAESDO.PTF.BLL
 
                 // all experiments are complete
                 //if (count >= construct.SubOrder.NumberOfPlants && construct.Status.Name != StatusText.STR_Complete)
-                if (count == construct.SubOrder.NumberOfPlants && construct.Status.Name != StatusText.STR_Complete)
+                if (count == construct.SubOrder.NumberOfPlants && construct.Status.Name != StatusText.STR_Complete && finishingPlant)
                 {
                     construct.Status = StatusBLL.GetByName(StatusText.STR_Complete);
 

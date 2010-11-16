@@ -86,10 +86,13 @@ namespace CAESDO.PTF.BLL
         [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public static void ChangeStatus(Plant plant, Status status)
         {
+            bool finishing = false;
+
             // if it's shipped we need to mark the ship date
             if (status.Name == StatusText.STR_Shipped)
             {
                 plant.DateDelivered = DateTime.Now;
+                finishing = true;
             }
             else
             {
@@ -101,7 +104,7 @@ namespace CAESDO.PTF.BLL
             PlantBLL.Update(plant);
 
             // update the construct
-            ConstructBLL.UpdateStatus(plant.Experiment.Construct);
+            ConstructBLL.UpdateStatus(plant.Experiment.Construct, true);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]

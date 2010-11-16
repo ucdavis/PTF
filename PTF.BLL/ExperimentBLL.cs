@@ -54,7 +54,7 @@ namespace CAESDO.PTF.BLL
 
             NHibernateSessionManager.Instance.EvictObject(obj);
 
-            ConstructBLL.UpdateStatus(obj.Construct);
+            ConstructBLL.UpdateStatus(obj.Construct, false);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]

@@ -294,8 +294,6 @@ Global
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Release|Any CPU.Build.0 = Release
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Release|Any CPU.Deploy.0 = Release
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Release|Mixed Platforms.ActiveCfg = Release
-		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Release|Mixed Platforms.Build.0 = Release
-		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Release|Mixed Platforms.Deploy.0 = Release
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Test|.NET.ActiveCfg = Release
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Test|.NET.Build.0 = Release
 		{5619B0B1-9B20-42BF-91C2-6448B7805721}.Test|.NET.Deploy.0 = Release

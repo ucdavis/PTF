@@ -87,6 +87,8 @@ namespace CAESDO.PTF.BLL
         private delegate void BeginInvoiceRequestDelegate(Construct construct);
         public static void BeginInvoiceRequest(Construct construct)
         {
+            var biller = billingEmail.Split(';');
+
             var reportName = "/PTF/Invoice";
 
             var parameters = new Dictionary<string, string>();
@@ -95,7 +97,10 @@ namespace CAESDO.PTF.BLL
             var invoice = Get(reportName, parameters);
             var memoryStream = new MemoryStream(invoice);
 
-            var message = new MailMessage(fromEmail, billingEmail);
+            //var message = new MailMessage(fromEmail, billingEmail);
+            var message = new MailMessage();
+            message.From = new MailAddress(fromEmail);
+            if (adminEmail.Count() > 0) foreach (var a in biller) {message.To.Add(a);}
             message.Attachments.Add(new Attachment(memoryStream, string.Format("{0}_{1}.pdf", construct.Order.ID, construct.ConstructCode)));
             message.Body = EmailText.STR_Billing;
             message.Subject = "PTF Order Ready for Billing";
