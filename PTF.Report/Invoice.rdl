@@ -480,7 +480,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.25709in</Top>
+        <Top>1.47931in</Top>
         <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
@@ -510,7 +510,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>1.67375in</Top>
+        <Top>1.72931in</Top>
         <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>1.17708in</Width>
@@ -540,8 +540,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.64597in</Top>
-        <Left>5.89584in</Left>
+        <Top>1.72931in</Top>
+        <Left>5.90626in</Left>
         <Height>0.25in</Height>
         <Width>1.33333in</Width>
         <ZIndex>8</ZIndex>
@@ -570,7 +570,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.92375in</Top>
+        <Top>1.97931in</Top>
         <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
@@ -600,7 +600,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>2.17375in</Top>
+        <Top>2.22931in</Top>
         <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.72917in</Width>
@@ -622,7 +622,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=IIf(IsNothing(First(Fields!ContractNumber.Value, "DataSet1")), "", "Contract: " &amp; First(Fields!ContractNumber.Value, "DataSet1"))</Value>
+                <Value>=IIf(IsNothing(First(Fields!ContractNumber.Value, "DataSet1")), "Recharge Account: " &amp; First(Fields!rechargenumber.Value, "DataSet1") , "Contract: " &amp; First(Fields!ContractNumber.Value, "DataSet1"))</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -630,8 +630,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>3.45708in</Top>
-        <Left>0.23958in</Left>
+        <Top>0.96542in</Top>
+        <Left>4.50001in</Left>
         <Height>0.25in</Height>
         <Width>2.73958in</Width>
         <ZIndex>11</ZIndex>
@@ -660,7 +660,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>0.9932in</Top>
+        <Top>1.21542in</Top>
         <Left>4.5in</Left>
         <Height>0.25in</Height>
         <Width>2.72916in</Width>
@@ -676,7 +676,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.86333in</Height>
+    <Height>3.405in</Height>
     <Style />
   </Body>
   <Width>8in</Width>
@@ -718,7 +718,7 @@
 	, experiments.experimentcode
 	, constructs.ConstructCode, crops.crop, plantselections.plantselection, genotypes.genotype
 	, orders.OrderID, Orders.PIConstructName, Orders.PICode
-	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber, Orders.PI
+	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber, Orders.PI, Orders.rechargenumber
 from plants
 	inner join [status] pstatus on pstatus.statusid = plants.statusid
 	inner join experiments on experiments.eid = plants.eid
@@ -829,6 +829,10 @@ and constructs.constructcode = @ConstructCode</CommandText>
         </Field>
         <Field Name="PI">
           <DataField>PI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="rechargenumber">
+          <DataField>rechargenumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
