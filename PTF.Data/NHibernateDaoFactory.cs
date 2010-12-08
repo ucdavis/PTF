@@ -5,6 +5,7 @@ using NHibernate;
 using NHibernate.Expression;
 using System.ComponentModel;
 using System.Web;
+using Order = CAESDO.PTF.Core.Domain.Order;
 
 namespace CAESDO.PTF.Data
 {
@@ -55,8 +56,10 @@ namespace CAESDO.PTF.Data
             public List<Construct> GetForBilling()
             {
                 ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Construct))
+                    .AddOrder(new NHibernate.Expression.Order("ConstructCode", false))
                     .CreateCriteria("Order").Add(Expression.Or(Expression.IsNull("ContractNumber"), Expression.Eq("ContractNumber", string.Empty)))
-                    .CreateCriteria("Status").Add(Expression.Eq("Name", "Complete"));
+                    .CreateCriteria("Status").Add(Expression.Eq("Name", "Complete"))
+                    ;
 
                 return criteria.List<Construct>() as List<Construct>;
             }
