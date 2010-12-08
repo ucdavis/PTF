@@ -25,4 +25,9 @@ public partial class admin_Billing : System.Web.UI.Page
 
         lvConstructs.DataBind();
     }
+
+    protected void lbInvoice_OnCommand(object sender, CommandEventArgs e)
+    {
+        
+    }
 }

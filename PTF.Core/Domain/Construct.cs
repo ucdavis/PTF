@@ -27,6 +27,8 @@ namespace CAESDO.PTF.Core.Domain
 
         public virtual bool IsLocked { get; set; }
 
+        public virtual string DafisDoc { get; set; }
+
         public virtual bool IsBilled
         {
             get

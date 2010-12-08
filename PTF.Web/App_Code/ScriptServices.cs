@@ -227,6 +227,16 @@ public class ScriptServices : System.Web.Services.WebService
     }
     #endregion
 
+    #region Admin/Billing.aspx
+    [WebMethod]
+    public void Bill(int constructId, string dafisDoc)
+    {
+        var construct = ConstructBLL.GetByID(constructId);
+        construct.DafisDoc = dafisDoc;
+        ConstructBLL.Bill(construct);
+    }
+    #endregion
+
     #region restricted/Order.aspx
     [WebMethod]
     public void SaveShippingPermit(int orderID, string shippingPermit)

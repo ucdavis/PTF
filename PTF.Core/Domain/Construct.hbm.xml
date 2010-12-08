@@ -18,6 +18,8 @@
 		<property name="InvoiceDate" column="InvoiceDate" />
 		<property name="RechargeAmount" column="RechargeAmount" />
 
+    <property name="DafisDoc" column="DafisDoc" />
+    
 		<many-to-one name="Status" class="CAESDO.PTF.Core.Domain.Status, CAESDO.PTF.Core" column="StatusID" cascade="none" />
 	
 		<bag name="Experiments" table="Experiments" cascade="all-delete-orphan" inverse="true">

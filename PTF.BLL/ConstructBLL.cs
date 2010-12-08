@@ -158,7 +158,7 @@ namespace CAESDO.PTF.BLL
         public static void Bill(Construct construct)
         {
             construct.InvoiceDate = DateTime.Now;
-            construct.IsLocked = true;
+            //construct.IsLocked = true;
 
             ConstructBLL.Update(construct);
         }

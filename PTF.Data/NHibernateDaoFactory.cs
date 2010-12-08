@@ -55,9 +55,8 @@ namespace CAESDO.PTF.Data
             public List<Construct> GetForBilling()
             {
                 ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Construct))
-                    .Add(Expression.IsNull("InvoiceDate"))
-                    .CreateCriteria("Status")
-                        .Add(Expression.Eq("Name", "Complete"));
+                    .CreateCriteria("Order").Add(Expression.Or(Expression.IsNull("ContractNumber"), Expression.Eq("ContractNumber", string.Empty)))
+                    .CreateCriteria("Status").Add(Expression.Eq("Name", "Complete"));
 
                 return criteria.List<Construct>() as List<Construct>;
             }
