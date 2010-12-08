@@ -71,7 +71,7 @@
             <tr>
                 <td>
                     <div id='<%# Eval("ID") %>'>
-                        <asp:LinkButton ID="lbBilled" CommandName="Select" OnClientClick='return ConfirmBilling(this);' runat="server"><img src="../Images/btn_bill.png" alt="Bill" style='display:<%# Eval("InvoiceDate") == null ? "block" : "none" %>;' /></asp:LinkButton>
+                        <asp:LinkButton ID="lbBilled" CommandName="Select" OnClientClick='return ConfirmBilling(this);' runat="server"><img src="../Images/btn_bill.png" alt="Bill" style='display:<%# Eval("InvoiceDate") == null ? "inline-block" : "none" %>;' /></asp:LinkButton>
                         <asp:LinkButton ID="lbInvoice" OnCommand="lbInvoice_OnCommand" CommandArgument='<%# Eval("ConstructCode") %>' runat="server"><img src="../Images/btn_invoice.png" alt="Invoice" /></asp:LinkButton>
                     </div>
                 </td>
