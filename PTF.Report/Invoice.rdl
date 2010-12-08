@@ -311,7 +311,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.61125in</Top>
+        <Top>2.48625in</Top>
         <Left>0.23958in</Left>
         <Height>0.66in</Height>
         <Width>6.98958in</Width>
@@ -338,7 +338,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox1</rd:DefaultName>
-        <Top>0.22917in</Top>
+        <Top>0.10417in</Top>
         <Left>5.89583in</Left>
         <Height>0.33in</Height>
         <Width>1.33333in</Width>
@@ -354,7 +354,7 @@
         <Source>Embedded</Source>
         <Value>logo</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>0.22917in</Top>
+        <Top>0.10417in</Top>
         <Left>0.23958in</Left>
         <Height>0.58333in</Height>
         <Width>2.47917in</Width>
@@ -382,7 +382,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.13208in</Top>
+        <Top>1.00708in</Top>
         <Left>0.23958in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -420,7 +420,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>1.50708in</Top>
+        <Top>1.38208in</Top>
         <Left>0.23958in</Left>
         <Height>0.875in</Height>
         <Width>3.5in</Width>
@@ -450,10 +450,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.71542in</Top>
-        <Left>4.49999in</Left>
+        <Top>0.59042in</Top>
+        <Left>3.99999in</Left>
         <Height>0.25in</Height>
-        <Width>2.72917in</Width>
+        <Width>3.22917in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -480,10 +480,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.47931in</Top>
-        <Left>4.50001in</Left>
+        <Top>1.35431in</Top>
+        <Left>4.00001in</Left>
         <Height>0.25in</Height>
-        <Width>2.72917in</Width>
+        <Width>3.22915in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -510,8 +510,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>1.72931in</Top>
-        <Left>4.50001in</Left>
+        <Top>1.60431in</Top>
+        <Left>4.00001in</Left>
         <Height>0.25in</Height>
         <Width>1.17708in</Width>
         <ZIndex>7</ZIndex>
@@ -540,10 +540,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.72931in</Top>
-        <Left>5.90626in</Left>
+        <Top>1.60431in</Top>
+        <Left>5.40626in</Left>
         <Height>0.25in</Height>
-        <Width>1.33333in</Width>
+        <Width>1.8229in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -570,10 +570,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.97931in</Top>
-        <Left>4.50001in</Left>
+        <Top>1.85431in</Top>
+        <Left>4.00001in</Left>
         <Height>0.25in</Height>
-        <Width>2.72917in</Width>
+        <Width>3.22915in</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -600,10 +600,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>2.22931in</Top>
-        <Left>4.50001in</Left>
+        <Top>2.10431in</Top>
+        <Left>4.00001in</Left>
         <Height>0.25in</Height>
-        <Width>2.72917in</Width>
+        <Width>3.22915in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -630,10 +630,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>0.96542in</Top>
-        <Left>4.50001in</Left>
+        <Top>0.85431in</Top>
+        <Left>4.00001in</Left>
         <Height>0.25in</Height>
-        <Width>2.73958in</Width>
+        <Width>3.22915in</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -660,10 +660,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>1.21542in</Top>
-        <Left>4.5in</Left>
+        <Top>1.09042in</Top>
+        <Left>4in</Left>
         <Height>0.25in</Height>
-        <Width>2.72916in</Width>
+        <Width>3.22916in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -675,12 +675,84 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="dafisdoc">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=IIf(IsNothing(First(Fields!dafisdoc.Value, "DataSet1")), "", "Dafis Doc: " &amp; First(Fields!dafisdoc.Value, "DataSet1"))</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>dafisdoc</rd:DefaultName>
+        <Top>3.26611in</Top>
+        <Left>0.23958in</Left>
+        <Height>0.25in</Height>
+        <Width>2.32986in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>3.405in</Height>
+    <Height>3.57167in</Height>
     <Style />
   </Body>
   <Width>8in</Width>
   <Page>
+    <PageHeader>
+      <Height>0.32292in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="ExecutionTime">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>ExecutionTime</rd:DefaultName>
+          <Left>0.23958in</Left>
+          <Height>0.25in</Height>
+          <Width>3.09375in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
     <PageFooter>
       <Height>1in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
@@ -718,7 +790,7 @@
 	, experiments.experimentcode
 	, constructs.ConstructCode, crops.crop, plantselections.plantselection, genotypes.genotype
 	, orders.OrderID, Orders.PIConstructName, Orders.PICode
-	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber, Orders.PI, Orders.rechargenumber
+	, Orders.Contact, Orders.ShippingAddress1, Orders.ShippingAddress2, Orders.ShippingCity, Orders.ShippingCountry, Orders.ShippingInternationalState, Orders.ShippingState, Orders.ShippingZip, Orders.Comments, Constructs.RechargeAmount, Orders.ContractNumber, Orders.PI, Orders.rechargenumber, constructs.dafisdoc
 from plants
 	inner join [status] pstatus on pstatus.statusid = plants.statusid
 	inner join experiments on experiments.eid = plants.eid
@@ -833,6 +905,10 @@ and constructs.constructcode = @ConstructCode</CommandText>
         </Field>
         <Field Name="rechargenumber">
           <DataField>rechargenumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dafisdoc">
+          <DataField>dafisdoc</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
