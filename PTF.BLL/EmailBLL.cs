@@ -17,6 +17,8 @@ namespace CAESDO.PTF.BLL
         public static string adminEmail = ConfigurationManager.AppSettings["AdminEmail"].ToString();
         public static string fromEmail = ConfigurationManager.AppSettings["FromEmail"].ToString();
         public static string billingEmail = ConfigurationManager.AppSettings["BillingEmail"].ToString();
+        public static string[] adminEmails = adminEmail.Split(';');
+        public static string[] billingEmails = billingEmail.Split(';');
 
         public static void ResetPasswordEmail(Guid userKey, string newPassword)
         {
@@ -34,7 +36,10 @@ namespace CAESDO.PTF.BLL
         public static void OrderCreated(Order order)
         {
             // email the administrator specified in the webconfig
-            MailMessage message = new MailMessage(fromEmail, adminEmail);
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromEmail);
+            if (adminEmails.Count() > 0) foreach (var a in adminEmails) { message.To.Add(a); }     // add in all from from emails
+
             message.Body = EmailText.STR_NewOrder + "<br/>Order ID:" + order.ID.ToString();
             message.Subject = "PTF New Order Placed";
             message.IsBodyHtml = true;
@@ -63,11 +68,9 @@ namespace CAESDO.PTF.BLL
 
         public static void ConstructComplete(Construct construct)
         {
-            var admin = adminEmail.Split(';');
-
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromEmail);                              // add in all the to emails
-            if (admin.Count() > 0) foreach(var a in admin) {message.To.Add(a);}     // add in all from from emails
+            if (adminEmails.Count() > 0) foreach (var a in adminEmails) { message.To.Add(a); }     // add in all from from emails
             message.Body = EmailText.STR_OrderCompleted + "<br/>Construct Code:" + construct.ConstructCode;
             message.Subject = "PTF Order Completed.";
             message.IsBodyHtml = true;
@@ -87,8 +90,6 @@ namespace CAESDO.PTF.BLL
         private delegate void BeginInvoiceRequestDelegate(Construct construct);
         public static void BeginInvoiceRequest(Construct construct)
         {
-            var biller = billingEmail.Split(';');
-
             var reportName = "/PTF/Invoice";
 
             var parameters = new Dictionary<string, string>();
@@ -100,7 +101,8 @@ namespace CAESDO.PTF.BLL
             //var message = new MailMessage(fromEmail, billingEmail);
             var message = new MailMessage();
             message.From = new MailAddress(fromEmail);
-            if (adminEmail.Count() > 0) foreach (var a in biller) {message.To.Add(a);}
+            if (billingEmails.Count() > 0) foreach (var a in billingEmails) { message.To.Add(a); }
+            if (adminEmails.Count() > 0) foreach( var a in adminEmails) {message.To.Add(a);}
             message.Attachments.Add(new Attachment(memoryStream, string.Format("{0}_{1}.pdf", construct.Order.ID, construct.ConstructCode)));
             message.Body = EmailText.STR_Billing;
             message.Subject = "PTF Order Ready for Billing";
