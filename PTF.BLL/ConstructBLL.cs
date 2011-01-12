@@ -133,13 +133,16 @@ namespace CAESDO.PTF.BLL
 
                 // all experiments are complete
                 //if (count >= construct.SubOrder.NumberOfPlants && construct.Status.Name != StatusText.STR_Complete)
-                if (count == construct.SubOrder.NumberOfPlants && construct.Status.Name != StatusText.STR_Complete && finishingPlant)
+                if (count >= construct.SubOrder.NumberOfPlants)// && construct.Status.Name != StatusText.STR_Complete)// && finishingPlant)
                 {
                     construct.Status = StatusBLL.GetByName(StatusText.STR_Complete);
 
-                    // email the administrator
-                    EmailBLL.ConstructComplete(construct);
-                    EmailBLL.Billing(construct);
+                    if (count == construct.SubOrder.NumberOfPlants && finishingPlant)
+                    {
+                        // email the administrator
+                        EmailBLL.ConstructComplete(construct);
+                        EmailBLL.Billing(construct);
+                    }
                 }
                 else
                 {
