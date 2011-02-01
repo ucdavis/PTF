@@ -55,11 +55,12 @@ namespace CAESDO.PTF.Data
 
             public List<Construct> GetForBilling()
             {
-                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof(Construct))
+                ICriteria criteria = NHibernateSessionManager.Instance.GetSession().CreateCriteria(typeof (Construct))
                     .AddOrder(new NHibernate.Expression.Order("ConstructCode", false))
-                    .CreateCriteria("Order").Add(Expression.Or(Expression.IsNull("ContractNumber"), Expression.Eq("ContractNumber", string.Empty)))
-                    .CreateCriteria("Status").Add(Expression.Eq("Name", "Complete"))
-                    ;
+                    .CreateAlias("Status", "status")
+                    .CreateAlias("Order", "order")
+                    .Add(Expression.Eq("status.Name", "Complete"))
+                    .Add(Expression.Or(Expression.IsNull("order.ContractNumber"), Expression.Eq("order.ContractNumber", string.Empty)));
 
                 return criteria.List<Construct>() as List<Construct>;
             }
