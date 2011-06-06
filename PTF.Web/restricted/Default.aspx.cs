@@ -19,26 +19,26 @@ public partial class restricted_Default : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             // check the user's login to make sure they are a uc email.
-            var user = Membership.GetUser().UserName;
-            if (!user.EndsWith(CampusList.STR_Berkeley)
-                && !user.EndsWith(CampusList.STR_Davis)
-                && !user.EndsWith(CampusList.STR_Irvine)
-                && !user.EndsWith(CampusList.STR_LA)
-                && !user.EndsWith(CampusList.STR_Merced)
-                && !user.EndsWith(CampusList.STR_Riverside)
-                && !user.EndsWith(CampusList.STR_SanDiego)
-                && !user.EndsWith(CampusList.STR_SanFrancisco)
-                && !user.EndsWith(CampusList.STR_SantaBarbara)
-                && !user.EndsWith(CampusList.STR_SantaCruz)
-                )
-            {
-                // doesn't end with any uc address.
-                litDisabledAccount.Visible = true;
-            }
-            else
-            {
-                litDisabledAccount.Visible = false;
-            }
+            //var user = Membership.GetUser().UserName;
+            //if (!user.EndsWith(CampusList.STR_Berkeley)
+            //    && !user.EndsWith(CampusList.STR_Davis)
+            //    && !user.EndsWith(CampusList.STR_Irvine)
+            //    && !user.EndsWith(CampusList.STR_LA)
+            //    && !user.EndsWith(CampusList.STR_Merced)
+            //    && !user.EndsWith(CampusList.STR_Riverside)
+            //    && !user.EndsWith(CampusList.STR_SanDiego)
+            //    && !user.EndsWith(CampusList.STR_SanFrancisco)
+            //    && !user.EndsWith(CampusList.STR_SantaBarbara)
+            //    && !user.EndsWith(CampusList.STR_SantaCruz)
+            //    )
+            //{
+            //    // doesn't end with any uc address.
+            //    litDisabledAccount.Visible = true;
+            //}
+            //else
+            //{
+            //    litDisabledAccount.Visible = false;
+            //}
         }
     }
     protected void odsOrders_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
