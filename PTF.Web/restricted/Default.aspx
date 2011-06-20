@@ -13,12 +13,6 @@
     <span class="right" style="width: 134px;"><a href="Account.aspx"><img src="../Images/btn_clientprofile.png" title="Client Profile" alt="Profile" /></a>
     </span><br /><br />
 
-    <p style="color:Red;">
-        <asp:Literal ID="litDisabledAccount" runat="server" >
-            Because the Facility is no longer accepting orders from outside the University of California System we cannot accept any more orders from this account.  Please note that all your existing orders will be completed.  If you are within the University of California System, please contact the staff so that we can arrange to have this account modified so that you can continue to place orders.  Before contacting the staff you will need to have your University of California campus email address ready.
-        </asp:Literal>
-    </p>
-
     <asp:ListView ID="lvOrders" runat="server" DataSourceID="odsOrders" DataKeyNames="ID" onselectedindexchanged="lvOrders_SelectedIndexChanged">
         <LayoutTemplate>
             <div class="grid">
