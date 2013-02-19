@@ -1,48 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PTF.Web", "PTF.Web", "{1CFE5FD2-E4A3-4420-85DC-FFBA4E954AEB}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
-		TargetFramework = "3.5"
-		ProjectReferences = "{803AB19A-B148-487D-99A8-E3FF8BE222F4}|PTF.BLL.dll;{96C16422-3827-4D04-B34E-BA27EA3F3D8B}|PTF.Core.dll;{031EECA0-481E-444A-B4DE-A3977607DA5F}|PTF.Data.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/PTF.Web"
-		Debug.AspNetCompiler.PhysicalPath = "PTF.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/PTF.Web"
-		Release.AspNetCompiler.PhysicalPath = "PTF.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "42854"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.BLL", "PTF.BLL\PTF.BLL.csproj", "{803AB19A-B148-487D-99A8-E3FF8BE222F4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.Core", "PTF.Core\PTF.Core.csproj", "{96C16422-3827-4D04-B34E-BA27EA3F3D8B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.Data", "PTF.Data\PTF.Data.csproj", "{031EECA0-481E-444A-B4DE-A3977607DA5F}"
-EndProject
-Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "PTF.SQL", "PTF.SQL\PTF.SQL.dbp", "{87F594B7-AD06-409C-B4D2-58E2D7665711}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTFConvert", "PTFConvert\PTFConvert.csproj", "{CAFBE9F5-F53B-4582-8507-CE44D1F42079}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.CLR", "PTF.CLR\PTF.CLR.csproj", "{CB0A6E20-587C-4BCD-AD3D-71D2B2F65EE9}"
-EndProject
-Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "PTF.Deploy", "PTF.Deploy\PTF.Deploy.wdproj", "{9931B892-5ECE-49FF-9356-C06CFC8318E7}"
-EndProject
-Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PTF.Report", "PTF.Report\PTF.Report.rptproj", "{5619B0B1-9B20-42BF-91C2-6448B7805721}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{2FCBC86B-3A35-42CA-AE9E-0CBA9FECBF31}"
 	ProjectSection(SolutionItems) = preProject
 		bin\AjaxControlToolkit.dll = bin\AjaxControlToolkit.dll
@@ -83,6 +41,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{2FCBC86B-3A3
 		bin\System.Web.Extensions.Design.dll = bin\System.Web.Extensions.Design.dll
 		bin\System.Web.Extensions.dll = bin\System.Web.Extensions.dll
 	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PTF.Web", "PTF.Web", "{1CFE5FD2-E4A3-4420-85DC-FFBA4E954AEB}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
+		ProjectReferences = "{803AB19A-B148-487D-99A8-E3FF8BE222F4}|PTF.BLL.dll;{96C16422-3827-4D04-B34E-BA27EA3F3D8B}|PTF.Core.dll;{031EECA0-481E-444A-B4DE-A3977607DA5F}|PTF.Data.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/PTF.Web"
+		Debug.AspNetCompiler.PhysicalPath = "PTF.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/PTF.Web"
+		Release.AspNetCompiler.PhysicalPath = "PTF.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PTF.Web\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "42854"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.BLL", "PTF.BLL\PTF.BLL.csproj", "{803AB19A-B148-487D-99A8-E3FF8BE222F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.Core", "PTF.Core\PTF.Core.csproj", "{96C16422-3827-4D04-B34E-BA27EA3F3D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.Data", "PTF.Data\PTF.Data.csproj", "{031EECA0-481E-444A-B4DE-A3977607DA5F}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "PTF.SQL", "PTF.SQL\PTF.SQL.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTFConvert", "PTFConvert\PTFConvert.csproj", "{CAFBE9F5-F53B-4582-8507-CE44D1F42079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTF.CLR", "PTF.CLR\PTF.CLR.csproj", "{CB0A6E20-587C-4BCD-AD3D-71D2B2F65EE9}"
+EndProject
+Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "PTF.Deploy", "PTF.Deploy\PTF.Deploy.wdproj", "{9931B892-5ECE-49FF-9356-C06CFC8318E7}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PTF.Report", "PTF.Report\PTF.Report.rptproj", "{5619B0B1-9B20-42BF-91C2-6448B7805721}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -215,6 +215,18 @@ Global
 		{031EECA0-481E-444A-B4DE-A3977607DA5F}.Test|Any CPU.Build.0 = Test|Any CPU
 		{031EECA0-481E-444A-B4DE-A3977607DA5F}.Test|Mixed Platforms.ActiveCfg = Test|Any CPU
 		{031EECA0-481E-444A-B4DE-A3977607DA5F}.Test|Mixed Platforms.Build.0 = Test|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.DebugLocal|.NET.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.DebugLocal|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|.NET.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Test|.NET.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Test|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{CAFBE9F5-F53B-4582-8507-CE44D1F42079}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{CAFBE9F5-F53B-4582-8507-CE44D1F42079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CAFBE9F5-F53B-4582-8507-CE44D1F42079}.Debug|Any CPU.Build.0 = Debug|Any CPU

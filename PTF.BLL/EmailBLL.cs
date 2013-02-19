@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Net.Mail;
 using System.Web.Security;
 using CAESDO.PTF.Core.Domain;
