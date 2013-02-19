@@ -32,6 +32,10 @@
     }
     
     </script>
+    
+    <style type="text/css">
+        .swapBtn { float: right;margin-right: 50px;border: 1px solid lightgray;padding: 5px;}
+    </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -106,7 +110,12 @@
             <tr>
                 <td class="InfoFieldName">Recharge Number:&nbsp;</td>
                 <td class="InfoFieldValue">
-                    <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal></td>
+                    <asp:Literal ID="litRechargeNumber" runat="server"></asp:Literal>
+                
+                    <asp:ImageButton ID="ibtn_SwapRechargeContract" runat="server" 
+                        ImageUrl="~/Images/refresh.png" CssClass="swapBtn" 
+                        onclick="ibtn_SwapRechargeContract_Click" />
+                </td>
                 <td class="InfoFieldName">Contract Number:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:TextBox ID="tbContractNumber" runat="server" Width="75px"></asp:TextBox>&nbsp;

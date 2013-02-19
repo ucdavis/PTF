@@ -396,7 +396,10 @@ table#constructs {}
 /*   btn styles                                 */
 /* -------------------------------------------- */
 
-img[alt="save"] {position: relative; top: 4px; cursor: pointer;}
+img[alt="save"] {position: relative; top: 5px; 
+cursor: pointer;
+    left: 4px;
+}
 
 input[type="submit"] {background: transparent; border: 0px none; padding: 0px; margin: 0px; cursor: pointer;}
 /*

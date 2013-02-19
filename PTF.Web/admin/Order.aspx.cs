@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using CAESDO.PTF.BLL;
 using System.Text;
 using CAESDO.PTF.Core.Domain;
+using CAESDO.PTF.Data;
 using Resources;
 
 public partial class admin_Order : System.Web.UI.Page
@@ -342,5 +343,40 @@ public partial class admin_Order : System.Web.UI.Page
         OrderBLL.Delete(order);
 
         Response.Redirect("Orders.aspx");
+    }
+    protected void ibtn_SwapRechargeContract_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+    {
+        var order = OrderBLL.GetByID(OrderID);
+
+        if (!string.IsNullOrEmpty(order.RechargeNumber))
+        {
+            order.ContractNumber = order.RechargeNumber;
+            order.RechargeNumber = null;
+
+            tbContractNumber.Text = order.ContractNumber;
+            litRechargeNumber.Text = string.Empty;
+
+            ibtnContractNumber.Visible = true;
+            tbContractNumber.Enabled = true;
+        }
+        else
+        {
+            order.RechargeNumber = order.ContractNumber;
+            order.ContractNumber = null;
+
+            tbContractNumber.Text = string.Empty;
+            litRechargeNumber.Text = order.RechargeNumber;
+
+            ibtnContractNumber.Visible = false;
+            tbContractNumber.Enabled = false;
+        }
+
+        using (var ts = new TransactionScope())
+        {
+            OrderBLL.EnsurePersistent(ref order);    
+
+            ts.CommittTransaction();
+        }
+        
     }
 }
