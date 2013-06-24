@@ -70,7 +70,7 @@
             <td class="InfoFieldName">Date Created:&nbsp;</td>
             <td class="InfoFieldValue">
                 <asp:Literal ID="litDateCreated" runat="server"></asp:Literal></td>
-            <td class="InfoFieldName">Bacterial Selection:&nbsp;</td>
+            <td class="InfoFieldName">Agrobacterium Selection:&nbsp;</td>
             <td class="InfoFieldValue">
                 <asp:Literal ID="litBacterialSelection" runat="server"></asp:Literal></td>
         </tr>

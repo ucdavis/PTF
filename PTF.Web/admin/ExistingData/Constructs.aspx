@@ -19,7 +19,7 @@
                         <th scope="col">PI Construct name</th>
                         <th scope="col">Agro Strains</th>
                         <th scope="col">PI Code</th>
-                        <th scope="col">Bacterial Selection</th>
+                        <th scope="col">Agrobacterium Selection</th>
                         <th scope="col">Plasmid</th>
                         <th scope="col">Trait</th>
                         <th scope="col">Gene of interest</th>

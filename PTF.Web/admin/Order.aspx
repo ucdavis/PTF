@@ -35,6 +35,21 @@
     
     <style type="text/css">
         .swapBtn { float: right;margin-right: 50px;border: 1px solid lightgray;padding: 5px;}
+        .style1
+        {
+            text-align: right;
+            width: 375px;
+            font-weight: bold;
+            xwidth: 375px;
+            height: 64px;
+        }
+        .style2
+        {
+            text-align: left;
+            width: 375px;
+            xwidth: 375px;
+            height: 64px;
+        }
     </style>
 
 </asp:Content>
@@ -192,23 +207,23 @@
                     <asp:Literal ID="litConstructName" runat="server"></asp:Literal></td>            
             </tr>        
             <tr>
-                <td class="InfoFieldName">Plasmid:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="style1">Plasmid:&nbsp;</td>
+                <td class="style2">
                     <asp:Literal ID="litPlasmid" runat="server"></asp:Literal></td>
-                <td class="InfoFieldName">Bacterial Selection:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="style1">Agrobacterium Selection:&nbsp;</td>
+                <td class="style2">
                     <asp:Literal ID="litBacterialSelection" runat="server"></asp:Literal></td>            
             </tr>
             <tr>
-                <td class="InfoFieldName">Agro Strain:&nbsp;</td>
-                <td class="InfoFieldValue">
+                <td class="style1">Agro Strain:&nbsp;</td>
+                <td class="style2">
                     <asp:Literal ID="litAgroStrain" runat="server"></asp:Literal>
                     <asp:Panel runat="server" id="pnlAgroStrain" Visible="false">
                         <asp:DropDownList ID="ddlAgroStrain" runat="server" DataValueField="id" DataTextField="Name" AppendDataBoundItems="true"></asp:DropDownList>
                         <a id="AgroStrainButton" onclick='SaveAgroStrain("<%= Request.QueryString["oid"] %>", "<%= ddlAgroStrain.ClientID %>", "<%= litAgroStrain.ClientID %>");'><img src="../Images/save.png" width="20px" alt="save" /></a></asp:Panel>
                 </td>
-                <td class="InfoFieldName">Transgene:&nbsp;</td>
-                <td class="InfoFieldValue"><asp:Literal ID="litTransgene" runat="server"></asp:Literal></td>            
+                <td class="style1">Transgene:&nbsp;</td>
+                <td class="style2"><asp:Literal ID="litTransgene" runat="server"></asp:Literal></td>            
             </tr>
             <tr>
                 <td class="InfoFieldName">Trait:&nbsp;</td>
@@ -218,10 +233,10 @@
                 <td class="InfoFieldValue"></td>            
             </tr>
             <tr>
-                <td class="InfoFieldName">Selectable Marker Promoter:&nbsp;</td>
+                <td class="InfoFieldName">Promoter Driving the Plant Selectable Marker Gene:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:Literal ID="litSelectableMarkerPromoter" runat="server"></asp:Literal></td>
-                <td class="InfoFieldName">Selectable Marker Gene:&nbsp;</td>
+                <td class="InfoFieldName">Plant Selectable Marker Gene:&nbsp;</td>
                 <td class="InfoFieldValue">
                     <asp:Literal ID="litSelectableMarkerGene" runat="server"></asp:Literal></td>            
             </tr>

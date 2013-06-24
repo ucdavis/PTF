@@ -541,13 +541,16 @@
         </tr>
         <tr>
             <td class="style3">
-                <strong>Bacterial Selection:</strong></td>
+                <strong>Agrobacterium Selection*:</strong></td>
             <td>
                 <asp:TextBox ID="tbBacterialSelection" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvBacterialSelection" runat="server" ControlToValidate="tbBacterialSelection"
-                    ErrorMessage="Bacterial Selection is required." Text="*" ValidationGroup="NewOrder">
+                    ErrorMessage="Agrobacterium Selection is required." Text="*" ValidationGroup="NewOrder">
                 </asp:RequiredFieldValidator>
             </td>
+        </tr>
+        <tr>
+            <td colspan="2"><i>*Please include the appropriate selection for both the chromosomal and plasmid marker genes.</i></td>
         </tr>
         <tr>
             <td class="style3">
@@ -618,21 +621,21 @@
         </tr>
         <tr>
             <td class="style3">
-                <strong>Promoter:</strong></td>
+                <strong>Promoter Driving the Plant Selectable Marker Gene:</strong></td>
             <td>
                 <asp:TextBox ID="tbSelectableMarkerPromoter" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvSelectableMarkerPromoter" runat="server" 
-                    ErrorMessage="Selectable Marker Promoter is required." 
+                    ErrorMessage="Promoter Driving the Plant Selectable Marker Gene is required." 
                     ControlToValidate="tbSelectableMarkerPromoter" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
-                <strong>Gene:</strong></td>
+                <strong>Plant Selectable Marker Gene:</strong></td>
             <td>
                 <asp:TextBox ID="tbSelectableMarkerGene" runat="server" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvSelectableMarkerGene" runat="server" 
-                    ErrorMessage="Selectable Marker Gene is required." 
+                    ErrorMessage="Plant Selectable Marker Gene is required." 
                     ControlToValidate="tbSelectableMarkerGene" ValidationGroup="NewOrder">*</asp:RequiredFieldValidator>
             </td>
         </tr>
