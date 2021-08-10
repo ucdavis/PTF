@@ -30,3 +30,46 @@ _ReSharper*/
 Commencement.SQL/Commencement.SQL.dbmdl
 *.dbmdl
 *.docstates
+Backup/PTF.sln
+Backup1/PTF.sln
+PTF.CLR/Backup/Properties/AssemblyInfo.cs
+PTF.CLR/Backup/PTF.CLR.csproj
+PTF.CLR/Backup/Test Scripts/Test.sql
+PTF.CLR/Backup/udf_ConstructCode.cs
+PTF.CLR/Backup/udf_ExperimentCode.cs
+PTF.CLR/Backup1/Properties/AssemblyInfo.cs
+PTF.CLR/Backup1/PTF.CLR.csproj
+PTF.CLR/Backup1/Test Scripts/Test.sql
+PTF.CLR/Backup1/udf_ConstructCode.cs
+UpgradeLog3.htm
+UpgradeLog2.htm
+UpgradeLog3.htm
+UpgradeLog2.htm
+UpgradeLog.htm
+PTF.CLR/UpgradeLog5.htm
+PTF.CLR/UpgradeLog4.htm
+PTF.CLR/UpgradeLog3.htm
+PTF.CLR/UpgradeLog2.htm
+PTF.CLR/UpgradeLog.htm
+Backup/PTF.sln
+Backup1/PTF.sln
+PTF.CLR/Backup/Properties/AssemblyInfo.cs
+PTF.CLR/Backup/udf_ConstructCode.cs
+PTF.CLR/Backup1/PTF.CLR.csproj
+UpgradeLog3.htm
+PTF.CLR/Backup1/udf_ExperimentCode.cs
+PTF.CLR/Backup2/Properties/AssemblyInfo.cs
+PTF.CLR/Backup2/PTF.CLR.csproj
+PTF.CLR/Backup2/Test Scripts/Test.sql
+PTF.CLR/Backup2/udf_ConstructCode.cs
+PTF.CLR/Backup2/udf_ExperimentCode.cs
+PTF.CLR/Backup3/Properties/AssemblyInfo.cs
+PTF.CLR/Backup3/PTF.CLR.csproj
+PTF.CLR/Backup3/Test Scripts/Test.sql
+PTF.CLR/Backup3/udf_ConstructCode.cs
+PTF.CLR/Backup3/udf_ExperimentCode.cs
+PTF.CLR/Backup4/Properties/AssemblyInfo.cs
+PTF.CLR/Backup4/PTF.CLR.csproj
+PTF.CLR/Backup4/Test Scripts/Test.sql
+PTF.CLR/Backup4/udf_ConstructCode.cs
+PTF.CLR/Backup4/udf_ExperimentCode.cs
