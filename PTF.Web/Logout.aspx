@@ -11,7 +11,8 @@
         // do an auto redirect, since doing it server side is causing an exception to be thrown
     
         if (new Boolean("<%= IsCasUser %>")) {
-            window.location = "https://cas.ucdavis.edu/cas/logout?service=" + "<%= STR_RedirectAddress %>";
+            window.location = "https://cas.ucdavis.edu/cas/logout" <%--+ "?service=<%= STR_RedirectAddress %>"--%>
+                ;
         }
         else {
             window.location = "<%= STR_RedirectAddress %>";

@@ -30,3 +30,5 @@ _ReSharper*/
 Commencement.SQL/Commencement.SQL.dbmdl
 *.dbmdl
 *.docstates
+
+UpgradeLog.XML

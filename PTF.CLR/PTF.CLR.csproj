@@ -20,7 +20,7 @@
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>40</FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation>C:\Users\taylor\Dropbox\Documents\GitHub\PTF\Backup\PTF.CLR\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>C:\Users\taylorkj\Box\Homedir\Documents\GitHub\PTF\PTF.CLR\Backup4\</UpgradeBackupLocation>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
