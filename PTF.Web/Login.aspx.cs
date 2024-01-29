@@ -16,7 +16,14 @@ using System.Net;
 public partial class Login : System.Web.UI.Page
 {
     private const string STR_ReturnURL = "ReturnURL";
+
+#if DEBUG
+    private const string STR_CAS_URL = "https://ssodev.ucdavis.edu/cas/";
+#else
     private const string STR_CAS_URL = "https://cas.ucdavis.edu/cas/";
+#endif
+
+    //private const string STR_CAS_URL = "https://cas.ucdavis.edu/cas/";
     private const string STR_KERBEROS_URL = "https://secureweb.ucdavis.edu/form-auth/sendback?";
     private const string STR_Ticket = "ticket";
 

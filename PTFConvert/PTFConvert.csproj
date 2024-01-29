@@ -19,7 +19,7 @@
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>40</FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation>C:\Users\taylor\Dropbox\Documents\GitHub\PTF\Backup\PTFConvert\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>C:\Users\taylorkj\Box\Homedir\Documents\GitHub\PTF\PTFConvert\Backup\</UpgradeBackupLocation>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
