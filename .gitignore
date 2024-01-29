@@ -32,3 +32,20 @@ Commencement.SQL/Commencement.SQL.dbmdl
 *.docstates
 
 UpgradeLog.XML
+UpgradeLog2.htm
+UpgradeLog.htm
+PTF.Web/connectionStrings.config
+PTF.Web/appSettings.config
+ConnectionStringsTest.config
+ConnectionStringsProd.config
+.vs/PTF/v15/Server/sqlite3/storage.ide-wal
+.vs/PTF/v15/Server/sqlite3/storage.ide-shm
+.vs/PTF/v15/Server/sqlite3/storage.ide
+.vs/PTF/v15/Server/sqlite3/db.lock
+.vs/PTF/FileContentIndex/f067a607-ccb6-4b42-9508-d9fa577cb64b.vsidx
+.vs/PTF/FileContentIndex/46b850a7-25dd-4a37-bbef-1bd8e2a71a87.vsidx
+.vs/PTF/FileContentIndex/41a9056a-f2fb-4095-9af5-a886436e31cf.vsidx
+.vs/PTF/FileContentIndex/21f5891c-daf0-4c76-acf4-e64d24ba5556.vsidx
+.vs/PTF/FileContentIndex/14e3d3df-4999-4762-9c45-79a103812f74.vsidx
+.vs/PTF/config/applicationhost.config
+.vs/config/applicationhost.config
