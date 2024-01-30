@@ -505,7 +505,9 @@
                <i>** If you wish to place another transformation order for this same construct in another crop or genotype, use the plus button to provide more space to do so.</i>
                 <br /><br />
                 <span class="btnPrices">
-                <a href="http://PTF.ucdavis.edu/services#transformation-services-pricing-schedule" target="_blank"><img src="../Images/btn_prices.png" alt="Transformation prices" /></a>
+                    <a href=<%=ConfigurationManager.AppSettings["PricingScheduleURL"] %> target="_blank"><img src="../Images/btn_prices.png" alt="Transformation prices" /></a>
+
+                <%--<a href="http://PTF.ucdavis.edu/services#transformation-services-pricing-schedule" target="_blank"><img src="../Images/btn_prices.png" alt="Transformation prices" /></a>--%>
                 <%--<asp:ImageButton runat="server" ID="btnPrices" PostBackUrl="http://PTF.ucdavis.edu/services" ImageUrl="~/Images/btn_prices.png" Target="_blank" />--%>
                 </span>
           
