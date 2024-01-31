@@ -3,6 +3,7 @@ using System.Collections;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -11,13 +12,18 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using CAESDO.PTF.BLL;
+using Microsoft.Reporting.WebForms;
 
 public partial class admin_Billing : System.Web.UI.Page
 {
+    private static readonly string ReportViewerUserName = ConfigurationManager.AppSettings["ReportViewerUser"];
+    private static readonly string ReportViewerPassword = ConfigurationManager.AppSettings["ReportViewerPassword"];
+    private static readonly string ReportViewerDomainName = ConfigurationManager.AppSettings["ReportViewerDomain"];
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
+
     protected void lvConstructs_SelectedIndexChanged(object sender, EventArgs e)
     {
         var constructID = ((ListView)sender).SelectedDataKey.Value;
@@ -47,9 +53,14 @@ public partial class admin_Billing : System.Web.UI.Page
             Response.Write("Construct is not complete yet, you cannot invoice.");
         }
     }
+
     protected void ExportReport(string reportName, ArrayList parameters)
     {
         Microsoft.Reporting.WebForms.ReportViewer rview = new Microsoft.Reporting.WebForms.ReportViewer();
+
+        IReportServerCredentials myCredentials = new CustomReportCredentials(ReportViewerUserName, ReportViewerPassword, ReportViewerDomainName);
+        rview.ServerReport.ReportServerCredentials = myCredentials;
+
         rview.ServerReport.ReportServerUrl = new Uri(System.Web.Configuration.WebConfigurationManager.AppSettings["ReportServer"]);
 
         rview.ServerReport.ReportPath = reportName;
@@ -95,5 +106,37 @@ public partial class admin_Billing : System.Web.UI.Page
         Response.OutputStream.Close();
         Response.Flush();
         Response.Close();
+    }
+
+    public class CustomReportCredentials : IReportServerCredentials
+    {
+        private string _userName;
+        private string _passWord;
+        private string _domainName;
+
+        public CustomReportCredentials(string userName, string passWord, string domainName)
+        {
+            _userName = userName;
+            _passWord = passWord;
+            _domainName = domainName;
+        }
+
+        public System.Security.Principal.WindowsIdentity ImpersonationUser
+        {
+            get { return null; }
+        }
+
+        public ICredentials NetworkCredentials
+        {
+            get { return new NetworkCredential(_userName, _passWord, _domainName); }
+        }
+
+        public bool GetFormsCredentials(out Cookie authCookie, out string user, out string password,
+            out string authority)
+        {
+            authCookie = null;
+            user = password = authority = null;
+            return false;
+        }
     }
 }
