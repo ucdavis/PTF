@@ -1,3 +1,9 @@
 Plant Transformation Facility Experiment and Order Tracking System
 
 A CA&ES Dean's Office production
+
+Note: 2024-01-31 by kjt:
+* It will build and run on Visual Studio (VS) 2019, and .Net 3.5. 
+* It will not run on any higher version of VS or .Net due to the age of the project, and the various libraries.
+* This project has been updated to also run on Azure.
+
